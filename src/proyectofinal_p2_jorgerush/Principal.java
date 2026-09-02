@@ -4,29 +4,27 @@
  */
 package proyectofinal_p2_jorgerush;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.UIManager;
-import java.awt.Color;
 
 /**
  *
  * @author Jorge Rush
  */
-public class Default extends javax.swing.JFrame {
-
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Default.class.getName());
+public class Principal extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
 
     /**
-     * Creates new form Default
+     * Creates new form Principal
      */
-    public Default() {
+    public Principal() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
         initComponents();
-        
+        editor.setVisible(false);
     }
 
     /**
@@ -44,27 +42,30 @@ public class Default extends javax.swing.JFrame {
         editarPantalla = new javax.swing.JButton();
         editorTexto = new javax.swing.JButton();
         WitZig = new javax.swing.JButton();
-        FondoPantalla = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        buscador = new javax.swing.JTextField();
+        nombreSO = new javax.swing.JLabel();
         editor = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         Color = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
-        buscador = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
-        BarraNavegacion.setBackground(new java.awt.Color(209, 209, 209));
+        BarraNavegacion.setBackground(new java.awt.Color(232, 232, 232));
         BarraNavegacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExploradorArchivos-removebg-preview (2).png"))); // NOI18N
         explorarArchivos.setContentAreaFilled(false);
         explorarArchivos.setFocusPainted(false);
         explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
-        BarraNavegacion.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 40, -1));
+        BarraNavegacion.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 40, -1));
 
         editarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sprite-frame-21 (2).png"))); // NOI18N
         editarPantalla.setBorderPainted(false);
@@ -76,12 +77,12 @@ public class Default extends javax.swing.JFrame {
             }
         });
         editarPantalla.addActionListener(this::editarPantallaActionPerformed);
-        BarraNavegacion.add(editarPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 40, -1));
+        BarraNavegacion.add(editarPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 40, -1));
 
         editorTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditorTexto-removebg-preview (2) (2).png"))); // NOI18N
         editorTexto.setContentAreaFilled(false);
         editorTexto.setFocusPainted(false);
-        BarraNavegacion.add(editorTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 40, -1));
+        BarraNavegacion.add(editorTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 40, -1));
 
         WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipoWitzig (2).png"))); // NOI18N
         WitZig.setBorder(null);
@@ -89,46 +90,10 @@ public class Default extends javax.swing.JFrame {
         WitZig.setFocusPainted(false);
         BarraNavegacion.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        jPanel1.add(BarraNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 481));
+        jPanel1.add(BarraNavegacion, java.awt.BorderLayout.WEST);
 
-        FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
-        FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(380, Short.MAX_VALUE)
-                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-
-        editor.addTab("Editor de Fuente", jPanel4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
-        );
-
-        editor.addTab("Personalizacion de fondo", jPanel5);
-
-        FondoPantalla.add(editor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 490, 330));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buscador.setForeground(new java.awt.Color(153, 153, 153));
         buscador.setText("Buscar..");
@@ -140,13 +105,84 @@ public class Default extends javax.swing.JFrame {
             }
         });
         buscador.addActionListener(this::buscadorActionPerformed);
-        FondoPantalla.add(buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 30));
+        jPanel2.add(buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 230, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("WitZig");
-        FondoPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 60, 30));
+        nombreSO.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nombreSO.setText("WitZig");
+        jPanel2.add(nombreSO, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 60, 30));
 
-        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 750, 480));
+        Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(550, Short.MAX_VALUE)
+                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(319, Short.MAX_VALUE))
+        );
+
+        editor.addTab("Editor de Fuente", jPanel4);
+
+        jButton1.setText("Imagen de Fondo");
+        jButton1.setFocusPainted(false);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 324, Short.MAX_VALUE)
+        );
+
+        jButton2.setText("Color de Fondo");
+        jButton2.setFocusPainted(false);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)
+                        .addGap(0, 401, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        editor.addTab("Personalizacion de fondo", jPanel5);
+
+        jPanel2.add(editor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 660, 400));
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,25 +198,25 @@ public class Default extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
+    private void explorarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_explorarArchivosActionPerformed
 
-    }//GEN-LAST:event_buscadorActionPerformed
-
-    private void buscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscadorMouseClicked
-        buscador.setText(null);
-    }//GEN-LAST:event_buscadorMouseClicked
+    private void editarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPantallaMouseClicked
+        editor.setVisible(true);
+    }//GEN-LAST:event_editarPantallaMouseClicked
 
     private void editarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPantallaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarPantallaActionPerformed
 
-    private void editarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPantallaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editarPantallaMouseClicked
+    private void buscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscadorMouseClicked
+        buscador.setText(null);
+    }//GEN-LAST:event_buscadorMouseClicked
 
-    private void explorarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_explorarArchivosActionPerformed
+    private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
+
+    }//GEN-LAST:event_buscadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,22 +240,25 @@ public class Default extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Default().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraNavegacion;
     private javax.swing.JComboBox<String> Color;
-    private javax.swing.JPanel FondoPantalla;
     private javax.swing.JButton WitZig;
     private javax.swing.JTextField buscador;
     private javax.swing.JButton editarPantalla;
     private javax.swing.JTabbedPane editor;
     private javax.swing.JButton editorTexto;
     private javax.swing.JButton explorarArchivos;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel nombreSO;
     // End of variables declaration//GEN-END:variables
 }
