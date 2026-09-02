@@ -37,57 +37,38 @@ public class Default extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BarraNavegacion = new javax.swing.JPanel();
+        explorarArchivos = new javax.swing.JButton();
         editarPantalla = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        editorTexto = new javax.swing.JButton();
+        WitZig = new javax.swing.JButton();
+        FondoPantalla = new javax.swing.JPanel();
+        editor = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
         Color = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        buscador = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        BarraNavegacion.setBackground(new java.awt.Color(209, 209, 209));
+        BarraNavegacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipoWitzig.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 400, 0, 0);
-        jPanel2.add(jLabel1, gridBagConstraints);
+        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExploradorArchivos-removebg-preview (2).png"))); // NOI18N
+        explorarArchivos.setContentAreaFilled(false);
+        explorarArchivos.setFocusPainted(false);
+        explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
+        BarraNavegacion.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 40, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditorTexto-removebg-preview (2).png"))); // NOI18N
-        jButton3.setContentAreaFilled(false);
-        jButton3.setFocusPainted(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 250, 0, 0);
-        jPanel2.add(jButton3, gridBagConstraints);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExploradorArchivos-removebg-preview_1.png"))); // NOI18N
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 16, 0, 67);
-        jPanel2.add(jButton2, gridBagConstraints);
-
-        editarPantalla.setText("Editar Pantalla");
+        editarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sprite-frame-21 (2).png"))); // NOI18N
+        editarPantalla.setBorderPainted(false);
+        editarPantalla.setContentAreaFilled(false);
         editarPantalla.setFocusPainted(false);
         editarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -95,52 +76,77 @@ public class Default extends javax.swing.JFrame {
             }
         });
         editarPantalla.addActionListener(this::editarPantallaActionPerformed);
+        BarraNavegacion.add(editarPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 40, -1));
+
+        editorTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditorTexto-removebg-preview (2) (2).png"))); // NOI18N
+        editorTexto.setContentAreaFilled(false);
+        editorTexto.setFocusPainted(false);
+        BarraNavegacion.add(editorTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 40, -1));
+
+        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipoWitzig (2).png"))); // NOI18N
+        WitZig.setBorder(null);
+        WitZig.setBorderPainted(false);
+        WitZig.setFocusPainted(false);
+        BarraNavegacion.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+
+        jPanel1.add(BarraNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 481));
+
+        FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
+        FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(380, Short.MAX_VALUE)
                 .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
+                .addGap(38, 38, 38))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editarPantalla)
-                .addGap(129, 129, 129))
+        editor.addTab("Editor de Fuente", jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editarPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(156, 156, 156))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)))
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 295, Short.MAX_VALUE)
         );
+
+        editor.addTab("Personalizacion de fondo", jPanel5);
+
+        FondoPantalla.add(editor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 490, 330));
+
+        buscador.setForeground(new java.awt.Color(153, 153, 153));
+        buscador.setText("Buscar..");
+        buscador.setCaretColor(new java.awt.Color(102, 102, 102));
+        buscador.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        buscador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscadorMouseClicked(evt);
+            }
+        });
+        buscador.addActionListener(this::buscadorActionPerformed);
+        FondoPantalla.add(buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("WitZig");
+        FondoPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 60, 30));
+
+        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 750, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,6 +162,14 @@ public class Default extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
+
+    }//GEN-LAST:event_buscadorActionPerformed
+
+    private void buscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscadorMouseClicked
+        buscador.setText(null);
+    }//GEN-LAST:event_buscadorMouseClicked
+
     private void editarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPantallaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarPantallaActionPerformed
@@ -163,6 +177,10 @@ public class Default extends javax.swing.JFrame {
     private void editarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPantallaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_editarPantallaMouseClicked
+
+    private void explorarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_explorarArchivosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,13 +208,18 @@ public class Default extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BarraNavegacion;
     private javax.swing.JComboBox<String> Color;
+    private javax.swing.JPanel FondoPantalla;
+    private javax.swing.JButton WitZig;
+    private javax.swing.JTextField buscador;
     private javax.swing.JButton editarPantalla;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTabbedPane editor;
+    private javax.swing.JButton editorTexto;
+    private javax.swing.JButton explorarArchivos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
