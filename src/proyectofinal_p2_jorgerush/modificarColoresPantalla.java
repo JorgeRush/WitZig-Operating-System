@@ -23,7 +23,9 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         super(parent, modal);
 
         initComponents();
+        panelPantalla.setVisible(false);
         eleccionPantalla.setVisible(false);
+        eleccionExternos.setVisible(false);
         Imagen.setVisible(false);
         ColorSolido.setVisible(false);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -66,8 +68,8 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         editarColoresPantalla = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        panelPantalla = new javax.swing.JPanel();
+        aspectosExternos = new javax.swing.JButton();
         fondoPm = new javax.swing.JButton();
         eleccionExternos = new javax.swing.JPanel();
         ColorSolido2 = new javax.swing.JPanel();
@@ -125,12 +127,10 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         rancho = new javax.swing.JButton();
         elegirFondom = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        colores1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        seleccionColor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 440));
 
         editarColoresPantalla.setBackground(new java.awt.Color(255, 255, 255));
         editarColoresPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,19 +138,24 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P2.png"))); // NOI18N
         jLabel1.setText("Personalizacion");
-        editarColoresPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
+        editarColoresPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Fuentes");
         jButton2.addActionListener(this::jButton2ActionPerformed);
-        editarColoresPantalla.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 100, 30));
+        editarColoresPantalla.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 30));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Aspectos Externos");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 200, 30));
+        aspectosExternos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        aspectosExternos.setText("Aspectos Externos");
+        aspectosExternos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aspectosExternosMouseClicked(evt);
+            }
+        });
+        aspectosExternos.addActionListener(this::aspectosExternosActionPerformed);
+        panelPantalla.add(aspectosExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 200, 30));
 
         fondoPm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fondoPm.setText("Fondo de Pantalla");
@@ -160,7 +165,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
             }
         });
         fondoPm.addActionListener(this::fondoPmActionPerformed);
-        jPanel1.add(fondoPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 150, 30));
+        panelPantalla.add(fondoPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 150, 30));
 
         eleccionExternos.setBackground(new java.awt.Color(204, 255, 153));
 
@@ -369,7 +374,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                     .addContainerGap(28, Short.MAX_VALUE)))
         );
 
-        jPanel1.add(eleccionExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
+        panelPantalla.add(eleccionExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
 
         eleccionPantalla.setBackground(new java.awt.Color(204, 255, 153));
 
@@ -559,29 +564,19 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                     .addContainerGap(28, Short.MAX_VALUE)))
         );
 
-        jPanel1.add(eleccionPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
+        panelPantalla.add(eleccionPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
 
-        editarColoresPantalla.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 570, 330));
-
-        colores1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        editarColoresPantalla.add(colores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 92, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Seleccionar Color:");
-        editarColoresPantalla.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, -1, -1));
+        editarColoresPantalla.add(panelPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 300));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setText("Pantalla");
-        jButton4.addActionListener(this::jButton4ActionPerformed);
-        editarColoresPantalla.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 100, 30));
-
-        seleccionColor.setText("Elegir");
-        seleccionColor.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seleccionColorMouseClicked(evt);
+                jButton4MouseClicked(evt);
             }
         });
-        editarColoresPantalla.add(seleccionColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
+        jButton4.addActionListener(this::jButton4ActionPerformed);
+        editarColoresPantalla.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -599,35 +594,13 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void seleccionColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColorMouseClicked
-        Object eleccion = colores.getSelectedItem();
-        if (eleccion instanceof Colores) {
-            Colores colorElegido = (Colores) eleccion;
-            Principal framePrincipal = (Principal) getParent();
-            boolean verf = false;
-            if (barraT.isSelected()) {
-                framePrincipal.colorBarraT(colorElegido.color);
-                verf = true;
-            }
-
-            if (barraN.isSelected()) {
-                framePrincipal.colorBarraN(colorElegido.color);
-                verf = true;
-            }
-            if (verf == false) {
-                JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la pantalla.");
-            }
-
-        }
-    }//GEN-LAST:event_seleccionColorMouseClicked
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void aspectosExternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aspectosExternosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_aspectosExternosActionPerformed
 
     private void seleccionColor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor1MouseClicked
         Object eleccion = colores.getSelectedItem();
@@ -743,6 +716,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     }//GEN-LAST:event_elegirFondomMouseClicked
 
     private void fondoPmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoPmMouseClicked
+        eleccionExternos.setVisible(false);
         eleccionPantalla.setVisible(true);
     }//GEN-LAST:event_fondoPmMouseClicked
 
@@ -778,9 +752,14 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
 
             Color colorElegido = new Color(R1, G1, B1);
             Principal framePrincipal = (Principal) getParent();
-
-            framePrincipal.colorBarraN(colorElegido);
-            framePrincipal.colorBarraT(colorElegido);
+            if(barraT.isSelected()){
+                framePrincipal.colorBarraT(colorElegido);
+            }
+            
+            if(barraN.isSelected()){
+                framePrincipal.colorBarraN(colorElegido);
+            }
+           
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Debe introducir numeros donde se le indica.");
             return;
@@ -807,6 +786,15 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_seleccionColor3MouseClicked
+
+    private void aspectosExternosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aspectosExternosMouseClicked
+        eleccionPantalla.setVisible(false);
+        eleccionExternos.setVisible(true);
+    }//GEN-LAST:event_aspectosExternosMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+       panelPantalla.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -858,12 +846,12 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JPanel Imagen1;
     private javax.swing.JTextField R;
     private javax.swing.JTextField R1;
+    private javax.swing.JButton aspectosExternos;
     private javax.swing.JRadioButton barraN;
     private javax.swing.JRadioButton barraN1;
     private javax.swing.JRadioButton barraT;
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JComboBox<String> colores;
-    private javax.swing.JComboBox<String> colores1;
     private javax.swing.JComboBox<String> colores2;
     private javax.swing.JPanel editarColoresPantalla;
     private javax.swing.JPanel eleccionExternos;
@@ -872,7 +860,6 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JButton elegirFondom1;
     private javax.swing.JButton fondoPm;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -883,7 +870,6 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -891,7 +877,6 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -902,9 +887,9 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JButton lago1;
     private javax.swing.JButton nevada;
     private javax.swing.JButton nevada1;
+    private javax.swing.JPanel panelPantalla;
     private javax.swing.JButton rancho;
     private javax.swing.JButton rancho1;
-    private javax.swing.JButton seleccionColor;
     private javax.swing.JButton seleccionColor1;
     private javax.swing.JButton seleccionColor2;
     private javax.swing.JButton seleccionColor3;

@@ -76,13 +76,6 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ModifcarPantalla = new javax.swing.JMenu();
-        EditorFuente = new javax.swing.JMenu();
-        ColorElegir = new javax.swing.JMenu();
-        Tamaño = new javax.swing.JMenu();
-        Estilo = new javax.swing.JMenu();
-        EditarPantalla = new javax.swing.JMenu();
-        EditarColores = new javax.swing.JMenuItem();
-        ElegirImagen = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,42 +126,12 @@ public class Principal extends javax.swing.JFrame {
 
         ModifcarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         ModifcarPantalla.setText("Personalizar");
-
-        EditorFuente.setText("Personalizar Fuente");
-
-        ColorElegir.setText("Color");
-        ColorElegir.addMouseListener(new java.awt.event.MouseAdapter() {
+        ModifcarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ColorElegirMouseClicked(evt);
+                ModifcarPantallaMouseClicked(evt);
             }
         });
-        EditorFuente.add(ColorElegir);
-
-        Tamaño.setText("Tamaño");
-        EditorFuente.add(Tamaño);
-
-        Estilo.setText("Estilo");
-        EditorFuente.add(Estilo);
-
-        ModifcarPantalla.add(EditorFuente);
-
-        EditarPantalla.setText("Personalizar Pantalla");
-
-        EditarColores.setText("Colores");
-        EditarColores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EditarColoresMouseClicked(evt);
-            }
-        });
-        EditarColores.addActionListener(this::EditarColoresActionPerformed);
-        EditarPantalla.add(EditarColores);
-
-        ElegirImagen.setText("Fondo");
-        ElegirImagen.addActionListener(this::ElegirImagenActionPerformed);
-        EditarPantalla.add(ElegirImagen);
-
-        ModifcarPantalla.add(EditarPantalla);
-
+        ModifcarPantalla.addActionListener(this::ModifcarPantallaActionPerformed);
         BarraNavegacion.add(ModifcarPantalla);
 
         setJMenuBar(BarraNavegacion);
@@ -181,28 +144,20 @@ public class Principal extends javax.swing.JFrame {
     private void explorarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_explorarArchivosActionPerformed
-
-    private void ColorElegirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ColorElegirMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ColorElegirMouseClicked
     public void aparecerElementos(boolean mostrar) {
         FondoPantalla.setVisible(mostrar);
     }
-    private void EditarColoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarColoresMouseClicked
-//        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
-//        modColor.setLocationRelativeTo(this);
-//        modColor.setVisible(true);
-    }//GEN-LAST:event_EditarColoresMouseClicked
-
-    private void EditarColoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarColoresActionPerformed
+    private void ModifcarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifcarPantallaActionPerformed
         modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
-    }//GEN-LAST:event_EditarColoresActionPerformed
+    }//GEN-LAST:event_ModifcarPantallaActionPerformed
 
-    private void ElegirImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElegirImagenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ElegirImagenActionPerformed
+    private void ModifcarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifcarPantallaMouseClicked
+        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
+        modColor.setLocationRelativeTo(this);
+        modColor.setVisible(true);
+    }//GEN-LAST:event_ModifcarPantallaMouseClicked
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
@@ -249,15 +204,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
-    private javax.swing.JMenu ColorElegir;
-    private javax.swing.JMenuItem EditarColores;
-    private javax.swing.JMenu EditarPantalla;
-    private javax.swing.JMenu EditorFuente;
-    private javax.swing.JMenuItem ElegirImagen;
-    private javax.swing.JMenu Estilo;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JMenu ModifcarPantalla;
-    private javax.swing.JMenu Tamaño;
     private javax.swing.JButton WitZig;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;

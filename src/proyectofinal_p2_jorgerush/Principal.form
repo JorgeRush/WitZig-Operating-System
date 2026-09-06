@@ -27,57 +27,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Personalizar"/>
           </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="EditorFuente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Personalizar Fuente"/>
-              </Properties>
-              <SubComponents>
-                <Menu class="javax.swing.JMenu" name="ColorElegir">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Color"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ColorElegirMouseClicked"/>
-                  </Events>
-                </Menu>
-                <Menu class="javax.swing.JMenu" name="Tama&#xf1;o">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Tama&#xf1;o"/>
-                  </Properties>
-                </Menu>
-                <Menu class="javax.swing.JMenu" name="Estilo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estilo"/>
-                  </Properties>
-                </Menu>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="EditarPantalla">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Personalizar Pantalla"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="EditarColores">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Colores"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarColoresMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarColoresActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="ElegirImagen">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Fondo"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ElegirImagenActionPerformed"/>
-                  </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-          </SubComponents>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ModifcarPantallaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModifcarPantallaActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
