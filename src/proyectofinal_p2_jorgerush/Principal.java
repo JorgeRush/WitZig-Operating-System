@@ -18,7 +18,7 @@ import javax.swing.UIManager;
 public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-    static ArrayList<Colores> listaColor = new ArrayList<>();
+    
 
     /**
      * Creates new form Principal
@@ -48,12 +48,13 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         FondoPantalla = new javax.swing.JPanel();
-        nombreSO = new javax.swing.JLabel();
         BarraTareas = new javax.swing.JPanel();
-        WitZig = new javax.swing.JButton();
-        explorarArchivos = new javax.swing.JButton();
         editorTexto1 = new javax.swing.JButton();
+        explorarArchivos = new javax.swing.JButton();
+        WitZig = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
         ModifcarPantalla = new javax.swing.JMenu();
         EditorFuente = new javax.swing.JMenu();
         ColorElegir = new javax.swing.JMenu();
@@ -61,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         Estilo = new javax.swing.JMenu();
         EditarPantalla = new javax.swing.JMenu();
         EditarColores = new javax.swing.JMenuItem();
+        ElegirImagen = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,35 +73,35 @@ public class Principal extends javax.swing.JFrame {
         FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
         FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nombreSO.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        nombreSO.setText("WitZig");
-        FondoPantalla.add(nombreSO, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 60, 30));
-
+        BarraTareas.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 5, true), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 242, 242), 2)));
         BarraTareas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/W1.png"))); // NOI18N
-        WitZig.setBorder(null);
-        WitZig.setBorderPainted(false);
-        WitZig.setContentAreaFilled(false);
-        WitZig.setFocusPainted(false);
-        BarraTareas.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 60, -1));
+        editorTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed1.png"))); // NOI18N
+        editorTexto1.setBorder(null);
+        editorTexto1.setContentAreaFilled(false);
+        editorTexto1.setFocusPainted(false);
+        BarraTareas.add(editorTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 40, 40));
 
-        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ex1.png"))); // NOI18N
+        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ex1.png"))); // NOI18N
         explorarArchivos.setBorder(null);
         explorarArchivos.setContentAreaFilled(false);
         explorarArchivos.setFocusPainted(false);
         explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
-        BarraTareas.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 40));
+        BarraTareas.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, 40));
 
-        editorTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ed1.png"))); // NOI18N
-        editorTexto1.setBorder(null);
-        editorTexto1.setContentAreaFilled(false);
-        editorTexto1.setFocusPainted(false);
-        BarraTareas.add(editorTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 40, 40));
+        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W1.png"))); // NOI18N
+        WitZig.setBorder(null);
+        WitZig.setBorderPainted(false);
+        WitZig.setContentAreaFilled(false);
+        WitZig.setFocusPainted(false);
+        BarraTareas.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 60, -1));
 
-        FondoPantalla.add(BarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 750, 40));
+        FondoPantalla.add(BarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 540, 40));
 
-        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 430));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondosPantalla/F1.png"))); // NOI18N
+        FondoPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
+
+        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
 
@@ -107,8 +109,11 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setBorder(null);
         BarraNavegacion.setOpaque(true);
 
-        ModifcarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/P1.png"))); // NOI18N
-        ModifcarPantalla.setText("Modificar Pantalla");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
+        BarraNavegacion.add(jMenu1);
+
+        ModifcarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
+        ModifcarPantalla.setText("Personalizar");
 
         EditorFuente.setText("Editar Fuente");
 
@@ -128,7 +133,7 @@ public class Principal extends javax.swing.JFrame {
 
         ModifcarPantalla.add(EditorFuente);
 
-        EditarPantalla.setText("Editar Pantalla");
+        EditarPantalla.setText("Personalizar Pantalla");
 
         EditarColores.setText("Editar Colores");
         EditarColores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,6 +143,9 @@ public class Principal extends javax.swing.JFrame {
         });
         EditarColores.addActionListener(this::EditarColoresActionPerformed);
         EditarPantalla.add(EditarColores);
+
+        ElegirImagen.setText("Elegir Imagen");
+        EditarPantalla.add(ElegirImagen);
 
         ModifcarPantalla.add(EditarPantalla);
 
@@ -227,6 +235,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem EditarColores;
     private javax.swing.JMenu EditarPantalla;
     private javax.swing.JMenu EditorFuente;
+    private javax.swing.JMenuItem ElegirImagen;
     private javax.swing.JMenu Estilo;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JMenu ModifcarPantalla;
@@ -234,7 +243,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton WitZig;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel nombreSO;
     // End of variables declaration//GEN-END:variables
 }
