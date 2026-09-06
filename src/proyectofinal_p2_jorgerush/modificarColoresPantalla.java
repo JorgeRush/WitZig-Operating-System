@@ -23,8 +23,12 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         super(parent, modal);
 
         initComponents();
+        eleccionPantalla.setVisible(false);
+        Imagen.setVisible(false);
+        ColorSolido.setVisible(false);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         colores.setModel(model);
+        colores2.setModel(model);
         coloresAñadir(model);
     }
 
@@ -61,23 +65,515 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
 
         editarColoresPantalla = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        colores = new javax.swing.JComboBox<>();
-        seleccionColor = new javax.swing.JButton();
-        fondoP = new javax.swing.JRadioButton();
-        barraN = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        fondoPm = new javax.swing.JButton();
+        eleccionExternos = new javax.swing.JPanel();
+        ColorSolido2 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        colores2 = new javax.swing.JComboBox<>();
+        seleccionColor3 = new javax.swing.JButton();
+        barraN1 = new javax.swing.JRadioButton();
+        barraT1 = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        R1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        G1 = new javax.swing.JTextField();
+        B1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        seleccionColor4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         barraT = new javax.swing.JRadioButton();
+        barraN = new javax.swing.JRadioButton();
+        Imagen1 = new javax.swing.JPanel();
+        ColorSolido3 = new javax.swing.JPanel();
+        lago1 = new javax.swing.JButton();
+        nevada1 = new javax.swing.JButton();
+        tarde1 = new javax.swing.JButton();
+        rancho1 = new javax.swing.JButton();
+        elegirFondom1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        eleccionPantalla = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        seleccionFondo = new javax.swing.JComboBox<>();
+        ColorSolido = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        colores = new javax.swing.JComboBox<>();
+        seleccionColor1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        R = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        G = new javax.swing.JTextField();
+        B = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        seleccionColor2 = new javax.swing.JButton();
+        Imagen = new javax.swing.JPanel();
+        ColorSolido1 = new javax.swing.JPanel();
+        lago = new javax.swing.JButton();
+        nevada = new javax.swing.JButton();
+        tarde = new javax.swing.JButton();
+        rancho = new javax.swing.JButton();
+        elegirFondom = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        colores1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        seleccionColor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        editarColoresPantalla.setBackground(new java.awt.Color(255, 255, 255));
         editarColoresPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Seleccione Elemento:");
-        editarColoresPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 19)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P2.png"))); // NOI18N
+        jLabel1.setText("Personalizacion");
+        editarColoresPantalla.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Fuentes");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        editarColoresPantalla.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 100, 30));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setText("Aspectos Externos");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 200, 30));
+
+        fondoPm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fondoPm.setText("Fondo de Pantalla");
+        fondoPm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fondoPmMouseClicked(evt);
+            }
+        });
+        fondoPm.addActionListener(this::fondoPmActionPerformed);
+        jPanel1.add(fondoPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 150, 30));
+
+        eleccionExternos.setBackground(new java.awt.Color(204, 255, 153));
+
+        ColorSolido2.setBackground(new java.awt.Color(255, 255, 255));
+        ColorSolido2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("Seleccionar Color:");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        colores2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(colores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 92, -1));
+
+        seleccionColor3.setText("Elegir");
+        seleccionColor3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleccionColor3MouseClicked(evt);
+            }
+        });
+        jPanel4.add(seleccionColor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        barraN1.setText("Barra de Navegacion");
+        barraN1.setFocusPainted(false);
+        jPanel4.add(barraN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        barraT1.setText("Barra de Tareas");
+        barraT1.setFocusPainted(false);
+        jPanel4.add(barraT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Seleccione Elemento/s:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jTabbedPane2.addTab("Seleccionar Color", jPanel4);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setText("Color Personalizado:");
+
+        jLabel14.setText("R");
+
+        jLabel15.setText("G");
+
+        jLabel16.setText("B");
+
+        seleccionColor4.setText("Elegir");
+        seleccionColor4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleccionColor4MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Seleccione Elemento/s:");
+
+        barraT.setText("Barra de Tareas");
+        barraT.setFocusPainted(false);
+
+        barraN.setText("Barra de Navegacion");
+        barraN.setFocusPainted(false);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(26, 26, 26)
+                                .addComponent(R1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel14)
+                                .addGap(32, 32, 32)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(G1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel15)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel16)))
+                        .addGap(18, 18, 18)
+                        .addComponent(seleccionColor4))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(barraT)
+                            .addComponent(barraN)
+                            .addComponent(jLabel3))))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(barraT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(barraN)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(R1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(G1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel15)))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(seleccionColor4)))
+                .addGap(14, 14, 14))
+        );
+
+        jTabbedPane2.addTab("Color Personalizado", jPanel5);
+
+        ColorSolido2.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 190));
+
+        Imagen1.setBackground(new java.awt.Color(255, 255, 255));
+        Imagen1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ColorSolido3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lago1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT4.png"))); // NOI18N
+        lago1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lago1MouseClicked(evt);
+            }
+        });
+        ColorSolido3.add(lago1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 87, 83));
+
+        nevada1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT1.png"))); // NOI18N
+        nevada1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nevada1MouseClicked(evt);
+            }
+        });
+        ColorSolido3.add(nevada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 87, 83));
+
+        tarde1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F2.jpg"))); // NOI18N
+        tarde1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tarde1MouseClicked(evt);
+            }
+        });
+        ColorSolido3.add(tarde1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 87, 83));
+
+        rancho1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT3.png"))); // NOI18N
+        rancho1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rancho1MouseClicked(evt);
+            }
+        });
+        ColorSolido3.add(rancho1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 87, 83));
+
+        elegirFondom1.setText("Confirmar");
+        elegirFondom1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                elegirFondom1MouseClicked(evt);
+            }
+        });
+        ColorSolido3.add(elegirFondom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+
+        jLabel17.setText("Seleccione un Fondo de Pantalla Predeterminado:");
+        ColorSolido3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        Imagen1.add(ColorSolido3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 150));
+
+        javax.swing.GroupLayout eleccionExternosLayout = new javax.swing.GroupLayout(eleccionExternos);
+        eleccionExternos.setLayout(eleccionExternosLayout);
+        eleccionExternosLayout.setHorizontalGroup(
+            eleccionExternosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eleccionExternosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ColorSolido2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(eleccionExternosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(eleccionExternosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Imagen1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        eleccionExternosLayout.setVerticalGroup(
+            eleccionExternosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eleccionExternosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ColorSolido2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(eleccionExternosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eleccionExternosLayout.createSequentialGroup()
+                    .addContainerGap(36, Short.MAX_VALUE)
+                    .addComponent(Imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(28, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(eleccionExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
+
+        eleccionPantalla.setBackground(new java.awt.Color(204, 255, 153));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Personalizar el Fondo de Pantalla:");
+
+        seleccionFondo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Imagen", "Color Solido" }));
+        seleccionFondo.addActionListener(this::seleccionFondoActionPerformed);
+
+        ColorSolido.setBackground(new java.awt.Color(255, 255, 255));
+        ColorSolido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("Seleccionar Color:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         colores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        editarColoresPantalla.add(colores, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 92, -1));
+        jPanel2.add(colores, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 92, -1));
+
+        seleccionColor1.setText("Elegir");
+        seleccionColor1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleccionColor1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(seleccionColor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+
+        jTabbedPane1.addTab("Seleccionar Color", jPanel2);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Color Personalizado:");
+
+        jLabel7.setText("R");
+
+        jLabel8.setText("G");
+
+        jLabel9.setText("B");
+
+        seleccionColor2.setText("Elegir");
+        seleccionColor2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleccionColor2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6)
+                        .addGap(26, 26, 26)
+                        .addComponent(R, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addGap(32, 32, 32)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(G, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(seleccionColor2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel8)
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel9)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(R, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(G, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(B, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(seleccionColor2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Color Personalizado", jPanel3);
+
+        ColorSolido.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 100));
+
+        Imagen.setBackground(new java.awt.Color(255, 255, 255));
+        Imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ColorSolido1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT4.png"))); // NOI18N
+        lago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lagoMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(lago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 87, 83));
+
+        nevada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT1.png"))); // NOI18N
+        nevada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nevadaMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(nevada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 87, 83));
+
+        tarde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F2.jpg"))); // NOI18N
+        tarde.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tardeMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(tarde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 87, 83));
+
+        rancho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT3.png"))); // NOI18N
+        rancho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ranchoMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(rancho, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 87, 83));
+
+        elegirFondom.setText("Confirmar");
+        elegirFondom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                elegirFondomMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+
+        jLabel10.setText("Seleccione un Fondo de Pantalla Predeterminado:");
+        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        Imagen.add(ColorSolido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 150));
+
+        javax.swing.GroupLayout eleccionPantallaLayout = new javax.swing.GroupLayout(eleccionPantalla);
+        eleccionPantalla.setLayout(eleccionPantallaLayout);
+        eleccionPantallaLayout.setHorizontalGroup(
+            eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eleccionPantallaLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel4)
+                .addGap(16, 16, 16)
+                .addComponent(seleccionFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(eleccionPantallaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ColorSolido, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(eleccionPantallaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        eleccionPantallaLayout.setVerticalGroup(
+            eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eleccionPantallaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(seleccionFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ColorSolido, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eleccionPantallaLayout.createSequentialGroup()
+                    .addContainerGap(36, Short.MAX_VALUE)
+                    .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(28, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(eleccionPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 240));
+
+        editarColoresPantalla.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 570, 330));
+
+        colores1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        editarColoresPantalla.add(colores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 92, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Seleccionar Color:");
+        editarColoresPantalla.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, -1, -1));
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setText("Pantalla");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
+        editarColoresPantalla.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 100, 30));
 
         seleccionColor.setText("Elegir");
         seleccionColor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,35 +581,19 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                 seleccionColorMouseClicked(evt);
             }
         });
-        editarColoresPantalla.add(seleccionColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
-        fondoP.setText("Fondo de Pantalla");
-        fondoP.setFocusPainted(false);
-        editarColoresPantalla.add(fondoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        barraN.setText("Barra de Navegacion");
-        barraN.setFocusPainted(false);
-        editarColoresPantalla.add(barraN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        barraT.setText("Barra de Tareas");
-        barraT.setFocusPainted(false);
-        editarColoresPantalla.add(barraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Seleccionar Color:");
-        editarColoresPantalla.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        editarColoresPantalla.add(seleccionColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(editarColoresPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(editarColoresPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(editarColoresPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(editarColoresPantalla, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
         );
 
         pack();
@@ -124,26 +604,209 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         if (eleccion instanceof Colores) {
             Colores colorElegido = (Colores) eleccion;
             Principal framePrincipal = (Principal) getParent();
-            boolean verf=false;
+            boolean verf = false;
             if (barraT.isSelected()) {
                 framePrincipal.colorBarraT(colorElegido.color);
-                verf=true;
-            } 
-            if (fondoP.isSelected()) {
-                framePrincipal.colorFondoP(colorElegido.color);
-                verf=true;
-            } 
-            
+                verf = true;
+            }
+
             if (barraN.isSelected()) {
                 framePrincipal.colorBarraN(colorElegido.color);
-                verf=true;
-            } 
-            if (verf==false){
+                verf = true;
+            }
+            if (verf == false) {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la pantalla.");
             }
 
         }
     }//GEN-LAST:event_seleccionColorMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void seleccionColor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor1MouseClicked
+        Object eleccion = colores.getSelectedItem();
+
+        if (eleccion instanceof Colores) {
+
+            Colores colorElegido = (Colores) eleccion;
+            Principal framePrincipal = (Principal) getParent();
+            framePrincipal.ocultarFondo(false);
+            framePrincipal.colorFondoP(colorElegido.color);
+
+        }
+    }//GEN-LAST:event_seleccionColor1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void fondoPmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fondoPmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fondoPmActionPerformed
+
+    private void seleccionColor2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor2MouseClicked
+        try {
+            String Rn = R.getText();
+            String Gn = G.getText();
+            String Bn = B.getText();
+
+            int R1 = Integer.parseInt(Rn);
+            int G1 = Integer.parseInt(Gn);
+            int B1 = Integer.parseInt(Bn);
+
+            Color colorElegido = new Color(R1, G1, B1);
+            Principal framePrincipal = (Principal) getParent();
+            framePrincipal.ocultarFondo(false);
+            framePrincipal.colorFondoP(colorElegido);
+
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Debe introducir numeros donde se le indica.");
+            return;
+        }
+
+    }//GEN-LAST:event_seleccionColor2MouseClicked
+    public void ocultarVentanas(boolean mostrar) {
+        eleccionPantalla.setVisible(mostrar);
+        Imagen.setVisible(mostrar);
+        ColorSolido.setVisible(mostrar);
+    }
+    private void seleccionFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionFondoActionPerformed
+        Object elegido = seleccionFondo.getSelectedItem();
+
+        String eleccion = (String) elegido;
+        System.out.println(eleccion);
+        if (eleccion.equals("Color Solido")) {
+            Imagen.setVisible(false);
+            ColorSolido.setVisible(true);
+
+        } else if (eleccion.equals("Imagen")) {
+            ColorSolido.setVisible(false);
+            Imagen.setVisible(true);
+        }
+
+    }//GEN-LAST:event_seleccionFondoActionPerformed
+    int nevadaElegido = 0;
+    int tardeElegido = 0;
+    int rachoElegido = 0;
+    int lagoElegido = 0;
+
+    private void nevadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nevadaMouseClicked
+        nevadaElegido = 1;
+        tardeElegido = 0;
+        rachoElegido = 0;
+        lagoElegido = 0;
+    }//GEN-LAST:event_nevadaMouseClicked
+
+    private void tardeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tardeMouseClicked
+        nevadaElegido = 0;
+        tardeElegido = 2;
+        rachoElegido = 0;
+        lagoElegido = 0;
+    }//GEN-LAST:event_tardeMouseClicked
+
+    private void ranchoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ranchoMouseClicked
+        nevadaElegido = 0;
+        tardeElegido = 0;
+        rachoElegido = 3;
+        lagoElegido = 0;
+    }//GEN-LAST:event_ranchoMouseClicked
+
+    private void lagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lagoMouseClicked
+        nevadaElegido = 0;
+        tardeElegido = 0;
+        rachoElegido = 0;
+        lagoElegido = 4;
+    }//GEN-LAST:event_lagoMouseClicked
+
+    private void elegirFondomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elegirFondomMouseClicked
+        Principal framePrincipal = (Principal) getParent();
+        framePrincipal.ocultarFondo(true);
+        if (nevadaElegido != 0) {
+
+            framePrincipal.cambiarFondo(1);
+        } else if (tardeElegido != 0) {
+
+            framePrincipal.cambiarFondo(2);
+        } else if (rachoElegido != 0) {
+
+            framePrincipal.cambiarFondo(3);
+        } else if (lagoElegido != 0) {
+
+            framePrincipal.cambiarFondo(4);
+        }
+    }//GEN-LAST:event_elegirFondomMouseClicked
+
+    private void fondoPmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoPmMouseClicked
+        eleccionPantalla.setVisible(true);
+    }//GEN-LAST:event_fondoPmMouseClicked
+
+    private void elegirFondom1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elegirFondom1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elegirFondom1MouseClicked
+
+    private void rancho1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rancho1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rancho1MouseClicked
+
+    private void tarde1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tarde1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tarde1MouseClicked
+
+    private void nevada1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nevada1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nevada1MouseClicked
+
+    private void lago1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lago1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lago1MouseClicked
+
+    private void seleccionColor4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor4MouseClicked
+        try {
+            String Rn = R1.getText();
+            String Gn = G1.getText();
+            String Bn = B1.getText();
+
+            int R1 = Integer.parseInt(Rn);
+            int G1 = Integer.parseInt(Gn);
+            int B1 = Integer.parseInt(Bn);
+
+            Color colorElegido = new Color(R1, G1, B1);
+            Principal framePrincipal = (Principal) getParent();
+
+            framePrincipal.colorBarraN(colorElegido);
+            framePrincipal.colorBarraT(colorElegido);
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Debe introducir numeros donde se le indica.");
+            return;
+        }
+    }//GEN-LAST:event_seleccionColor4MouseClicked
+
+    private void seleccionColor3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor3MouseClicked
+        Object eleccion = colores.getSelectedItem();
+        if (eleccion instanceof Colores) {
+            Colores colorElegido = (Colores) eleccion;
+            Principal framePrincipal = (Principal) getParent();
+            boolean verf = false;
+            if (barraT1.isSelected()) {
+                framePrincipal.colorBarraT(colorElegido.color);
+                verf = true;
+            }
+
+            if (barraN1.isSelected()) {
+                framePrincipal.colorBarraN(colorElegido.color);
+                verf = true;
+            }
+            if (verf == false) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la pantalla.");
+            }
+        }
+    }//GEN-LAST:event_seleccionColor3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,13 +846,71 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField B;
+    private javax.swing.JTextField B1;
+    private javax.swing.JPanel ColorSolido;
+    private javax.swing.JPanel ColorSolido1;
+    private javax.swing.JPanel ColorSolido2;
+    private javax.swing.JPanel ColorSolido3;
+    private javax.swing.JTextField G;
+    private javax.swing.JTextField G1;
+    private javax.swing.JPanel Imagen;
+    private javax.swing.JPanel Imagen1;
+    private javax.swing.JTextField R;
+    private javax.swing.JTextField R1;
     private javax.swing.JRadioButton barraN;
+    private javax.swing.JRadioButton barraN1;
     private javax.swing.JRadioButton barraT;
+    private javax.swing.JRadioButton barraT1;
     private javax.swing.JComboBox<String> colores;
+    private javax.swing.JComboBox<String> colores1;
+    private javax.swing.JComboBox<String> colores2;
     private javax.swing.JPanel editarColoresPantalla;
-    private javax.swing.JRadioButton fondoP;
+    private javax.swing.JPanel eleccionExternos;
+    private javax.swing.JPanel eleccionPantalla;
+    private javax.swing.JButton elegirFondom;
+    private javax.swing.JButton elegirFondom1;
+    private javax.swing.JButton fondoPm;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JButton lago;
+    private javax.swing.JButton lago1;
+    private javax.swing.JButton nevada;
+    private javax.swing.JButton nevada1;
+    private javax.swing.JButton rancho;
+    private javax.swing.JButton rancho1;
     private javax.swing.JButton seleccionColor;
+    private javax.swing.JButton seleccionColor1;
+    private javax.swing.JButton seleccionColor2;
+    private javax.swing.JButton seleccionColor3;
+    private javax.swing.JButton seleccionColor4;
+    private javax.swing.JComboBox<String> seleccionFondo;
+    private javax.swing.JButton tarde;
+    private javax.swing.JButton tarde1;
     // End of variables declaration//GEN-END:variables
 }
