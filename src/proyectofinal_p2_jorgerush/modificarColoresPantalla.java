@@ -124,13 +124,21 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         if (eleccion instanceof Colores) {
             Colores colorElegido = (Colores) eleccion;
             Principal framePrincipal = (Principal) getParent();
+            boolean verf=false;
             if (barraT.isSelected()) {
                 framePrincipal.colorBarraT(colorElegido.color);
-            } else if (fondoP.isSelected()) {
+                verf=true;
+            } 
+            if (fondoP.isSelected()) {
                 framePrincipal.colorFondoP(colorElegido.color);
-            } else if (barraN.isSelected()) {
+                verf=true;
+            } 
+            
+            if (barraN.isSelected()) {
                 framePrincipal.colorBarraN(colorElegido.color);
-            } else {
+                verf=true;
+            } 
+            if (verf==false){
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la pantalla.");
             }
 
