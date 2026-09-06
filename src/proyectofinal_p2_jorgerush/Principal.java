@@ -4,6 +4,10 @@
  */
 package proyectofinal_p2_jorgerush;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerListModel;
 import javax.swing.UIManager;
 
 /**
@@ -11,20 +15,25 @@ import javax.swing.UIManager;
  * @author Jorge Rush
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
+    static ArrayList<Colores> listaColor = new ArrayList<>();
 
     /**
      * Creates new form Principal
      */
     public Principal() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         initComponents();
-        editor.setVisible(false);
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        colores.setModel(model);
+        coloresAñadir(model);
+        SpinnerListModel modelLista = new SpinnerListModel();
+
     }
 
     /**
@@ -37,163 +46,131 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BarraNavegacion = new javax.swing.JPanel();
-        explorarArchivos = new javax.swing.JButton();
-        editarPantalla = new javax.swing.JButton();
-        editorTexto = new javax.swing.JButton();
-        WitZig = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        buscador = new javax.swing.JTextField();
+        FondoPantalla = new javax.swing.JPanel();
         nombreSO = new javax.swing.JLabel();
-        editor = new javax.swing.JTabbedPane();
-        jPanel4 = new javax.swing.JPanel();
-        Color = new javax.swing.JComboBox<>();
-        jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        BarraTareas = new javax.swing.JPanel();
+        WitZig = new javax.swing.JButton();
+        explorarArchivos = new javax.swing.JButton();
+        editorTexto1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        colores = new javax.swing.JComboBox<>();
+        seleccionColor = new javax.swing.JButton();
+        fondoP = new javax.swing.JRadioButton();
+        barraN = new javax.swing.JRadioButton();
+        barraT = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        BarraNavegacion = new javax.swing.JMenuBar();
+        ModifcarPantalla = new javax.swing.JMenu();
+        EditorFuente = new javax.swing.JMenu();
+        ColorElegir = new javax.swing.JMenu();
+        Tamaño = new javax.swing.JMenu();
+        Estilo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BarraNavegacion.setBackground(new java.awt.Color(232, 232, 232));
-        BarraNavegacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ExploradorArchivos-removebg-preview (2).png"))); // NOI18N
-        explorarArchivos.setContentAreaFilled(false);
-        explorarArchivos.setFocusPainted(false);
-        explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
-        BarraNavegacion.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 40, -1));
-
-        editarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sprite-frame-21 (2).png"))); // NOI18N
-        editarPantalla.setBorderPainted(false);
-        editarPantalla.setContentAreaFilled(false);
-        editarPantalla.setFocusPainted(false);
-        editarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editarPantallaMouseClicked(evt);
-            }
-        });
-        editarPantalla.addActionListener(this::editarPantallaActionPerformed);
-        BarraNavegacion.add(editarPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 40, -1));
-
-        editorTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EditorTexto-removebg-preview (2) (2).png"))); // NOI18N
-        editorTexto.setContentAreaFilled(false);
-        editorTexto.setFocusPainted(false);
-        BarraNavegacion.add(editorTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 40, -1));
-
-        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipoWitzig (2).png"))); // NOI18N
-        WitZig.setBorder(null);
-        WitZig.setBorderPainted(false);
-        WitZig.setFocusPainted(false);
-        BarraNavegacion.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
-
-        jPanel1.add(BarraNavegacion, java.awt.BorderLayout.WEST);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        buscador.setForeground(new java.awt.Color(153, 153, 153));
-        buscador.setText("Buscar..");
-        buscador.setCaretColor(new java.awt.Color(102, 102, 102));
-        buscador.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        buscador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscadorMouseClicked(evt);
-            }
-        });
-        buscador.addActionListener(this::buscadorActionPerformed);
-        jPanel2.add(buscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 230, 30));
+        FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
+        FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nombreSO.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         nombreSO.setText("WitZig");
-        jPanel2.add(nombreSO, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 60, 30));
+        FondoPantalla.add(nombreSO, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 60, 30));
 
-        Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        BarraTareas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(550, Short.MAX_VALUE)
-                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
-        );
+        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/W1.png"))); // NOI18N
+        WitZig.setBorder(null);
+        WitZig.setBorderPainted(false);
+        WitZig.setContentAreaFilled(false);
+        WitZig.setFocusPainted(false);
+        BarraTareas.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 60, -1));
 
-        editor.addTab("Editor de Fuente", jPanel4);
+        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ex1.png"))); // NOI18N
+        explorarArchivos.setBorder(null);
+        explorarArchivos.setContentAreaFilled(false);
+        explorarArchivos.setFocusPainted(false);
+        explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
+        BarraTareas.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 40));
 
-        jButton1.setText("Imagen de Fondo");
-        jButton1.setFocusPainted(false);
+        editorTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ed1.png"))); // NOI18N
+        editorTexto1.setBorder(null);
+        editorTexto1.setContentAreaFilled(false);
+        editorTexto1.setFocusPainted(false);
+        BarraTareas.add(editorTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 40, 40));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        FondoPantalla.add(BarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 750, 40));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Color de Fondo");
-        jButton2.setFocusPainted(false);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Seleccione Elemento:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addGap(0, 401, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        colores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(colores, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 92, -1));
 
-        editor.addTab("Personalizacion de fondo", jPanel5);
+        seleccionColor.setText("Elegir");
+        seleccionColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seleccionColorMouseClicked(evt);
+            }
+        });
+        jPanel2.add(seleccionColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
 
-        jPanel2.add(editor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 660, 400));
+        fondoP.setText("Fondo de Pantalla");
+        fondoP.setFocusPainted(false);
+        jPanel2.add(fondoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
+        barraN.setText("Barra de Navegacion");
+        barraN.setFocusPainted(false);
+        jPanel2.add(barraN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        barraT.setText("Barra de Tareas");
+        barraT.setFocusPainted(false);
+        jPanel2.add(barraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Seleccionar Color:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        FondoPantalla.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 370, 210));
+
+        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 430));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
+
+        BarraNavegacion.setBackground(new java.awt.Color(242, 242, 242));
+        BarraNavegacion.setBorder(null);
+        BarraNavegacion.setOpaque(true);
+
+        ModifcarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/P1.png"))); // NOI18N
+        ModifcarPantalla.setText("Modificar Pantalla");
+
+        EditorFuente.setText("Editar Fuente");
+
+        ColorElegir.setText("Color");
+        ColorElegir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ColorElegirMouseClicked(evt);
+            }
+        });
+        EditorFuente.add(ColorElegir);
+
+        Tamaño.setText("Tamaño");
+        EditorFuente.add(Tamaño);
+
+        Estilo.setText("Estilo");
+        EditorFuente.add(Estilo);
+
+        ModifcarPantalla.add(EditorFuente);
+
+        BarraNavegacion.add(ModifcarPantalla);
+
+        setJMenuBar(BarraNavegacion);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,21 +179,27 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_explorarArchivosActionPerformed
 
-    private void editarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPantallaMouseClicked
-        editor.setVisible(true);
-    }//GEN-LAST:event_editarPantallaMouseClicked
-
-    private void editarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPantallaActionPerformed
+    private void ColorElegirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ColorElegirMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_editarPantallaActionPerformed
+    }//GEN-LAST:event_ColorElegirMouseClicked
 
-    private void buscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscadorMouseClicked
-        buscador.setText(null);
-    }//GEN-LAST:event_buscadorMouseClicked
-
-    private void buscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorActionPerformed
-
-    }//GEN-LAST:event_buscadorActionPerformed
+    private void seleccionColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColorMouseClicked
+        Object eleccion=colores.getSelectedItem();
+        if (eleccion instanceof Colores){
+            Colores colorElegido=(Colores)eleccion;
+            if (barraT.isSelected()){
+                BarraTareas.setBackground(colorElegido.color);
+                
+            }else if (fondoP.isSelected()){
+                FondoPantalla.setBackground(colorElegido.color);
+            }
+            
+        }
+    }//GEN-LAST:event_seleccionColorMouseClicked
+    public void ocultarEdicionPantalla(boolean mostrar) {
+//        editor.setVisible(mostrar);
+//        editorElementos.setVisible(mostrar);
+    }
 
     /**
      * @param args the command line arguments
@@ -240,25 +223,59 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try {
+            // Usa el Look and Feel CrossPlatform (el mismo del Preview)
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+//        
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
 
+    public void coloresAñadir(DefaultComboBoxModel model) {
+
+        Colores negro = new Colores("Negro", Color.BLACK);
+        Colores azul = new Colores("Azul", Color.BLUE);
+        Colores rojo = new Colores("Rojo", Color.RED);
+        Colores cyan = new Colores("Cyan", Color.CYAN);
+        Colores grisOscuro = new Colores("Gris Oscuro", Color.DARK_GRAY);
+        Colores verde = new Colores("Verde", Color.GREEN);
+        Colores naranja = new Colores("Naranja", Color.ORANGE);
+        Colores rosado = new Colores("Rosado", Color.PINK);
+        Colores blanco = new Colores("Blanco", Color.WHITE);
+        Colores amarillo = new Colores("Amarillo", Color.YELLOW);
+        Colores gris = new Colores("Gris", Color.GRAY);
+        Colores grisSuave = new Colores("Gris Suave", Color.LIGHT_GRAY);
+        Colores magenta = new Colores("Magenta", Color.MAGENTA);
+        Colores[] colores = {
+            negro,azul,rojo,verde,amarillo,naranja,rosado,magenta,blanco,gris,grisSuave,grisOscuro,cyan};
+        for (int i = 0; i < colores.length; i++) {
+            model.addElement(colores[i]);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BarraNavegacion;
-    private javax.swing.JComboBox<String> Color;
+    private javax.swing.JMenuBar BarraNavegacion;
+    private javax.swing.JPanel BarraTareas;
+    private javax.swing.JMenu ColorElegir;
+    private javax.swing.JMenu EditorFuente;
+    private javax.swing.JMenu Estilo;
+    private javax.swing.JPanel FondoPantalla;
+    private javax.swing.JMenu ModifcarPantalla;
+    private javax.swing.JMenu Tamaño;
     private javax.swing.JButton WitZig;
-    private javax.swing.JTextField buscador;
-    private javax.swing.JButton editarPantalla;
-    private javax.swing.JTabbedPane editor;
-    private javax.swing.JButton editorTexto;
+    private javax.swing.JRadioButton barraN;
+    private javax.swing.JRadioButton barraT;
+    private javax.swing.JComboBox<String> colores;
+    private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JRadioButton fondoP;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel nombreSO;
+    private javax.swing.JButton seleccionColor;
     // End of variables declaration//GEN-END:variables
 }
