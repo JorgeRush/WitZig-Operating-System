@@ -7,6 +7,7 @@ package proyectofinal_p2_jorgerush;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerListModel;
 import javax.swing.UIManager;
 
@@ -29,9 +30,9 @@ public class Principal extends javax.swing.JFrame {
 //            e.printStackTrace();
 //        }
         initComponents();
+
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        colores.setModel(model);
-        coloresAñadir(model);
+
         SpinnerListModel modelLista = new SpinnerListModel();
 
     }
@@ -52,20 +53,14 @@ public class Principal extends javax.swing.JFrame {
         WitZig = new javax.swing.JButton();
         explorarArchivos = new javax.swing.JButton();
         editorTexto1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        colores = new javax.swing.JComboBox<>();
-        seleccionColor = new javax.swing.JButton();
-        fondoP = new javax.swing.JRadioButton();
-        barraN = new javax.swing.JRadioButton();
-        barraT = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
         ModifcarPantalla = new javax.swing.JMenu();
         EditorFuente = new javax.swing.JMenu();
         ColorElegir = new javax.swing.JMenu();
         Tamaño = new javax.swing.JMenu();
         Estilo = new javax.swing.JMenu();
+        EditarPantalla = new javax.swing.JMenu();
+        EditarColores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,41 +99,6 @@ public class Principal extends javax.swing.JFrame {
 
         FondoPantalla.add(BarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 750, 40));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Seleccione Elemento:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        colores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(colores, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 92, -1));
-
-        seleccionColor.setText("Elegir");
-        seleccionColor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seleccionColorMouseClicked(evt);
-            }
-        });
-        jPanel2.add(seleccionColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
-        fondoP.setText("Fondo de Pantalla");
-        fondoP.setFocusPainted(false);
-        jPanel2.add(fondoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        barraN.setText("Barra de Navegacion");
-        barraN.setFocusPainted(false);
-        jPanel2.add(barraN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        barraT.setText("Barra de Tareas");
-        barraT.setFocusPainted(false);
-        jPanel2.add(barraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Seleccionar Color:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        FondoPantalla.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 370, 210));
-
         jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 430));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
@@ -168,6 +128,19 @@ public class Principal extends javax.swing.JFrame {
 
         ModifcarPantalla.add(EditorFuente);
 
+        EditarPantalla.setText("Editar Pantalla");
+
+        EditarColores.setText("Editar Colores");
+        EditarColores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditarColoresMouseClicked(evt);
+            }
+        });
+        EditarColores.addActionListener(this::EditarColoresActionPerformed);
+        EditarPantalla.add(EditarColores);
+
+        ModifcarPantalla.add(EditarPantalla);
+
         BarraNavegacion.add(ModifcarPantalla);
 
         setJMenuBar(BarraNavegacion);
@@ -182,20 +155,32 @@ public class Principal extends javax.swing.JFrame {
     private void ColorElegirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ColorElegirMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ColorElegirMouseClicked
+    public void aparecerElementos(boolean mostrar) {
+        FondoPantalla.setVisible(mostrar);
+    }
+    private void EditarColoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarColoresMouseClicked
+//        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
+//        modColor.setLocationRelativeTo(this);
+//        modColor.setVisible(true);
+    }//GEN-LAST:event_EditarColoresMouseClicked
 
-    private void seleccionColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColorMouseClicked
-        Object eleccion=colores.getSelectedItem();
-        if (eleccion instanceof Colores){
-            Colores colorElegido=(Colores)eleccion;
-            if (barraT.isSelected()){
-                BarraTareas.setBackground(colorElegido.color);
-                
-            }else if (fondoP.isSelected()){
-                FondoPantalla.setBackground(colorElegido.color);
-            }
-            
-        }
-    }//GEN-LAST:event_seleccionColorMouseClicked
+    private void EditarColoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarColoresActionPerformed
+        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
+        modColor.setLocationRelativeTo(this);
+        modColor.setVisible(true);
+    }//GEN-LAST:event_EditarColoresActionPerformed
+    public void colorBarraN(Color color) {
+        BarraNavegacion.setBackground(color);
+    }
+
+    public void colorBarraT(Color color) {
+        BarraTareas.setBackground(color);
+    }
+
+    public void colorFondoP(Color color) {
+        FondoPantalla.setBackground(color);
+    }
+
     public void ocultarEdicionPantalla(boolean mostrar) {
 //        editor.setVisible(mostrar);
 //        editorElementos.setVisible(mostrar);
@@ -234,48 +219,22 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
     }
 
-    public void coloresAñadir(DefaultComboBoxModel model) {
 
-        Colores negro = new Colores("Negro", Color.BLACK);
-        Colores azul = new Colores("Azul", Color.BLUE);
-        Colores rojo = new Colores("Rojo", Color.RED);
-        Colores cyan = new Colores("Cyan", Color.CYAN);
-        Colores grisOscuro = new Colores("Gris Oscuro", Color.DARK_GRAY);
-        Colores verde = new Colores("Verde", Color.GREEN);
-        Colores naranja = new Colores("Naranja", Color.ORANGE);
-        Colores rosado = new Colores("Rosado", Color.PINK);
-        Colores blanco = new Colores("Blanco", Color.WHITE);
-        Colores amarillo = new Colores("Amarillo", Color.YELLOW);
-        Colores gris = new Colores("Gris", Color.GRAY);
-        Colores grisSuave = new Colores("Gris Suave", Color.LIGHT_GRAY);
-        Colores magenta = new Colores("Magenta", Color.MAGENTA);
-        Colores[] colores = {
-            negro,azul,rojo,verde,amarillo,naranja,rosado,magenta,blanco,gris,grisSuave,grisOscuro,cyan};
-        for (int i = 0; i < colores.length; i++) {
-            model.addElement(colores[i]);
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
     private javax.swing.JMenu ColorElegir;
+    private javax.swing.JMenuItem EditarColores;
+    private javax.swing.JMenu EditarPantalla;
     private javax.swing.JMenu EditorFuente;
     private javax.swing.JMenu Estilo;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JMenu ModifcarPantalla;
     private javax.swing.JMenu Tamaño;
     private javax.swing.JButton WitZig;
-    private javax.swing.JRadioButton barraN;
-    private javax.swing.JRadioButton barraT;
-    private javax.swing.JComboBox<String> colores;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
-    private javax.swing.JRadioButton fondoP;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nombreSO;
-    private javax.swing.JButton seleccionColor;
     // End of variables declaration//GEN-END:variables
 }
