@@ -4,12 +4,18 @@
  */
 package proyectofinal_p2_jorgerush;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerListModel;
+
 /**
  *
  * @author Jorge Rush
  */
 public class EditorTexto extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditorTexto.class.getName());
 
     /**
@@ -18,6 +24,16 @@ public class EditorTexto extends javax.swing.JDialog {
     public EditorTexto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        String[] nombresFuentes = GraphicsEnvironment
+                .getLocalGraphicsEnvironment()
+                .getAvailableFontFamilyNames();
+
+        SpinnerListModel modeloFuentes = new SpinnerListModel(nombresFuentes);
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        coloresAñadir(model);
+        spinnerFuente.setModel(modeloFuentes);
+        coloresFuente.setModel(model);
     }
 
     /**
@@ -31,40 +47,149 @@ public class EditorTexto extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        tituloConfiguracion3 = new javax.swing.JLabel();
+        spinnerFuente = new javax.swing.JSpinner();
+        tamañoFuente = new javax.swing.JSpinner();
+        coloresFuente = new javax.swing.JComboBox<>();
+        tituloConfiguracion4 = new javax.swing.JLabel();
+        tituloConfiguracion = new javax.swing.JLabel();
+        estiloFuente = new javax.swing.JLabel();
+        Plain = new javax.swing.JButton();
+        Bold = new javax.swing.JButton();
+        Italic = new javax.swing.JButton();
+        BoldItalic = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ejemploFuente = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(706, 540));
+        setPreferredSize(new java.awt.Dimension(600, 610));
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(234, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        tituloConfiguracion3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tituloConfiguracion3.setText("Tipo de Fuente:");
+
+        spinnerFuente.addChangeListener(this::spinnerFuenteStateChanged);
+
+        tamañoFuente.setModel(new javax.swing.SpinnerNumberModel(10, null, null, 1));
+        tamañoFuente.addChangeListener(this::tamañoFuenteStateChanged);
+
+        coloresFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        coloresFuente.addActionListener(this::coloresFuenteActionPerformed);
+
+        tituloConfiguracion4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tituloConfiguracion4.setText("Tamaño:");
+
+        tituloConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tituloConfiguracion.setText("Color:");
+
+        estiloFuente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        estiloFuente.setText("Estilo de Fuente:");
+
+        Plain.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Plain.setText("T");
+        Plain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PlainMouseClicked(evt);
+            }
+        });
+
+        Bold.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Bold.setText("N");
+        Bold.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoldMouseClicked(evt);
+            }
+        });
+
+        Italic.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        Italic.setText("K");
+        Italic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ItalicMouseClicked(evt);
+            }
+        });
+
+        BoldItalic.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BoldItalic.setText("M");
+        BoldItalic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BoldItalicMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tituloConfiguracion3)
+                        .addGap(16, 16, 16)
+                        .addComponent(spinnerFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(tituloConfiguracion4)
+                        .addGap(8, 8, 8)
+                        .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(tituloConfiguracion)
+                        .addGap(4, 4, 4)
+                        .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(72, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(estiloFuente)
+                        .addGap(10, 10, 10)
+                        .addComponent(Plain)
+                        .addGap(3, 3, 3)
+                        .addComponent(Bold)
+                        .addGap(3, 3, 3)
+                        .addComponent(Italic)
+                        .addGap(3, 3, 3)
+                        .addComponent(BoldItalic)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloConfiguracion4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloConfiguracion3)
+                            .addComponent(spinnerFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tituloConfiguracion)
+                            .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(estiloFuente)
+                    .addComponent(Plain, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bold, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Italic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BoldItalic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 110));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ejemploFuente.setColumns(20);
+        ejemploFuente.setRows(5);
+        jScrollPane1.setViewportView(ejemploFuente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 430, 470));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 430, 490));
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -86,6 +211,82 @@ public class EditorTexto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void spinnerFuenteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerFuenteStateChanged
+
+        String fuente = (String) spinnerFuente.getValue();
+        Font fuenteActual = ejemploFuente.getFont();
+        int estilo = fuenteActual.getStyle();
+        int tamaño = fuenteActual.getSize();
+        Font fuenteEjemplo = new Font(fuente, estilo, tamaño);
+        ejemploFuente.setFont(fuenteEjemplo);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_spinnerFuenteStateChanged
+
+    private void tamañoFuenteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tamañoFuenteStateChanged
+        Font fuenteActual = ejemploFuente.getFont();
+        String nombreActual = fuenteActual.getName();
+        int estilo = fuenteActual.getStyle();
+        int tamaño = (int) tamañoFuente.getValue();
+        Font fuenteEjemplo = new Font(nombreActual, estilo, tamaño);
+        ejemploFuente.setFont(fuenteEjemplo);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_tamañoFuenteStateChanged
+
+    private void coloresFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloresFuenteActionPerformed
+        Object colorElegido = coloresFuente.getSelectedItem();
+        if (colorElegido instanceof Colores) {
+            Colores temp = (Colores) colorElegido;
+            Color colorEleccion = temp.color;
+            ejemploFuente.setForeground(colorEleccion);
+        }
+    }//GEN-LAST:event_coloresFuenteActionPerformed
+
+    private void PlainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlainMouseClicked
+        estiloFuenteN = 0;
+        Font fuenteActual = ejemploFuente.getFont();
+        String nombreActual = fuenteActual.getName();
+        int tamaño = fuenteActual.getSize();
+        Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_PlainMouseClicked
+
+    private void BoldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoldMouseClicked
+        estiloFuenteN = 1;
+        Font fuenteActual = ejemploFuente.getFont();
+        String nombreActual = fuenteActual.getName();
+        int tamaño = fuenteActual.getSize();
+        Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
+        ejemploFuente.setFont(fuenteEjemplo);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_BoldMouseClicked
+
+    private void ItalicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ItalicMouseClicked
+        estiloFuenteN = 2;
+        Font fuenteActual = ejemploFuente.getFont();
+        String nombreActual = fuenteActual.getName();
+        int tamaño = fuenteActual.getSize();
+        Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_ItalicMouseClicked
+
+    private void BoldItalicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BoldItalicMouseClicked
+        estiloFuenteN = 3;
+        Font fuenteActual = ejemploFuente.getFont();
+        String nombreActual = fuenteActual.getName();
+        int tamaño = fuenteActual.getSize();
+        Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
+        Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
+        ejemploFuente.setForeground(colorEleccion);
+    }//GEN-LAST:event_BoldItalicMouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,13 +325,47 @@ public class EditorTexto extends javax.swing.JDialog {
         });
     }
 
+    public void coloresAñadir(DefaultComboBoxModel model) {
+
+        Colores negro = new Colores("Negro", Color.BLACK);
+        Colores azul = new Colores("Azul", Color.BLUE);
+        Colores rojo = new Colores("Rojo", Color.RED);
+        Colores cyan = new Colores("Cyan", Color.CYAN);
+        Colores grisOscuro = new Colores("Gris Oscuro", Color.DARK_GRAY);
+        Colores verde = new Colores("Verde", Color.GREEN);
+        Colores naranja = new Colores("Naranja", Color.ORANGE);
+        Colores rosado = new Colores("Rosado", Color.PINK);
+        Colores blanco = new Colores("Blanco", Color.WHITE);
+        Colores amarillo = new Colores("Amarillo", Color.YELLOW);
+        Colores gris = new Colores("Gris", Color.GRAY);
+        Colores grisSuave = new Colores("Gris Suave", Color.LIGHT_GRAY);
+        Colores magenta = new Colores("Magenta", Color.MAGENTA);
+        Colores[] colores = {
+            negro, azul, rojo, verde, amarillo, naranja, rosado, magenta, blanco, gris, grisSuave, grisOscuro, cyan};
+        for (int i = 0; i < colores.length; i++) {
+            model.addElement(colores[i]);
+        }
+    }
+    int estiloFuenteN = 0;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bold;
+    private javax.swing.JButton BoldItalic;
+    private javax.swing.JButton Italic;
+    private javax.swing.JButton Plain;
+    private javax.swing.JComboBox<String> coloresFuente;
+    private javax.swing.JTextArea ejemploFuente;
+    private javax.swing.JLabel estiloFuente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSpinner spinnerFuente;
+    private javax.swing.JSpinner tamañoFuente;
+    private javax.swing.JLabel tituloConfiguracion;
+    private javax.swing.JLabel tituloConfiguracion3;
+    private javax.swing.JLabel tituloConfiguracion4;
     // End of variables declaration//GEN-END:variables
 }

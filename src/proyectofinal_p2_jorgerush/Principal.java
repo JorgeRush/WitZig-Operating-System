@@ -22,6 +22,7 @@ public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
    modificarPantalla modColor ;
+   EditorTexto editorTexto;
     /**
      * Creates new form Principal
      */
@@ -33,8 +34,12 @@ public class Principal extends javax.swing.JFrame {
             e.printStackTrace();
         }
         modColor = new modificarPantalla(this, true);
+        editorTexto= new EditorTexto(this,true);
         initComponents();
+        this.setExtendedState(this.MAXIMIZED_BOTH);
         
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+//        this.setVisible(true);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
         SpinnerListModel modelLista = new SpinnerListModel();
@@ -106,7 +111,7 @@ public class Principal extends javax.swing.JFrame {
                 FondoPantallaOgMouseClicked(evt);
             }
         });
-        FondoPantallaOg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        FondoPantallaOg.setLayout(new java.awt.BorderLayout());
 
         FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
         FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,6 +122,11 @@ public class Principal extends javax.swing.JFrame {
         editorTexto1.setBorder(null);
         editorTexto1.setContentAreaFilled(false);
         editorTexto1.setFocusPainted(false);
+        editorTexto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editorTexto1MouseClicked(evt);
+            }
+        });
         BarraTareas.add(editorTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 40, 40));
 
         explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ex1.png"))); // NOI18N
@@ -138,7 +148,7 @@ public class Principal extends javax.swing.JFrame {
         fondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F1.png"))); // NOI18N
         FondoPantalla.add(fondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
 
-        FondoPantallaOg.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
+        FondoPantallaOg.add(FondoPantalla, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(FondoPantallaOg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
 
@@ -203,6 +213,11 @@ public class Principal extends javax.swing.JFrame {
             PopUpMenu.show(FondoPantallaOg, x, y);
         }
     }//GEN-LAST:event_FondoPantallaOgMouseClicked
+
+    private void editorTexto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorTexto1MouseClicked
+        editorTexto.setLocationRelativeTo(this);
+        editorTexto.setVisible(true);
+    }//GEN-LAST:event_editorTexto1MouseClicked
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
