@@ -20,7 +20,7 @@
             </Property>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="ModifcarPantalla">
+        <Menu class="javax.swing.JMenu" name="ModificarPantalla">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/LogoTipos/P1.png"/>
@@ -28,8 +28,8 @@
             <Property name="text" type="java.lang.String" value="Personalizar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ModifcarPantallaMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModifcarPantallaActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ModificarPantallaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModificarPantallaActionPerformed"/>
           </Events>
         </Menu>
       </SubComponents>

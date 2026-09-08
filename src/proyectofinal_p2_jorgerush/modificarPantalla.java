@@ -15,14 +15,14 @@ import javax.swing.SpinnerListModel;
  *
  * @author Jorge Rush
  */
-public class modificarColoresPantalla extends javax.swing.JDialog {
+public class modificarPantalla extends javax.swing.JDialog {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modificarColoresPantalla.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modificarPantalla.class.getName());
 
     /**
      * Creates new form modificarColoresPantalla
      */
-    public modificarColoresPantalla(java.awt.Frame parent, boolean modal) {
+    public modificarPantalla(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
         initComponents();
@@ -33,6 +33,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         eleccionExternos.setVisible(false);
         Imagen.setVisible(false);
         ColorSolido.setVisible(false);
+
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         colores.setModel(model);
         colores2.setModel(model);
@@ -45,10 +46,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
 
         SpinnerListModel modeloFuentes = new SpinnerListModel(nombresFuentes);
         spinnerFuente.setModel(modeloFuentes);
-//        spinnerFuente.setValue("Arial");
-//
-//        tamañoFuente.setValue(10);
-//        coloresFuente.setSelectedItem(Color.BLACK);
+
     }
 
     public void coloresAñadir(DefaultComboBoxModel model) {
@@ -98,6 +96,8 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         Bold = new javax.swing.JButton();
         BoldItalic = new javax.swing.JButton();
         Italic = new javax.swing.JButton();
+        tituloConfiguracion3 = new javax.swing.JLabel();
+        confirmarFuente = new javax.swing.JButton();
         panelPantalla = new javax.swing.JPanel();
         aspectosExternos = new javax.swing.JButton();
         fondoPm = new javax.swing.JButton();
@@ -178,12 +178,12 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         panelFuentes.add(tituloConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, 20));
 
         tituloConfiguracion2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tituloConfiguracion2.setText("Tipo de Fuente:");
-        panelFuentes.add(tituloConfiguracion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        tituloConfiguracion2.setText("Ejemplar:");
+        panelFuentes.add(tituloConfiguracion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         estiloFuente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         estiloFuente.setText("Estilo de Fuente:");
-        panelFuentes.add(estiloFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        panelFuentes.add(estiloFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         tituloConfiguracion4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tituloConfiguracion4.setText("Tamaño:");
@@ -191,14 +191,14 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
 
         coloresFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         coloresFuente.addActionListener(this::coloresFuenteActionPerformed);
-        panelFuentes.add(coloresFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 60, -1));
+        panelFuentes.add(coloresFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 90, -1));
 
         spinnerFuente.addChangeListener(this::spinnerFuenteStateChanged);
-        panelFuentes.add(spinnerFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 110, -1));
+        panelFuentes.add(spinnerFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 130, -1));
 
         ejemploFuente.setColumns(20);
         ejemploFuente.setRows(5);
-        ejemploFuente.setText("¿Sabias que \"WitZig\" arcaicamente significa \"Ingenioso en Aleman?");
+        ejemploFuente.setText("¿Sabias que \"WitZig\" arcaicamente significa \"Ingenioso\" en Aleman?");
         jScrollPane1.setViewportView(ejemploFuente);
 
         panelFuentes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 480, 110));
@@ -214,7 +214,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                 PlainMouseClicked(evt);
             }
         });
-        panelFuentes.add(Plain, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, 20));
+        panelFuentes.add(Plain, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, 20));
 
         Bold.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Bold.setText("N");
@@ -223,7 +223,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                 BoldMouseClicked(evt);
             }
         });
-        panelFuentes.add(Bold, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, 20));
+        panelFuentes.add(Bold, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, 20));
 
         BoldItalic.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BoldItalic.setText("M");
@@ -232,7 +232,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                 BoldItalicMouseClicked(evt);
             }
         });
-        panelFuentes.add(BoldItalic, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 20));
+        panelFuentes.add(BoldItalic, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, 20));
 
         Italic.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         Italic.setText("K");
@@ -241,7 +241,19 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
                 ItalicMouseClicked(evt);
             }
         });
-        panelFuentes.add(Italic, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 20));
+        panelFuentes.add(Italic, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, 20));
+
+        tituloConfiguracion3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tituloConfiguracion3.setText("Tipo de Fuente:");
+        panelFuentes.add(tituloConfiguracion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        confirmarFuente.setText("Seleccionar Como Fuente Predeterminada");
+        confirmarFuente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmarFuenteMouseClicked(evt);
+            }
+        });
+        panelFuentes.add(confirmarFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
 
         editarColoresPantalla.add(panelFuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 530, 290));
 
@@ -818,7 +830,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         panelFuentes.setVisible(true);
     }//GEN-LAST:event_FuentesMouseClicked
 
-  
+
     private void spinnerFuenteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerFuenteStateChanged
 
         String fuente = (String) spinnerFuente.getValue();
@@ -840,6 +852,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         int tamaño = fuenteActual.getSize();
         Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
         Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_PlainMouseClicked
 
@@ -849,6 +862,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         String nombreActual = fuenteActual.getName();
         int tamaño = fuenteActual.getSize();
         Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
+        ejemploFuente.setFont(fuenteEjemplo);
         Color colorEleccion = ejemploFuente.getForeground();
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_BoldMouseClicked
@@ -860,6 +874,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         int tamaño = fuenteActual.getSize();
         Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
         Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_ItalicMouseClicked
 
@@ -870,6 +885,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         int tamaño = fuenteActual.getSize();
         Font fuenteEjemplo = new Font(nombreActual, estiloFuenteN, tamaño);
         Color colorEleccion = ejemploFuente.getForeground();
+        ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_BoldItalicMouseClicked
 
@@ -892,6 +908,32 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
             ejemploFuente.setForeground(colorEleccion);
         }
     }//GEN-LAST:event_coloresFuenteActionPerformed
+
+    private void confirmarFuenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarFuenteMouseClicked
+        try {
+            String fuente = (String) spinnerFuente.getValue();
+
+            int estilo = estiloFuenteN;
+            int tamaño = (int) tamañoFuente.getValue();
+            Font fuenteConf = new Font(fuente, estilo, tamaño);
+            Principal framePrincipal = (Principal) getParent();
+            framePrincipal.cambiarFontPantallaInicio(fuenteConf);
+
+            Colores colorEleccion = (Colores) coloresFuente.getSelectedItem();
+            Color colorElegido = colorEleccion.color;
+            framePrincipal.cambiarColorFontPI(colorElegido);
+        } catch (Exception E) {
+            Font fuenteActual = ejemploFuente.getFont();
+            
+            Principal framePrincipal = (Principal) getParent();
+            framePrincipal.cambiarFontPantallaInicio(fuenteActual);
+            Color colorDef=ejemploFuente.getForeground();
+            framePrincipal.cambiarColorFontPI(colorDef);
+
+        }
+
+
+    }//GEN-LAST:event_confirmarFuenteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -918,7 +960,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                modificarColoresPantalla dialog = new modificarColoresPantalla(new javax.swing.JFrame(), true);
+                modificarPantalla dialog = new modificarPantalla(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -955,6 +997,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> colores;
     private javax.swing.JComboBox<String> colores2;
     private javax.swing.JComboBox<String> coloresFuente;
+    private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel editarColoresPantalla;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JPanel eleccionExternos;
@@ -1000,6 +1043,7 @@ public class modificarColoresPantalla extends javax.swing.JDialog {
     private javax.swing.JLabel tituloConfiguracion;
     private javax.swing.JLabel tituloConfiguracion1;
     private javax.swing.JLabel tituloConfiguracion2;
+    private javax.swing.JLabel tituloConfiguracion3;
     private javax.swing.JLabel tituloConfiguracion4;
     // End of variables declaration//GEN-END:variables
 }

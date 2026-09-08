@@ -21,7 +21,7 @@ import java.awt.Font;
 public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-
+   modificarPantalla modColor ;
     /**
      * Creates new form Principal
      */
@@ -32,8 +32,9 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        modColor = new modificarPantalla(this, true);
         initComponents();
-
+        
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
         SpinnerListModel modelLista = new SpinnerListModel();
@@ -47,6 +48,12 @@ public class Principal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    public void cambiarColorFontPI(Color color){
+        ModificarPantalla.setForeground(color);
+    }
+    public void cambiarFontPantallaInicio(Font fuente){
+        ModificarPantalla.setFont(fuente);
+    }
     public void cambiarFondo(int i){
         
         if (i==1){
@@ -76,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        ModifcarPantalla = new javax.swing.JMenu();
+        ModificarPantalla = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,15 +132,15 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
         BarraNavegacion.add(jMenu1);
 
-        ModifcarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
-        ModifcarPantalla.setText("Personalizar");
-        ModifcarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
+        ModificarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
+        ModificarPantalla.setText("Personalizar");
+        ModificarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ModifcarPantallaMouseClicked(evt);
+                ModificarPantallaMouseClicked(evt);
             }
         });
-        ModifcarPantalla.addActionListener(this::ModifcarPantallaActionPerformed);
-        BarraNavegacion.add(ModifcarPantalla);
+        ModificarPantalla.addActionListener(this::ModificarPantallaActionPerformed);
+        BarraNavegacion.add(ModificarPantalla);
 
         setJMenuBar(BarraNavegacion);
 
@@ -148,17 +155,17 @@ public class Principal extends javax.swing.JFrame {
     public void aparecerElementos(boolean mostrar) {
         FondoPantalla.setVisible(mostrar);
     }
-    private void ModifcarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifcarPantallaActionPerformed
-        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
+    private void ModificarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPantallaActionPerformed
+        
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
-    }//GEN-LAST:event_ModifcarPantallaActionPerformed
+    }//GEN-LAST:event_ModificarPantallaActionPerformed
 
-    private void ModifcarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifcarPantallaMouseClicked
-        modificarColoresPantalla modColor = new modificarColoresPantalla(this, true);
+    private void ModificarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarPantallaMouseClicked
+       
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
-    }//GEN-LAST:event_ModifcarPantallaMouseClicked
+    }//GEN-LAST:event_ModificarPantallaMouseClicked
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
@@ -206,7 +213,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
     private javax.swing.JPanel FondoPantalla;
-    private javax.swing.JMenu ModifcarPantalla;
+    private javax.swing.JMenu ModificarPantalla;
     private javax.swing.JButton WitZig;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
