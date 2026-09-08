@@ -466,6 +466,7 @@ public class modificarPantalla extends javax.swing.JDialog {
                 seleccionColor2MouseClicked(evt);
             }
         });
+        seleccionColor2.addActionListener(this::seleccionColor2ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -684,7 +685,7 @@ public class modificarPantalla extends javax.swing.JDialog {
             framePrincipal.colorFondoP(colorElegido);
 
         } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Debe introducir numeros donde se le indica.");
+            JOptionPane.showMessageDialog(this, "Debe introducir un numero valido donde se le indica.");
             return;
         }
 
@@ -934,6 +935,10 @@ public class modificarPantalla extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_confirmarFuenteMouseClicked
+
+    private void seleccionColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionColor2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionColor2ActionPerformed
 
     /**
      * @param args the command line arguments

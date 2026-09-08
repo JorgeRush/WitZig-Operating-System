@@ -74,7 +74,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        FondoPantallaOg = new javax.swing.JPanel();
         FondoPantalla = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         editorTexto1 = new javax.swing.JButton();
@@ -82,14 +82,14 @@ public class Principal extends javax.swing.JFrame {
         WitZig = new javax.swing.JButton();
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        LogoWitZig = new javax.swing.JMenu();
         ModificarPantalla = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        FondoPantallaOg.setBackground(new java.awt.Color(255, 255, 255));
+        FondoPantallaOg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
         FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,16 +121,16 @@ public class Principal extends javax.swing.JFrame {
         fondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F1.png"))); // NOI18N
         FondoPantalla.add(fondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
 
-        jPanel1.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
+        FondoPantallaOg.add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
+        getContentPane().add(FondoPantallaOg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
 
         BarraNavegacion.setBackground(new java.awt.Color(242, 242, 242));
         BarraNavegacion.setBorder(null);
         BarraNavegacion.setOpaque(true);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
-        BarraNavegacion.add(jMenu1);
+        LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
+        BarraNavegacion.add(LogoWitZig);
 
         ModificarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         ModificarPantalla.setText("Personalizar");
@@ -213,12 +213,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
     private javax.swing.JPanel FondoPantalla;
+    private javax.swing.JPanel FondoPantallaOg;
+    private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
     private javax.swing.JButton WitZig;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
     private javax.swing.JLabel fondoImagen;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
