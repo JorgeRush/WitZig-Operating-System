@@ -160,6 +160,7 @@ public class modificarPantalla extends javax.swing.JDialog {
         editarColoresPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Fuentes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Fuentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/PF1.png"))); // NOI18N
         Fuentes.setText("Fuentes");
         Fuentes.setBorder(null);
         Fuentes.setFocusPainted(false);
@@ -169,23 +170,23 @@ public class modificarPantalla extends javax.swing.JDialog {
             }
         });
         Fuentes.addActionListener(this::FuentesActionPerformed);
-        editarColoresPantalla.add(Fuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 70, 30));
+        editarColoresPantalla.add(Fuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 100, 30));
 
         panelFuentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tituloConfiguracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tituloConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tituloConfiguracion.setText("Color:");
         panelFuentes.add(tituloConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, 20));
 
-        tituloConfiguracion2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tituloConfiguracion2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tituloConfiguracion2.setText("Ejemplar:");
         panelFuentes.add(tituloConfiguracion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
-        estiloFuente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        estiloFuente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estiloFuente.setText("Estilo de Fuente:");
         panelFuentes.add(estiloFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        tituloConfiguracion4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tituloConfiguracion4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tituloConfiguracion4.setText("Tamaño:");
         panelFuentes.add(tituloConfiguracion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, 40));
 
@@ -243,7 +244,7 @@ public class modificarPantalla extends javax.swing.JDialog {
         });
         panelFuentes.add(Italic, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, 20));
 
-        tituloConfiguracion3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tituloConfiguracion3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tituloConfiguracion3.setText("Tipo de Fuente:");
         panelFuentes.add(tituloConfiguracion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -633,6 +634,7 @@ public class modificarPantalla extends javax.swing.JDialog {
         tituloConfiguracion1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         tituloConfiguracion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P2.png"))); // NOI18N
         tituloConfiguracion1.setText("Personalización de Pantalla");
+        tituloConfiguracion1.setOpaque(true);
         editarColoresPantalla.add(tituloConfiguracion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         getContentPane().add(editarColoresPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

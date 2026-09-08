@@ -74,6 +74,8 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PopUpMenu = new javax.swing.JPopupMenu();
+        Personalizar = new javax.swing.JMenuItem();
         FondoPantallaOg = new javax.swing.JPanel();
         FondoPantalla = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
@@ -85,10 +87,25 @@ public class Principal extends javax.swing.JFrame {
         LogoWitZig = new javax.swing.JMenu();
         ModificarPantalla = new javax.swing.JMenu();
 
+        Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
+        Personalizar.setText("Personalizar");
+        Personalizar.addActionListener(this::PersonalizarActionPerformed);
+        PopUpMenu.add(Personalizar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPantallaOg.setBackground(new java.awt.Color(255, 255, 255));
+        FondoPantallaOg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FondoPantallaOgMouseClicked(evt);
+            }
+        });
         FondoPantallaOg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
@@ -166,6 +183,26 @@ public class Principal extends javax.swing.JFrame {
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
     }//GEN-LAST:event_ModificarPantallaMouseClicked
+
+    private void PersonalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PersonalizarActionPerformed
+        modColor.setLocationRelativeTo(this);
+        modColor.setVisible(true);
+    }//GEN-LAST:event_PersonalizarActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+    }//GEN-LAST:event_formMouseClicked
+
+    private void FondoPantallaOgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FondoPantallaOgMouseClicked
+        int boton=evt.getButton();
+        if (boton==1){
+            //selecciona
+        }else if (boton==3){
+            int x=evt.getX();
+            int y=evt.getY();
+            PopUpMenu.show(FondoPantallaOg, x, y);
+        }
+    }//GEN-LAST:event_FondoPantallaOgMouseClicked
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
@@ -216,6 +253,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel FondoPantallaOg;
     private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
+    private javax.swing.JMenuItem Personalizar;
+    private javax.swing.JPopupMenu PopUpMenu;
     private javax.swing.JButton WitZig;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
