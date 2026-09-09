@@ -33,8 +33,8 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        modColor = new modificarPantalla(this, true);
-        editorTexto= new EditorTexto(this,true);
+        modColor = new modificarPantalla(this, false);
+        editorTexto= new EditorTexto(this,false);
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
         

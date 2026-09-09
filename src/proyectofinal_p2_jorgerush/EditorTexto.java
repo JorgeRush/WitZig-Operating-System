@@ -143,8 +143,7 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(tituloConfiguracion)
                         .addGap(4, 4, 4)
-                        .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(72, Short.MAX_VALUE))
+                        .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(estiloFuente)
                         .addGap(10, 10, 10)
@@ -154,8 +153,8 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addGap(3, 3, 3)
                         .addComponent(Italic)
                         .addGap(3, 3, 3)
-                        .addComponent(BoldItalic)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(BoldItalic)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
