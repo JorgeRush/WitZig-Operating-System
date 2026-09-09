@@ -60,12 +60,13 @@ public class EditorTexto extends javax.swing.JDialog {
         BoldItalic = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ejemploFuente = new javax.swing.JTextArea();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        opcionesEditor = new javax.swing.JMenuBar();
+        archivo = new javax.swing.JMenu();
+        guardar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 610));
+        setPreferredSize(new java.awt.Dimension(786, 699));
 
         jPanel1.setBackground(new java.awt.Color(234, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,7 +141,7 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addComponent(tituloConfiguracion4)
                         .addGap(8, 8, 8)
                         .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(41, 41, 41)
                         .addComponent(tituloConfiguracion)
                         .addGap(4, 4, 4)
                         .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,7 +155,7 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addComponent(Italic)
                         .addGap(3, 3, 3)
                         .addComponent(BoldItalic)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,32 +181,38 @@ public class EditorTexto extends javax.swing.JDialog {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 110));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 110));
 
         ejemploFuente.setColumns(20);
         ejemploFuente.setRows(5);
         jScrollPane1.setViewportView(ejemploFuente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 430, 490));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 600, 570));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        archivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
+        archivo.setText("Archivo");
+
+        guardar.setText("Guardar");
+        archivo.add(guardar);
+
+        opcionesEditor.add(archivo);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        opcionesEditor.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(opcionesEditor);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -352,15 +359,16 @@ public class EditorTexto extends javax.swing.JDialog {
     private javax.swing.JButton BoldItalic;
     private javax.swing.JButton Italic;
     private javax.swing.JButton Plain;
+    private javax.swing.JMenu archivo;
     private javax.swing.JComboBox<String> coloresFuente;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JLabel estiloFuente;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem guardar;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuBar opcionesEditor;
     private javax.swing.JSpinner spinnerFuente;
     private javax.swing.JSpinner tamañoFuente;
     private javax.swing.JLabel tituloConfiguracion;

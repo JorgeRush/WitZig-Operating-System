@@ -54,7 +54,8 @@ public class Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     public void cambiarColorFontPI(Color color){
-        ModificarPantalla.setForeground(color);
+        BarraNavegacion.setForeground(color);
+        
     }
     public void cambiarFontPantallaInicio(Font fuente){
         ModificarPantalla.setFont(fuente);
