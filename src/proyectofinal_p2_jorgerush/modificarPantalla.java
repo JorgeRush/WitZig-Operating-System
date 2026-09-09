@@ -687,7 +687,7 @@ public class modificarPantalla extends javax.swing.JDialog {
             framePrincipal.colorFondoP(colorElegido);
 
         } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Debe introducir un numero valido donde se le indica.");
+            JOptionPane.showMessageDialog(this, "Debe introducir un numero valido donde se le indica. (Una combinacion RGB existente)");
             return;
         }
 
@@ -792,7 +792,7 @@ public class modificarPantalla extends javax.swing.JDialog {
             }
 
         } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Debe introducir un numero valido donde se le indica.");
+            JOptionPane.showMessageDialog(this, "Debe introducir un numero valido donde se le indica.(Una combinacion RGB existente)");
             return;
         }
     }//GEN-LAST:event_seleccionColor4MouseClicked

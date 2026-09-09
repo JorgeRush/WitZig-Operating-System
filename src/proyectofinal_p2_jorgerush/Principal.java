@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SpinnerListModel;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import javax.swing.Timer;
 
 /**
  *
@@ -21,8 +24,10 @@ import java.awt.Font;
 public class Principal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
-   modificarPantalla modColor ;
-   EditorTexto editorTexto;
+    modificarPantalla modColor;
+    EditorTexto editorTexto;
+    ExploradorDeArchivos explorador;
+
     /**
      * Creates new form Principal
      */
@@ -34,10 +39,11 @@ public class Principal extends javax.swing.JFrame {
             e.printStackTrace();
         }
         modColor = new modificarPantalla(this, false);
-        editorTexto= new EditorTexto(this,false);
+        editorTexto = new EditorTexto(this, false);
+        
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
-        
+
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 //        this.setVisible(true);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -53,31 +59,50 @@ public class Principal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-    public void cambiarColorFontPI(Color color){
-        BarraNavegacion.setForeground(color);
+    public ExploradorDeArchivos retornarExplorador(){
         
+        return explorador;
     }
-    public void cambiarFontPantallaInicio(Font fuente){
+   
+    public void fechaHora() {
+
+        Timer timer = new Timer(1000, e -> {
+            String fecha = LocalDate.now().toString();
+            String hora = String.format("%tr", LocalTime.now());
+            FechaHora.setText(fecha + "   " + hora);
+        });
+
+        timer.start();
+
+    }
+
+    public void cambiarColorFontPI(Color color) {
+        BarraNavegacion.setForeground(color);
+
+    }
+
+    public void cambiarFontPantallaInicio(Font fuente) {
         ModificarPantalla.setFont(fuente);
     }
-    public void cambiarFondo(int i){
-        
-        if (i==1){
+
+    public void cambiarFondo(int i) {
+
+        if (i == 1) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F1.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        }else if (i==2){
+        } else if (i == 2) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F2.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        }else if (i==3){
+        } else if (i == 3) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F3.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        }else if (i==4){
+        } else if (i == 4) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F4.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
@@ -101,6 +126,7 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion = new javax.swing.JMenuBar();
         LogoWitZig = new javax.swing.JMenu();
         ModificarPantalla = new javax.swing.JMenu();
+        FechaHora = new javax.swing.JMenu();
 
         Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         Personalizar.setText("Personalizar");
@@ -111,6 +137,11 @@ public class Principal extends javax.swing.JFrame {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -205,11 +236,14 @@ public class Principal extends javax.swing.JFrame {
         ModificarPantalla.addActionListener(this::ModificarPantallaActionPerformed);
         BarraNavegacion.add(ModificarPantalla);
 
+        FechaHora.setText("  ");
+        BarraNavegacion.add(FechaHora);
+
         setJMenuBar(BarraNavegacion);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void ocultarFondo(boolean mostrar){
+    public void ocultarFondo(boolean mostrar) {
         fondoImagen.setVisible(mostrar);
     }
     private void explorarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivosActionPerformed
@@ -219,13 +253,13 @@ public class Principal extends javax.swing.JFrame {
         FondoPantalla.setVisible(mostrar);
     }
     private void ModificarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPantallaActionPerformed
-        
+
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
     }//GEN-LAST:event_ModificarPantallaActionPerformed
 
     private void ModificarPantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarPantallaMouseClicked
-       
+
         modColor.setLocationRelativeTo(this);
         modColor.setVisible(true);
     }//GEN-LAST:event_ModificarPantallaMouseClicked
@@ -236,16 +270,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_PersonalizarActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
+
     }//GEN-LAST:event_formMouseClicked
 
     private void FondoPantallaOgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FondoPantallaOgMouseClicked
-        int boton=evt.getButton();
-        if (boton==1){
+        int boton = evt.getButton();
+
+        if (boton == 1) {
             //selecciona
-        }else if (boton==3){
-            int x=evt.getX();
-            int y=evt.getY();
+        } else if (boton == 3) {
+            int x = evt.getX();
+            int y = evt.getY();
             PopUpMenu.show(FondoPantallaOg, x, y);
         }
     }//GEN-LAST:event_FondoPantallaOgMouseClicked
@@ -258,6 +293,10 @@ public class Principal extends javax.swing.JFrame {
     private void editorTexto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorTexto1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editorTexto1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        fechaHora();
+    }//GEN-LAST:event_formWindowOpened
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
@@ -298,12 +337,14 @@ public class Principal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
+    private javax.swing.JMenu FechaHora;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JPanel FondoPantallaOg;
     private javax.swing.JMenu LogoWitZig;

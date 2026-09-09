@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
 import javax.swing.SpinnerListModel;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.SpinnerListModel;
 public class EditorTexto extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditorTexto.class.getName());
-
+    ExploradorDeArchivos explorador;
     /**
      * Creates new form EditorTexto
      */
@@ -32,8 +33,10 @@ public class EditorTexto extends javax.swing.JDialog {
         SpinnerListModel modeloFuentes = new SpinnerListModel(nombresFuentes);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         coloresAñadir(model);
+        
         spinnerFuente.setModel(modeloFuentes);
         coloresFuente.setModel(model);
+        explorador= new ExploradorDeArchivos((java.awt.Frame) this.getOwner(), false);
     }
 
     /**
@@ -62,7 +65,7 @@ public class EditorTexto extends javax.swing.JDialog {
         ejemploFuente = new javax.swing.JTextArea();
         opcionesEditor = new javax.swing.JMenuBar();
         archivo = new javax.swing.JMenu();
-        guardar = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -192,8 +195,14 @@ public class EditorTexto extends javax.swing.JDialog {
         archivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
         archivo.setText("Archivo");
 
-        guardar.setText("Guardar");
-        archivo.add(guardar);
+        jMenuItem1.setText("Menu");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        archivo.add(jMenuItem1);
 
         opcionesEditor.add(archivo);
 
@@ -217,7 +226,15 @@ public class EditorTexto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public JTextArea llamarHoja() {
+        JTextArea temp = ejemploFuente;
+        return temp;
+    }
 
+    public void cambiarHoja(String x) {
+        ejemploFuente.setText(x);
+
+    }
     private void spinnerFuenteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerFuenteStateChanged
 
         String fuente = (String) spinnerFuente.getValue();
@@ -294,6 +311,18 @@ public class EditorTexto extends javax.swing.JDialog {
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_BoldItalicMouseClicked
 
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+       
+        explorador.setLocationRelativeTo(this);
+        explorador.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       explorador.setLocationRelativeTo(this);
+        explorador.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,8 +392,8 @@ public class EditorTexto extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> coloresFuente;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JLabel estiloFuente;
-    private javax.swing.JMenuItem guardar;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
