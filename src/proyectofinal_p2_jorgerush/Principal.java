@@ -64,29 +64,38 @@ public class Principal extends javax.swing.JFrame {
         if (i==1){
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F1.png"));
             fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         }else if (i==2){
-            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F2.jpg"));
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F2.png"));
             fondoImagen.setIcon(icono);
-            
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         }else if (i==3){
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F3.png"));
             fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         }else if (i==4){
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F4.png"));
             fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         PopUpMenu = new javax.swing.JPopupMenu();
         Personalizar = new javax.swing.JMenuItem();
         FondoPantallaOg = new javax.swing.JPanel();
-        FondoPantalla = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
-        editorTexto1 = new javax.swing.JButton();
+        contenedor = new javax.swing.JPanel();
         explorarArchivos = new javax.swing.JButton();
         WitZig = new javax.swing.JButton();
+        editorTexto1 = new javax.swing.JButton();
+        FondoPantalla = new javax.swing.JPanel();
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
         LogoWitZig = new javax.swing.JMenu();
@@ -103,7 +112,7 @@ public class Principal extends javax.swing.JFrame {
                 formMouseClicked(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         FondoPantallaOg.setBackground(new java.awt.Color(255, 255, 255));
         FondoPantallaOg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,12 +120,29 @@ public class Principal extends javax.swing.JFrame {
                 FondoPantallaOgMouseClicked(evt);
             }
         });
-        FondoPantallaOg.setLayout(new java.awt.BorderLayout());
+        FondoPantallaOg.setLayout(new java.awt.GridBagLayout());
 
-        FondoPantalla.setBackground(new java.awt.Color(255, 255, 255));
-        FondoPantalla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BarraTareas.setPreferredSize(new java.awt.Dimension(445, 40));
+        BarraTareas.setLayout(new java.awt.BorderLayout());
 
-        BarraTareas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        contenedor.setOpaque(false);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 2);
+        flowLayout1.setAlignOnBaseline(true);
+        contenedor.setLayout(flowLayout1);
+
+        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ex1.png"))); // NOI18N
+        explorarArchivos.setBorder(null);
+        explorarArchivos.setContentAreaFilled(false);
+        explorarArchivos.setFocusPainted(false);
+        explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
+        contenedor.add(explorarArchivos);
+
+        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W1.png"))); // NOI18N
+        WitZig.setBorder(null);
+        WitZig.setBorderPainted(false);
+        WitZig.setContentAreaFilled(false);
+        WitZig.setFocusPainted(false);
+        contenedor.add(WitZig);
 
         editorTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed1.png"))); // NOI18N
         editorTexto1.setBorder(null);
@@ -127,30 +153,39 @@ public class Principal extends javax.swing.JFrame {
                 editorTexto1MouseClicked(evt);
             }
         });
-        BarraTareas.add(editorTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 40, 40));
+        editorTexto1.addActionListener(this::editorTexto1ActionPerformed);
+        contenedor.add(editorTexto1);
 
-        explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ex1.png"))); // NOI18N
-        explorarArchivos.setBorder(null);
-        explorarArchivos.setContentAreaFilled(false);
-        explorarArchivos.setFocusPainted(false);
-        explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
-        BarraTareas.add(explorarArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, 40));
+        BarraTareas.add(contenedor, java.awt.BorderLayout.CENTER);
 
-        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W1.png"))); // NOI18N
-        WitZig.setBorder(null);
-        WitZig.setBorderPainted(false);
-        WitZig.setContentAreaFilled(false);
-        WitZig.setFocusPainted(false);
-        BarraTareas.add(WitZig, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 60, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
+        gridBagConstraints.weightx = 1.0;
+        FondoPantallaOg.add(BarraTareas, gridBagConstraints);
 
-        FondoPantalla.add(BarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 540, 40));
+        FondoPantalla.setBackground(new java.awt.Color(204, 204, 204));
+        FondoPantalla.setLayout(new java.awt.GridBagLayout());
 
         fondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F1.png"))); // NOI18N
-        FondoPantalla.add(fondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
+        FondoPantalla.add(fondoImagen, new java.awt.GridBagConstraints());
 
-        FondoPantallaOg.add(FondoPantalla, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 1);
+        FondoPantallaOg.add(FondoPantalla, gridBagConstraints);
 
-        getContentPane().add(FondoPantallaOg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 460));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(FondoPantallaOg, gridBagConstraints);
 
         BarraNavegacion.setBackground(new java.awt.Color(242, 242, 242));
         BarraNavegacion.setBorder(null);
@@ -218,6 +253,10 @@ public class Principal extends javax.swing.JFrame {
         editorTexto.setLocationRelativeTo(this);
         editorTexto.setVisible(true);
     }//GEN-LAST:event_editorTexto1MouseClicked
+
+    private void editorTexto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorTexto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editorTexto1ActionPerformed
     public void colorBarraN(Color color) {
         BarraNavegacion.setBackground(color);
     }
@@ -271,6 +310,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Personalizar;
     private javax.swing.JPopupMenu PopUpMenu;
     private javax.swing.JButton WitZig;
+    private javax.swing.JPanel contenedor;
     private javax.swing.JButton editorTexto1;
     private javax.swing.JButton explorarArchivos;
     private javax.swing.JLabel fondoImagen;

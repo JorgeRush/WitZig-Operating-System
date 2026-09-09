@@ -970,7 +970,7 @@
                         <Component class="javax.swing.JButton" name="tarde">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/fondosPantalla/F2.jpg"/>
+                              <Image iconType="3" name="/fondosPantalla/FT2.png"/>
                             </Property>
                           </Properties>
                           <Events>

@@ -545,7 +545,7 @@ public class modificarPantalla extends javax.swing.JDialog {
         });
         ColorSolido1.add(nevada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 87, 83));
 
-        tarde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F2.jpg"))); // NOI18N
+        tarde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT2.png"))); // NOI18N
         tarde.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tardeMouseClicked(evt);
