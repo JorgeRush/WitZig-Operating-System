@@ -18,7 +18,7 @@ import javax.swing.SpinnerListModel;
 public class EditorTexto extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditorTexto.class.getName());
-    ExploradorDeArchivos explorador;
+
     /**
      * Creates new form EditorTexto
      */
@@ -33,10 +33,10 @@ public class EditorTexto extends javax.swing.JDialog {
         SpinnerListModel modeloFuentes = new SpinnerListModel(nombresFuentes);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         coloresAñadir(model);
-        
+
         spinnerFuente.setModel(modeloFuentes);
         coloresFuente.setModel(model);
-        explorador= new ExploradorDeArchivos((java.awt.Frame) this.getOwner(), false);
+
     }
 
     /**
@@ -65,11 +65,18 @@ public class EditorTexto extends javax.swing.JDialog {
         ejemploFuente = new javax.swing.JTextArea();
         opcionesEditor = new javax.swing.JMenuBar();
         archivo = new javax.swing.JMenu();
+        guardarArchivo = new javax.swing.JMenuItem();
+        abrirArchivo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(786, 699));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(234, 230, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,13 +202,19 @@ public class EditorTexto extends javax.swing.JDialog {
         archivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
         archivo.setText("Archivo");
 
-        jMenuItem1.setText("Menu");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardarArchivo.setText("Guardar");
+        guardarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
+                guardarArchivoMouseClicked(evt);
             }
         });
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        guardarArchivo.addActionListener(this::guardarArchivoActionPerformed);
+        archivo.add(guardarArchivo);
+
+        abrirArchivo.setText("Abrir");
+        archivo.add(abrirArchivo);
+
+        jMenuItem1.setText("Importar Archivo");
         archivo.add(jMenuItem1);
 
         opcionesEditor.add(archivo);
@@ -310,18 +323,29 @@ public class EditorTexto extends javax.swing.JDialog {
         ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_BoldItalicMouseClicked
+   boolean guardado=false;
+    private void guardarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarArchivoMouseClicked
+        Principal framePrincipal = (Principal) getParent();
+        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
+        framePrincipal.regresarExplorador().setVisible(true);
+        guardado=true;
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-       
-        explorador.setLocationRelativeTo(this);
-        explorador.setVisible(true);
+    }//GEN-LAST:event_guardarArchivoMouseClicked
+    public boolean verificarGuardado(){
+        return guardado;
+    }
+    public void sellarGuardado(boolean estado){
+        guardado=estado;
+    }
+    private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
+        Principal framePrincipal = (Principal) getParent();
+        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
+        framePrincipal.regresarExplorador().setVisible(true);
+    }//GEN-LAST:event_guardarArchivoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-    }//GEN-LAST:event_jMenuItem1MouseClicked
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       explorador.setLocationRelativeTo(this);
-        explorador.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -388,10 +412,12 @@ public class EditorTexto extends javax.swing.JDialog {
     private javax.swing.JButton BoldItalic;
     private javax.swing.JButton Italic;
     private javax.swing.JButton Plain;
+    private javax.swing.JMenuItem abrirArchivo;
     private javax.swing.JMenu archivo;
     private javax.swing.JComboBox<String> coloresFuente;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JLabel estiloFuente;
+    private javax.swing.JMenuItem guardarArchivo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

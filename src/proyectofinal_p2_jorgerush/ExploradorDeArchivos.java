@@ -4,7 +4,12 @@
  */
 package proyectofinal_p2_jorgerush;
 
+import java.awt.Color;
 import java.io.File;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,21 +22,24 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     /**
      * Creates new form ExploradorDeArchivos
      */
+    ArrayList<carpetasArchivos> carpetasCreadas = new ArrayList<>();
+
     public ExploradorDeArchivos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+//        crear.setVisible(false);
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Fecha de Modificacion");
+        modeloTabla.addColumn("Tipo");
+        modeloTabla.addColumn("Tamaño");
+        tablaArchivos.setModel(modeloTabla);
+        panelArchivo.setVisible(false);
+        botonCrear.setVisible(false);
     }
 
     public void cargarArchivos() {
-        File carpeta = new File("mis_archivos");
 
-        if (!carpeta.exists()) {
-            carpeta.mkdir();
-        }
-
-        String[] archivos = carpeta.list();
-
-        lista.setListData(archivos);
     }
 
     /**
@@ -43,124 +51,196 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        opciones = new javax.swing.JPopupMenu();
+        nuevo = new javax.swing.JMenu();
+        crearCarpeta = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lista = new javax.swing.JList<>();
         buscarArchivo = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        abrirArchivo = new javax.swing.JButton();
+        fondoArchivos = new javax.swing.JPanel();
+        carpetas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaArchivos = new javax.swing.JTable();
+        panelArchivo = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaArchivos1 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        nombreArchivo = new javax.swing.JTextField();
+        botonGuardar = new javax.swing.JButton();
+        botonCrear = new javax.swing.JButton();
+        tipoArchivo = new javax.swing.JComboBox<>();
+
+        nuevo.setText("Nuevo");
+
+        crearCarpeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        crearCarpeta.setText("Crear Carpeta");
+        crearCarpeta.addActionListener(this::crearCarpetaActionPerformed);
+        nuevo.add(crearCarpeta);
+
+        opciones.add(nuevo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setPreferredSize(new java.awt.Dimension(600, 439));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField3.setText("jTextField1");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 460, -1));
+
         jButton1.setText("<");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTextField2.setText("jTextField1");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 6, 446, -1));
-
-        lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(lista);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
 
         buscarArchivo.setText("jTextField1");
+        getContentPane().add(buscarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 6, 446, -1));
 
-        jButton2.setText("Guardar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        fondoArchivos.setBackground(new java.awt.Color(255, 255, 255));
+        fondoArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                fondoArchivosMouseClicked(evt);
             }
         });
+        fondoArchivos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        abrirArchivo.setText("Abrir");
-        abrirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+        carpetas.setBackground(new java.awt.Color(255, 255, 255));
+        carpetas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaArchivos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaArchivos);
+
+        carpetas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 508, 210));
+
+        fondoArchivos.add(carpetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 210));
+
+        panelArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        panelArchivo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaArchivos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaArchivos1);
+
+        panelArchivo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 508, 210));
+
+        fondoArchivos.add(panelArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 210));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        nombreArchivo.setForeground(new java.awt.Color(153, 153, 153));
+        nombreArchivo.setText("Ingrese nombre de la carpeta");
+        nombreArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                abrirArchivoMouseClicked(evt);
+                nombreArchivoMouseClicked(evt);
             }
         });
+        jPanel4.add(nombreArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 106, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buscarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(abrirArchivo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(abrirArchivo))
-                .addGap(16, 16, 16))
-        );
+        botonGuardar.setText("Guardar");
+        botonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonGuardarMouseClicked(evt);
+            }
+        });
+        jPanel4.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
+        botonCrear.setText("Crear");
+        botonCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonCrearMouseClicked(evt);
+            }
+        });
+        jPanel4.add(botonCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
+        tipoArchivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carpeta de Archivos", ".txt" }));
+        jPanel4.add(tipoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 140, -1));
+
+        fondoArchivos.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 510, 40));
+
+        getContentPane().add(fondoArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 590, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void abrirArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abrirArchivoMouseClicked
-        String seleccionado = lista.getSelectedValue();
+    private void botonCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearMouseClicked
+//       Principal framePrincipal = (Principal) getParent();
+//        String nombre = framePrincipal.editorTexto.llamarHoja().getText();
+       botonCrear.setVisible(true);
+        String tipoArch = (String) tipoArchivo.getSelectedItem();
+        if (tipoArch.equals("Carpeta de Archivos")) {
+            String nombre = nombreArchivo.getText();
+            String fecha = LocalDate.now().toString();
+            String tipo = tipoArch;
+            carpetasArchivos nuevaCarpeta = new carpetasArchivos(nombre, fecha, tipo);
+            carpetasCreadas.add(nuevaCarpeta);
+            String[] Datos = {nuevaCarpeta.nombre, nuevaCarpeta.fechaMod, nuevaCarpeta.tipo, "   " + nuevaCarpeta.tamaño + "  "};
+            DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
+            modeloTabla.addRow(Datos);
 
-        if (seleccionado != null) {
-            try {
-                Principal framePrincipal = (Principal) getParent();
-                File archivo = new File("mis_archivos/" + seleccionado);
-                String texto = java.nio.file.Files.readString(archivo.toPath());
-               framePrincipal.editorTexto.cambiarHoja(texto);
-            } catch (Exception e) {
-
-            }
+        }else{
+            JOptionPane.showMessageDialog(this,"El tipo de Archivo no es una carpeta.");
         }
-    }//GEN-LAST:event_abrirArchivoMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       Principal framePrincipal = (Principal) getParent();
-        String nombre = framePrincipal.editorTexto.llamarHoja().getText();
 
-        if (!nombre.isEmpty()) {
-            try {
-               
-                
-                File archivo = new File("mis_archivos/" + nombre + ".txt");
-                java.nio.file.Files.writeString(archivo.toPath(), framePrincipal.editorTexto.llamarHoja().getText());
-                cargarArchivos(); 
-            } catch (Exception e) {
-                
-            }
+    }//GEN-LAST:event_botonCrearMouseClicked
+
+    private void crearCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCarpetaActionPerformed
+        botonCrear.setText("Crear");
+   
+    }//GEN-LAST:event_crearCarpetaActionPerformed
+
+    private void fondoArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoArchivosMouseClicked
+        int boton = evt.getButton();
+        if (boton == 1) {
+
+        } else if (boton == 3) {
+            int x = evt.getX();
+            int y = evt.getY();
+            opciones.show(fondoArchivos, x, y);
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_fondoArchivosMouseClicked
+
+    private void nombreArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreArchivoMouseClicked
+        nombreArchivo.setText(null);
+        nombreArchivo.setForeground(Color.BLACK);
+    }//GEN-LAST:event_nombreArchivoMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Principal framePrincipal = (Principal) getParent();
+        if (framePrincipal.editorTexto.verificarGuardado()==true){
+            
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonGuardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -200,14 +280,24 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abrirArchivo;
+    private javax.swing.JButton botonCrear;
+    private javax.swing.JButton botonGuardar;
     private javax.swing.JTextField buscarArchivo;
+    private javax.swing.JPanel carpetas;
+    private javax.swing.JMenuItem crearCarpeta;
+    private javax.swing.JPanel fondoArchivos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JList<String> lista;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField nombreArchivo;
+    private javax.swing.JMenu nuevo;
+    private javax.swing.JPopupMenu opciones;
+    private javax.swing.JPanel panelArchivo;
+    private javax.swing.JTable tablaArchivos;
+    private javax.swing.JTable tablaArchivos1;
+    private javax.swing.JComboBox<String> tipoArchivo;
     // End of variables declaration//GEN-END:variables
 }
