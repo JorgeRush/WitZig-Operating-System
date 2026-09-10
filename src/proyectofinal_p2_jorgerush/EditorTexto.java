@@ -7,6 +7,7 @@ package proyectofinal_p2_jorgerush;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.io.FileWriter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerListModel;
@@ -25,6 +26,7 @@ public class EditorTexto extends javax.swing.JDialog {
     public EditorTexto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        exploradorPc.setVisible(false);
 
         String[] nombresFuentes = GraphicsEnvironment
                 .getLocalGraphicsEnvironment()
@@ -48,19 +50,20 @@ public class EditorTexto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        exploradorPc = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         tituloConfiguracion3 = new javax.swing.JLabel();
         spinnerFuente = new javax.swing.JSpinner();
         tamañoFuente = new javax.swing.JSpinner();
-        coloresFuente = new javax.swing.JComboBox<>();
         tituloConfiguracion4 = new javax.swing.JLabel();
-        tituloConfiguracion = new javax.swing.JLabel();
         estiloFuente = new javax.swing.JLabel();
         Plain = new javax.swing.JButton();
         Bold = new javax.swing.JButton();
         Italic = new javax.swing.JButton();
         BoldItalic = new javax.swing.JButton();
+        coloresFuente = new javax.swing.JComboBox<>();
+        tituloConfiguracion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ejemploFuente = new javax.swing.JTextArea();
         opcionesEditor = new javax.swing.JMenuBar();
@@ -69,6 +72,7 @@ public class EditorTexto extends javax.swing.JDialog {
         abrirArchivo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(786, 699));
@@ -92,14 +96,8 @@ public class EditorTexto extends javax.swing.JDialog {
         tamañoFuente.setModel(new javax.swing.SpinnerNumberModel(10, null, null, 1));
         tamañoFuente.addChangeListener(this::tamañoFuenteStateChanged);
 
-        coloresFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        coloresFuente.addActionListener(this::coloresFuenteActionPerformed);
-
         tituloConfiguracion4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tituloConfiguracion4.setText("Tamaño:");
-
-        tituloConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tituloConfiguracion.setText("Color:");
 
         estiloFuente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estiloFuente.setText("Estilo de Fuente:");
@@ -136,6 +134,12 @@ public class EditorTexto extends javax.swing.JDialog {
             }
         });
 
+        coloresFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        coloresFuente.addActionListener(this::coloresFuenteActionPerformed);
+
+        tituloConfiguracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tituloConfiguracion.setText("Color:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -146,15 +150,7 @@ public class EditorTexto extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(tituloConfiguracion3)
                         .addGap(16, 16, 16)
-                        .addComponent(spinnerFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(tituloConfiguracion4)
-                        .addGap(8, 8, 8)
-                        .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(tituloConfiguracion)
-                        .addGap(4, 4, 4)
-                        .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(spinnerFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(estiloFuente)
                         .addGap(10, 10, 10)
@@ -165,7 +161,17 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addComponent(Italic)
                         .addGap(3, 3, 3)
                         .addComponent(BoldItalic)))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tituloConfiguracion4)
+                        .addGap(8, 8, 8)
+                        .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tituloConfiguracion)
+                        .addGap(4, 4, 4)
+                        .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,16 +184,21 @@ public class EditorTexto extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConfiguracion3)
                             .addComponent(spinnerFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tamañoFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(estiloFuente)
+                            .addComponent(Plain, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Bold, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Italic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BoldItalic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConfiguracion)
                             .addComponent(coloresFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(estiloFuente)
-                    .addComponent(Plain, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bold, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Italic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BoldItalic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -222,6 +233,10 @@ public class EditorTexto extends javax.swing.JDialog {
         jMenu2.setText("Edit");
         opcionesEditor.add(jMenu2);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P3.png"))); // NOI18N
+        jMenu1.setText("Personalizar");
+        opcionesEditor.add(jMenu1);
+
         setJMenuBar(opcionesEditor);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,12 +244,22 @@ public class EditorTexto extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -270,15 +295,6 @@ public class EditorTexto extends javax.swing.JDialog {
         Color colorEleccion = ejemploFuente.getForeground();
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_tamañoFuenteStateChanged
-
-    private void coloresFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloresFuenteActionPerformed
-        Object colorElegido = coloresFuente.getSelectedItem();
-        if (colorElegido instanceof Colores) {
-            Colores temp = (Colores) colorElegido;
-            Color colorEleccion = temp.color;
-            ejemploFuente.setForeground(colorEleccion);
-        }
-    }//GEN-LAST:event_coloresFuenteActionPerformed
 
     private void PlainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlainMouseClicked
         estiloFuenteN = 0;
@@ -325,11 +341,11 @@ public class EditorTexto extends javax.swing.JDialog {
     }//GEN-LAST:event_BoldItalicMouseClicked
 
     private void guardarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarArchivoMouseClicked
-
-        Principal framePrincipal = (Principal) getParent();
-        framePrincipal.txtGuardar = true;
-        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
-        framePrincipal.regresarExplorador().setVisible(true);
+//
+//        Principal framePrincipal = (Principal) getParent();
+//        framePrincipal.txtGuardar = true;
+//        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
+//        framePrincipal.regresarExplorador().setVisible(true);
 
 
     }//GEN-LAST:event_guardarArchivoMouseClicked
@@ -339,16 +355,42 @@ public class EditorTexto extends javax.swing.JDialog {
     }
 
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
-       
-        Principal framePrincipal = (Principal) getParent();
-         framePrincipal.txtGuardar = true;
-        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
-        framePrincipal.regresarExplorador().setVisible(true);
+
+//        Principal framePrincipal = (Principal) getParent();
+//         framePrincipal.txtGuardar = true;
+//        framePrincipal.regresarExplorador().setLocationRelativeTo(this);
+//        framePrincipal.regresarExplorador().setVisible(true);
+        exploradorPc.setVisible(true);
+        int elegir=exploradorPc.showSaveDialog(this);
+        if (elegir == javax.swing.JFileChooser.APPROVE_OPTION) {
+        try {
+            
+            FileWriter guardar = new FileWriter(exploradorPc.getSelectedFile() + ".txt");
+            guardar.write(ejemploFuente.getText());
+            guardar.close();
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Archivo guardado con éxito");
+        } catch (Exception e) {
+            System.out.println("Error al guardar: " + e.getMessage());
+        }
+    }
+        
+
+
     }//GEN-LAST:event_guardarArchivoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void coloresFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coloresFuenteActionPerformed
+        Object colorElegido = coloresFuente.getSelectedItem();
+        if (colorElegido instanceof Colores) {
+            Colores temp = (Colores) colorElegido;
+            Color colorEleccion = temp.color;
+            ejemploFuente.setForeground(colorEleccion);
+        }
+    }//GEN-LAST:event_coloresFuenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,7 +462,9 @@ public class EditorTexto extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> coloresFuente;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JLabel estiloFuente;
+    private javax.swing.JFileChooser exploradorPc;
     private javax.swing.JMenuItem guardarArchivo;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

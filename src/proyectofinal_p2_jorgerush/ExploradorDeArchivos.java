@@ -28,27 +28,39 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     public ExploradorDeArchivos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-//        crear.setVisible(false);
-        DefaultTableModel modeloTabla = new DefaultTableModel();
+
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        DefaultTableModel modeloTablaArchivos = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Fecha de Modificacion");
         modeloTabla.addColumn("Tipo");
         modeloTabla.addColumn("Tamaño");
+        modeloTablaArchivos.addColumn("Nombre");
+        modeloTablaArchivos.addColumn("Fecha de Modificacion");
+        modeloTablaArchivos.addColumn("Tipo");
+        modeloTablaArchivos.addColumn("Tamaño");
+
         botonCrear.setVisible(false);
         botonGuardar.setVisible(false);
+
         tablaArchivos.setModel(modeloTabla);
+        tablaContenidoArchivos.setModel(modeloTablaArchivos);
+        tablaContenidoArchivos.setVisible(false);
+
         panelArchivo.setVisible(false);
-//        botonCrear.setVisible(false);
-//        botonGuardar.setVisible(false);
+        panelArchivos.setVisible(false);
 
-        Principal framePrincipal = (Principal) getParent();
-
-        if (framePrincipal.txtGuardar == true) {
-            System.out.println("AAAAAAAAAAAAAAA");
-            botonCrear.setVisible(false);
-            botonGuardar.setVisible(true);
-            nombreArchivo.setText("Ingrese nombre del documento.");
-        }
     }
 
     public void cargarArchivos() {
@@ -67,8 +79,9 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         opciones = new javax.swing.JPopupMenu();
         nuevo = new javax.swing.JMenu();
         crearCarpeta = new javax.swing.JMenuItem();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        ruta = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         buscarArchivo = new javax.swing.JTextField();
         fondoArchivos = new javax.swing.JPanel();
@@ -76,9 +89,9 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaArchivos = new javax.swing.JTable();
         panelArchivo = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaArchivos1 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        tablaContenido = new javax.swing.JScrollPane();
+        tablaContenidoArchivos = new javax.swing.JTable();
+        panelArchivos = new javax.swing.JPanel();
         nombreArchivo = new javax.swing.JTextField();
         botonCrear = new javax.swing.JButton();
         tipoArchivo = new javax.swing.JComboBox<>();
@@ -94,7 +107,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         opciones.add(nuevo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 439));
+        setPreferredSize(new java.awt.Dimension(612, 360));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -109,15 +122,17 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(580, 360));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField3.setText("jTextField1");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 460, -1));
+        ruta.setText("jTextField1");
+        ruta.addActionListener(this::rutaActionPerformed);
+        jPanel1.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 530, -1));
 
         jButton1.setText("<");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 40));
 
         buscarArchivo.setText("jTextField1");
         getContentPane().add(buscarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 6, 446, -1));
@@ -143,7 +158,15 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaArchivosMouseClicked(evt);
@@ -151,14 +174,14 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tablaArchivos);
 
-        carpetas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 508, 210));
+        carpetas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 210));
 
         fondoArchivos.add(carpetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 210));
 
         panelArchivo.setBackground(new java.awt.Color(255, 255, 255));
         panelArchivo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablaArchivos1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaContenidoArchivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -169,13 +192,18 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tablaArchivos1);
+        tablaContenidoArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaContenidoArchivosMouseClicked(evt);
+            }
+        });
+        tablaContenido.setViewportView(tablaContenidoArchivos);
 
-        panelArchivo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 508, 210));
+        panelArchivo.add(tablaContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 210));
 
-        fondoArchivos.add(panelArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 210));
+        fondoArchivos.add(panelArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 560, 210));
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelArchivos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nombreArchivo.setForeground(new java.awt.Color(153, 153, 153));
         nombreArchivo.setText("Ingrese nombre de la carpeta");
@@ -184,7 +212,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
                 nombreArchivoMouseClicked(evt);
             }
         });
-        jPanel4.add(nombreArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 230, -1));
+        panelArchivos.add(nombreArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, -1));
 
         botonCrear.setText("Crear");
         botonCrear.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,10 +220,10 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
                 botonCrearMouseClicked(evt);
             }
         });
-        jPanel4.add(botonCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+        panelArchivos.add(botonCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         tipoArchivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Carpeta de Archivos", ".txt" }));
-        jPanel4.add(tipoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 140, -1));
+        panelArchivos.add(tipoArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 140, -1));
 
         botonGuardar.setText("Guardar");
         botonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,11 +231,11 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
                 botonGuardarMouseClicked(evt);
             }
         });
-        jPanel4.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+        panelArchivos.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        fondoArchivos.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 510, 60));
+        fondoArchivos.add(panelArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 480, 40));
 
-        getContentPane().add(fondoArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 590, 340));
+        getContentPane().add(fondoArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,7 +247,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
 
         if (tipoArch.equals("Carpeta de Archivos")) {
             String nombre = nombreArchivo.getText();
-            if (nombre.isEmpty()) {
+            if (nombre.isEmpty() || nombre.equals("Ingrese nombre de la carpeta")) {
                 JOptionPane.showMessageDialog(this, "Debe elegir un nombre para la carpeta.");
                 return;
             }
@@ -230,6 +258,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
             String[] Datos = {nuevaCarpeta.nombre, nuevaCarpeta.fechaMod, nuevaCarpeta.tipo, "   " + nuevaCarpeta.tamaño + "  "};
             DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
             modeloTabla.addRow(Datos);
+            panelArchivos.setVisible(false);
 
         } else {
             JOptionPane.showMessageDialog(this, "El tipo de Archivo no es una carpeta.");
@@ -239,6 +268,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     }//GEN-LAST:event_botonCrearMouseClicked
 
     private void crearCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCarpetaActionPerformed
+        panelArchivos.setVisible(true);
         botonCrear.setVisible(true);
         botonGuardar.setVisible(false);
         nombreArchivo.setText("Ingrese nombre de la carpeta.");
@@ -262,13 +292,13 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     }//GEN-LAST:event_nombreArchivoMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Principal framePrincipal = (Principal) getParent();
-
-        if (framePrincipal.txtGuardar == true) {
-            botonCrear.setVisible(false);
-            botonGuardar.setVisible(true);
-            nombreArchivo.setText("Ingrese nombre del documento.");
-        }
+//        Principal framePrincipal = (Principal) getParent();
+//
+//        if (framePrincipal.txtGuardar == true) {
+//            botonCrear.setVisible(false);
+//            botonGuardar.setVisible(true);
+//            nombreArchivo.setText("Ingrese nombre del documento.");
+//        }
 
     }//GEN-LAST:event_formWindowOpened
     ArrayList<String> nombresRegistrados = new ArrayList<>();
@@ -303,7 +333,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         }
 
         nombresRegistrados.add(nombre);
-        if (nombre.isEmpty()) {
+        if (nombre.isEmpty() || nombre.equals("Ingrese nombre de la carpeta")) {
             JOptionPane.showMessageDialog(this, "Debe darle un nombre al documento");
             return;
         }
@@ -320,15 +350,30 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
 
             DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
 
-            Object valor = modeloTabla.getValueAt(fila, columna);
+            String datoN = "";
+            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
+                    if (i == fila && j == 0) {
+                        Object dato = modeloTabla.getValueAt(i, j);
+                        datoN = (String) dato;
 
-            if (valor instanceof carpetasArchivos) {
-                carpetasArchivos archivoSeleccionado = (carpetasArchivos) valor;
-                archivoSeleccionado.añadirArchivo(nuevoArchivoTxt);
+                    }
+                }
+
             }
-            JOptionPane.showMessageDialog(this, "Documento exitosamente guardado.");
+            for (int i = 0; i < carpetasCreadas.size(); i++) {
+                if (carpetasCreadas.get(i).nombre.equals(datoN)) {
+                    carpetasCreadas.get(i).añadirArchivo(nuevoArchivoTxt);
+                    JOptionPane.showMessageDialog(this, "Documento exitosamente guardado.");
+                }
+            }
 
+//            if (valor instanceof carpetasArchivos) {
+//                carpetasArchivos archivoSeleccionado = (carpetasArchivos) valor;
+//                archivoSeleccionado.añadirArchivo(nuevoArchivoTxt);
+//            }
             framePrincipal.txtGuardar = false;
+            panelArchivos.setVisible(false);
 
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, "Asegurese de seleccionar una carpeta");
@@ -346,12 +391,50 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         return verf;
     }
     private void tablaArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaArchivosMouseClicked
-        int columna = tablaArchivos.getSelectedColumn();
-        int fila = tablaArchivos.getSelectedRow();
 
-        DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1 && evt.getClickCount() == 2) {
+            int fila = tablaArchivos.getSelectedRow();
 
-        Object valor = modeloTabla.getValueAt(fila, columna);
+            if (fila != -1) {
+                DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
+                Object dato = modeloTabla.getValueAt(fila, 0);
+
+                if (dato != null) {
+                    // .trim() elimina espacios transparentes al inicio o al final
+                    String datoN = dato.toString().trim();
+                    int ubicacion = -1;
+
+                    // Comparación flexible
+                    for (int i = 0; i < carpetasCreadas.size(); i++) {
+                        if (carpetasCreadas.get(i).nombre.trim().equalsIgnoreCase(datoN)) {
+                            ubicacion = i;
+                            break;
+                        }
+                    }
+
+                    if (ubicacion != -1) {
+                        carpetasArchivos temp = carpetasCreadas.get(ubicacion);
+                        ArrayList<archivosTxt> archivos = temp.archivosCarpeta;
+
+                        DefaultTableModel modeloTablaArchivos = (DefaultTableModel) tablaContenidoArchivos.getModel();
+                        modeloTablaArchivos.setRowCount(0);
+
+                        for (archivosTxt arc : archivos) {
+                            String[] datos = {arc.nombre, arc.fechaCreado, arc.tipo, arc.tamaño + ""};
+                            modeloTablaArchivos.addRow(datos);
+                        }
+
+                        // Opcional: mostrar la ruta actual en el JTextField de arriba
+                        ruta.setText(temp.nombre);
+
+                        tablaArchivos.setVisible(false);
+                        tablaContenidoArchivos.setVisible(true);
+                    } else {
+                        System.out.println("No se encontró la carpeta con el nombre: '" + datoN + "'");
+                    }
+                }
+            }
+        }
 
     }//GEN-LAST:event_tablaArchivosMouseClicked
 
@@ -359,6 +442,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
         Principal framePrincipal = (Principal) getParent();
 
         if (framePrincipal.txtGuardar == true) {
+            panelArchivos.setVisible(true);
             botonCrear.setVisible(false);
             botonGuardar.setVisible(true);
             nombreArchivo.setText("Ingrese nombre del documento.");
@@ -368,6 +452,14 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
+
+    private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rutaActionPerformed
+
+    private void tablaContenidoArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaContenidoArchivosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaContenidoArchivosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -415,16 +507,17 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     private javax.swing.JPanel fondoArchivos;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField nombreArchivo;
     private javax.swing.JMenu nuevo;
     private javax.swing.JPopupMenu opciones;
     private javax.swing.JPanel panelArchivo;
+    private javax.swing.JPanel panelArchivos;
+    private javax.swing.JTextField ruta;
     private javax.swing.JTable tablaArchivos;
-    private javax.swing.JTable tablaArchivos1;
+    private javax.swing.JScrollPane tablaContenido;
+    private javax.swing.JTable tablaContenidoArchivos;
     private javax.swing.JComboBox<String> tipoArchivo;
     // End of variables declaration//GEN-END:variables
 }
