@@ -323,28 +323,31 @@ public class EditorTexto extends javax.swing.JDialog {
         ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_BoldItalicMouseClicked
-   boolean guardado=false;
+
     private void guardarArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarArchivoMouseClicked
+
         Principal framePrincipal = (Principal) getParent();
+        framePrincipal.txtGuardar = true;
         framePrincipal.regresarExplorador().setLocationRelativeTo(this);
         framePrincipal.regresarExplorador().setVisible(true);
-        guardado=true;
+
 
     }//GEN-LAST:event_guardarArchivoMouseClicked
-    public boolean verificarGuardado(){
-        return guardado;
+    public JTextArea retornarTexto() {
+
+        return ejemploFuente;
     }
-    public void sellarGuardado(boolean estado){
-        guardado=estado;
-    }
+
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
+       
         Principal framePrincipal = (Principal) getParent();
+         framePrincipal.txtGuardar = true;
         framePrincipal.regresarExplorador().setLocationRelativeTo(this);
         framePrincipal.regresarExplorador().setVisible(true);
     }//GEN-LAST:event_guardarArchivoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     /**

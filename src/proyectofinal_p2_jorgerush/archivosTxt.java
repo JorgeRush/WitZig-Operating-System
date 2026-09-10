@@ -19,12 +19,16 @@ public class archivosTxt {
     String tipo;
     int tamaño;
 
-    public archivosTxt(String nombre, String contenido,File contenidoTexto, String fechaCreado, String tipo,int tamaño) {
+    public archivosTxt(String nombre, String contenido,String fechaCreado, String tipo,int tamaño) {
         this.nombre = nombre;
         archivo=new File(nombre);
         this.fechaCreado = fechaCreado;
         this.tipo=tipo;
         this.tamaño = tamaño;
+    }
+    public void guardarArchivo(File archivoT){
+        archivo=archivoT;
+        guardarContenido();
     }
     public void guardarContenido(){
         try( FileWriter guardarContenido= new FileWriter(archivo)){

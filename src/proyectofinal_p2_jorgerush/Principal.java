@@ -64,6 +64,13 @@ public class Principal extends javax.swing.JFrame {
         
         return explorador;
     }
+    boolean txtGuardar=false;
+    public boolean recibirVerificador(){
+        return txtGuardar;
+    }
+    public EditorTexto regresarEditorTx(){
+        return editorTexto;
+    }
   
    
     public void fechaHora() {
