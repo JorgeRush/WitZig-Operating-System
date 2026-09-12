@@ -11,33 +11,29 @@ import java.io.FileWriter;
  *
  * @author Jorge Rush
  */
-public class archivosTxt {
-    String nombre;
-    String contenido;
+public class archivosTxt  {
+    String nombreA;
+ 
     File archivo;
     String fechaCreado;
-    String tipo;
-    int tamaño;
+    String tipoA;
+    String rutA;
+    double tamañoA;
 
-    public archivosTxt(String nombre, String contenido,String fechaCreado, String tipo,int tamaño) {
-        this.nombre = nombre;
-        archivo=new File(nombre);
+    public archivosTxt(String nombreA, File archivo, String fechaCreado, String tipoA, String rutA, double tamañoA) {
+        this.nombreA = nombreA;
+        this.archivo = archivo;
         this.fechaCreado = fechaCreado;
-        this.tipo=tipo;
-        this.tamaño = tamaño;
+        this.tipoA = tipoA;
+        this.rutA = rutA;
+        this.tamañoA = tamañoA;
     }
-    public void guardarArchivo(File archivoT){
-        archivo=archivoT;
-        guardarContenido();
-    }
-    public void guardarContenido(){
-        try( FileWriter guardarContenido= new FileWriter(archivo)){
-            guardarContenido.write(contenido);
-        }catch (Exception E){
-            
-        }
-         
-    }
+
+
+    
+    
+
+  
     
     
 }

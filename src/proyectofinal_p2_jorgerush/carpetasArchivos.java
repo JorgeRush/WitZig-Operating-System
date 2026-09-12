@@ -13,26 +13,60 @@ import java.util.ArrayList;
  */
 public class carpetasArchivos {
     String nombre;
+    File ubicacionCarpeta;
     ArrayList <archivosTxt> archivosCarpeta;
     String fechaMod;
     String tipo;
-    int tamaño=0;
+    double tamaño=0;
 
-    public carpetasArchivos(String nombre, String fechaMod, String tipo) {
+    public carpetasArchivos(String nombre,File ubi, String fechaMod, String tipo,double tamaño) {
         this.nombre = nombre;
         archivosCarpeta=new ArrayList<>();
         this.fechaMod = fechaMod;
         this.tipo = tipo;
+        this.tamaño=tamaño;
        
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getFechaMod() {
+        return fechaMod;
+    }
+
+    public void setFechaMod(String fechaMod) {
+        this.fechaMod = fechaMod;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(double tamaño) {
+        this.tamaño = tamaño;
+    }
+    
+    
     public void añadirArchivo(archivosTxt archivo){
         archivosCarpeta.add(archivo);
         
     }
     
-    public void sumarTamaño(){
-        
-    }
+   
     
     
 }

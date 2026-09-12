@@ -17,12 +17,16 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -44,7 +48,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         initComponents();
-
+        exploradorArchivos.setVisible(false);
         panelColoresElementos.setVisible(false);
         exploradorPc.setVisible(false);
         panelPantalla.setVisible(false);
@@ -52,9 +56,6 @@ public class Principal extends javax.swing.JFrame {
         eleccionPantalla.setVisible(false);
         eleccionExternos.setVisible(false);
         Imagen.setVisible(false);
-
-        DefaultComboBoxModel modelColores = new DefaultComboBoxModel();
-        coloresAñadir(modelColores);
 
         String[] nombresFuentes = GraphicsEnvironment
                 .getLocalGraphicsEnvironment()
@@ -68,28 +69,6 @@ public class Principal extends javax.swing.JFrame {
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         FondoPantalla.setMaximumSize(FondoPantalla.getSize());
 
-    }
-
-    public void coloresAñadir(DefaultComboBoxModel model) {
-
-        Colores negro = new Colores("Negro", Color.BLACK);
-        Colores azul = new Colores("Azul", Color.BLUE);
-        Colores rojo = new Colores("Rojo", Color.RED);
-        Colores cyan = new Colores("Cyan", Color.CYAN);
-        Colores grisOscuro = new Colores("Gris Oscuro", Color.DARK_GRAY);
-        Colores verde = new Colores("Verde", Color.GREEN);
-        Colores naranja = new Colores("Naranja", Color.ORANGE);
-        Colores rosado = new Colores("Rosado", Color.PINK);
-        Colores blanco = new Colores("Blanco", Color.WHITE);
-        Colores amarillo = new Colores("Amarillo", Color.YELLOW);
-        Colores gris = new Colores("Gris", Color.GRAY);
-        Colores grisSuave = new Colores("Gris Suave", Color.LIGHT_GRAY);
-        Colores magenta = new Colores("Magenta", Color.MAGENTA);
-        Colores[] colores = {
-            negro, azul, rojo, verde, amarillo, naranja, rosado, magenta, blanco, gris, grisSuave, grisOscuro, cyan};
-        for (int i = 0; i < colores.length; i++) {
-            model.addElement(colores[i]);
-        }
     }
 
     /**
@@ -229,6 +208,13 @@ public class Principal extends javax.swing.JFrame {
         personalizarEditor = new javax.swing.JMenu();
         PopUp = new javax.swing.JPopupMenu();
         personalizarEditor2 = new javax.swing.JMenuItem();
+        exploradorArchivos = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaExplorador = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -807,6 +793,67 @@ public class Principal extends javax.swing.JFrame {
         personalizarEditor2.addActionListener(this::personalizarEditor2ActionPerformed);
         PopUp.add(personalizarEditor2);
 
+        exploradorArchivos.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                exploradorArchivosWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                exploradorArchivosWindowOpened(evt);
+            }
+        });
+
+        tablaExplorador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tablaExplorador);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(this::jButton4ActionPerformed);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 20));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        jButton5.setContentAreaFilled(false);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jButton5.addActionListener(this::jButton5ActionPerformed);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 40, -1));
+
+        javax.swing.GroupLayout exploradorArchivosLayout = new javax.swing.GroupLayout(exploradorArchivos.getContentPane());
+        exploradorArchivos.getContentPane().setLayout(exploradorArchivosLayout);
+        exploradorArchivosLayout.setHorizontalGroup(
+            exploradorArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exploradorArchivosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(exploradorArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        exploradorArchivosLayout.setVerticalGroup(
+            exploradorArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exploradorArchivosLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -991,7 +1038,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_WitZigActionPerformed
 
     private void explorarArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_explorarArchivosMouseClicked
-
+        exploradorArchivos.pack();
+        exploradorArchivos.setLocationRelativeTo(this);
+        exploradorArchivos.setVisible(true);
     }//GEN-LAST:event_explorarArchivosMouseClicked
 
     private void FuentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuentesMouseClicked
@@ -1294,21 +1343,63 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_guardarArchivoMouseClicked
-
+    ArrayList<archivosTxt> listaArchivos = new ArrayList<>();
+    ArrayList<carpetasArchivos> listaCarpetas = new ArrayList<>();
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
 
         exploradorPc.setVisible(true);
         int elegir = exploradorPc.showSaveDialog(this);
-        if (elegir == javax.swing.JFileChooser.APPROVE_OPTION) {
+        if (elegir == exploradorPc.APPROVE_OPTION) {
             try {
+                File archivo = new File(exploradorPc.getSelectedFile() + ".txt");
 
-                FileWriter guardar = new FileWriter(exploradorPc.getSelectedFile() + ".txt");
+                String nombre = archivo.getName();
+                long tamañoBytes= archivo.length();
+                
+                double tamañoKb = tamañoBytes / 1024.0;
+                long fechaMiliD=archivo.lastModified();
+                Date fecha = new Date(fechaMiliD);
+                SimpleDateFormat formatoDia = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                String tipo = ".txt";
+                String dia = formatoDia.format(fecha);
+                String ruta = archivo.getAbsolutePath();
+                archivosTxt nuevoArchivo = new archivosTxt(nombre, archivo, dia, tipo, ruta, tamañoKb);
+                listaArchivos.add(nuevoArchivo);
+
+                File Carpeta = archivo.getParentFile();
+                String nombreCa = Carpeta.getName();
+                long tamañoBytesCa = Carpeta.length();
+                double tamañoKbC = tamañoBytesCa / 1024.0;
+                long fechaMilis=Carpeta.lastModified();
+                Date fechaCa = new Date(fechaMilis);
+                SimpleDateFormat formatoDiaC = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                String tipoCa = "Carpeta";
+                String diaCa = formatoDiaC.format(fechaCa);
+                carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa);
+                carpetaLocalizar.añadirArchivo(nuevoArchivo);
+                boolean verf=false;
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).nombre.equals(nombreCa)) {
+                        verf=true;
+                        listaCarpetas.get(i).añadirArchivo(nuevoArchivo);
+                    } else {
+                        
+                        
+
+                    }
+
+                }
+                if (verf==false){
+                    listaCarpetas.add(carpetaLocalizar);
+                }
+
+                FileWriter guardar = new FileWriter(archivo);
                 guardar.write(ejemploFuente1.getText());
                 guardar.close();
 
-                javax.swing.JOptionPane.showMessageDialog(this, "Archivo guardado con éxito");
+                javax.swing.JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Ha ocurrido un error.");
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
             }
         }
 
@@ -1366,27 +1457,68 @@ public class Principal extends javax.swing.JFrame {
     private void abrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirArchivoActionPerformed
         exploradorPc.setVisible(true);
 
-        
         if (exploradorPc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File archivo = exploradorPc.getSelectedFile();
 
-            
             try (Scanner lector = new Scanner(archivo)) {
-                ejemploFuente1.setText(""); 
+                ejemploFuente1.setText("");
 
                 while (lector.hasNextLine()) {
                     ejemploFuente1.append(lector.nextLine() + "\n");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
-            
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
+
             }
         }
     }//GEN-LAST:event_abrirArchivoActionPerformed
 
     private void crearTextoWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_crearTextoWindowOpened
-        JOptionPane.showMessageDialog(this,"Este editor de texto solo es compatible con archivos .txt :)");
+        JOptionPane.showMessageDialog(null, "Este editor de texto solo es compatible con archivos .txt :)");
     }//GEN-LAST:event_crearTextoWindowOpened
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void exploradorArchivosWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowActivated
+
+    }//GEN-LAST:event_exploradorArchivosWindowActivated
+
+    private void exploradorArchivosWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowOpened
+        Timer timer = new Timer(1000, e -> {
+            DefaultTableModel modeloTabla = new DefaultTableModel();
+            tablaExplorador.setModel(modeloTabla);
+            modeloTabla.addColumn("Nombre");
+            modeloTabla.addColumn("Fecha de Creacion");
+            modeloTabla.addColumn("Tipo");
+            modeloTabla.addColumn("Tamaño");
+            tablaExplorador.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
+                JLabel l = new JLabel(String.valueOf(v));
+                if (r >= 0) {
+                    l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png")));
+                }
+                return l;
+            });
+            for (int i = 0; i < listaCarpetas.size(); i++) {
+                carpetasArchivos temp = listaCarpetas.get(i);
+                String tamaño = String.format("%.2f", temp.getTamaño());
+                String[] datos = {temp.getNombre(), temp.getFechaMod(), temp.getTipo(), tamaño+" bytes"};
+                modeloTabla.addRow(datos);
+
+            }
+        });
+
+        timer.start();
+    }//GEN-LAST:event_exploradorArchivosWindowOpened
 
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
@@ -1467,6 +1599,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton elegirFondom;
     private javax.swing.JLabel estiloFuente;
     private javax.swing.JLabel estiloFuente1;
+    private javax.swing.JDialog exploradorArchivos;
     private javax.swing.JFileChooser exploradorPc;
     private javax.swing.JButton explorarArchivos;
     private javax.swing.JPanel fondo;
@@ -1480,6 +1613,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1487,9 +1622,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
     private javax.swing.JButton nevada;
@@ -1505,6 +1643,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seleccionFondo;
     private javax.swing.JSpinner spinnerFuente;
     private javax.swing.JSpinner spinnerFuente1;
+    private javax.swing.JTable tablaExplorador;
     private javax.swing.JSpinner tamañoFuente;
     private javax.swing.JSpinner tamañoFuente1;
     private javax.swing.JButton tarde;
