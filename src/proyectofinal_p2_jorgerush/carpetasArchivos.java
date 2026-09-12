@@ -17,14 +17,17 @@ public class carpetasArchivos {
     ArrayList <archivosTxt> archivosCarpeta;
     String fechaMod;
     String tipo;
+    String ruta;
     double tamaño=0;
 
-    public carpetasArchivos(String nombre,File ubi, String fechaMod, String tipo,double tamaño) {
+    public carpetasArchivos(String nombre,File ubi, String fechaMod, String tipo,double tamaño,String ruta) {
         this.nombre = nombre;
+        this.ubicacionCarpeta=ubi;
         archivosCarpeta=new ArrayList<>();
         this.fechaMod = fechaMod;
         this.tipo = tipo;
         this.tamaño=tamaño;
+        this.ruta=ruta;
        
     }
 

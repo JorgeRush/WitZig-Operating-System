@@ -15,7 +15,7 @@ public class archivosTxt  {
     String nombreA;
  
     File archivo;
-    String fechaCreado;
+    String fechaModificado;
     String tipoA;
     String rutA;
     double tamañoA;
@@ -23,7 +23,7 @@ public class archivosTxt  {
     public archivosTxt(String nombreA, File archivo, String fechaCreado, String tipoA, String rutA, double tamañoA) {
         this.nombreA = nombreA;
         this.archivo = archivo;
-        this.fechaCreado = fechaCreado;
+        this.fechaModificado = fechaCreado;
         this.tipoA = tipoA;
         this.rutA = rutA;
         this.tamañoA = tamañoA;
