@@ -236,6 +236,9 @@ public class Principal extends javax.swing.JFrame {
         OpcionesCarpetas = new javax.swing.JPopupMenu();
         Eliminar = new javax.swing.JMenuItem();
         Abrir = new javax.swing.JMenuItem();
+        OpcionesArchivos = new javax.swing.JPopupMenu();
+        EliminarArchivos = new javax.swing.JMenuItem();
+        AbrirArchivos = new javax.swing.JMenuItem();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -1003,6 +1006,13 @@ public class Principal extends javax.swing.JFrame {
         Abrir.addActionListener(this::AbrirActionPerformed);
         OpcionesCarpetas.add(Abrir);
 
+        EliminarArchivos.setText("jMenuItem2");
+        OpcionesArchivos.add(EliminarArchivos);
+
+        AbrirArchivos.setText("jMenuItem3");
+        AbrirArchivos.addActionListener(this::AbrirArchivosActionPerformed);
+        OpcionesArchivos.add(AbrirArchivos);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1501,7 +1511,9 @@ public class Principal extends javax.swing.JFrame {
         if (elegir == exploradorPc.APPROVE_OPTION) {
             try {
                 File archivo = new File(exploradorPc.getSelectedFile() + ".txt");
-
+                if (archivo.exists() == false) {
+                    archivo.createNewFile();
+                }
                 String nombre = archivo.getName();
                 long tamañoBytes = archivo.length();
 
@@ -1528,23 +1540,32 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 ArrayList<archivosTxt> archivosExis = new ArrayList<>();
+
                 if (Carpeta != null && Carpeta.listFiles() != null) {
                     File[] archivos = Carpeta.listFiles();
 
+                    SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
                     for (int i = 0; i < archivos.length; i++) {
                         File archivoExistente = archivos[i];
-                        String nombre2 = archivoExistente.getName();
-                        long tamañoBytes2 = archivoExistente.length();
 
-                        double tamañoKb2 = tamañoBytes2 / 1024.0;
-                        long fechaMiliD2 = archivoExistente.lastModified();
-                        Date fecha2 = new Date(fechaMiliD2);
-                        SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                        String tipo2 = ".txt";
-                        String dia2 = formatoDia2.format(fecha2);
-                        String ruta2 = archivoExistente.getAbsolutePath();
-                        archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
-                        archivosExis.add(archivoEx);
+                        if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
+
+                            String nombre2 = archivoExistente.getName();
+                            long tamañoBytes2 = archivoExistente.length();
+                            double tamañoKb2 = tamañoBytes2 / 1024.0;
+
+                            long fechaMiliD2 = archivoExistente.lastModified();
+
+                            String dia2 = formatoDia2.format(new Date(fechaMiliD2));
+
+                            String tipo2 = ".txt";
+                            String ruta2 = archivoExistente.getAbsolutePath();
+
+                            archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
+                            archivosExis.add(archivoEx);
+                            listaArchivos.add(archivoEx);
+                        }
                     }
                 }
                 for (int i = 0; i < archivosExis.size(); i++) {
@@ -1828,7 +1849,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void tablaArchivosTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaArchivosTxtMouseClicked
-        // TODO add your handling code here:
+        int button = evt.getButton();
+        int x = evt.getX();
+        int y = evt.getY();
+
+        if (button == 3) {
+            OpcionesArchivos.show(tablaArchivosTxt, x, y);
+
+        }
     }//GEN-LAST:event_tablaArchivosTxtMouseClicked
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
@@ -1838,9 +1866,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AbrirActionPerformed
     int filaSeleccion2 = 0;
     int columnaSeleccion2 = 0;
-    public boolean verificarListado(String carpetaNombre){
+
+    public boolean verificarListado(String carpetaNombre) {
         ArrayList<archivosTxt> archivosC = new ArrayList<>();
-        boolean verf=false;
+        boolean verf = false;
         for (int i = 0; i < listaCarpetas.size(); i++) {
 
             carpetasArchivos temp = listaCarpetas.get(i);
@@ -1849,21 +1878,27 @@ public class Principal extends javax.swing.JFrame {
             }
 
         }
-        if (archivosC.isEmpty()){
-            verf=true;
+        if (archivosC.isEmpty()) {
+            verf = true;
         }
         return verf;
     }
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
         String carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-        if (verificarListado(carpetaElegidaC)==true) {
+        if (verificarListado(carpetaElegidaC) == true) {
             JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
             tablaCarpetas.setVisible(true);
             tablaArchivos.setVisible(false);
             regresar.setVisible(false);
         } else {
             Timer timer = new Timer(1000, e -> {
-                String carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                String carpetaElegida = "";
+                try {
+                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                } catch (Exception E) {
+
+                }
+
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
                 if (filaSeleccion2 == -1) {
 
@@ -1917,6 +1952,36 @@ public class Principal extends javax.swing.JFrame {
         regresar.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
+    private void AbrirArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirArchivosActionPerformed
+
+        filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+        if (filaSeleccion2 == -1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
+            return;
+        }
+        String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+        for (int i = 0; i < listaArchivos.size(); i++) {
+            archivosTxt archivoSelec = listaArchivos.get(i);
+            if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
+                exploradorArchivos.setVisible(false);
+                crearTexto.setVisible(true);
+                File archivo = archivoSelec.getArchivo();
+
+                try (Scanner lector = new Scanner(archivo)) {
+                    ejemploFuente1.setText("");
+
+                    while (lector.hasNextLine()) {
+                        ejemploFuente1.append(lector.nextLine() + "\n");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
+
+                }
+
+            }
+        }
+    }//GEN-LAST:event_AbrirArchivosActionPerformed
+
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
 
@@ -1955,6 +2020,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
+    private javax.swing.JMenuItem AbrirArchivos;
     private javax.swing.JButton AñadirBoton;
     private javax.swing.JCheckBox BarraN2;
     private javax.swing.JMenuBar BarraNavegacion;
@@ -1967,6 +2033,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
     private javax.swing.JMenuItem Eliminar;
+    private javax.swing.JMenuItem EliminarArchivos;
     private javax.swing.JMenu FechaHora;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JPanel FondoPantallaOg;
@@ -1976,6 +2043,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Italic1;
     private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
+    private javax.swing.JPopupMenu OpcionesArchivos;
     private javax.swing.JPopupMenu OpcionesCarpetas;
     private javax.swing.JButton Pantalla;
     private javax.swing.JMenuItem Personalizar;
