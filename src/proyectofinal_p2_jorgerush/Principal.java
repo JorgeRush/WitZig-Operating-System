@@ -216,7 +216,6 @@ public class Principal extends javax.swing.JFrame {
         PopUp = new javax.swing.JPopupMenu();
         personalizarEditor2 = new javax.swing.JMenuItem();
         exploradorArchivos = new javax.swing.JDialog();
-        regresar = new javax.swing.JButton();
         crearCarpeta = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         nombreCarpeta = new javax.swing.JTextField();
@@ -230,6 +229,7 @@ public class Principal extends javax.swing.JFrame {
         barraSuperior = new javax.swing.JPanel();
         BorrarBoton = new javax.swing.JButton();
         AñadirBoton = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
         exploradorPc2 = new javax.swing.JFileChooser();
         tablaArchivos = new javax.swing.JScrollPane();
         tablaArchivosTxt = new javax.swing.JTable();
@@ -829,16 +829,6 @@ public class Principal extends javax.swing.JFrame {
         });
         exploradorArchivos.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R1.png"))); // NOI18N
-        regresar.setBorder(null);
-        regresar.setContentAreaFilled(false);
-        regresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarMouseClicked(evt);
-            }
-        });
-        exploradorArchivos.getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 30, 30));
-
         crearCarpeta.setBackground(new java.awt.Color(229, 228, 228));
 
         jButton6.setText("Crear");
@@ -951,7 +941,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BorrarBoton.addActionListener(this::BorrarBotonActionPerformed);
-        barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 20));
+        barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 40));
 
         AñadirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
         AñadirBoton.setContentAreaFilled(false);
@@ -961,7 +951,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         AñadirBoton.addActionListener(this::AñadirBotonActionPerformed);
-        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 40, -1));
+        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -4, 40, 50));
+
+        regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R1.png"))); // NOI18N
+        regresar.setBorder(null);
+        regresar.setContentAreaFilled(false);
+        regresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresarMouseClicked(evt);
+            }
+        });
+        barraSuperior.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
 
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 660, 37));
         exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
@@ -1526,8 +1526,8 @@ public class Principal extends javax.swing.JFrame {
                 String diaCa = formatoDiaC.format(fechaCa);
                 String rutaCa = Carpeta.getAbsolutePath();
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
-                
-                ArrayList <archivosTxt> archivosExis=new ArrayList<>();
+
+                ArrayList<archivosTxt> archivosExis = new ArrayList<>();
                 if (Carpeta != null && Carpeta.listFiles() != null) {
                     File[] archivos = Carpeta.listFiles();
 
@@ -1536,12 +1536,12 @@ public class Principal extends javax.swing.JFrame {
                         String nombre2 = archivoExistente.getName();
                         long tamañoBytes2 = archivoExistente.length();
 
-                        double tamañoKb2 = tamañoBytes / 1024.0;
+                        double tamañoKb2 = tamañoBytes2 / 1024.0;
                         long fechaMiliD2 = archivoExistente.lastModified();
-                        Date fecha2 = new Date(fechaMiliD);
+                        Date fecha2 = new Date(fechaMiliD2);
                         SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                         String tipo2 = ".txt";
-                        String dia2 = formatoDia.format(fecha);
+                        String dia2 = formatoDia2.format(fecha2);
                         String ruta2 = archivoExistente.getAbsolutePath();
                         archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
                         archivosExis.add(archivoEx);
@@ -1838,43 +1838,62 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AbrirActionPerformed
     int filaSeleccion2 = 0;
     int columnaSeleccion2 = 0;
+    public boolean verificarListado(String carpetaNombre){
+        ArrayList<archivosTxt> archivosC = new ArrayList<>();
+        boolean verf=false;
+        for (int i = 0; i < listaCarpetas.size(); i++) {
+
+            carpetasArchivos temp = listaCarpetas.get(i);
+            if (temp.getNombre().equals(carpetaNombre)) {
+                archivosC = temp.regresarArchivos();
+            }
+
+        }
+        if (archivosC.isEmpty()){
+            verf=true;
+        }
+        return verf;
+    }
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
-        Timer timer = new Timer(1000, e -> {
-            String carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-            filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
-            if (filaSeleccion2 == -1) {
+        String carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+        if (verificarListado(carpetaElegidaC)==true) {
+            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
+            tablaCarpetas.setVisible(true);
+            tablaArchivos.setVisible(false);
+            regresar.setVisible(false);
+        } else {
+            Timer timer = new Timer(1000, e -> {
+                String carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+                if (filaSeleccion2 == -1) {
 
-                DefaultTableModel modeloTablaA = new DefaultTableModel() {
-                    @Override
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
-                    }
-                };
-                tablaArchivosTxt.setModel(modeloTablaA);
-                modeloTablaA.addColumn("Nombre");
-                modeloTablaA.addColumn("Fecha de Modificacion");
-                modeloTablaA.addColumn("Tipo");
-                modeloTablaA.addColumn("Tamaño");
-                tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
-                    JLabel l = new JLabel(String.valueOf(v));
-                    if (r >= 0) {
-                        l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
-                    }
-                    return l;
-                });
-                ArrayList<archivosTxt> archivos = new ArrayList<>();
-                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    DefaultTableModel modeloTablaA = new DefaultTableModel() {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    };
+                    tablaArchivosTxt.setModel(modeloTablaA);
+                    modeloTablaA.addColumn("Nombre");
+                    modeloTablaA.addColumn("Fecha de Modificacion");
+                    modeloTablaA.addColumn("Tipo");
+                    modeloTablaA.addColumn("Tamaño");
+                    tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
+                        JLabel l = new JLabel(String.valueOf(v));
+                        if (r >= 0) {
+                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
+                        }
+                        return l;
+                    });
+                    ArrayList<archivosTxt> archivos = new ArrayList<>();
+                    for (int i = 0; i < listaCarpetas.size(); i++) {
 
-                    carpetasArchivos temp = listaCarpetas.get(i);
-                    if (temp.getNombre().equals(carpetaElegida)) {
-                        archivos = temp.regresarArchivos();
-                    }
+                        carpetasArchivos temp = listaCarpetas.get(i);
+                        if (temp.getNombre().equals(carpetaElegida)) {
+                            archivos = temp.regresarArchivos();
+                        }
 
-                }
-                if (archivos.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
-                    return;
-                } else {
+                    }
                     for (int i = 0; i < archivos.size(); i++) {
                         archivosTxt archivosN = archivos.get(i);
                         String tamaño = String.format("%.2f", archivosN.getTamañoA());
@@ -1883,13 +1902,13 @@ public class Principal extends javax.swing.JFrame {
                     }
 
                 }
-            } else {
 
-            }
+            });
 
-        });
+            timer.start();
+        }
 
-        timer.start();
+
     }//GEN-LAST:event_tablaArchivosTxtAncestorAdded
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
