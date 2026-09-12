@@ -204,6 +204,7 @@ public class Principal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         fondoOp = new javax.swing.JCheckBox();
+        jButton9 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ejemploFuente1 = new javax.swing.JTextArea();
         exploradorPc = new javax.swing.JFileChooser();
@@ -212,8 +213,8 @@ public class Principal extends javax.swing.JFrame {
         guardarArchivo = new javax.swing.JMenuItem();
         abrirArchivo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         personalizarEditor = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         PopUp = new javax.swing.JPopupMenu();
         personalizarEditor2 = new javax.swing.JMenuItem();
         exploradorArchivos = new javax.swing.JDialog();
@@ -562,7 +563,7 @@ public class Principal extends javax.swing.JFrame {
 
         personalizarPantalla.getContentPane().add(editarColoresPantalla, java.awt.BorderLayout.CENTER);
 
-        crearTexto.setPreferredSize(new java.awt.Dimension(786, 700));
+        crearTexto.setPreferredSize(new java.awt.Dimension(813, 700));
         crearTexto.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 crearTextoWindowOpened(evt);
@@ -656,13 +657,24 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jButton3.addActionListener(this::jButton3ActionPerformed);
-        panelColoresElementos.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 40, 40));
+        panelColoresElementos.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 40, 40));
 
         jLabel1.setText("Seleccione un Elemento/s:");
         panelColoresElementos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 6, -1, -1));
 
         fondoOp.setText("Fondo de Opciones");
         panelColoresElementos.add(fondoOp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jButton9.setBackground(new java.awt.Color(255, 153, 153));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("X");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        jButton9.addActionListener(this::jButton9ActionPerformed);
+        panelColoresElementos.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, -1));
 
         javax.swing.GroupLayout fondoOpcLayout = new javax.swing.GroupLayout(fondoOpc);
         fondoOpc.setLayout(fondoOpcLayout);
@@ -689,15 +701,15 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(fondoOpcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoOpcLayout.createSequentialGroup()
                         .addComponent(tituloConfiguracion6)
-                        .addGap(8, 8, 8)
+                        .addGap(41, 41, 41)
                         .addComponent(tamañoFuente1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoOpcLayout.createSequentialGroup()
                         .addComponent(tituloConfiguracion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
                 .addGap(18, 18, 18)
-                .addComponent(panelColoresElementos, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelColoresElementos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         fondoOpcLayout.setVerticalGroup(
             fondoOpcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,11 +741,11 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(fondoOpcLayout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        fondoGen.add(fondoOpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 110));
+        fondoGen.add(fondoOpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 110));
 
         ejemploFuente1.setColumns(20);
         ejemploFuente1.setRows(5);
@@ -764,9 +776,6 @@ public class Principal extends javax.swing.JFrame {
 
         opcionesEditor.add(archivo);
 
-        jMenu2.setText("Edit");
-        opcionesEditor.add(jMenu2);
-
         personalizarEditor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P3.png"))); // NOI18N
         personalizarEditor.setText("Personalizar Elementos");
         personalizarEditor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -776,37 +785,34 @@ public class Principal extends javax.swing.JFrame {
         });
         opcionesEditor.add(personalizarEditor);
 
+        jMenu2.setText("Atencion: Este editor de texto solo es compatible con archivos .txt :D                                                                         ");
+        opcionesEditor.add(jMenu2);
+
         crearTexto.setJMenuBar(opcionesEditor);
 
         javax.swing.GroupLayout crearTextoLayout = new javax.swing.GroupLayout(crearTexto.getContentPane());
         crearTexto.getContentPane().setLayout(crearTextoLayout);
         crearTextoLayout.setHorizontalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearTextoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fondoGen, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(fondoGen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 93, Short.MAX_VALUE)
                     .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 93, Short.MAX_VALUE)))
         );
         crearTextoLayout.setVerticalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearTextoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fondoGen, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(fondoGen, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 162, Short.MAX_VALUE)
+                    .addGap(0, 165, Short.MAX_VALUE)
                     .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 163, Short.MAX_VALUE)))
+                    .addGap(0, 165, Short.MAX_VALUE)))
         );
 
         personalizarEditor2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
@@ -1623,17 +1629,21 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         Color colorEleccion = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
-
+        if (fondoG.isSelected()==false||fondoOp.isSelected()==false||BarraN2.isSelected()){
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una de las casillas");
+            return;
+        }
         if (fondoG.isSelected()) {
             fondoGen.setBackground(colorEleccion);
         }
         if (fondoOp.isSelected()) {
             fondoOpc.setBackground(colorEleccion);
+            crearTexto.setBackground(colorEleccion);
         }
         if (BarraN2.isSelected()) {
             opcionesEditor.setBackground(colorEleccion);
         }
-        panelColoresElementos.setVisible(false);
+        
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1681,7 +1691,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_abrirArchivoActionPerformed
 
     private void crearTextoWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_crearTextoWindowOpened
-        JOptionPane.showMessageDialog(null, "Este editor de texto solo es compatible con archivos .txt :)");
+        
     }//GEN-LAST:event_crearTextoWindowOpened
 
     private void BorrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarBotonActionPerformed
@@ -2054,6 +2064,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BorrarBotonArchivosActionPerformed
 
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+       panelColoresElementos.setVisible(false);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
 
@@ -2162,6 +2180,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
