@@ -292,92 +292,11 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     }//GEN-LAST:event_nombreArchivoMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-//        Principal framePrincipal = (Principal) getParent();
-//
-//        if (framePrincipal.txtGuardar == true) {
-//            botonCrear.setVisible(false);
-//            botonGuardar.setVisible(true);
-//            nombreArchivo.setText("Ingrese nombre del documento.");
-//        }
+
 
     }//GEN-LAST:event_formWindowOpened
     ArrayList<String> nombresRegistrados = new ArrayList<>();
     private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
-
-        Principal framePrincipal = (Principal) getParent();
-        JTextArea temp = framePrincipal.editorTexto.retornarTexto();
-
-        String nombre = nombreArchivo.getText();
-        String contenido = temp.getText();
-        String tipo = "";
-        try {
-            tipo = (String) tipoArchivo.getSelectedItem();
-
-        } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de archivo");
-            return;
-
-        }
-
-        if (tipo != ".txt") {
-            JOptionPane.showMessageDialog(this, "Este documento debe ser forzosamente de tipo .txt");
-            return;
-        }
-        String fecha = LocalDate.now().toString();
-
-        boolean verf = verificarNombre(nombre);
-
-        if (verf == true) {
-            JOptionPane.showMessageDialog(this, "Ya hay un archivo con ese nombre, cambielo.");
-            return;
-        }
-
-        nombresRegistrados.add(nombre);
-        if (nombre.isEmpty() || nombre.equals("Ingrese nombre de la carpeta")) {
-            JOptionPane.showMessageDialog(this, "Debe darle un nombre al documento");
-            return;
-        }
-
-        int tamaño = contenido.length();
-        archivosTxt nuevoArchivoTxt = new archivosTxt(nombre, fecha, contenido, tipo, tamaño);
-        File nuevoArchivo = new File(nombre + tipo);
-
-        nuevoArchivoTxt.guardarArchivo(nuevoArchivo);
-        try {
-
-            int columna = tablaArchivos.getSelectedColumn();
-            int fila = tablaArchivos.getSelectedRow();
-
-            DefaultTableModel modeloTabla = (DefaultTableModel) tablaArchivos.getModel();
-
-            String datoN = "";
-            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-                for (int j = 0; j < modeloTabla.getColumnCount(); j++) {
-                    if (i == fila && j == 0) {
-                        Object dato = modeloTabla.getValueAt(i, j);
-                        datoN = (String) dato;
-
-                    }
-                }
-
-            }
-            for (int i = 0; i < carpetasCreadas.size(); i++) {
-                if (carpetasCreadas.get(i).nombre.equals(datoN)) {
-                    carpetasCreadas.get(i).añadirArchivo(nuevoArchivoTxt);
-                    JOptionPane.showMessageDialog(this, "Documento exitosamente guardado.");
-                }
-            }
-
-//            if (valor instanceof carpetasArchivos) {
-//                carpetasArchivos archivoSeleccionado = (carpetasArchivos) valor;
-//                archivoSeleccionado.añadirArchivo(nuevoArchivoTxt);
-//            }
-            framePrincipal.txtGuardar = false;
-            panelArchivos.setVisible(false);
-
-        } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, "Asegurese de seleccionar una carpeta");
-        }
 
 
     }//GEN-LAST:event_botonGuardarMouseClicked
@@ -439,14 +358,7 @@ public class ExploradorDeArchivos extends javax.swing.JDialog {
     }//GEN-LAST:event_tablaArchivosMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Principal framePrincipal = (Principal) getParent();
-
-        if (framePrincipal.txtGuardar == true) {
-            panelArchivos.setVisible(true);
-            botonCrear.setVisible(false);
-            botonGuardar.setVisible(true);
-            nombreArchivo.setText("Ingrese nombre del documento.");
-        }
+       
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
