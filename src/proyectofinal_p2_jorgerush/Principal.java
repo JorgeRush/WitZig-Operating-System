@@ -51,6 +51,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         initComponents();
+        BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
         tablaArchivos.setVisible(false);
         crearCarpeta.setVisible(false);
@@ -230,6 +231,7 @@ public class Principal extends javax.swing.JFrame {
         BorrarBoton = new javax.swing.JButton();
         AñadirBoton = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
+        BorrarBotonArchivos = new javax.swing.JButton();
         exploradorPc2 = new javax.swing.JFileChooser();
         tablaArchivos = new javax.swing.JScrollPane();
         tablaArchivosTxt = new javax.swing.JTable();
@@ -967,6 +969,16 @@ public class Principal extends javax.swing.JFrame {
         });
         barraSuperior.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 40));
 
+        BorrarBotonArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
+        BorrarBotonArchivos.setContentAreaFilled(false);
+        BorrarBotonArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BorrarBotonArchivosMouseClicked(evt);
+            }
+        });
+        BorrarBotonArchivos.addActionListener(this::BorrarBotonArchivosActionPerformed);
+        barraSuperior.add(BorrarBotonArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 40));
+
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 660, 37));
         exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
@@ -1008,6 +1020,7 @@ public class Principal extends javax.swing.JFrame {
         OpcionesCarpetas.add(Abrir);
 
         EliminarArchivos.setText("Eliminar Archivo");
+        EliminarArchivos.addActionListener(this::EliminarArchivosActionPerformed);
         OpcionesArchivos.add(EliminarArchivos);
 
         AbrirArchivos.setText("Abrir archivo");
@@ -1808,6 +1821,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void exploradorArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exploradorArchivosMouseClicked
         tablaExplorador.clearSelection();
+        tablaArchivosTxt.clearSelection();
     }//GEN-LAST:event_exploradorArchivosMouseClicked
     public void eliminarCarpeta() {
         try {
@@ -1863,6 +1877,8 @@ public class Principal extends javax.swing.JFrame {
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
         tablaCarpetas.setVisible(false);
         tablaArchivos.setVisible(true);
+        BorrarBoton.setVisible(false);
+        BorrarBotonArchivos.setVisible(true);
         regresar.setVisible(true);
     }//GEN-LAST:event_AbrirActionPerformed
     int filaSeleccion2 = 0;
@@ -1950,6 +1966,8 @@ public class Principal extends javax.swing.JFrame {
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         tablaCarpetas.setVisible(true);
         tablaArchivos.setVisible(false);
+        BorrarBotonArchivos.setVisible(false);
+        BorrarBoton.setVisible(true);
         regresar.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
@@ -1978,11 +1996,48 @@ public class Principal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
                 }
-                JOptionPane.showMessageDialog(null,"Archivo abierto.");
+                JOptionPane.showMessageDialog(null, "Archivo abierto.");
 
             }
         }
     }//GEN-LAST:event_AbrirArchivosActionPerformed
+    public void eliminarArchivos() {
+        filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+        if (filaSeleccion2 == -1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
+            return;
+        }
+        String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+        int sentencia = 0;
+        for (int i = 0; i < listaArchivos.size(); i++) {
+            archivosTxt archivoSelec = listaArchivos.get(i);
+            if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
+                sentencia = i;
+                File archivo = archivoSelec.getArchivo();
+                try {
+                    archivo.delete();
+                    JOptionPane.showMessageDialog(null, "Archivo exitosamente eliminado");
+
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        listaArchivos.remove(listaArchivos.get(sentencia));
+        tablaArchivosTxt.clearSelection();
+    }
+    private void EliminarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarArchivosActionPerformed
+        eliminarArchivos();
+
+    }//GEN-LAST:event_EliminarArchivosActionPerformed
+
+    private void BorrarBotonArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarBotonArchivosMouseClicked
+        eliminarArchivos();
+    }//GEN-LAST:event_BorrarBotonArchivosMouseClicked
+
+    private void BorrarBotonArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarBotonArchivosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BorrarBotonArchivosActionPerformed
 
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
@@ -2032,6 +2087,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton BoldItalic;
     private javax.swing.JButton BoldItalic1;
     private javax.swing.JButton BorrarBoton;
+    private javax.swing.JButton BorrarBotonArchivos;
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
     private javax.swing.JMenuItem Eliminar;
