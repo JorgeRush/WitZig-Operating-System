@@ -1900,6 +1900,7 @@ public class Principal extends javax.swing.JFrame {
         }
         return verf;
     }
+
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
         String carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
         if (verificarListado(carpetaElegidaC) == true) {
@@ -1909,16 +1910,16 @@ public class Principal extends javax.swing.JFrame {
             regresar.setVisible(false);
         } else {
             Timer timer = new Timer(1000, e -> {
-                String carpetaElegida = "";
-                try {
-                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-                } catch (Exception E) {
-
-                }
 
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
                 if (filaSeleccion2 == -1) {
-
+                    String carpetaElegida="";
+                    try{
+                        carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                    }catch(Exception E){
+                        
+                    }
+                   
                     DefaultTableModel modeloTablaA = new DefaultTableModel() {
                         @Override
                         public boolean isCellEditable(int row, int column) {
@@ -1952,6 +1953,8 @@ public class Principal extends javax.swing.JFrame {
                         String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
                         modeloTablaA.addRow(datos);
                     }
+
+                } else {
 
                 }
 
@@ -2009,9 +2012,19 @@ public class Principal extends javax.swing.JFrame {
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
         int sentencia = 0;
+
         for (int i = 0; i < listaArchivos.size(); i++) {
             archivosTxt archivoSelec = listaArchivos.get(i);
             if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
+                for (int t = 0; t < listaCarpetas.size(); t++) {
+                    carpetasArchivos carpetaEleg = listaCarpetas.get(t);
+                    ArrayList<archivosTxt> archivos = carpetaEleg.regresarArchivos();
+                    for (int j = 0; j < archivos.size(); j++) {
+                         if(archivos.get(j).getNombreA().equals(archivoSelec.getNombreA())){
+                             carpetaEleg.eliminarArchivo(j);
+                         }
+                    }
+                }
                 sentencia = i;
                 File archivo = archivoSelec.getArchivo();
                 try {
@@ -2023,8 +2036,10 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
+
         listaArchivos.remove(listaArchivos.get(sentencia));
         tablaArchivosTxt.clearSelection();
+        filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
     }
     private void EliminarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarArchivosActionPerformed
         eliminarArchivos();

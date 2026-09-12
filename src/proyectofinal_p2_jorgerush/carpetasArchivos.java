@@ -35,6 +35,9 @@ public class carpetasArchivos {
     public ArrayList<archivosTxt> regresarArchivos() {
         return archivosCarpeta;
     }
+    public void eliminarArchivo(int i){
+        archivosCarpeta.remove(archivosCarpeta.get(i));
+    }
 
     public String getNombre() {
         return nombre;
