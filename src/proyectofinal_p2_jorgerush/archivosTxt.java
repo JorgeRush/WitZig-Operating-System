@@ -29,6 +29,54 @@ public class archivosTxt  {
         this.tamañoA = tamañoA;
     }
 
+    public String getNombreA() {
+        return nombreA;
+    }
+
+    public void setNombreA(String nombreA) {
+        this.nombreA = nombreA;
+    }
+
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
+
+    public String getFechaModificado() {
+        return fechaModificado;
+    }
+
+    public void setFechaModificado(String fechaModificado) {
+        this.fechaModificado = fechaModificado;
+    }
+
+    public String getTipoA() {
+        return tipoA;
+    }
+
+    public void setTipoA(String tipoA) {
+        this.tipoA = tipoA;
+    }
+
+    public String getRutA() {
+        return rutA;
+    }
+
+    public void setRutA(String rutA) {
+        this.rutA = rutA;
+    }
+
+    public double getTamañoA() {
+        return tamañoA;
+    }
+
+    public void setTamañoA(double tamañoA) {
+        this.tamañoA = tamañoA;
+    }
+
 
     
     

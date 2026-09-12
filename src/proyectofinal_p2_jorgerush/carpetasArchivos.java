@@ -12,23 +12,28 @@ import java.util.ArrayList;
  * @author Jorge Rush
  */
 public class carpetasArchivos {
+
     String nombre;
     File ubicacionCarpeta;
-    ArrayList <archivosTxt> archivosCarpeta;
+    ArrayList<archivosTxt> archivosCarpeta;
     String fechaMod;
     String tipo;
     String ruta;
-    double tamaño=0;
+    double tamaño = 0;
 
-    public carpetasArchivos(String nombre,File ubi, String fechaMod, String tipo,double tamaño,String ruta) {
+    public carpetasArchivos(String nombre, File ubi, String fechaMod, String tipo, double tamaño, String ruta) {
         this.nombre = nombre;
-        this.ubicacionCarpeta=ubi;
-        archivosCarpeta=new ArrayList<>();
+        this.ubicacionCarpeta = ubi;
+        archivosCarpeta = new ArrayList<>();
         this.fechaMod = fechaMod;
         this.tipo = tipo;
-        this.tamaño=tamaño;
-        this.ruta=ruta;
-       
+        this.tamaño = tamaño;
+        this.ruta = ruta;
+
+    }
+
+    public ArrayList<archivosTxt> regresarArchivos() {
+        return archivosCarpeta;
     }
 
     public String getNombre() {
@@ -62,14 +67,10 @@ public class carpetasArchivos {
     public void setTamaño(double tamaño) {
         this.tamaño = tamaño;
     }
-    
-    
-    public void añadirArchivo(archivosTxt archivo){
+
+    public void añadirArchivo(archivosTxt archivo) {
         archivosCarpeta.add(archivo);
-        
+
     }
-    
-   
-    
-    
+
 }

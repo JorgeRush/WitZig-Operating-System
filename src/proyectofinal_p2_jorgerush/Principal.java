@@ -51,6 +51,8 @@ public class Principal extends javax.swing.JFrame {
         }
 
         initComponents();
+        regresar.setVisible(false);
+        tablaArchivos.setVisible(false);
         crearCarpeta.setVisible(false);
         exploradorPc2.setVisible(false);
         exploradorArchivos.setVisible(false);
@@ -214,6 +216,7 @@ public class Principal extends javax.swing.JFrame {
         PopUp = new javax.swing.JPopupMenu();
         personalizarEditor2 = new javax.swing.JMenuItem();
         exploradorArchivos = new javax.swing.JDialog();
+        regresar = new javax.swing.JButton();
         crearCarpeta = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         nombreCarpeta = new javax.swing.JTextField();
@@ -222,13 +225,17 @@ public class Principal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaCarpetas = new javax.swing.JScrollPane();
         tablaExplorador = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        barraSuperior = new javax.swing.JPanel();
+        BorrarBoton = new javax.swing.JButton();
+        AñadirBoton = new javax.swing.JButton();
         exploradorPc2 = new javax.swing.JFileChooser();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        tablaArchivos = new javax.swing.JScrollPane();
+        tablaArchivosTxt = new javax.swing.JTable();
+        OpcionesCarpetas = new javax.swing.JPopupMenu();
+        Eliminar = new javax.swing.JMenuItem();
+        Abrir = new javax.swing.JMenuItem();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -807,6 +814,11 @@ public class Principal extends javax.swing.JFrame {
         PopUp.add(personalizarEditor2);
 
         exploradorArchivos.setPreferredSize(new java.awt.Dimension(700, 420));
+        exploradorArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exploradorArchivosMouseClicked(evt);
+            }
+        });
         exploradorArchivos.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 exploradorArchivosWindowActivated(evt);
@@ -816,6 +828,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         exploradorArchivos.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R1.png"))); // NOI18N
+        regresar.setBorder(null);
+        regresar.setContentAreaFilled(false);
+        regresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresarMouseClicked(evt);
+            }
+        });
+        exploradorArchivos.getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 30, 30));
 
         crearCarpeta.setBackground(new java.awt.Color(229, 228, 228));
 
@@ -914,35 +936,72 @@ public class Principal extends javax.swing.JFrame {
                 tablaExploradorMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablaExplorador);
+        tablaCarpetas.setViewportView(tablaExplorador);
 
-        exploradorArchivos.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
+        exploradorArchivos.getContentPane().add(tablaCarpetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        barraSuperior.setBackground(new java.awt.Color(255, 255, 255));
+        barraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
-        jButton4.setContentAreaFilled(false);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        BorrarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
+        BorrarBoton.setContentAreaFilled(false);
+        BorrarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                BorrarBotonMouseClicked(evt);
             }
         });
-        jButton4.addActionListener(this::jButton4ActionPerformed);
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 20));
+        BorrarBoton.addActionListener(this::BorrarBotonActionPerformed);
+        barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 20));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
-        jButton5.setContentAreaFilled(false);
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        AñadirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        AñadirBoton.setContentAreaFilled(false);
+        AñadirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                AñadirBotonMouseClicked(evt);
             }
         });
-        jButton5.addActionListener(this::jButton5ActionPerformed);
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 40, -1));
+        AñadirBoton.addActionListener(this::AñadirBotonActionPerformed);
+        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 40, -1));
 
-        exploradorArchivos.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 660, 37));
+        exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 660, 37));
         exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        tablaArchivosTxt.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaArchivosTxt.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tablaArchivosTxtAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tablaArchivosTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaArchivosTxtMouseClicked(evt);
+            }
+        });
+        tablaArchivos.setViewportView(tablaArchivosTxt);
+
+        exploradorArchivos.getContentPane().add(tablaArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
+
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(this::EliminarActionPerformed);
+        OpcionesCarpetas.add(Eliminar);
+
+        Abrir.setText("Abrir");
+        Abrir.addActionListener(this::AbrirActionPerformed);
+        OpcionesCarpetas.add(Abrir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1467,6 +1526,30 @@ public class Principal extends javax.swing.JFrame {
                 String diaCa = formatoDiaC.format(fechaCa);
                 String rutaCa = Carpeta.getAbsolutePath();
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
+                
+                ArrayList <archivosTxt> archivosExis=new ArrayList<>();
+                if (Carpeta != null && Carpeta.listFiles() != null) {
+                    File[] archivos = Carpeta.listFiles();
+
+                    for (int i = 0; i < archivos.length; i++) {
+                        File archivoExistente = archivos[i];
+                        String nombre2 = archivoExistente.getName();
+                        long tamañoBytes2 = archivoExistente.length();
+
+                        double tamañoKb2 = tamañoBytes / 1024.0;
+                        long fechaMiliD2 = archivoExistente.lastModified();
+                        Date fecha2 = new Date(fechaMiliD);
+                        SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        String tipo2 = ".txt";
+                        String dia2 = formatoDia.format(fecha);
+                        String ruta2 = archivoExistente.getAbsolutePath();
+                        archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
+                        archivosExis.add(archivoEx);
+                    }
+                }
+                for (int i = 0; i < archivosExis.size(); i++) {
+                    carpetaLocalizar.añadirArchivo(archivosExis.get(i));
+                }
                 carpetaLocalizar.añadirArchivo(nuevoArchivo);
                 boolean verf = false;
                 for (int i = 0; i < listaCarpetas.size(); i++) {
@@ -1566,18 +1649,18 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Este editor de texto solo es compatible con archivos .txt :)");
     }//GEN-LAST:event_crearTextoWindowOpened
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BorrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarBotonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BorrarBotonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void AñadirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBotonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_AñadirBotonActionPerformed
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void AñadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBotonMouseClicked
         tablaExplorador.setVisible(false);
         crearCarpeta.setVisible(true);
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_AñadirBotonMouseClicked
 
     private void exploradorArchivosWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowActivated
 
@@ -1586,8 +1669,8 @@ public class Principal extends javax.swing.JFrame {
     private void exploradorArchivosWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowOpened
 
         Timer timer = new Timer(1000, e -> {
-             filaEliminar = tablaExplorador.getSelectedRow();
-            if (filaEliminar == -1) {
+            filaSeleccion = tablaExplorador.getSelectedRow();
+            if (filaSeleccion == -1) {
                 DefaultTableModel modeloTabla = new DefaultTableModel() {
                     @Override
                     public boolean isCellEditable(int row, int column) {
@@ -1614,8 +1697,8 @@ public class Principal extends javax.swing.JFrame {
                     modeloTabla.addRow(datos);
 
                 }
-            }else{
-                
+            } else {
+
             }
 
         });
@@ -1661,6 +1744,7 @@ public class Principal extends javax.swing.JFrame {
         tablaExplorador.setVisible(true);
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta.setText(null);
+        tablaExplorador.clearSelection();
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
@@ -1680,15 +1764,34 @@ public class Principal extends javax.swing.JFrame {
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         crearCarpeta.setVisible(false);
         tablaExplorador.setVisible(true);
+        tablaExplorador.clearSelection();
     }//GEN-LAST:event_jButton8MouseClicked
-    int columnaEliminar = 0;
-    int filaEliminar = 0;
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    int columnaSeleccion = 0;
+    int filaSeleccion = 0;
+    private void BorrarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarBotonMouseClicked
 
+        eliminarCarpeta();
+
+
+    }//GEN-LAST:event_BorrarBotonMouseClicked
+
+    private void tablaExploradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaExploradorMouseClicked
+        int boton = evt.getButton();
+        int x = evt.getX();
+        int y = evt.getY();
+        if (boton == 3) {
+            OpcionesCarpetas.show(tablaExplorador, x, y);
+        }
+    }//GEN-LAST:event_tablaExploradorMouseClicked
+
+    private void exploradorArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exploradorArchivosMouseClicked
+        tablaExplorador.clearSelection();
+    }//GEN-LAST:event_exploradorArchivosMouseClicked
+    public void eliminarCarpeta() {
         try {
-            columnaEliminar = tablaExplorador.getSelectedColumn();
-            filaEliminar = tablaExplorador.getSelectedRow();
-            String carpetaElegidaN = (String) tablaExplorador.getValueAt(filaEliminar, 0);
+            columnaSeleccion = tablaExplorador.getSelectedColumn();
+            filaSeleccion = tablaExplorador.getSelectedRow();
+            String carpetaElegidaN = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
             int sentencia = 0;
             for (int i = 0; i < listaCarpetas.size(); i++) {
                 if (listaCarpetas.get(i).getNombre().equals(carpetaElegidaN)) {
@@ -1718,14 +1821,82 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una carpeta");
             return;
         }
-        
 
+    }
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        eliminarCarpeta();
+    }//GEN-LAST:event_EliminarActionPerformed
 
-    }//GEN-LAST:event_jButton4MouseClicked
-
-    private void tablaExploradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaExploradorMouseClicked
+    private void tablaArchivosTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaArchivosTxtMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablaExploradorMouseClicked
+    }//GEN-LAST:event_tablaArchivosTxtMouseClicked
+
+    private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
+        tablaCarpetas.setVisible(false);
+        tablaArchivos.setVisible(true);
+        regresar.setVisible(true);
+    }//GEN-LAST:event_AbrirActionPerformed
+    int filaSeleccion2 = 0;
+    int columnaSeleccion2 = 0;
+    private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
+        Timer timer = new Timer(1000, e -> {
+            String carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+            filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+            if (filaSeleccion2 == -1) {
+
+                DefaultTableModel modeloTablaA = new DefaultTableModel() {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
+                tablaArchivosTxt.setModel(modeloTablaA);
+                modeloTablaA.addColumn("Nombre");
+                modeloTablaA.addColumn("Fecha de Modificacion");
+                modeloTablaA.addColumn("Tipo");
+                modeloTablaA.addColumn("Tamaño");
+                tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
+                    JLabel l = new JLabel(String.valueOf(v));
+                    if (r >= 0) {
+                        l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
+                    }
+                    return l;
+                });
+                ArrayList<archivosTxt> archivos = new ArrayList<>();
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+
+                    carpetasArchivos temp = listaCarpetas.get(i);
+                    if (temp.getNombre().equals(carpetaElegida)) {
+                        archivos = temp.regresarArchivos();
+                    }
+
+                }
+                if (archivos.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
+                    return;
+                } else {
+                    for (int i = 0; i < archivos.size(); i++) {
+                        archivosTxt archivosN = archivos.get(i);
+                        String tamaño = String.format("%.2f", archivosN.getTamañoA());
+                        String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
+                        modeloTablaA.addRow(datos);
+                    }
+
+                }
+            } else {
+
+            }
+
+        });
+
+        timer.start();
+    }//GEN-LAST:event_tablaArchivosTxtAncestorAdded
+
+    private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
+        tablaCarpetas.setVisible(true);
+        tablaArchivos.setVisible(false);
+        regresar.setVisible(false);
+    }//GEN-LAST:event_regresarMouseClicked
 
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
@@ -1764,6 +1935,8 @@ public class Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Abrir;
+    private javax.swing.JButton AñadirBoton;
     private javax.swing.JCheckBox BarraN2;
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JPanel BarraTareas;
@@ -1771,8 +1944,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Bold1;
     private javax.swing.JButton BoldItalic;
     private javax.swing.JButton BoldItalic1;
+    private javax.swing.JButton BorrarBoton;
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
+    private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenu FechaHora;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JPanel FondoPantallaOg;
@@ -1782,6 +1957,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Italic1;
     private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
+    private javax.swing.JPopupMenu OpcionesCarpetas;
     private javax.swing.JButton Pantalla;
     private javax.swing.JMenuItem Personalizar;
     private javax.swing.JButton Plain;
@@ -1793,6 +1969,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu archivo;
     private javax.swing.JButton aspectosExternos;
     private javax.swing.JRadioButton barraN1;
+    private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel contenedor;
@@ -1822,8 +1999,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1836,12 +2011,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
     private javax.swing.JButton nevada;
@@ -1854,10 +2026,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem personalizarEditor2;
     private javax.swing.JDialog personalizarPantalla;
     private javax.swing.JButton rancho;
+    private javax.swing.JButton regresar;
     private javax.swing.JButton seleccionColor3;
     private javax.swing.JComboBox<String> seleccionFondo;
     private javax.swing.JSpinner spinnerFuente;
     private javax.swing.JSpinner spinnerFuente1;
+    private javax.swing.JScrollPane tablaArchivos;
+    private javax.swing.JTable tablaArchivosTxt;
+    private javax.swing.JScrollPane tablaCarpetas;
     private javax.swing.JTable tablaExplorador;
     private javax.swing.JSpinner tamañoFuente;
     private javax.swing.JSpinner tamañoFuente1;
