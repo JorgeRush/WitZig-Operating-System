@@ -560,6 +560,7 @@ public class Principal extends javax.swing.JFrame {
 
         personalizarPantalla.getContentPane().add(editarColoresPantalla, java.awt.BorderLayout.CENTER);
 
+        crearTexto.setPreferredSize(new java.awt.Dimension(786, 700));
         crearTexto.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 crearTextoWindowOpened(evt);
@@ -736,7 +737,7 @@ public class Principal extends javax.swing.JFrame {
         ejemploFuente1.setRows(5);
         jScrollPane2.setViewportView(ejemploFuente1);
 
-        fondoGen.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 600, 570));
+        fondoGen.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 600, 530));
 
         opcionesEditor.setOpaque(true);
 
@@ -779,12 +780,12 @@ public class Principal extends javax.swing.JFrame {
         crearTexto.getContentPane().setLayout(crearTextoLayout);
         crearTextoLayout.setHorizontalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 786, Short.MAX_VALUE)
+            .addGap(0, 798, Short.MAX_VALUE)
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearTextoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(fondoGen, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -793,17 +794,17 @@ public class Principal extends javax.swing.JFrame {
         );
         crearTextoLayout.setVerticalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 699, Short.MAX_VALUE)
+            .addGap(0, 672, Short.MAX_VALUE)
+            .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearTextoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fondoGen, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fondoGen, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 162, Short.MAX_VALUE)
                     .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 163, Short.MAX_VALUE)))
         );
 
         personalizarEditor2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
@@ -1006,10 +1007,10 @@ public class Principal extends javax.swing.JFrame {
         Abrir.addActionListener(this::AbrirActionPerformed);
         OpcionesCarpetas.add(Abrir);
 
-        EliminarArchivos.setText("jMenuItem2");
+        EliminarArchivos.setText("Eliminar Archivo");
         OpcionesArchivos.add(EliminarArchivos);
 
-        AbrirArchivos.setText("jMenuItem3");
+        AbrirArchivos.setText("Abrir archivo");
         AbrirArchivos.addActionListener(this::AbrirArchivosActionPerformed);
         OpcionesArchivos.add(AbrirArchivos);
 
@@ -1571,7 +1572,7 @@ public class Principal extends javax.swing.JFrame {
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar.añadirArchivo(archivosExis.get(i));
                 }
-                carpetaLocalizar.añadirArchivo(nuevoArchivo);
+//                carpetaLocalizar.añadirArchivo(nuevoArchivo);
                 boolean verf = false;
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     if (listaCarpetas.get(i).nombre.equals(nombreCa)) {
@@ -1977,6 +1978,7 @@ public class Principal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
                 }
+                JOptionPane.showMessageDialog(null,"Archivo abierto.");
 
             }
         }
