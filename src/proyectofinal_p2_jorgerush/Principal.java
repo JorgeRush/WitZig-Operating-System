@@ -24,6 +24,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
@@ -51,6 +52,9 @@ public class Principal extends javax.swing.JFrame {
         }
 
         initComponents();
+
+        XO();
+
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
         tablaArchivos.setVisible(false);
@@ -76,7 +80,10 @@ public class Principal extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         FondoPantalla.setMaximumSize(FondoPantalla.getSize());
-
+        exploradorArchivos.setTitle("Explorador de Archivos");
+        XO.setTitle("Tic Tac Toe");
+        personalizarPantalla.setTitle("Personalizar Pantala");
+        Calculadora.setTitle("Calculadora");
     }
 
     /**
@@ -262,6 +269,24 @@ public class Principal extends javax.swing.JFrame {
         dividir = new javax.swing.JButton();
         multiplicar1 = new javax.swing.JButton();
         mas = new javax.swing.JButton();
+        XO = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        pos1 = new javax.swing.JLabel();
+        pos2 = new javax.swing.JLabel();
+        pos3 = new javax.swing.JLabel();
+        pos6 = new javax.swing.JLabel();
+        pos5 = new javax.swing.JLabel();
+        pos4 = new javax.swing.JLabel();
+        pos7 = new javax.swing.JLabel();
+        pos8 = new javax.swing.JLabel();
+        pos9 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        turnoMostrar = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        puntajeO = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        puntajeX = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -1251,6 +1276,206 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(CalculadoraLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(222, 222, 222));
+
+        pos1.setBackground(new java.awt.Color(255, 255, 255));
+        pos1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos1.setOpaque(true);
+        pos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos1MousePressed(evt);
+            }
+        });
+
+        pos2.setBackground(new java.awt.Color(255, 255, 255));
+        pos2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos2.setOpaque(true);
+        pos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos2MousePressed(evt);
+            }
+        });
+
+        pos3.setBackground(new java.awt.Color(255, 255, 255));
+        pos3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos3.setOpaque(true);
+        pos3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos3MousePressed(evt);
+            }
+        });
+
+        pos6.setBackground(new java.awt.Color(255, 255, 255));
+        pos6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos6.setOpaque(true);
+        pos6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos6MousePressed(evt);
+            }
+        });
+
+        pos5.setBackground(new java.awt.Color(255, 255, 255));
+        pos5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos5.setOpaque(true);
+        pos5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos5MousePressed(evt);
+            }
+        });
+
+        pos4.setBackground(new java.awt.Color(255, 255, 255));
+        pos4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos4.setOpaque(true);
+        pos4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos4MousePressed(evt);
+            }
+        });
+
+        pos7.setBackground(new java.awt.Color(255, 255, 255));
+        pos7.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos7.setOpaque(true);
+        pos7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos7MousePressed(evt);
+            }
+        });
+
+        pos8.setBackground(new java.awt.Color(255, 255, 255));
+        pos8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos8.setOpaque(true);
+        pos8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos8MousePressed(evt);
+            }
+        });
+
+        pos9.setBackground(new java.awt.Color(255, 255, 255));
+        pos9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        pos9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pos9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"))); // NOI18N
+        pos9.setOpaque(true);
+        pos9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pos9MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(pos7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pos8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pos9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(pos1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(pos2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(pos3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(pos4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(pos5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(pos6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pos3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pos6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pos9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pos8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+
+        jButton4.setText("Reiniciar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+
+        turnoMostrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        turnoMostrar.setText("        ");
+        jPanel2.add(turnoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 150, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("O=");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
+
+        puntajeO.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        puntajeO.setText("0");
+        jPanel2.add(puntajeO, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("X=");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        puntajeX.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        puntajeX.setText("0");
+        jPanel2.add(puntajeX, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 20, -1));
+
+        javax.swing.GroupLayout XOLayout = new javax.swing.GroupLayout(XO.getContentPane());
+        XO.getContentPane().setLayout(XOLayout);
+        XOLayout.setHorizontalGroup(
+            XOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(XOLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        XOLayout.setVerticalGroup(
+            XOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(XOLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2329,7 +2554,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_explorarArchivos1ActionPerformed
 
     private void editorTexto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorTexto2MouseClicked
-        // TODO add your handling code here:
+        XO.pack();
+        XO.setLocationRelativeTo(this);
+        XO.setVisible(true);
+
     }//GEN-LAST:event_editorTexto2MouseClicked
 
     private void editorTexto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorTexto2ActionPerformed
@@ -2409,12 +2637,12 @@ public class Principal extends javax.swing.JFrame {
                 pantalla.setText(noCero(primerNumero * segundoNumero));
                 break;
             case "÷":
-                if(segundoNumero==0){
+                if (segundoNumero == 0) {
                     pantalla.setText("Syntax Error");
-                }else{
+                } else {
                     pantalla.setText(noCero(primerNumero / segundoNumero));
                 }
-                
+
                 break;
             default:
 
@@ -2443,12 +2671,154 @@ public class Principal extends javax.swing.JFrame {
             pantalla.append(".");
         }
     }//GEN-LAST:event_puntoMouseClicked
+    boolean estado = true;
+    Icon turno = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X.png"));
+    Icon siguienteTurno = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
+    String turnoTexto = "X";
+
+    String siguienteJuego = "O";
+    JLabel lbs []= new JLabel[9];
+
+    public void XO() {
+        pos1.setIcon(defecto);
+        pos2.setIcon(defecto);
+        pos3.setIcon(defecto);
+        pos4.setIcon(defecto);
+        pos5.setIcon(defecto);
+        pos6.setIcon(defecto);
+        pos7.setIcon(defecto);
+        pos8.setIcon(defecto);
+        pos9.setIcon(defecto);
+
+        lbs[0] = pos1;
+        lbs[1] = pos2;
+        lbs[2] = pos3;
+        lbs[3] = pos4;
+        lbs[4] = pos5;
+        lbs[5] = pos6;
+        lbs[6] = pos7;
+        lbs[7] = pos8;
+        lbs[8] = pos9;
+    }
+   Icon defecto =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"));
+
+    public void presionar(int casilla) {
+        if (((ImageIcon) lbs[casilla - 1].getIcon()).getImage().equals(((ImageIcon) defecto).getImage())&& estado == true) {
+            lbs[casilla - 1].setIcon(turno);
+            cambiarTurno();
+            comprobarGanador();
+        }
+
+    }
+    int VS[][] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
+        {1, 4, 7},
+        {2, 5, 8},
+        {3, 6, 9},
+        {1, 5, 9},
+        {3, 5, 7}};
+
+    public void comprobarGanador() {
+        for (int i = 0; i < VS.length; i++) {
+            if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
+                && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
+                && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())) {
+                lbs[VS[i][0] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][1] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][2] - 1].setBackground(new Color(216, 233, 214));
+                puntajeX.setText(Integer.toString(Integer.parseInt(puntajeX.getText()) + 1));
+                turnoMostrar.setText("Ha ganado X");
+                estado = false;
+            }
+            if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
+                && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
+                && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())) {
+
+                lbs[VS[i][0] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][1] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][2] - 1].setBackground(new Color(216, 233, 214));
+                puntajeO.setText(Integer.toString(Integer.parseInt(puntajeX.getText()) + 1));
+                turnoMostrar.setText("Ha ganado O");
+                estado = false;
+            }
+
+        }
+    }
+    Icon iconoO =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
+    Icon iconoX =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X.png"));
+
+    public void cambiarTurno() {
+        if (((ImageIcon) turno).getImage().equals(((ImageIcon) iconoX).getImage())){
+            turno = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
+            turnoTexto = "O";
+        } else {
+            turno = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X.png"));
+            turnoTexto = "X";
+        }
+        turnoMostrar.setText("Turno de: " + turnoTexto);
+    }
+    private void pos3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos3MousePressed
+        presionar(3);
+    }//GEN-LAST:event_pos3MousePressed
+
+    private void pos1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos1MousePressed
+        presionar(1);
+    }//GEN-LAST:event_pos1MousePressed
+
+    private void pos2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos2MousePressed
+        presionar(2);
+    }//GEN-LAST:event_pos2MousePressed
+
+    private void pos4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos4MousePressed
+        presionar(4);
+    }//GEN-LAST:event_pos4MousePressed
+
+    private void pos5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos5MousePressed
+        presionar(5);
+    }//GEN-LAST:event_pos5MousePressed
+
+    private void pos6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos6MousePressed
+        presionar(6);
+    }//GEN-LAST:event_pos6MousePressed
+
+    private void pos7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos7MousePressed
+        presionar(7);
+    }//GEN-LAST:event_pos7MousePressed
+
+    private void pos8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos8MousePressed
+        presionar(8);
+    }//GEN-LAST:event_pos8MousePressed
+
+    private void pos9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pos9MousePressed
+        presionar(9);
+    }//GEN-LAST:event_pos9MousePressed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+
+        for (int i = 0; i < lbs.length; i++) {
+            lbs[i].setIcon(defecto);
+            lbs[i].setBackground(Color.WHITE);
+        }
+        turno=siguienteTurno;
+        turnoTexto = siguienteJuego;
+        if (siguienteTurno==iconoO) {
+            siguienteJuego="X";
+            siguienteTurno=iconoX;
+        } else {
+            siguienteTurno=iconoO;
+            siguienteJuego = "O";
+        }
+        turnoMostrar.setText("Turno de: " + turnoTexto);
+        estado = true;
+    }//GEN-LAST:event_jButton4MouseClicked
     public String noCero(float resultado) {
-        String retorno="";
-        
-        retorno=Float.toString(resultado);
-        if (resultado%1==0){
-            retorno=retorno.substring(0, retorno.length()-2);
+        String retorno = "";
+
+        retorno = Float.toString(resultado);
+        if (resultado % 1 == 0) {
+            retorno = retorno.substring(0, retorno.length() - 2);
         }
 
         return retorno;
@@ -2526,6 +2896,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JPopupMenu PopUpMenu;
     private javax.swing.JButton WitZig;
+    private javax.swing.JDialog XO;
     private javax.swing.JMenuItem abrirArchivo;
     private javax.swing.JMenu archivo;
     private javax.swing.JButton aspectosExternos;
@@ -2567,6 +2938,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -2578,8 +2950,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2602,6 +2978,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu personalizarEditor;
     private javax.swing.JMenuItem personalizarEditor2;
     private javax.swing.JDialog personalizarPantalla;
+    private javax.swing.JLabel pos1;
+    private javax.swing.JLabel pos2;
+    private javax.swing.JLabel pos3;
+    private javax.swing.JLabel pos4;
+    private javax.swing.JLabel pos5;
+    private javax.swing.JLabel pos6;
+    private javax.swing.JLabel pos7;
+    private javax.swing.JLabel pos8;
+    private javax.swing.JLabel pos9;
+    private javax.swing.JLabel puntajeO;
+    private javax.swing.JLabel puntajeX;
     private javax.swing.JButton punto;
     private javax.swing.JButton rancho;
     private javax.swing.JButton regresar;
@@ -2627,6 +3014,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel tituloConfiguracion5;
     private javax.swing.JLabel tituloConfiguracion6;
     private javax.swing.JButton tres;
+    private javax.swing.JLabel turnoMostrar;
     private javax.swing.JLabel ubicacionCarpeta;
     private javax.swing.JButton uno;
     // End of variables declaration//GEN-END:variables
