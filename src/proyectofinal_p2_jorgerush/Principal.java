@@ -1385,13 +1385,16 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
-        jButton4.setText("Reiniciar");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R3.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setContentAreaFilled(false);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
+        jButton4.addActionListener(this::jButton4ActionPerformed);
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 50, -1));
 
         turnoMostrar.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         turnoMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1444,7 +1447,7 @@ public class Principal extends javax.swing.JFrame {
         );
         BarraProgresoLayout.setVerticalGroup(
             BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
+            .addGap(0, 187, Short.MAX_VALUE)
         );
 
         CrearCarpeta.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1596,7 +1599,7 @@ public class Principal extends javax.swing.JFrame {
         editorTexto1.addActionListener(this::editorTexto1ActionPerformed);
         contenedor.add(editorTexto1);
 
-        TicTacToe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X1.png"))); // NOI18N
+        TicTacToe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/XO2.png"))); // NOI18N
         TicTacToe.setBorder(null);
         TicTacToe.setContentAreaFilled(false);
         TicTacToe.setFocusPainted(false);
@@ -2942,6 +2945,10 @@ public class Principal extends javax.swing.JFrame {
     private void exploradorPc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploradorPc2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_exploradorPc2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
     public String noCero(float resultado) {
         String retorno = "";
 
