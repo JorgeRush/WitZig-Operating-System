@@ -54,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
-
+        willyCelebra.setVisible(false);
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
         tablaArchivos.setVisible(false);
@@ -287,6 +287,7 @@ public class Principal extends javax.swing.JFrame {
         puntajeO = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         puntajeX = new javax.swing.JLabel();
+        willyCelebra = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -1439,27 +1440,33 @@ public class Principal extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
 
-        turnoMostrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        turnoMostrar.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        turnoMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoMostrar.setText("        ");
-        jPanel2.add(turnoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 150, -1));
+        jPanel2.add(turnoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 160, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("O=");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O2.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, 40));
 
-        puntajeO.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        puntajeO.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        puntajeO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         puntajeO.setText("0");
-        jPanel2.add(puntajeO, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+        jPanel2.add(puntajeO, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 20, 30));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("X=");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X2.png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, 40));
 
-        puntajeX.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        puntajeX.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        puntajeX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         puntajeX.setText("0");
-        jPanel2.add(puntajeX, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 20, -1));
+        jPanel2.add(puntajeX, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 30, 30));
+
+        willyCelebra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Wally1.png"))); // NOI18N
+        jPanel2.add(willyCelebra, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
         javax.swing.GroupLayout XOLayout = new javax.swing.GroupLayout(XO.getContentPane());
         XO.getContentPane().setLayout(XOLayout);
@@ -2725,22 +2732,24 @@ public class Principal extends javax.swing.JFrame {
             if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
                 && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
                 && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())) {
-                lbs[VS[i][0] - 1].setBackground(new Color(216, 233, 214));
-                lbs[VS[i][1] - 1].setBackground(new Color(216, 233, 214));
-                lbs[VS[i][2] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][0] - 1].setBackground(new Color(101, 247, 101));
+                lbs[VS[i][1] - 1].setBackground(new Color(101, 247, 101));
+                lbs[VS[i][2] - 1].setBackground(new Color(101, 247, 101));
                 puntajeX.setText(Integer.toString(Integer.parseInt(puntajeX.getText()) + 1));
                 turnoMostrar.setText("Ha ganado X");
+                willyCelebra.setVisible(true);
                 estado = false;
             }
             if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
                 && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
                 && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())) {
 
-                lbs[VS[i][0] - 1].setBackground(new Color(216, 233, 214));
-                lbs[VS[i][1] - 1].setBackground(new Color(216, 233, 214));
-                lbs[VS[i][2] - 1].setBackground(new Color(216, 233, 214));
+                lbs[VS[i][0] - 1].setBackground(new Color(101, 247, 101));
+                lbs[VS[i][1] - 1].setBackground(new Color(101, 247, 101));
+                lbs[VS[i][2] - 1].setBackground(new Color(101, 247, 101));
                 puntajeO.setText(Integer.toString(Integer.parseInt(puntajeX.getText()) + 1));
                 turnoMostrar.setText("Ha ganado O");
+                willyCelebra.setVisible(true);
                 estado = false;
             }
 
@@ -2796,7 +2805,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_pos9MousePressed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-
+        willyCelebra.setVisible(false);
         for (int i = 0; i < lbs.length; i++) {
             lbs[i].setIcon(defecto);
             lbs[i].setBackground(Color.WHITE);
@@ -3017,5 +3026,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel turnoMostrar;
     private javax.swing.JLabel ubicacionCarpeta;
     private javax.swing.JButton uno;
+    private javax.swing.JLabel willyCelebra;
     // End of variables declaration//GEN-END:variables
 }
