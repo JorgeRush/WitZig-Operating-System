@@ -16,6 +16,7 @@ public class carpetasArchivos {
     String nombre;
     File ubicacionCarpeta;
     ArrayList<archivosTxt> archivosCarpeta;
+    ArrayList<carpetasArchivos>carpetasCreadas;
     String fechaMod;
     String tipo;
     String ruta;
@@ -25,6 +26,7 @@ public class carpetasArchivos {
         this.nombre = nombre;
         this.ubicacionCarpeta = ubi;
         archivosCarpeta = new ArrayList<>();
+        carpetasCreadas=new ArrayList <>();
         this.fechaMod = fechaMod;
         this.tipo = tipo;
         this.tamaño = tamaño;

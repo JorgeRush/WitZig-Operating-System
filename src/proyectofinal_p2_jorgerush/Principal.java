@@ -1862,7 +1862,9 @@ public class Principal extends javax.swing.JFrame {
     private void fondoPmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fondoPmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fondoPmActionPerformed
-
+    public Color aplicarTransparencia(Color nuevoColor, int alpha) {
+        return new Color(nuevoColor.getRed(), nuevoColor.getGreen(), nuevoColor.getBlue(), alpha);
+    }
     private void seleccionColor3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor3MouseClicked
         Color seleccionado1 = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
         if (seleccionado1 != null) {
@@ -2253,7 +2255,7 @@ public class Principal extends javax.swing.JFrame {
 
         Timer timer = new Timer(1000, e -> {
             filaSeleccion = tablaExplorador.getSelectedRow();
-            if (filaSeleccion != -1 && tablaArchivos.isVisible()==false) {
+            if (filaSeleccion != -1 && tablaArchivos.isVisible() == false) {
                 String archivoC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     if (listaCarpetas.get(i).getNombre().equals(archivoC)) {
@@ -2482,13 +2484,13 @@ public class Principal extends javax.swing.JFrame {
                 } catch (Exception E) {
 
                 }
-                if (filaSeleccion2 != -1&&tablaCarpetas.isVisible()==false) {
-                     String fSN=(String)tablaArchivosTxt.getValueAt(filaSeleccion2,0);
-                     for (int i = 0; i < listaCarpetas.size(); i++) {
-                        if(listaCarpetas.get(i).getNombre().equals(carpetaElegida)){
-                            ArrayList<archivosTxt> archivosC=listaCarpetas.get(i).regresarArchivos();
+                if (filaSeleccion2 != -1 && tablaCarpetas.isVisible() == false) {
+                    String fSN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+                    for (int i = 0; i < listaCarpetas.size(); i++) {
+                        if (listaCarpetas.get(i).getNombre().equals(carpetaElegida)) {
+                            ArrayList<archivosTxt> archivosC = listaCarpetas.get(i).regresarArchivos();
                             for (int j = 0; j < archivosC.size(); j++) {
-                                if(archivosC.get(j).getNombreA().equals(fSN)){
+                                if (archivosC.get(j).getNombreA().equals(fSN)) {
                                     ruta.setText(archivosC.get(j).rutA);
                                 }
                             }
