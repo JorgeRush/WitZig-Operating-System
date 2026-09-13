@@ -4,6 +4,7 @@
  */
 package proyectofinal_p2_jorgerush;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -68,6 +69,8 @@ public class Principal extends javax.swing.JFrame {
         eleccionPantalla.setVisible(false);
         eleccionExternos.setVisible(false);
         Imagen.setVisible(false);
+        Color fondoTransparenteMac = new Color(255, 255, 255, 200);
+        BarraTareas.setBackground(fondoTransparenteMac);
 
         String[] nombresFuentes = GraphicsEnvironment
                 .getLocalGraphicsEnvironment()
@@ -291,11 +294,11 @@ public class Principal extends javax.swing.JFrame {
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
-        explorarArchivos1 = new javax.swing.JButton();
+        calculadora = new javax.swing.JButton();
         explorarArchivos = new javax.swing.JButton();
         WitZig = new javax.swing.JButton();
         editorTexto1 = new javax.swing.JButton();
-        editorTexto2 = new javax.swing.JButton();
+        TicTacToe = new javax.swing.JButton();
         FondoPantalla = new javax.swing.JPanel();
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
@@ -999,7 +1002,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BorrarBoton.addActionListener(this::BorrarBotonActionPerformed);
-        barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 40));
+        barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 40, 40));
 
         AñadirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
         AñadirBoton.setContentAreaFilled(false);
@@ -1009,7 +1012,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         AñadirBoton.addActionListener(this::AñadirBotonActionPerformed);
-        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -4, 40, 50));
+        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -10, 40, 60));
 
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R1.png"))); // NOI18N
         regresar.setBorder(null);
@@ -1029,7 +1032,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BorrarBotonArchivos.addActionListener(this::BorrarBotonArchivosActionPerformed);
-        barraSuperior.add(BorrarBotonArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 40));
+        barraSuperior.add(BorrarBotonArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 40, 40));
 
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 650, 37));
         exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
@@ -1506,23 +1509,24 @@ public class Principal extends javax.swing.JFrame {
         });
         FondoPantallaOg.setLayout(new java.awt.GridBagLayout());
 
+        BarraTareas.setBackground(new java.awt.Color(225, 225, 225));
         BarraTareas.setPreferredSize(new java.awt.Dimension(4, 46));
-        BarraTareas.setLayout(new java.awt.BorderLayout());
+        BarraTareas.setLayout(new java.awt.GridBagLayout());
 
         contenedor.setOpaque(false);
         contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
 
-        explorarArchivos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CA1.png"))); // NOI18N
-        explorarArchivos1.setBorder(null);
-        explorarArchivos1.setContentAreaFilled(false);
-        explorarArchivos1.setFocusPainted(false);
-        explorarArchivos1.addMouseListener(new java.awt.event.MouseAdapter() {
+        calculadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CA1.png"))); // NOI18N
+        calculadora.setBorder(null);
+        calculadora.setContentAreaFilled(false);
+        calculadora.setFocusPainted(false);
+        calculadora.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                explorarArchivos1MouseClicked(evt);
+                calculadoraMouseClicked(evt);
             }
         });
-        explorarArchivos1.addActionListener(this::explorarArchivos1ActionPerformed);
-        contenedor.add(explorarArchivos1);
+        calculadora.addActionListener(this::calculadoraActionPerformed);
+        contenedor.add(calculadora);
 
         explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/E.png"))); // NOI18N
         explorarArchivos.setBorder(null);
@@ -1556,19 +1560,19 @@ public class Principal extends javax.swing.JFrame {
         editorTexto1.addActionListener(this::editorTexto1ActionPerformed);
         contenedor.add(editorTexto1);
 
-        editorTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X1.png"))); // NOI18N
-        editorTexto2.setBorder(null);
-        editorTexto2.setContentAreaFilled(false);
-        editorTexto2.setFocusPainted(false);
-        editorTexto2.addMouseListener(new java.awt.event.MouseAdapter() {
+        TicTacToe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X1.png"))); // NOI18N
+        TicTacToe.setBorder(null);
+        TicTacToe.setContentAreaFilled(false);
+        TicTacToe.setFocusPainted(false);
+        TicTacToe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editorTexto2MouseClicked(evt);
+                TicTacToeMouseClicked(evt);
             }
         });
-        editorTexto2.addActionListener(this::editorTexto2ActionPerformed);
-        contenedor.add(editorTexto2);
+        TicTacToe.addActionListener(this::TicTacToeActionPerformed);
+        contenedor.add(TicTacToe);
 
-        BarraTareas.add(contenedor, java.awt.BorderLayout.CENTER);
+        BarraTareas.add(contenedor, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1578,6 +1582,7 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 300, 0, 300);
         FondoPantallaOg.add(BarraTareas, gridBagConstraints);
 
         FondoPantalla.setBackground(new java.awt.Color(204, 204, 204));
@@ -2106,10 +2111,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
 
-        if (fondoG.isSelected() == false || fondoOp.isSelected() == false || BarraN2.isSelected()) {
+        if (fondoG.isSelected() == false && fondoOp.isSelected() == false && BarraN2.isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una de las casillas");
             return;
         }
+
         Color colorEleccion = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
         if (fondoG.isSelected()) {
             fondoGen.setBackground(colorEleccion);
@@ -2304,6 +2310,12 @@ public class Principal extends javax.swing.JFrame {
         int y = evt.getY();
         if (boton == 3) {
             OpcionesCarpetas.show(tablaExplorador, x, y);
+        } else if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1 && evt.getClickCount() == 2){
+            tablaCarpetas.setVisible(false);
+            tablaArchivos.setVisible(true);
+            BorrarBoton.setVisible(false);
+            BorrarBotonArchivos.setVisible(true);
+            regresar.setVisible(true);
         }
     }//GEN-LAST:event_tablaExploradorMouseClicked
 
@@ -2390,8 +2402,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
-        String carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-        if (verificarListado(carpetaElegidaC) == true) {
+        String carpetaElegidaC = "";
+        try{
+            carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+        }catch (Exception E){
+            
+        }
+        
+        if (verificarListado(carpetaElegidaC) == true ) {
             JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
             tablaCarpetas.setVisible(true);
             tablaArchivos.setVisible(false);
@@ -2487,10 +2505,11 @@ public class Principal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
                 }
-                JOptionPane.showMessageDialog(null, "Archivo abierto.");
+                
 
             }
         }
+        JOptionPane.showMessageDialog(null, "Archivo abierto.");
     }//GEN-LAST:event_AbrirArchivosActionPerformed
     public void eliminarArchivos() {
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
@@ -2550,26 +2569,26 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void explorarArchivos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_explorarArchivos1MouseClicked
+    private void calculadoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculadoraMouseClicked
         Calculadora.pack();
         Calculadora.setLocationRelativeTo(this);
         Calculadora.setVisible(true);
-    }//GEN-LAST:event_explorarArchivos1MouseClicked
+    }//GEN-LAST:event_calculadoraMouseClicked
 
-    private void explorarArchivos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivos1ActionPerformed
+    private void calculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculadoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_explorarArchivos1ActionPerformed
+    }//GEN-LAST:event_calculadoraActionPerformed
 
-    private void editorTexto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorTexto2MouseClicked
+    private void TicTacToeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicTacToeMouseClicked
         XO.pack();
         XO.setLocationRelativeTo(this);
         XO.setVisible(true);
 
-    }//GEN-LAST:event_editorTexto2MouseClicked
+    }//GEN-LAST:event_TicTacToeMouseClicked
 
-    private void editorTexto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorTexto2ActionPerformed
+    private void TicTacToeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicTacToeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editorTexto2ActionPerformed
+    }//GEN-LAST:event_TicTacToeActionPerformed
 
     private void unoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unoMouseClicked
         pantalla.append("1");
@@ -2631,7 +2650,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menosMouseClicked
 
     private void resultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultadoMouseClicked
-        segundoNumero = Float.parseFloat(pantalla.getText());
+        segundoNumero = 0;
+        try {
+            segundoNumero = Float.parseFloat(pantalla.getText());
+        } catch (Exception E) {
+
+        }
+
         switch (operador) {
             case "+":
                 pantalla.setText(noCero(primerNumero + segundoNumero));
@@ -2684,7 +2709,7 @@ public class Principal extends javax.swing.JFrame {
     String turnoTexto = "X";
 
     String siguienteJuego = "O";
-    JLabel lbs []= new JLabel[9];
+    JLabel lbs[] = new JLabel[9];
 
     public void XO() {
         pos1.setIcon(defecto);
@@ -2707,10 +2732,10 @@ public class Principal extends javax.swing.JFrame {
         lbs[7] = pos8;
         lbs[8] = pos9;
     }
-   Icon defecto =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"));
+    Icon defecto = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Default.png"));
 
     public void presionar(int casilla) {
-        if (((ImageIcon) lbs[casilla - 1].getIcon()).getImage().equals(((ImageIcon) defecto).getImage())&& estado == true) {
+        if (((ImageIcon) lbs[casilla - 1].getIcon()).getImage().equals(((ImageIcon) defecto).getImage()) && estado == true) {
             lbs[casilla - 1].setIcon(turno);
             cambiarTurno();
             comprobarGanador();
@@ -2730,8 +2755,8 @@ public class Principal extends javax.swing.JFrame {
     public void comprobarGanador() {
         for (int i = 0; i < VS.length; i++) {
             if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
-                && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
-                && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())) {
+                    && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())
+                    && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoX).getImage())) {
                 lbs[VS[i][0] - 1].setBackground(new Color(101, 247, 101));
                 lbs[VS[i][1] - 1].setBackground(new Color(101, 247, 101));
                 lbs[VS[i][2] - 1].setBackground(new Color(101, 247, 101));
@@ -2741,8 +2766,8 @@ public class Principal extends javax.swing.JFrame {
                 estado = false;
             }
             if (((ImageIcon) lbs[VS[i][0] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
-                && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
-                && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())) {
+                    && ((ImageIcon) lbs[VS[i][1] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())
+                    && ((ImageIcon) lbs[VS[i][2] - 1].getIcon()).getImage().equals(((ImageIcon) iconoO).getImage())) {
 
                 lbs[VS[i][0] - 1].setBackground(new Color(101, 247, 101));
                 lbs[VS[i][1] - 1].setBackground(new Color(101, 247, 101));
@@ -2755,11 +2780,11 @@ public class Principal extends javax.swing.JFrame {
 
         }
     }
-    Icon iconoO =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
-    Icon iconoX =  new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X.png"));
+    Icon iconoO = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
+    Icon iconoX = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X.png"));
 
     public void cambiarTurno() {
-        if (((ImageIcon) turno).getImage().equals(((ImageIcon) iconoX).getImage())){
+        if (((ImageIcon) turno).getImage().equals(((ImageIcon) iconoX).getImage())) {
             turno = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/O.png"));
             turnoTexto = "O";
         } else {
@@ -2810,13 +2835,13 @@ public class Principal extends javax.swing.JFrame {
             lbs[i].setIcon(defecto);
             lbs[i].setBackground(Color.WHITE);
         }
-        turno=siguienteTurno;
+        turno = siguienteTurno;
         turnoTexto = siguienteJuego;
-        if (siguienteTurno==iconoO) {
-            siguienteJuego="X";
-            siguienteTurno=iconoX;
+        if (siguienteTurno == iconoO) {
+            siguienteJuego = "X";
+            siguienteTurno = iconoX;
         } else {
-            siguienteTurno=iconoO;
+            siguienteTurno = iconoO;
             siguienteJuego = "O";
         }
         turnoMostrar.setText("Turno de: " + turnoTexto);
@@ -2904,6 +2929,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Plain1;
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JPopupMenu PopUpMenu;
+    private javax.swing.JButton TicTacToe;
     private javax.swing.JButton WitZig;
     private javax.swing.JDialog XO;
     private javax.swing.JMenuItem abrirArchivo;
@@ -2912,6 +2938,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton barraN1;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
+    private javax.swing.JButton calculadora;
     private javax.swing.JButton cero;
     private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;
@@ -2923,7 +2950,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton dos;
     private javax.swing.JPanel editarColoresPantalla;
     private javax.swing.JButton editorTexto1;
-    private javax.swing.JButton editorTexto2;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JTextArea ejemploFuente1;
     private javax.swing.JPanel eleccionExternos;
@@ -2935,7 +2961,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFileChooser exploradorPc;
     private javax.swing.JFileChooser exploradorPc2;
     private javax.swing.JButton explorarArchivos;
-    private javax.swing.JButton explorarArchivos1;
     private javax.swing.JPanel fondo;
     private javax.swing.JCheckBox fondoG;
     private javax.swing.JPanel fondoGen;
