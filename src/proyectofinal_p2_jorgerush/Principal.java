@@ -1510,7 +1510,7 @@ public class Principal extends javax.swing.JFrame {
         BarraTareas.setLayout(new java.awt.BorderLayout());
 
         contenedor.setOpaque(false);
-        contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 18, 0));
+        contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
 
         explorarArchivos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CA1.png"))); // NOI18N
         explorarArchivos1.setBorder(null);
