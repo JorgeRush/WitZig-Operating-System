@@ -121,8 +121,6 @@ public class Principal extends javax.swing.JFrame {
         Personalizar.setFont(fuente);
     }
 
-   
-
     public void cambiarFondo(int i) {
 
         if (i == 1) {
@@ -147,7 +145,15 @@ public class Principal extends javax.swing.JFrame {
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        }
+        }else if (i==5){
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
+            fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
+//            Color fondoTransparente = new Color(30, 30, 30, 180);
+//            BarraTareas.setBackground(fondoTransparente);
+        
+    }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -196,6 +202,7 @@ public class Principal extends javax.swing.JFrame {
         rancho = new javax.swing.JButton();
         elegirFondom = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        wDefecto = new javax.swing.JButton();
         Pantalla = new javax.swing.JButton();
         fondo = new javax.swing.JPanel();
         tituloConfiguracion1 = new javax.swing.JLabel();
@@ -512,6 +519,7 @@ public class Principal extends javax.swing.JFrame {
                 lagoMouseClicked(evt);
             }
         });
+        lago.addActionListener(this::lagoActionPerformed);
         ColorSolido1.add(lago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 87, 83));
 
         nevada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT1.png"))); // NOI18N
@@ -544,12 +552,21 @@ public class Principal extends javax.swing.JFrame {
                 elegirFondomMouseClicked(evt);
             }
         });
-        ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+        elegirFondom.addActionListener(this::elegirFondomActionPerformed);
+        ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
         jLabel10.setText("Seleccione un Fondo de Pantalla Predeterminado:");
-        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
-        Imagen.add(ColorSolido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 520, 150));
+        wDefecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT.png"))); // NOI18N
+        wDefecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                wDefectoMouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(wDefecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 87, 83));
+
+        Imagen.add(ColorSolido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 540, 200));
 
         javax.swing.GroupLayout eleccionPantallaLayout = new javax.swing.GroupLayout(eleccionPantalla);
         eleccionPantalla.setLayout(eleccionPantallaLayout);
@@ -560,12 +577,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(16, 16, 16)
                 .addComponent(seleccionFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(eleccionPantallaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(Imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(eleccionPantallaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -582,9 +596,8 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eleccionPantallaLayout.createSequentialGroup()
-                    .addContainerGap(36, Short.MAX_VALUE)
-                    .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(28, Short.MAX_VALUE)))
+                    .addGap(0, 34, Short.MAX_VALUE)
+                    .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(eleccionPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(eleccionPantallaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1885,54 +1898,61 @@ public class Principal extends javax.swing.JFrame {
             Imagen.setVisible(true);
         }
     }//GEN-LAST:event_seleccionFondoActionPerformed
-    int nevadaElegido = 0;
-    int tardeElegido = 0;
-    int rachoElegido = 0;
-    int lagoElegido = 0;
+    boolean nevadaElegido = false;
+    boolean tardeElegido = false;
+    boolean rachoElegido = false;
+    boolean lagoElegido = false;
+    boolean porDefecto = false;
     private void lagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lagoMouseClicked
-        nevadaElegido = 0;
-        tardeElegido = 0;
-        rachoElegido = 0;
-        lagoElegido = 4;
+        nevadaElegido = false;
+        tardeElegido = false;
+        rachoElegido = false;
+        lagoElegido = true;
+        porDefecto = false;
     }//GEN-LAST:event_lagoMouseClicked
 
     private void nevadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nevadaMouseClicked
-        nevadaElegido = 1;
-        tardeElegido = 0;
-        rachoElegido = 0;
-        lagoElegido = 0;
+        nevadaElegido = true;
+        tardeElegido = false;
+        rachoElegido = false;
+        lagoElegido = false;
+        porDefecto = false;
     }//GEN-LAST:event_nevadaMouseClicked
 
     private void tardeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tardeMouseClicked
-        nevadaElegido = 0;
-        tardeElegido = 2;
-        rachoElegido = 0;
-        lagoElegido = 0;
+        nevadaElegido = false;
+        tardeElegido = true;
+        rachoElegido = false;
+        lagoElegido = false;
+        porDefecto = false;
     }//GEN-LAST:event_tardeMouseClicked
 
     private void ranchoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ranchoMouseClicked
-        nevadaElegido = 0;
-        tardeElegido = 0;
-        rachoElegido = 3;
-        lagoElegido = 0;
+        nevadaElegido = false;
+        tardeElegido = false;
+        rachoElegido = true;
+        lagoElegido = false;
+        porDefecto = false;
     }//GEN-LAST:event_ranchoMouseClicked
 
     private void elegirFondomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elegirFondomMouseClicked
 
         ocultarFondo(true);
-        if (nevadaElegido != 0) {
+        if (nevadaElegido == true) {
 
             cambiarFondo(1);
-        } else if (tardeElegido != 0) {
+        } else if (tardeElegido == true) {
 
             cambiarFondo(2);
-        } else if (rachoElegido != 0) {
+        } else if (rachoElegido ==true) {
 
             cambiarFondo(3);
-        } else if (lagoElegido != 0) {
+        } else if (lagoElegido ==true) {
 
             cambiarFondo(4);
-        } else {
+        } else if(porDefecto==true){
+            cambiarFondo(5);
+        }else {
             JOptionPane.showMessageDialog(this, "Debe darle click a un fondo, posterior a eso confirmar su seleccion.");
 
         }
@@ -2870,6 +2890,22 @@ public class Principal extends javax.swing.JFrame {
         turnoMostrar.setText("Turno de: " + turnoTexto);
         estado = true;
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void elegirFondomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elegirFondomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_elegirFondomActionPerformed
+
+    private void wDefectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wDefectoMouseClicked
+        nevadaElegido = false;
+        tardeElegido = false;
+        rachoElegido = false;
+        lagoElegido = false;
+        porDefecto = true;
+    }//GEN-LAST:event_wDefectoMouseClicked
+
+    private void lagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lagoActionPerformed
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3075,6 +3111,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel turnoMostrar;
     private javax.swing.JLabel ubicacionCarpeta;
     private javax.swing.JButton uno;
+    private javax.swing.JButton wDefecto;
     private javax.swing.JLabel willyCelebra;
     // End of variables declaration//GEN-END:variables
 }
