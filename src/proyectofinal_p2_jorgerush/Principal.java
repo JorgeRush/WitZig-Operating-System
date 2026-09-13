@@ -60,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
         tablaArchivos.setVisible(false);
-        crearCarpeta.setVisible(false);
+
         exploradorPc2.setVisible(false);
         exploradorArchivos.setVisible(false);
         panelColoresElementos.setVisible(false);
@@ -70,8 +70,9 @@ public class Principal extends javax.swing.JFrame {
         eleccionPantalla.setVisible(false);
         eleccionExternos.setVisible(false);
         Imagen.setVisible(false);
-        Color fondoTransparenteMac = new Color(255, 255, 255, 200);
-        BarraTareas.setBackground(fondoTransparenteMac);
+
+        Color fondoTransparente = new Color(255, 255, 255, 200);
+        BarraTareas.setBackground(fondoTransparente);
 
         String[] nombresFuentes = GraphicsEnvironment
                 .getLocalGraphicsEnvironment()
@@ -145,15 +146,15 @@ public class Principal extends javax.swing.JFrame {
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        }else if (i==5){
+        } else if (i == 5) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
 //            Color fondoTransparente = new Color(30, 30, 30, 180);
 //            BarraTareas.setBackground(fondoTransparente);
-        
-    }
+
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -239,14 +240,6 @@ public class Principal extends javax.swing.JFrame {
         PopUp = new javax.swing.JPopupMenu();
         personalizarEditor2 = new javax.swing.JMenuItem();
         exploradorArchivos = new javax.swing.JDialog();
-        crearCarpeta = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        nombreCarpeta = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        ubicacionCarpeta = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
         tablaCarpetas = new javax.swing.JScrollPane();
         tablaExplorador = new javax.swing.JTable();
         barraSuperior = new javax.swing.JPanel();
@@ -254,6 +247,7 @@ public class Principal extends javax.swing.JFrame {
         AñadirBoton = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
         BorrarBotonArchivos = new javax.swing.JButton();
+        ruta = new javax.swing.JTextField();
         exploradorPc2 = new javax.swing.JFileChooser();
         tablaArchivos = new javax.swing.JScrollPane();
         tablaArchivosTxt = new javax.swing.JTable();
@@ -304,6 +298,14 @@ public class Principal extends javax.swing.JFrame {
         puntajeX = new javax.swing.JLabel();
         willyCelebra = new javax.swing.JLabel();
         BarraProgreso = new javax.swing.JDialog();
+        CrearCarpeta = new javax.swing.JDialog();
+        crearCarpeta = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        nombreCarpeta = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        ubicacionCarpeta = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -910,96 +912,15 @@ public class Principal extends javax.swing.JFrame {
         });
         exploradorArchivos.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        crearCarpeta.setBackground(new java.awt.Color(229, 228, 228));
-
-        jButton6.setText("Crear");
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
-            }
-        });
-        jButton6.addActionListener(this::jButton6ActionPerformed);
-
-        jLabel2.setText("Ingrese el nombre de la Carpeta:");
-
-        ubicacionCarpeta.setText("Seleccione la ruta de la Carpeta:");
-
-        jButton7.setText("Seleccionar...");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
-        jLabel3.setText("Crear Carpeta");
-
-        jButton8.setBackground(new java.awt.Color(255, 153, 153));
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("X");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout crearCarpetaLayout = new javax.swing.GroupLayout(crearCarpeta);
-        crearCarpeta.setLayout(crearCarpetaLayout);
-        crearCarpetaLayout.setHorizontalGroup(
-            crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(crearCarpetaLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ubicacionCarpeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nombreCarpeta)
-                    .addComponent(jButton7))
-                .addContainerGap(130, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearCarpetaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(148, 148, 148))
-            .addGroup(crearCarpetaLayout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        crearCarpetaLayout.setVerticalGroup(
-            crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(crearCarpetaLayout.createSequentialGroup()
-                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(crearCarpetaLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel3))
-                    .addComponent(jButton8))
-                .addGap(18, 18, 18)
-                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ubicacionCarpeta)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(20, 20, 20))
-        );
-
-        exploradorArchivos.getContentPane().add(crearCarpeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 437, -1));
-
         tablaExplorador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tablaExplorador.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1011,6 +932,7 @@ public class Principal extends javax.swing.JFrame {
 
         exploradorArchivos.getContentPane().add(tablaCarpetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
 
+        barraSuperior.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BorrarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
@@ -1053,18 +975,25 @@ public class Principal extends javax.swing.JFrame {
         BorrarBotonArchivos.addActionListener(this::BorrarBotonArchivosActionPerformed);
         barraSuperior.add(BorrarBotonArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 40, 40));
 
+        ruta.setEditable(false);
+        ruta.setText(" ");
+        ruta.addActionListener(this::rutaActionPerformed);
+        barraSuperior.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 540, 20));
+
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 650, 37));
-        exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        exploradorPc2.addActionListener(this::exploradorPc2ActionPerformed);
+        exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 490, 280));
 
         tablaArchivosTxt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tablaArchivosTxt.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -1518,6 +1447,81 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 397, Short.MAX_VALUE)
         );
 
+        CrearCarpeta.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                CrearCarpetaWindowClosed(evt);
+            }
+        });
+        CrearCarpeta.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        crearCarpeta.setBackground(new java.awt.Color(229, 228, 228));
+
+        jButton6.setText("Crear");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jButton6.addActionListener(this::jButton6ActionPerformed);
+
+        jLabel2.setText("Ingrese el nombre de la Carpeta:");
+
+        ubicacionCarpeta.setText("Seleccione la ruta de la Carpeta:");
+
+        jButton7.setText("Seleccionar...");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        jLabel3.setText("Crear Carpeta");
+
+        javax.swing.GroupLayout crearCarpetaLayout = new javax.swing.GroupLayout(crearCarpeta);
+        crearCarpeta.setLayout(crearCarpetaLayout);
+        crearCarpetaLayout.setHorizontalGroup(
+            crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCarpetaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ubicacionCarpeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nombreCarpeta)
+                    .addComponent(jButton7))
+                .addContainerGap(130, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearCarpetaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(148, 148, 148))
+            .addGroup(crearCarpetaLayout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        crearCarpetaLayout.setVerticalGroup(
+            crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCarpetaLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ubicacionCarpeta)
+                    .addComponent(jButton7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(20, 20, 20))
+        );
+
+        CrearCarpeta.getContentPane().add(crearCarpeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1944,15 +1948,15 @@ public class Principal extends javax.swing.JFrame {
         } else if (tardeElegido == true) {
 
             cambiarFondo(2);
-        } else if (rachoElegido ==true) {
+        } else if (rachoElegido == true) {
 
             cambiarFondo(3);
-        } else if (lagoElegido ==true) {
+        } else if (lagoElegido == true) {
 
             cambiarFondo(4);
-        } else if(porDefecto==true){
+        } else if (porDefecto == true) {
             cambiarFondo(5);
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "Debe darle click a un fondo, posterior a eso confirmar su seleccion.");
 
         }
@@ -2231,8 +2235,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AñadirBotonActionPerformed
 
     private void AñadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBotonMouseClicked
-        tablaExplorador.setVisible(false);
-        crearCarpeta.setVisible(true);
+//        tablaExplorador.setVisible(false);
+
+        CrearCarpeta.setLocationRelativeTo(null);
+        CrearCarpeta.setVisible(true);
+        CrearCarpeta.pack();
     }//GEN-LAST:event_AñadirBotonMouseClicked
 
     private void exploradorArchivosWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowActivated
@@ -2243,6 +2250,15 @@ public class Principal extends javax.swing.JFrame {
 
         Timer timer = new Timer(1000, e -> {
             filaSeleccion = tablaExplorador.getSelectedRow();
+            if (filaSeleccion != -1 && tablaArchivos.isVisible()==false) {
+                String archivoC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).getNombre().equals(archivoC)) {
+                        ruta.setText(listaCarpetas.get(i).ruta);
+                    }
+                }
+            }
+
             if (filaSeleccion == -1) {
                 DefaultTableModel modeloTabla = new DefaultTableModel() {
                     @Override
@@ -2313,11 +2329,11 @@ public class Principal extends javax.swing.JFrame {
         String diaCa = formatoDiaC.format(fechaCa);
         carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
         listaCarpetas.add(carpetaNueva);
-        crearCarpeta.setVisible(false);
-        tablaExplorador.setVisible(true);
+
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta.setText(null);
         tablaExplorador.clearSelection();
+        CrearCarpeta.dispose();
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
@@ -2333,12 +2349,6 @@ public class Principal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        crearCarpeta.setVisible(false);
-        tablaExplorador.setVisible(true);
-        tablaExplorador.clearSelection();
-    }//GEN-LAST:event_jButton8MouseClicked
     int columnaSeleccion = 0;
     int filaSeleccion = 0;
     private void BorrarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarBotonMouseClicked
@@ -2454,21 +2464,35 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (verificarListado(carpetaElegidaC) == true) {
-            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
-            tablaCarpetas.setVisible(true);
-            tablaArchivos.setVisible(false);
-            regresar.setVisible(false);
+
+//            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
+//            tablaCarpetas.setVisible(true);
+//            tablaArchivos.setVisible(false);
+//            regresar.setVisible(false);
         } else {
             Timer timer = new Timer(1000, e -> {
 
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
-                if (filaSeleccion2 == -1) {
-                    String carpetaElegida = "";
-                    try {
-                        carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-                    } catch (Exception E) {
+                String carpetaElegida = "";
+                try {
+                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                } catch (Exception E) {
 
+                }
+                if (filaSeleccion2 != -1&&tablaCarpetas.isVisible()==false) {
+                     String fSN=(String)tablaArchivosTxt.getValueAt(filaSeleccion2,0);
+                     for (int i = 0; i < listaCarpetas.size(); i++) {
+                        if(listaCarpetas.get(i).getNombre().equals(carpetaElegida)){
+                            ArrayList<archivosTxt> archivosC=listaCarpetas.get(i).regresarArchivos();
+                            for (int j = 0; j < archivosC.size(); j++) {
+                                if(archivosC.get(j).getNombreA().equals(fSN)){
+                                    ruta.setText(archivosC.get(j).rutA);
+                                }
+                            }
+                        }
                     }
+                }
+                if (filaSeleccion2 == -1) {
 
                     DefaultTableModel modeloTablaA = new DefaultTableModel() {
                         @Override
@@ -2906,6 +2930,18 @@ public class Principal extends javax.swing.JFrame {
     private void lagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lagoActionPerformed
+
+    private void CrearCarpetaWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_CrearCarpetaWindowClosed
+        tablaExplorador.clearSelection();
+    }//GEN-LAST:event_CrearCarpetaWindowClosed
+
+    private void rutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rutaActionPerformed
+
+    private void exploradorPc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploradorPc2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exploradorPc2ActionPerformed
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -2970,6 +3006,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog Calculadora;
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
+    private javax.swing.JDialog CrearCarpeta;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem EliminarArchivos;
     private javax.swing.JMenu FechaHora;
@@ -3035,7 +3072,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3087,6 +3123,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton rancho;
     private javax.swing.JButton regresar;
     private javax.swing.JButton resultado;
+    private javax.swing.JTextField ruta;
     private javax.swing.JButton seis;
     private javax.swing.JButton seleccionColor3;
     private javax.swing.JComboBox<String> seleccionFondo;
