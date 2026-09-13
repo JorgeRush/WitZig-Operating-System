@@ -16,6 +16,7 @@ import javax.swing.SpinnerListModel;
 import javax.swing.UIManager;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
@@ -120,10 +121,14 @@ public class Principal extends javax.swing.JFrame {
         Personalizar.setFont(fuente);
     }
 
+   
+
     public void cambiarFondo(int i) {
 
         if (i == 1) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F1.png"));
+            Image imagen = ((ImageIcon) icono).getImage();
+
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
@@ -291,6 +296,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         puntajeX = new javax.swing.JLabel();
         willyCelebra = new javax.swing.JLabel();
+        BarraProgreso = new javax.swing.JDialog();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -1488,6 +1494,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout BarraProgresoLayout = new javax.swing.GroupLayout(BarraProgreso.getContentPane());
+        BarraProgreso.getContentPane().setLayout(BarraProgresoLayout);
+        BarraProgresoLayout.setHorizontalGroup(
+            BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 655, Short.MAX_VALUE)
+        );
+        BarraProgresoLayout.setVerticalGroup(
+            BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 397, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1510,7 +1527,9 @@ public class Principal extends javax.swing.JFrame {
         FondoPantallaOg.setLayout(new java.awt.GridBagLayout());
 
         BarraTareas.setBackground(new java.awt.Color(225, 225, 225));
-        BarraTareas.setPreferredSize(new java.awt.Dimension(4, 46));
+        BarraTareas.setMaximumSize(new java.awt.Dimension(4, 60));
+        BarraTareas.setMinimumSize(new java.awt.Dimension(4, 60));
+        BarraTareas.setPreferredSize(new java.awt.Dimension(4, 60));
         BarraTareas.setLayout(new java.awt.GridBagLayout());
 
         contenedor.setOpaque(false);
@@ -1582,19 +1601,24 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_END;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 300, 0, 300);
+        gridBagConstraints.insets = new java.awt.Insets(0, 300, 10, 300);
         FondoPantallaOg.add(BarraTareas, gridBagConstraints);
 
         FondoPantalla.setBackground(new java.awt.Color(204, 204, 204));
         FondoPantalla.setLayout(new java.awt.GridBagLayout());
 
         fondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/F1.png"))); // NOI18N
+        fondoImagen.setMaximumSize(null);
+        fondoImagen.setMinimumSize(null);
+        fondoImagen.setPreferredSize(null);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 1);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         FondoPantalla.add(fondoImagen, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2310,7 +2334,7 @@ public class Principal extends javax.swing.JFrame {
         int y = evt.getY();
         if (boton == 3) {
             OpcionesCarpetas.show(tablaExplorador, x, y);
-        } else if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1 && evt.getClickCount() == 2){
+        } else if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1 && evt.getClickCount() == 2) {
             tablaCarpetas.setVisible(false);
             tablaArchivos.setVisible(true);
             BorrarBoton.setVisible(false);
@@ -2403,13 +2427,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
         String carpetaElegidaC = "";
-        try{
+        try {
             carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-        }catch (Exception E){
-            
+        } catch (Exception E) {
+
         }
-        
-        if (verificarListado(carpetaElegidaC) == true ) {
+
+        if (verificarListado(carpetaElegidaC) == true) {
             JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
             tablaCarpetas.setVisible(true);
             tablaArchivos.setVisible(false);
@@ -2505,7 +2529,6 @@ public class Principal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
                 }
-                
 
             }
         }
@@ -2900,6 +2923,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton AñadirBoton;
     private javax.swing.JCheckBox BarraN2;
     private javax.swing.JMenuBar BarraNavegacion;
+    private javax.swing.JDialog BarraProgreso;
     private javax.swing.JPanel BarraTareas;
     private javax.swing.JButton Bold;
     private javax.swing.JButton Bold1;
