@@ -212,7 +212,6 @@ public class Principal extends javax.swing.JFrame {
         archivo = new javax.swing.JMenu();
         guardarArchivo = new javax.swing.JMenuItem();
         abrirArchivo = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         personalizarEditor = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         PopUp = new javax.swing.JPopupMenu();
@@ -242,12 +241,35 @@ public class Principal extends javax.swing.JFrame {
         OpcionesArchivos = new javax.swing.JPopupMenu();
         EliminarArchivos = new javax.swing.JMenuItem();
         AbrirArchivos = new javax.swing.JMenuItem();
+        Calculadora = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        pantalla = new javax.swing.JTextArea();
+        resultado = new javax.swing.JButton();
+        siete = new javax.swing.JButton();
+        ocho = new javax.swing.JButton();
+        nueve = new javax.swing.JButton();
+        cero = new javax.swing.JButton();
+        menos = new javax.swing.JButton();
+        cuatro = new javax.swing.JButton();
+        cinco = new javax.swing.JButton();
+        seis = new javax.swing.JButton();
+        dos = new javax.swing.JButton();
+        punto = new javax.swing.JButton();
+        uno = new javax.swing.JButton();
+        tres = new javax.swing.JButton();
+        limpiar = new javax.swing.JButton();
+        dividir = new javax.swing.JButton();
+        multiplicar1 = new javax.swing.JButton();
+        mas = new javax.swing.JButton();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
+        explorarArchivos1 = new javax.swing.JButton();
         explorarArchivos = new javax.swing.JButton();
         WitZig = new javax.swing.JButton();
         editorTexto1 = new javax.swing.JButton();
+        editorTexto2 = new javax.swing.JButton();
         FondoPantalla = new javax.swing.JPanel();
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
@@ -758,6 +780,7 @@ public class Principal extends javax.swing.JFrame {
         archivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"))); // NOI18N
         archivo.setText("Archivo");
 
+        guardarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed3.png"))); // NOI18N
         guardarArchivo.setText("Guardar");
         guardarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -767,12 +790,10 @@ public class Principal extends javax.swing.JFrame {
         guardarArchivo.addActionListener(this::guardarArchivoActionPerformed);
         archivo.add(guardarArchivo);
 
+        abrirArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed4.png"))); // NOI18N
         abrirArchivo.setText("Abrir");
         abrirArchivo.addActionListener(this::abrirArchivoActionPerformed);
         archivo.add(abrirArchivo);
-
-        jMenuItem1.setText("Importar Archivo");
-        archivo.add(jMenuItem1);
 
         opcionesEditor.add(archivo);
 
@@ -942,7 +963,6 @@ public class Principal extends javax.swing.JFrame {
 
         exploradorArchivos.getContentPane().add(tablaCarpetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
 
-        barraSuperior.setBackground(new java.awt.Color(255, 255, 255));
         barraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BorrarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B1.png"))); // NOI18N
@@ -985,7 +1005,7 @@ public class Principal extends javax.swing.JFrame {
         BorrarBotonArchivos.addActionListener(this::BorrarBotonArchivosActionPerformed);
         barraSuperior.add(BorrarBotonArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 40));
 
-        exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 660, 37));
+        exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 650, 37));
         exploradorArchivos.getContentPane().add(exploradorPc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         tablaArchivosTxt.setModel(new javax.swing.table.DefaultTableModel(
@@ -1017,21 +1037,221 @@ public class Principal extends javax.swing.JFrame {
 
         exploradorArchivos.getContentPane().add(tablaArchivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 650, 314));
 
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B2.png"))); // NOI18N
         Eliminar.setText("Eliminar");
         Eliminar.addActionListener(this::EliminarActionPerformed);
         OpcionesCarpetas.add(Eliminar);
 
+        Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C3.png"))); // NOI18N
         Abrir.setText("Abrir");
         Abrir.addActionListener(this::AbrirActionPerformed);
         OpcionesCarpetas.add(Abrir);
 
+        EliminarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B2.png"))); // NOI18N
         EliminarArchivos.setText("Eliminar Archivo");
         EliminarArchivos.addActionListener(this::EliminarArchivosActionPerformed);
         OpcionesArchivos.add(EliminarArchivos);
 
+        AbrirArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/A1.png"))); // NOI18N
         AbrirArchivos.setText("Abrir archivo");
         AbrirArchivos.addActionListener(this::AbrirArchivosActionPerformed);
         OpcionesArchivos.add(AbrirArchivos);
+
+        jPanel1.setBackground(new java.awt.Color(235, 235, 235));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pantalla.setEditable(false);
+        pantalla.setColumns(20);
+        pantalla.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pantalla.setRows(5);
+        pantalla.setCaretColor(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setViewportView(pantalla);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 100));
+
+        resultado.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        resultado.setForeground(new java.awt.Color(57, 57, 57));
+        resultado.setText("=");
+        resultado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resultadoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 80, 150));
+
+        siete.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        siete.setForeground(new java.awt.Color(57, 57, 57));
+        siete.setText("7");
+        siete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sieteMouseClicked(evt);
+            }
+        });
+        jPanel1.add(siete, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 70, 60));
+
+        ocho.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        ocho.setForeground(new java.awt.Color(57, 57, 57));
+        ocho.setText("8");
+        ocho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ochoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(ocho, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 70, 60));
+
+        nueve.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        nueve.setForeground(new java.awt.Color(57, 57, 57));
+        nueve.setText("9");
+        nueve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nueveMouseClicked(evt);
+            }
+        });
+        jPanel1.add(nueve, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 70, 60));
+
+        cero.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        cero.setForeground(new java.awt.Color(57, 57, 57));
+        cero.setText("0");
+        cero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ceroMouseClicked(evt);
+            }
+        });
+        cero.addActionListener(this::ceroActionPerformed);
+        jPanel1.add(cero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 60));
+
+        menos.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        menos.setForeground(new java.awt.Color(57, 57, 57));
+        menos.setText("-");
+        menos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(menos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 80, 50));
+
+        cuatro.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        cuatro.setForeground(new java.awt.Color(57, 57, 57));
+        cuatro.setText("4");
+        cuatro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cuatroMouseClicked(evt);
+            }
+        });
+        jPanel1.add(cuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 70, 60));
+
+        cinco.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        cinco.setForeground(new java.awt.Color(57, 57, 57));
+        cinco.setText("5");
+        cinco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cincoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(cinco, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 70, 60));
+
+        seis.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        seis.setForeground(new java.awt.Color(57, 57, 57));
+        seis.setText("6");
+        seis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seisMouseClicked(evt);
+            }
+        });
+        jPanel1.add(seis, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 70, 60));
+
+        dos.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        dos.setForeground(new java.awt.Color(57, 57, 57));
+        dos.setText("2");
+        dos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(dos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 70, 60));
+
+        punto.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        punto.setForeground(new java.awt.Color(57, 57, 57));
+        punto.setText(".");
+        punto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                puntoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(punto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 70, 60));
+
+        uno.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        uno.setForeground(new java.awt.Color(57, 57, 57));
+        uno.setText("1");
+        uno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                unoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 70, 60));
+
+        tres.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        tres.setForeground(new java.awt.Color(57, 57, 57));
+        tres.setText("3");
+        tres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tresMouseClicked(evt);
+            }
+        });
+        jPanel1.add(tres, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 70, 60));
+
+        limpiar.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        limpiar.setForeground(new java.awt.Color(57, 57, 57));
+        limpiar.setText("C");
+        limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limpiarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 70, 50));
+
+        dividir.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        dividir.setForeground(new java.awt.Color(57, 57, 57));
+        dividir.setText("÷");
+        dividir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dividirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(dividir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 70, 50));
+
+        multiplicar1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        multiplicar1.setForeground(new java.awt.Color(57, 57, 57));
+        multiplicar1.setText("x");
+        multiplicar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                multiplicar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(multiplicar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 70, 50));
+
+        mas.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        mas.setForeground(new java.awt.Color(57, 57, 57));
+        mas.setText("+");
+        mas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                masMouseClicked(evt);
+            }
+        });
+        jPanel1.add(mas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 80, 50));
+
+        javax.swing.GroupLayout CalculadoraLayout = new javax.swing.GroupLayout(Calculadora.getContentPane());
+        Calculadora.getContentPane().setLayout(CalculadoraLayout);
+        CalculadoraLayout.setHorizontalGroup(
+            CalculadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        CalculadoraLayout.setVerticalGroup(
+            CalculadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CalculadoraLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1058,7 +1278,19 @@ public class Principal extends javax.swing.JFrame {
         BarraTareas.setLayout(new java.awt.BorderLayout());
 
         contenedor.setOpaque(false);
-        contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
+        contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 18, 0));
+
+        explorarArchivos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CA1.png"))); // NOI18N
+        explorarArchivos1.setBorder(null);
+        explorarArchivos1.setContentAreaFilled(false);
+        explorarArchivos1.setFocusPainted(false);
+        explorarArchivos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                explorarArchivos1MouseClicked(evt);
+            }
+        });
+        explorarArchivos1.addActionListener(this::explorarArchivos1ActionPerformed);
+        contenedor.add(explorarArchivos1);
 
         explorarArchivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/E.png"))); // NOI18N
         explorarArchivos.setBorder(null);
@@ -1091,6 +1323,18 @@ public class Principal extends javax.swing.JFrame {
         });
         editorTexto1.addActionListener(this::editorTexto1ActionPerformed);
         contenedor.add(editorTexto1);
+
+        editorTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/X1.png"))); // NOI18N
+        editorTexto2.setBorder(null);
+        editorTexto2.setContentAreaFilled(false);
+        editorTexto2.setFocusPainted(false);
+        editorTexto2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editorTexto2MouseClicked(evt);
+            }
+        });
+        editorTexto2.addActionListener(this::editorTexto2ActionPerformed);
+        contenedor.add(editorTexto2);
 
         BarraTareas.add(contenedor, java.awt.BorderLayout.CENTER);
 
@@ -1611,6 +1855,7 @@ public class Principal extends javax.swing.JFrame {
                 guardar.close();
 
                 javax.swing.JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
+                ejemploFuente1.setText(null);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
             }
@@ -1628,11 +1873,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        Color colorEleccion = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
-        if (fondoG.isSelected()==false||fondoOp.isSelected()==false||BarraN2.isSelected()){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar una de las casillas");
+
+        if (fondoG.isSelected() == false || fondoOp.isSelected() == false || BarraN2.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una de las casillas");
             return;
         }
+        Color colorEleccion = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
         if (fondoG.isSelected()) {
             fondoGen.setBackground(colorEleccion);
         }
@@ -1643,7 +1889,7 @@ public class Principal extends javax.swing.JFrame {
         if (BarraN2.isSelected()) {
             opcionesEditor.setBackground(colorEleccion);
         }
-        
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1691,7 +1937,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_abrirArchivoActionPerformed
 
     private void crearTextoWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_crearTextoWindowOpened
-        
+
     }//GEN-LAST:event_crearTextoWindowOpened
 
     private void BorrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarBotonActionPerformed
@@ -1923,13 +2169,13 @@ public class Principal extends javax.swing.JFrame {
 
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
                 if (filaSeleccion2 == -1) {
-                    String carpetaElegida="";
-                    try{
+                    String carpetaElegida = "";
+                    try {
                         carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-                    }catch(Exception E){
-                        
+                    } catch (Exception E) {
+
                     }
-                   
+
                     DefaultTableModel modeloTablaA = new DefaultTableModel() {
                         @Override
                         public boolean isCellEditable(int row, int column) {
@@ -2030,22 +2276,22 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos carpetaEleg = listaCarpetas.get(t);
                     ArrayList<archivosTxt> archivos = carpetaEleg.regresarArchivos();
                     for (int j = 0; j < archivos.size(); j++) {
-                         if(archivos.get(j).getNombreA().equals(archivoSelec.getNombreA())){
-                             carpetaEleg.eliminarArchivo(j);
-                         }
+                        if (archivos.get(j).getNombreA().equals(archivoSelec.getNombreA())) {
+                            carpetaEleg.eliminarArchivo(j);
+                        }
                     }
                 }
                 sentencia = i;
                 File archivo = archivoSelec.getArchivo();
                 try {
                     archivo.delete();
-                    JOptionPane.showMessageDialog(null, "Archivo exitosamente eliminado");
 
                 } catch (Exception e) {
 
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "Archivo exitosamente eliminado");
 
         listaArchivos.remove(listaArchivos.get(sentencia));
         tablaArchivosTxt.clearSelection();
@@ -2065,12 +2311,148 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BorrarBotonArchivosActionPerformed
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-       panelColoresElementos.setVisible(false);
+        panelColoresElementos.setVisible(false);
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void explorarArchivos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_explorarArchivos1MouseClicked
+        Calculadora.pack();
+        Calculadora.setLocationRelativeTo(this);
+        Calculadora.setVisible(true);
+    }//GEN-LAST:event_explorarArchivos1MouseClicked
+
+    private void explorarArchivos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explorarArchivos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_explorarArchivos1ActionPerformed
+
+    private void editorTexto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editorTexto2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editorTexto2MouseClicked
+
+    private void editorTexto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorTexto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editorTexto2ActionPerformed
+
+    private void unoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unoMouseClicked
+        pantalla.append("1");
+    }//GEN-LAST:event_unoMouseClicked
+
+    private void dosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dosMouseClicked
+        pantalla.append("2");
+    }//GEN-LAST:event_dosMouseClicked
+
+    private void tresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tresMouseClicked
+        pantalla.append("3");
+    }//GEN-LAST:event_tresMouseClicked
+
+    private void cuatroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuatroMouseClicked
+        pantalla.append("4");
+    }//GEN-LAST:event_cuatroMouseClicked
+
+    private void cincoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cincoMouseClicked
+        pantalla.append("5");
+    }//GEN-LAST:event_cincoMouseClicked
+
+    private void seisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seisMouseClicked
+        pantalla.append("6");
+    }//GEN-LAST:event_seisMouseClicked
+
+    private void sieteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sieteMouseClicked
+        pantalla.append("7");
+    }//GEN-LAST:event_sieteMouseClicked
+
+    private void ochoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ochoMouseClicked
+        pantalla.append("8");
+    }//GEN-LAST:event_ochoMouseClicked
+
+    private void nueveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nueveMouseClicked
+        pantalla.append("9");
+    }//GEN-LAST:event_nueveMouseClicked
+
+    private void ceroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ceroMouseClicked
+        pantalla.append("0");
+    }//GEN-LAST:event_ceroMouseClicked
+
+    private void limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarMouseClicked
+        pantalla.setText(null);
+    }//GEN-LAST:event_limpiarMouseClicked
+
+    private void dividirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dividirMouseClicked
+        primerNumero = Float.parseFloat(pantalla.getText());
+        operador = "÷";
+        pantalla.setText("");
+
+    }//GEN-LAST:event_dividirMouseClicked
+    float primerNumero;
+    float segundoNumero;
+    String operador;
+    private void menosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menosMouseClicked
+        primerNumero = Float.parseFloat(pantalla.getText());
+        operador = "-";
+        pantalla.setText("");
+    }//GEN-LAST:event_menosMouseClicked
+
+    private void resultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultadoMouseClicked
+        segundoNumero = Float.parseFloat(pantalla.getText());
+        switch (operador) {
+            case "+":
+                pantalla.setText(noCero(primerNumero + segundoNumero));
+
+                break;
+            case "-":
+                pantalla.setText(noCero(primerNumero - segundoNumero));
+                break;
+            case "x":
+                pantalla.setText(noCero(primerNumero * segundoNumero));
+                break;
+            case "÷":
+                if(segundoNumero==0){
+                    pantalla.setText("Syntax Error");
+                }else{
+                    pantalla.setText(noCero(primerNumero / segundoNumero));
+                }
+                
+                break;
+            default:
+
+        }
+
+    }//GEN-LAST:event_resultadoMouseClicked
+
+    private void multiplicar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_multiplicar1MouseClicked
+        primerNumero = Float.parseFloat(pantalla.getText());
+        operador = "x";
+        pantalla.setText("");
+    }//GEN-LAST:event_multiplicar1MouseClicked
+
+    private void masMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masMouseClicked
+        primerNumero = Float.parseFloat(pantalla.getText());
+        operador = "+";
+        pantalla.setText("");
+    }//GEN-LAST:event_masMouseClicked
+
+    private void ceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroActionPerformed
+
+    }//GEN-LAST:event_ceroActionPerformed
+
+    private void puntoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puntoMouseClicked
+        if (!pantalla.getText().contains(".")) {
+            pantalla.append(".");
+        }
+    }//GEN-LAST:event_puntoMouseClicked
+    public String noCero(float resultado) {
+        String retorno="";
+        
+        retorno=Float.toString(resultado);
+        if (resultado%1==0){
+            retorno=retorno.substring(0, retorno.length()-2);
+        }
+
+        return retorno;
+    }
 
     public void colorFondoP(Color color) {
         FondoPantalla.setBackground(color);
@@ -2121,6 +2503,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton BoldItalic1;
     private javax.swing.JButton BorrarBoton;
     private javax.swing.JButton BorrarBotonArchivos;
+    private javax.swing.JDialog Calculadora;
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
     private javax.swing.JMenuItem Eliminar;
@@ -2149,12 +2532,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton barraN1;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
+    private javax.swing.JButton cero;
+    private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel contenedor;
     private javax.swing.JPanel crearCarpeta;
     private javax.swing.JDialog crearTexto;
+    private javax.swing.JButton cuatro;
+    private javax.swing.JButton dividir;
+    private javax.swing.JButton dos;
     private javax.swing.JPanel editarColoresPantalla;
     private javax.swing.JButton editorTexto1;
+    private javax.swing.JButton editorTexto2;
     private javax.swing.JTextArea ejemploFuente;
     private javax.swing.JTextArea ejemploFuente1;
     private javax.swing.JPanel eleccionExternos;
@@ -2166,6 +2555,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFileChooser exploradorPc;
     private javax.swing.JFileChooser exploradorPc2;
     private javax.swing.JButton explorarArchivos;
+    private javax.swing.JButton explorarArchivos1;
     private javax.swing.JPanel fondo;
     private javax.swing.JCheckBox fondoG;
     private javax.swing.JPanel fondoGen;
@@ -2189,25 +2579,37 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
+    private javax.swing.JButton limpiar;
+    private javax.swing.JButton mas;
+    private javax.swing.JButton menos;
+    private javax.swing.JButton multiplicar1;
     private javax.swing.JButton nevada;
     private javax.swing.JTextField nombreCarpeta;
+    private javax.swing.JButton nueve;
+    private javax.swing.JButton ocho;
     private javax.swing.JMenuBar opcionesEditor;
     private javax.swing.JPanel panelColoresElementos;
     private javax.swing.JPanel panelFuentes;
     private javax.swing.JPanel panelPantalla;
+    private javax.swing.JTextArea pantalla;
     private javax.swing.JMenu personalizarEditor;
     private javax.swing.JMenuItem personalizarEditor2;
     private javax.swing.JDialog personalizarPantalla;
+    private javax.swing.JButton punto;
     private javax.swing.JButton rancho;
     private javax.swing.JButton regresar;
+    private javax.swing.JButton resultado;
+    private javax.swing.JButton seis;
     private javax.swing.JButton seleccionColor3;
     private javax.swing.JComboBox<String> seleccionFondo;
+    private javax.swing.JButton siete;
     private javax.swing.JSpinner spinnerFuente;
     private javax.swing.JSpinner spinnerFuente1;
     private javax.swing.JScrollPane tablaArchivos;
@@ -2224,6 +2626,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel tituloConfiguracion4;
     private javax.swing.JLabel tituloConfiguracion5;
     private javax.swing.JLabel tituloConfiguracion6;
+    private javax.swing.JButton tres;
     private javax.swing.JLabel ubicacionCarpeta;
+    private javax.swing.JButton uno;
     // End of variables declaration//GEN-END:variables
 }
