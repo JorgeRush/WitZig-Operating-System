@@ -56,6 +56,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
+        AñadirBoton1.setVisible(false);
         willyCelebra.setVisible(false);
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
@@ -100,7 +101,14 @@ public class Principal extends javax.swing.JFrame {
 
     public void fechaHora() {
 
-        Timer timer = new Timer(1000, e -> {
+        Timer timer = new Timer(500, e -> {
+            if (tablaArchivosTxt.isVisible() == true) {
+                AñadirBoton1.setVisible(true);
+                AñadirBoton.setVisible(false);
+            } else {
+                AñadirBoton1.setVisible(false);
+                AñadirBoton.setVisible(true);
+            }
             String fecha = LocalDate.now().toString();
             String hora = String.format("%tr", LocalTime.now());
             FechaHora.setText(fecha + "   " + hora);
@@ -248,6 +256,7 @@ public class Principal extends javax.swing.JFrame {
         regresar = new javax.swing.JButton();
         BorrarBotonArchivos = new javax.swing.JButton();
         ruta = new javax.swing.JTextField();
+        AñadirBoton1 = new javax.swing.JButton();
         exploradorPc2 = new javax.swing.JFileChooser();
         tablaArchivos = new javax.swing.JScrollPane();
         tablaArchivosTxt = new javax.swing.JTable();
@@ -303,9 +312,15 @@ public class Principal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         nombreCarpeta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        ubicacionCarpeta = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        ubicacionRutan = new javax.swing.JLabel();
+        seleccionarRuta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        CrearCarpeta2 = new javax.swing.JDialog();
+        crearCarpeta1 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        nombreCarpeta1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -980,6 +995,16 @@ public class Principal extends javax.swing.JFrame {
         ruta.addActionListener(this::rutaActionPerformed);
         barraSuperior.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 540, 20));
 
+        AñadirBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        AñadirBoton1.setContentAreaFilled(false);
+        AñadirBoton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AñadirBoton1MouseClicked(evt);
+            }
+        });
+        AñadirBoton1.addActionListener(this::AñadirBoton1ActionPerformed);
+        barraSuperior.add(AñadirBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -10, 40, 60));
+
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 650, 37));
 
         exploradorPc2.addActionListener(this::exploradorPc2ActionPerformed);
@@ -1469,12 +1494,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese el nombre de la Carpeta:");
 
-        ubicacionCarpeta.setText("Seleccione la ruta de la Carpeta:");
+        ubicacionRutan.setText("Seleccione la ruta de la Carpeta:");
 
-        jButton7.setText("Seleccionar...");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+        seleccionarRuta.setText("Seleccionar...");
+        seleccionarRuta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
+                seleccionarRutaMouseClicked(evt);
             }
         });
 
@@ -1489,12 +1514,12 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(crearCarpetaLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ubicacionCarpeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ubicacionRutan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nombreCarpeta)
-                    .addComponent(jButton7))
+                    .addComponent(seleccionarRuta))
                 .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearCarpetaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1516,14 +1541,68 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(crearCarpetaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ubicacionCarpeta)
-                    .addComponent(jButton7))
+                    .addComponent(ubicacionRutan)
+                    .addComponent(seleccionarRuta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addGap(20, 20, 20))
         );
 
         CrearCarpeta.getContentPane().add(crearCarpeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
+
+        CrearCarpeta2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        crearCarpeta1.setBackground(new java.awt.Color(229, 228, 228));
+
+        jButton7.setText("Crear");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jButton7.addActionListener(this::jButton7ActionPerformed);
+
+        jLabel7.setText("Ingrese el nombre de la Carpeta:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        jLabel9.setText("Crear Carpeta");
+
+        javax.swing.GroupLayout crearCarpeta1Layout = new javax.swing.GroupLayout(crearCarpeta1);
+        crearCarpeta1.setLayout(crearCarpeta1Layout);
+        crearCarpeta1Layout.setHorizontalGroup(
+            crearCarpeta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCarpeta1Layout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jLabel9)
+                .addGap(0, 158, Short.MAX_VALUE))
+            .addGroup(crearCarpeta1Layout.createSequentialGroup()
+                .addGroup(crearCarpeta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(crearCarpeta1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombreCarpeta1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(crearCarpeta1Layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jButton7)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        crearCarpeta1Layout.setVerticalGroup(
+            crearCarpeta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCarpeta1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(crearCarpeta1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreCarpeta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(37, 37, 37)
+                .addComponent(jButton7)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        CrearCarpeta2.getContentPane().add(crearCarpeta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2094,6 +2173,7 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 ArrayList<archivosTxt> archivosExis = new ArrayList<>();
+                ArrayList<carpetasArchivos> carpetaExis = new ArrayList<>();
 
                 if (Carpeta != null && Carpeta.listFiles() != null) {
                     File[] archivos = Carpeta.listFiles();
@@ -2120,10 +2200,27 @@ public class Principal extends javax.swing.JFrame {
                             archivosExis.add(archivoEx);
                             listaArchivos.add(archivoEx);
                         }
+                        if (archivoExistente.isDirectory()) {
+                            File Carpeta2 = archivoExistente;
+                            String nombreCa2 = Carpeta2.getName();
+                            long tamañoBytesCa2 = Carpeta2.length();
+                            double tamañoKbC2 = tamañoBytesCa2 / 1024.0;
+                            long fechaMilis2 = Carpeta2.lastModified();
+                            Date fechaCa2 = new Date(fechaMilis2);
+                            SimpleDateFormat formatoDiaC2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                            String tipoCa2 = "Carpeta";
+                            String diaCa2 = formatoDiaC.format(fechaCa2);
+                            String rutaCa2 = Carpeta2.getAbsolutePath();
+                            carpetasArchivos carpetaLocalizar2 = new carpetasArchivos(nombreCa2, Carpeta2, diaCa2, tipoCa2, tamañoBytesCa2, rutaCa2);
+                            carpetaExis.add(carpetaLocalizar2);
+                        }
                     }
                 }
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar.añadirArchivo(archivosExis.get(i));
+                }
+                for (int i = 0; i < carpetaExis.size(); i++) {
+                    carpetaLocalizar.añadirCarpeta(carpetaExis.get(i));
                 }
 //                carpetaLocalizar.añadirArchivo(nuevoArchivo);
                 boolean verf = false;
@@ -2302,8 +2399,12 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_exploradorArchivosWindowOpened
     File rutaGuardar;
+    boolean carpeta = false;
+    boolean archivos = false;
+
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
 //        String rutaCompu = System.getProperty("user.home");
+
         for (int i = 0; i < listaCarpetas.size(); i++) {
             if (nombreCarpeta.getText().equals(listaCarpetas.get(i).getNombre())) {
                 JOptionPane.showMessageDialog(null, "Ya existe una carpeta con ese nombre. Intente de nuevo.");
@@ -2339,9 +2440,10 @@ public class Principal extends javax.swing.JFrame {
         nombreCarpeta.setText(null);
         tablaExplorador.clearSelection();
         CrearCarpeta.dispose();
+
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+    private void seleccionarRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionarRutaMouseClicked
         exploradorPc2.setVisible(true);
         exploradorPc2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if (exploradorPc2.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -2349,7 +2451,7 @@ public class Principal extends javax.swing.JFrame {
             rutaGuardar = seleccion.isDirectory() ? seleccion : seleccion.getParentFile();
 
         }
-    }//GEN-LAST:event_jButton7MouseClicked
+    }//GEN-LAST:event_seleccionarRutaMouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -2459,16 +2561,18 @@ public class Principal extends javax.swing.JFrame {
         }
         return verf;
     }
-
+    String carpetaElegida = "";
+    String subCarpetaElegida="";
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
         String carpetaElegidaC = "";
         try {
             carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+            carpetaElegida = carpetaElegidaC;
         } catch (Exception E) {
 
         }
 
-        if (verificarListado(carpetaElegidaC) == true) {
+        if (verificarListado(carpetaElegida) == true) {
 
 //            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
 //            tablaCarpetas.setVisible(true);
@@ -2478,22 +2582,31 @@ public class Principal extends javax.swing.JFrame {
             Timer timer = new Timer(1000, e -> {
 
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
-                String carpetaElegida = "";
+                
                 try {
-                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+                    subCarpetaElegida = carpetaElegida;
+                    
+//                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
                 } catch (Exception E) {
 
                 }
                 if (filaSeleccion2 != -1 && tablaCarpetas.isVisible() == false) {
                     String fSN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
                     for (int i = 0; i < listaCarpetas.size(); i++) {
-                        if (listaCarpetas.get(i).getNombre().equals(carpetaElegida)) {
+                        if (listaCarpetas.get(i).getNombre().equals(subCarpetaElegida)) {
                             ArrayList<archivosTxt> archivosC = listaCarpetas.get(i).regresarArchivos();
+                            ArrayList<carpetasArchivos> carpetas = listaCarpetas.get(i).regresarCarpeta();
                             for (int j = 0; j < archivosC.size(); j++) {
                                 if (archivosC.get(j).getNombreA().equals(fSN)) {
                                     ruta.setText(archivosC.get(j).rutA);
                                 }
                             }
+                            for (int j = 0; j < carpetas.size(); j++) {
+                                if (carpetas.get(j).getNombre().equals(fSN)) {
+                                    ruta.setText(carpetas.get(j).ruta);
+                                }
+                            }
+                            
                         }
                     }
                 }
@@ -2505,6 +2618,8 @@ public class Principal extends javax.swing.JFrame {
                             return false;
                         }
                     };
+
+                    boolean verfTipo = false;
                     tablaArchivosTxt.setModel(modeloTablaA);
                     modeloTablaA.addColumn("Nombre");
                     modeloTablaA.addColumn("Fecha de Modificacion");
@@ -2513,18 +2628,35 @@ public class Principal extends javax.swing.JFrame {
                     tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
                         JLabel l = new JLabel(String.valueOf(v));
                         if (r >= 0) {
-                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
+                            String columnaTipo = (String) tablaArchivosTxt.getValueAt(r, 2);
+                            if (columnaTipo.equals("Carpeta")) {
+                                l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png")));
+                            } else {
+                                l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
+                            }
+
                         }
                         return l;
                     });
                     ArrayList<archivosTxt> archivos = new ArrayList<>();
+                    ArrayList<carpetasArchivos> archivosC = new ArrayList<>();
+
                     for (int i = 0; i < listaCarpetas.size(); i++) {
 
                         carpetasArchivos temp = listaCarpetas.get(i);
-                        if (temp.getNombre().equals(carpetaElegida)) {
+                        if (temp.getNombre().equals(subCarpetaElegida)) {
                             archivos = temp.regresarArchivos();
+                            archivosC = temp.regresarCarpeta();
                         }
 
+                    }
+                    if (archivosC != null) {
+                        for (int i = 0; i < archivosC.size(); i++) {
+                            carpetasArchivos temp = archivosC.get(i);
+                            String tamaño = String.format("%.2f", temp.getTamaño());
+                            String[] datos = {temp.getNombre(), temp.getFechaMod(), temp.getTipo(), tamaño + " bytes"};
+                            modeloTablaA.addRow(datos);
+                        }
                     }
                     for (int i = 0; i < archivos.size(); i++) {
                         archivosTxt archivosN = archivos.get(i);
@@ -2532,6 +2664,7 @@ public class Principal extends javax.swing.JFrame {
                         String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
                         modeloTablaA.addRow(datos);
                     }
+                    
 
                 } else {
 
@@ -2561,7 +2694,12 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
-        for (int i = 0; i < listaArchivos.size(); i++) {
+        String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
+        if(archivoElegidoN2.equals("Carpeta")){
+            
+        }
+        if (archivoElegidoN2.equals(".txt")){
+            for (int i = 0; i < listaArchivos.size(); i++) {
             archivosTxt archivoSelec = listaArchivos.get(i);
             if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
                 exploradorArchivos.setVisible(false);
@@ -2582,6 +2720,9 @@ public class Principal extends javax.swing.JFrame {
             }
         }
         JOptionPane.showMessageDialog(null, "Archivo abierto.");
+        }
+        
+        
     }//GEN-LAST:event_AbrirArchivosActionPerformed
     public void eliminarArchivos() {
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
@@ -2951,6 +3092,109 @@ public class Principal extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void AñadirBoton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBoton1MouseClicked
+        CrearCarpeta2.setLocationRelativeTo(null);
+        CrearCarpeta2.setVisible(true);
+        CrearCarpeta2.pack();
+    }//GEN-LAST:event_AñadirBoton1MouseClicked
+
+    private void AñadirBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBoton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AñadirBoton1ActionPerformed
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        if (nombreCarpeta1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe asignarle un nombre a la carpeta.");
+            return;
+        }
+
+        seleccionarRuta.setVisible(false);
+        ubicacionRutan.setVisible(false);
+
+        String nombreC = "";
+        try {
+//            nombreC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+            nombreC = carpetaElegida;
+        } catch (Exception E) {
+
+        }
+
+        String rutaC = "";
+        carpetasArchivos carpetaTemp = new carpetasArchivos();
+        for (int i = 0; i < listaCarpetas.size(); i++) {
+            if (listaCarpetas.get(i).getNombre().equals(nombreC)) {
+                rutaC = listaCarpetas.get(i).ruta;
+                carpetaTemp = listaCarpetas.get(i);
+            }
+        }
+        File carpeta = new File(rutaC, nombreCarpeta1.getText());
+        carpeta.mkdirs();
+        String ruta = carpeta.getAbsolutePath();
+        String nombreCa = carpeta.getName();
+        long tamañoBytesCa = carpeta.length();
+        double tamañoKbC = tamañoBytesCa / 1024.0;
+        long fechaMilis = carpeta.lastModified();
+        Date fechaCa = new Date(fechaMilis);
+        SimpleDateFormat formatoDiaC = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String tipoCa = "Carpeta";
+        String diaCa = formatoDiaC.format(fechaCa);
+        carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
+        carpetaTemp.añadirCarpeta(carpetaNueva);
+
+        JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
+        nombreCarpeta.setText(null);
+        tablaExplorador.clearSelection();
+        CrearCarpeta.dispose();
+        seleccionarRuta.setVisible(true);
+        ubicacionRutan.setVisible(true);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+//        if (nombreCarpeta1.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(null, "Debe asignarle un nombre a la carpeta.");
+//            return;
+//        }
+//
+//        seleccionarRuta.setVisible(false);
+//        ubicacionRutan.setVisible(false);
+//
+//        String nombreC = "";
+//        try {
+//            nombreC =carpetaElegida;
+//        } catch (Exception E) {
+//
+//        }
+//
+//        String rutaC = "";
+//        carpetasArchivos carpetaTemp = new carpetasArchivos();
+//        for (int i = 0; i < listaCarpetas.size(); i++) {
+//            if (listaCarpetas.get(i).getNombre().equals(nombreC)) {
+//                rutaC = listaCarpetas.get(i).ruta;
+//                carpetaTemp = listaCarpetas.get(i);
+//            }
+//        }
+//        File carpeta = new File(rutaC, nombreCarpeta1.getText());
+//        carpeta.mkdirs();
+//        String ruta = carpeta.getAbsolutePath();
+//        String nombreCa = carpeta.getName();
+//        long tamañoBytesCa = carpeta.length();
+//        double tamañoKbC = tamañoBytesCa / 1024.0;
+//        long fechaMilis = carpeta.lastModified();
+//        Date fechaCa = new Date(fechaMilis);
+//        SimpleDateFormat formatoDiaC = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+//        String tipoCa = "Carpeta";
+//        String diaCa = formatoDiaC.format(fechaCa);
+//        carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
+//        carpetaTemp.añadirCarpeta(carpetaNueva);
+//
+//        JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
+//        nombreCarpeta.setText(null);
+//        tablaExplorador.clearSelection();
+//        CrearCarpeta.dispose();
+//        seleccionarRuta.setVisible(true);
+//        ubicacionRutan.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3002,6 +3246,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JMenuItem AbrirArchivos;
     private javax.swing.JButton AñadirBoton;
+    private javax.swing.JButton AñadirBoton1;
     private javax.swing.JCheckBox BarraN2;
     private javax.swing.JMenuBar BarraNavegacion;
     private javax.swing.JDialog BarraProgreso;
@@ -3016,6 +3261,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
     private javax.swing.JDialog CrearCarpeta;
+    private javax.swing.JDialog CrearCarpeta2;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem EliminarArchivos;
     private javax.swing.JMenu FechaHora;
@@ -3050,6 +3296,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel contenedor;
     private javax.swing.JPanel crearCarpeta;
+    private javax.swing.JPanel crearCarpeta1;
     private javax.swing.JDialog crearTexto;
     private javax.swing.JButton cuatro;
     private javax.swing.JButton dividir;
@@ -3090,7 +3337,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -3107,6 +3356,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton multiplicar1;
     private javax.swing.JButton nevada;
     private javax.swing.JTextField nombreCarpeta;
+    private javax.swing.JTextField nombreCarpeta1;
     private javax.swing.JButton nueve;
     private javax.swing.JButton ocho;
     private javax.swing.JMenuBar opcionesEditor;
@@ -3136,6 +3386,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton seis;
     private javax.swing.JButton seleccionColor3;
     private javax.swing.JComboBox<String> seleccionFondo;
+    private javax.swing.JButton seleccionarRuta;
     private javax.swing.JButton siete;
     private javax.swing.JSpinner spinnerFuente;
     private javax.swing.JSpinner spinnerFuente1;
@@ -3155,7 +3406,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel tituloConfiguracion6;
     private javax.swing.JButton tres;
     private javax.swing.JLabel turnoMostrar;
-    private javax.swing.JLabel ubicacionCarpeta;
+    private javax.swing.JLabel ubicacionRutan;
     private javax.swing.JButton uno;
     private javax.swing.JButton wDefecto;
     private javax.swing.JLabel willyCelebra;

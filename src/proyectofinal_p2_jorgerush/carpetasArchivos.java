@@ -21,7 +21,9 @@ public class carpetasArchivos {
     String tipo;
     String ruta;
     double tamaño = 0;
-
+    public carpetasArchivos(){
+        
+    }
     public carpetasArchivos(String nombre, File ubi, String fechaMod, String tipo, double tamaño, String ruta) {
         this.nombre = nombre;
         this.ubicacionCarpeta = ubi;
@@ -32,6 +34,12 @@ public class carpetasArchivos {
         this.tamaño = tamaño;
         this.ruta = ruta;
 
+    }
+    public void añadirCarpeta(carpetasArchivos carpeta){
+        carpetasCreadas.add(carpeta);
+    }
+    public ArrayList<carpetasArchivos> regresarCarpeta() {
+        return carpetasCreadas;
     }
 
     public ArrayList<archivosTxt> regresarArchivos() {
