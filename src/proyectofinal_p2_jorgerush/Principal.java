@@ -2257,8 +2257,7 @@ public class Principal extends javax.swing.JFrame {
             if (Carpeta != null && Carpeta.listFiles() != null) {
 
                 File[] archivos1 = Carpeta.listFiles();
-                SimpleDateFormat formatoDia2
-                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                 for (int i = 0; i < archivos1.length; i++) {
 
@@ -2298,7 +2297,7 @@ public class Principal extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
-                    System.out.println("ADAJADKAD");
+
                 }
             }
 
@@ -2376,30 +2375,10 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 carpetaLocalizar = retornarCarpeta(Carpeta, carpetaLocalizar);
-                System.out.println(
-                        "Archivos encontrados: "
-                        + carpetaLocalizar.regresarArchivos().size()
-                );
-
-                boolean verf = false;
 
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
-                        verf = true;
-                    }
-                }
-
-                for (int i = 0; i < listaCarpetas.size(); i++) {
-                    if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
-
-                        System.out.println("ANTES: "
-                                + listaCarpetas.get(i).regresarArchivos().size());
-
                         listaCarpetas.set(i, carpetaLocalizar);
-
-                        System.out.println("DESPUES: "
-                                + listaCarpetas.get(i).regresarArchivos().size());
-
                         break;
                     }
                 }
@@ -2838,11 +2817,6 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos temp = listaCarpetas.get(i);
                     if (temp.getNombre().equals(subCarpetaElegida)) {
                         archivos1 = temp.regresarArchivos();
-                        System.out.println("archivos1: " + archivos1);
-                        for (int j = 0; j < archivos1.size(); j++) {
-                            System.out.println(archivos1.get(j).getNombreA());
-                            System.out.println("archivos 1" + archivos1);
-                        }
                         archivosC = temp.regresarCarpeta();
                     }
 
@@ -2861,7 +2835,7 @@ public class Principal extends javax.swing.JFrame {
 
                 }
                 for (int i = 0; i < archivos1.size(); i++) {
-                    System.out.println("a");
+
                     archivosTxt archivosN = archivos1.get(i);
                     String tamaño = String.format("%.2f", archivosN.getTamañoA());
                     String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
@@ -2936,6 +2910,39 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_AbrirArchivosActionPerformed
+    public void eliminarCarpetaEscondida(ArrayList<carpetasArchivos> listaCarpetas, String nombre) {
+        for (int i = 0; i < listaCarpetas.size(); i++) {
+            carpetasArchivos carpetaEleg = listaCarpetas.get(i);
+
+            ArrayList<carpetasArchivos> revisarCarpetas = carpetaEleg.regresarCarpeta();
+            for (int j = 0; j < revisarCarpetas.size(); j++) {
+               
+                if (revisarCarpetas.get(j).getNombre().equals(nombre)) {
+                
+                    carpetasArchivos carpetaSeleccionada = revisarCarpetas.get(j);
+                    File temp = carpetaSeleccionada.ubicacionCarpeta;
+                    Path rutaCarp = temp.toPath();
+                    System.out.println("Existe antes: " + Files.exists(rutaCarp));
+                    if (Files.exists(rutaCarp)) {
+                        try {
+                            Files.walk(rutaCarp)
+                                    .sorted(Comparator.reverseOrder())
+                                    .map(Path::toFile)
+                                    .forEach(File::delete);
+
+                        } catch (Exception E) {
+                            JOptionPane.showMessageDialog(null, "Error, por alguna razon no se pudo borrar");
+                        }
+
+                    }
+                    System.out.println("Existe despues: " + Files.exists(rutaCarp));
+                    revisarCarpetas.remove(j);
+
+                }
+            }
+        }
+    }
+
     public void eliminarArchivos() {
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
         if (filaSeleccion2 == -1) {
@@ -2945,15 +2952,22 @@ public class Principal extends javax.swing.JFrame {
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
         String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
         int sentencia = 0;
+        boolean verf=false;
         if (archivoElegidoN2.equals("Carpeta")) {
             try {
 
                 for (int i = 0; i < listaCarpetas.size(); i++) {
+                    carpetasArchivos carpetaEleg = listaCarpetas.get(i);
+                     
+                     eliminarCarpetaEscondida(listaCarpetas, archivoElegidoN);
                     if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
+                      verf=true;
                         sentencia = i;
+
                         carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
                         File temp = carpetaSeleccionada.ubicacionCarpeta;
                         Path rutaCarp = temp.toPath();
+                          System.out.println("Existe antes: " + Files.exists(rutaCarp));
                         if (Files.exists(rutaCarp)) {
                             try {
                                 Files.walk(rutaCarp)
@@ -2966,10 +2980,16 @@ public class Principal extends javax.swing.JFrame {
                             }
 
                         }
+                         System.out.println("Existe despues: " + Files.exists(rutaCarp));
+                      
+                        
                     }
 
                 }
-                listaCarpetas.remove(listaCarpetas.get(sentencia));
+                if(verf==true){
+                     listaCarpetas.remove(listaCarpetas.get(sentencia));
+                }
+               
                 JOptionPane.showMessageDialog(null, "Carpeta exitosamente eliminada.");
                 tablaArchivosTxt.clearSelection();
             } catch (Exception E) {
