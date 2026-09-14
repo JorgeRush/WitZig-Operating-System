@@ -57,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
 
         XO();
         AñadirBoton1.setVisible(false);
+
         willyCelebra.setVisible(false);
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
@@ -102,10 +103,10 @@ public class Principal extends javax.swing.JFrame {
     public void fechaHora() {
 
         Timer timer = new Timer(500, e -> {
-            if (tablaArchivosTxt.isVisible() == true) {
+            if (tablaArchivos.isVisible() == true && tablaCarpetas.isVisible() == false) {
                 AñadirBoton1.setVisible(true);
                 AñadirBoton.setVisible(false);
-            } else {
+            } else if (tablaCarpetas.isVisible() == true && tablaArchivos.isVisible() == false) {
                 AñadirBoton1.setVisible(false);
                 AñadirBoton.setVisible(true);
             }
@@ -252,10 +253,10 @@ public class Principal extends javax.swing.JFrame {
         tablaExplorador = new javax.swing.JTable();
         barraSuperior = new javax.swing.JPanel();
         BorrarBoton = new javax.swing.JButton();
-        AñadirBoton = new javax.swing.JButton();
         regresar = new javax.swing.JButton();
         BorrarBotonArchivos = new javax.swing.JButton();
         ruta = new javax.swing.JTextField();
+        AñadirBoton = new javax.swing.JButton();
         AñadirBoton1 = new javax.swing.JButton();
         exploradorPc2 = new javax.swing.JFileChooser();
         tablaArchivos = new javax.swing.JScrollPane();
@@ -315,7 +316,7 @@ public class Principal extends javax.swing.JFrame {
         ubicacionRutan = new javax.swing.JLabel();
         seleccionarRuta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        CrearCarpeta2 = new javax.swing.JDialog();
+        mostrarCarpeta = new javax.swing.JDialog();
         crearCarpeta1 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         nombreCarpeta1 = new javax.swing.JTextField();
@@ -960,16 +961,6 @@ public class Principal extends javax.swing.JFrame {
         BorrarBoton.addActionListener(this::BorrarBotonActionPerformed);
         barraSuperior.add(BorrarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 40, 40));
 
-        AñadirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
-        AñadirBoton.setContentAreaFilled(false);
-        AñadirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AñadirBotonMouseClicked(evt);
-            }
-        });
-        AñadirBoton.addActionListener(this::AñadirBotonActionPerformed);
-        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -10, 40, 60));
-
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R1.png"))); // NOI18N
         regresar.setBorder(null);
         regresar.setContentAreaFilled(false);
@@ -995,6 +986,16 @@ public class Principal extends javax.swing.JFrame {
         ruta.addActionListener(this::rutaActionPerformed);
         barraSuperior.add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 540, 20));
 
+        AñadirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
+        AñadirBoton.setContentAreaFilled(false);
+        AñadirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AñadirBotonMouseClicked(evt);
+            }
+        });
+        AñadirBoton.addActionListener(this::AñadirBotonActionPerformed);
+        barraSuperior.add(AñadirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 40, 20));
+
         AñadirBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C1.png"))); // NOI18N
         AñadirBoton1.setContentAreaFilled(false);
         AñadirBoton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1003,7 +1004,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         AñadirBoton1.addActionListener(this::AñadirBoton1ActionPerformed);
-        barraSuperior.add(AñadirBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -10, 40, 60));
+        barraSuperior.add(AñadirBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 40, 20));
 
         exploradorArchivos.getContentPane().add(barraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 650, 37));
 
@@ -1550,7 +1551,7 @@ public class Principal extends javax.swing.JFrame {
 
         CrearCarpeta.getContentPane().add(crearCarpeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
 
-        CrearCarpeta2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mostrarCarpeta.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         crearCarpeta1.setBackground(new java.awt.Color(229, 228, 228));
 
@@ -1602,7 +1603,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        CrearCarpeta2.getContentPane().add(crearCarpeta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
+        mostrarCarpeta.getContentPane().add(crearCarpeta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2135,119 +2136,265 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_guardarArchivoMouseClicked
+    public boolean revisarCarpeta(File Carpeta) {
+        boolean parar = true;
+
+        if (Carpeta != null && Carpeta.listFiles() != null) {
+            File[] archivos = Carpeta.listFiles();
+
+            for (int i = 0; i < archivos.length; i++) {
+                File archivoExistente = archivos[i];
+
+                if (archivoExistente.isDirectory()) {
+                    parar = false;
+                }
+            }
+        }
+
+        return parar;
+    }
+
+    public carpetasArchivos retornarCarpeta(File Carpeta, carpetasArchivos carpetaLocalizar2) {
+        if (revisarCarpeta(Carpeta) == false) {
+
+            ArrayList<archivosTxt> archivosExis = new ArrayList<>();
+            ArrayList<carpetasArchivos> carpetaExis = new ArrayList<>();
+
+            if (Carpeta != null && Carpeta.listFiles() != null) {
+
+                File[] archivos = Carpeta.listFiles();
+                SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                for (int i = 0; i < archivos.length; i++) {
+
+                    File archivoExistente = archivos[i];
+
+                    if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
+
+                        String nombre2 = archivoExistente.getName();
+                        long tamañoBytes2 = archivoExistente.length();
+                        double tamañoKb2 = tamañoBytes2 / 1024.0;
+
+                        long fechaMiliD2 = archivoExistente.lastModified();
+                        String dia2 = formatoDia2.format(new Date(fechaMiliD2));
+
+                        String tipo2 = ".txt";
+                        String ruta2 = archivoExistente.getAbsolutePath();
+
+                        archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
+
+                        archivosExis.add(archivoEx);
+
+                        boolean archivoYaExiste = false;
+
+                        for (int a = 0; a < listaArchivos.size(); a++) {
+                            if (listaArchivos.get(a).rutA.equals(ruta2)) {
+                                archivoYaExiste = true;
+                            }
+                        }
+
+                        if (archivoYaExiste == false) {
+                            listaArchivos.add(archivoEx);
+                        }
+                    }
+
+                    if (archivoExistente.isDirectory()) {
+
+                        File Carpeta2 = archivoExistente;
+
+                        String nombreCa2 = Carpeta2.getName();
+                        long tamañoBytesCa2 = Carpeta2.length();
+                        double tamañoKbC2 = tamañoBytesCa2 / 1024.0;
+
+                        long fechaMilis2 = Carpeta2.lastModified();
+                        Date fechaCa2 = new Date(fechaMilis2);
+
+                        SimpleDateFormat formatoDiaC2
+                                = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                        String tipoCa2 = "Carpeta";
+                        String diaCa2 = formatoDiaC2.format(fechaCa2);
+                        String rutaCa2 = Carpeta2.getAbsolutePath();
+
+                        carpetasArchivos carpetaLocalizar3 = new carpetasArchivos(nombreCa2, Carpeta2, diaCa2, tipoCa2, tamañoBytesCa2, rutaCa2);
+
+                        carpetaLocalizar3 = retornarCarpeta(Carpeta2, carpetaLocalizar3);
+
+                        boolean verf = false;
+
+                        for (int r = 0; r < listaCarpetas.size(); r++) {
+                            if (listaCarpetas.get(r).ruta.equals(carpetaLocalizar3.ruta)) {
+                                verf = true;
+                            }
+                        }
+
+                        if (verf == false) {
+                            listaCarpetas.add(carpetaLocalizar3);
+                        }
+
+                        carpetaExis.add(carpetaLocalizar3);
+                    }
+                }
+
+                for (int i = 0; i < archivosExis.size(); i++) {
+                    carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
+                }
+
+                for (int i = 0; i < carpetaExis.size(); i++) {
+                    carpetaLocalizar2.añadirCarpeta(carpetaExis.get(i));
+                }
+            }
+
+            return carpetaLocalizar2;
+
+        } else {
+
+            ArrayList<archivosTxt> archivosExis = new ArrayList<>();
+
+            if (Carpeta != null && Carpeta.listFiles() != null) {
+
+                File[] archivos = Carpeta.listFiles();
+                SimpleDateFormat formatoDia2
+                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                for (int i = 0; i < archivos.length; i++) {
+
+                    File archivoExistente = archivos[i];
+
+                    if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
+
+                        String nombre2 = archivoExistente.getName();
+                        long tamañoBytes2 = archivoExistente.length();
+                        double tamañoKb2 = tamañoBytes2 / 1024.0;
+
+                        long fechaMiliD2 = archivoExistente.lastModified();
+
+                        String dia2 = formatoDia2.format(new Date(fechaMiliD2));
+
+                        String tipo2 = ".txt";
+                        String ruta2 = archivoExistente.getAbsolutePath();
+
+                        archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
+
+                        archivosExis.add(archivoEx);
+
+                        boolean archivoYaExiste = false;
+
+                        for (int a = 0; a < listaArchivos.size(); a++) {
+
+                            if (listaArchivos.get(a).rutA.equals(ruta2)) {
+                                archivoYaExiste = true;
+                            }
+                        }
+
+                        if (archivoYaExiste == false) {
+                            listaArchivos.add(archivoEx);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < archivosExis.size(); i++) {
+                    carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
+                }
+            }
+
+            boolean verf = false;
+
+            for (int i = 0; i < listaCarpetas.size(); i++) {
+                if (listaCarpetas.get(i).ruta.equals(carpetaLocalizar2.ruta)) {
+                    verf = true;
+                }
+            }
+
+            if (verf == false) {
+                listaCarpetas.add(carpetaLocalizar2);
+            }
+
+            return carpetaLocalizar2;
+        }
+
+    }
+
     ArrayList<archivosTxt> listaArchivos = new ArrayList<>();
     ArrayList<carpetasArchivos> listaCarpetas = new ArrayList<>();
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
 
         exploradorPc.setVisible(true);
+
         int elegir = exploradorPc.showSaveDialog(this);
+
         if (elegir == exploradorPc.APPROVE_OPTION) {
+
             try {
+
                 File archivo = new File(exploradorPc.getSelectedFile() + ".txt");
+
                 if (archivo.exists() == false) {
                     archivo.createNewFile();
-                }
-                String nombre = archivo.getName();
-                long tamañoBytes = archivo.length();
-
-                double tamañoKb = tamañoBytes / 1024.0;
-                long fechaMiliD = archivo.lastModified();
-                Date fecha = new Date(fechaMiliD);
-                SimpleDateFormat formatoDia = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                String tipo = ".txt";
-                String dia = formatoDia.format(fecha);
-                String ruta = archivo.getAbsolutePath();
-                archivosTxt nuevoArchivo = new archivosTxt(nombre, archivo, dia, tipo, ruta, tamañoKb);
-                listaArchivos.add(nuevoArchivo);
-
-                File Carpeta = archivo.getParentFile();
-                String nombreCa = Carpeta.getName();
-                long tamañoBytesCa = Carpeta.length();
-                double tamañoKbC = tamañoBytesCa / 1024.0;
-                long fechaMilis = Carpeta.lastModified();
-                Date fechaCa = new Date(fechaMilis);
-                SimpleDateFormat formatoDiaC = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                String tipoCa = "Carpeta";
-                String diaCa = formatoDiaC.format(fechaCa);
-                String rutaCa = Carpeta.getAbsolutePath();
-                carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
-
-                ArrayList<archivosTxt> archivosExis = new ArrayList<>();
-                ArrayList<carpetasArchivos> carpetaExis = new ArrayList<>();
-
-                if (Carpeta != null && Carpeta.listFiles() != null) {
-                    File[] archivos = Carpeta.listFiles();
-
-                    SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-                    for (int i = 0; i < archivos.length; i++) {
-                        File archivoExistente = archivos[i];
-
-                        if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
-
-                            String nombre2 = archivoExistente.getName();
-                            long tamañoBytes2 = archivoExistente.length();
-                            double tamañoKb2 = tamañoBytes2 / 1024.0;
-
-                            long fechaMiliD2 = archivoExistente.lastModified();
-
-                            String dia2 = formatoDia2.format(new Date(fechaMiliD2));
-
-                            String tipo2 = ".txt";
-                            String ruta2 = archivoExistente.getAbsolutePath();
-
-                            archivosTxt archivoEx = new archivosTxt(nombre2, archivoExistente, dia2, tipo2, ruta2, tamañoKb2);
-                            archivosExis.add(archivoEx);
-                            listaArchivos.add(archivoEx);
-                        }
-                        if (archivoExistente.isDirectory()) {
-                            File Carpeta2 = archivoExistente;
-                            String nombreCa2 = Carpeta2.getName();
-                            long tamañoBytesCa2 = Carpeta2.length();
-                            double tamañoKbC2 = tamañoBytesCa2 / 1024.0;
-                            long fechaMilis2 = Carpeta2.lastModified();
-                            Date fechaCa2 = new Date(fechaMilis2);
-                            SimpleDateFormat formatoDiaC2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                            String tipoCa2 = "Carpeta";
-                            String diaCa2 = formatoDiaC.format(fechaCa2);
-                            String rutaCa2 = Carpeta2.getAbsolutePath();
-                            carpetasArchivos carpetaLocalizar2 = new carpetasArchivos(nombreCa2, Carpeta2, diaCa2, tipoCa2, tamañoBytesCa2, rutaCa2);
-                            carpetaExis.add(carpetaLocalizar2);
-                        }
-                    }
-                }
-                for (int i = 0; i < archivosExis.size(); i++) {
-                    carpetaLocalizar.añadirArchivo(archivosExis.get(i));
-                }
-                for (int i = 0; i < carpetaExis.size(); i++) {
-                    carpetaLocalizar.añadirCarpeta(carpetaExis.get(i));
-                }
-//                carpetaLocalizar.añadirArchivo(nuevoArchivo);
-                boolean verf = false;
-                for (int i = 0; i < listaCarpetas.size(); i++) {
-                    if (listaCarpetas.get(i).nombre.equals(nombreCa)) {
-                        verf = true;
-                        listaCarpetas.get(i).añadirArchivo(nuevoArchivo);
-                    } else {
-
-                    }
-
-                }
-                if (verf == false) {
-                    listaCarpetas.add(carpetaLocalizar);
                 }
 
                 FileWriter guardar = new FileWriter(archivo);
                 guardar.write(ejemploFuente1.getText());
                 guardar.close();
+                String nombre = archivo.getName();
 
-                javax.swing.JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
+                long tamañoBytes = archivo.length();
+                double tamañoKb = tamañoBytes / 1024.0;
+
+                long fechaMiliD = archivo.lastModified();
+                Date fecha = new Date(fechaMiliD);
+
+                SimpleDateFormat formatoDia
+                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                String tipo = ".txt";
+                String dia = formatoDia.format(fecha);
+                String ruta = archivo.getAbsolutePath();
+
+                archivosTxt nuevoArchivo = new archivosTxt(nombre, archivo, dia, tipo, ruta, tamañoKb);
+
+                File Carpeta = archivo.getParentFile();
+
+                String nombreCa = Carpeta.getName();
+
+                long tamañoBytesCa = Carpeta.length();
+                double tamañoKbC = tamañoBytesCa / 1024.0;
+
+                long fechaMilis = Carpeta.lastModified();
+                Date fechaCa = new Date(fechaMilis);
+
+                SimpleDateFormat formatoDiaC
+                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                String tipoCa = "Carpeta";
+                String diaCa = formatoDiaC.format(fechaCa);
+                String rutaCa = Carpeta.getAbsolutePath();
+
+                carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
+
+                carpetaLocalizar = retornarCarpeta(Carpeta, carpetaLocalizar);
+
+                boolean verf = false;
+
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
+                        verf = true;
+                    }
+                }
+
+                if (verf == false) {
+                    listaCarpetas.add(carpetaLocalizar);
+                }
+
+                JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
+
                 ejemploFuente1.setText(null);
+
             } catch (Exception e) {
+
                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
             }
         }
-
     }//GEN-LAST:event_guardarArchivoActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -2333,15 +2480,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BorrarBotonActionPerformed
 
     private void AñadirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBotonActionPerformed
-        // TODO add your handling code here:
+        System.out.println("CLICK");
+        CrearCarpeta.setLocationRelativeTo(null);
+        CrearCarpeta.pack();
+        CrearCarpeta.setVisible(true);
     }//GEN-LAST:event_AñadirBotonActionPerformed
 
     private void AñadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBotonMouseClicked
 //        tablaExplorador.setVisible(false);
 
         CrearCarpeta.setLocationRelativeTo(null);
-        CrearCarpeta.setVisible(true);
         CrearCarpeta.pack();
+        CrearCarpeta.setVisible(true);
+
     }//GEN-LAST:event_AñadirBotonMouseClicked
 
     private void exploradorArchivosWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exploradorArchivosWindowActivated
@@ -2547,27 +2698,37 @@ public class Principal extends javax.swing.JFrame {
 
     public boolean verificarListado(String carpetaNombre) {
         ArrayList<archivosTxt> archivosC = new ArrayList<>();
+        ArrayList<carpetasArchivos> archivosCa = new ArrayList<>();
         boolean verf = false;
         for (int i = 0; i < listaCarpetas.size(); i++) {
 
             carpetasArchivos temp = listaCarpetas.get(i);
             if (temp.getNombre().equals(carpetaNombre)) {
                 archivosC = temp.regresarArchivos();
+                archivosCa=temp.regresarCarpeta();
             }
 
         }
-        if (archivosC.isEmpty()) {
+        if (archivosC.isEmpty()&&archivosCa.isEmpty()) {
             verf = true;
         }
+        
         return verf;
     }
     String carpetaElegida = "";
-    String subCarpetaElegida="";
+    String subCarpetaElegida = "";
     private void tablaArchivosTxtAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaArchivosTxtAncestorAdded
         String carpetaElegidaC = "";
         try {
             carpetaElegidaC = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
             carpetaElegida = carpetaElegidaC;
+        } catch (Exception E) {
+
+        }
+        try {
+            subCarpetaElegida = carpetaElegida;
+
+//                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
         } catch (Exception E) {
 
         }
@@ -2579,17 +2740,11 @@ public class Principal extends javax.swing.JFrame {
 //            tablaArchivos.setVisible(false);
 //            regresar.setVisible(false);
         } else {
+         
             Timer timer = new Timer(1000, e -> {
-
+                System.out.println("filaSeleccion2 = " + filaSeleccion2);
                 filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
-                
-                try {
-                    subCarpetaElegida = carpetaElegida;
-                    
-//                    carpetaElegida = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-                } catch (Exception E) {
 
-                }
                 if (filaSeleccion2 != -1 && tablaCarpetas.isVisible() == false) {
                     String fSN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
                     for (int i = 0; i < listaCarpetas.size(); i++) {
@@ -2606,12 +2761,12 @@ public class Principal extends javax.swing.JFrame {
                                     ruta.setText(carpetas.get(j).ruta);
                                 }
                             }
-                            
+
                         }
                     }
                 }
                 if (filaSeleccion2 == -1) {
-
+                   
                     DefaultTableModel modeloTablaA = new DefaultTableModel() {
                         @Override
                         public boolean isCellEditable(int row, int column) {
@@ -2650,6 +2805,7 @@ public class Principal extends javax.swing.JFrame {
                         }
 
                     }
+                   
                     if (archivosC != null) {
                         for (int i = 0; i < archivosC.size(); i++) {
                             carpetasArchivos temp = archivosC.get(i);
@@ -2664,7 +2820,6 @@ public class Principal extends javax.swing.JFrame {
                         String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
                         modeloTablaA.addRow(datos);
                     }
-                    
 
                 } else {
 
@@ -2694,35 +2849,45 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+        System.out.println(archivoElegidoN);
         String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
-        if(archivoElegidoN2.equals("Carpeta")){
-            
-        }
-        if (archivoElegidoN2.equals(".txt")){
-            for (int i = 0; i < listaArchivos.size(); i++) {
-            archivosTxt archivoSelec = listaArchivos.get(i);
-            if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
-                exploradorArchivos.setVisible(false);
-                crearTexto.setVisible(true);
-                File archivo = archivoSelec.getArchivo();
-
-                try (Scanner lector = new Scanner(archivo)) {
-                    ejemploFuente1.setText("");
-
-                    while (lector.hasNextLine()) {
-                        ejemploFuente1.append(lector.nextLine() + "\n");
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
+        if (archivoElegidoN2.equals("Carpeta")) {
+            System.out.println("Lo que hay en la carpeta:");
+            for (int i = 0; i < listaCarpetas.size(); i++) {
+                System.out.println(listaCarpetas.get(i).getNombre());
+                if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
+                    subCarpetaElegida = archivoElegidoN;
+                    System.out.println("AAAAA");
 
                 }
-
             }
+            tablaArchivosTxt.clearSelection();
         }
-        JOptionPane.showMessageDialog(null, "Archivo abierto.");
+        if (archivoElegidoN2.equals(".txt")) {
+            for (int i = 0; i < listaArchivos.size(); i++) {
+                archivosTxt archivoSelec = listaArchivos.get(i);
+                if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
+                    exploradorArchivos.setVisible(false);
+                    crearTexto.setVisible(true);
+                    File archivo = archivoSelec.getArchivo();
+
+                    try (Scanner lector = new Scanner(archivo)) {
+                        ejemploFuente1.setText("");
+
+                        while (lector.hasNextLine()) {
+                            ejemploFuente1.append(lector.nextLine() + "\n");
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
+
+                    }
+
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Archivo abierto.");
         }
-        
-        
+
+
     }//GEN-LAST:event_AbrirArchivosActionPerformed
     public void eliminarArchivos() {
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
@@ -2731,35 +2896,70 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+        String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
         int sentencia = 0;
+        if (archivoElegidoN2.equals("Carpeta")) {
+            try {
 
-        for (int i = 0; i < listaArchivos.size(); i++) {
-            archivosTxt archivoSelec = listaArchivos.get(i);
-            if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
-                for (int t = 0; t < listaCarpetas.size(); t++) {
-                    carpetasArchivos carpetaEleg = listaCarpetas.get(t);
-                    ArrayList<archivosTxt> archivos = carpetaEleg.regresarArchivos();
-                    for (int j = 0; j < archivos.size(); j++) {
-                        if (archivos.get(j).getNombreA().equals(archivoSelec.getNombreA())) {
-                            carpetaEleg.eliminarArchivo(j);
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
+                        sentencia = i;
+                        carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
+                        File temp = carpetaSeleccionada.ubicacionCarpeta;
+                        Path rutaCarp = temp.toPath();
+                        if (Files.exists(rutaCarp)) {
+                            try {
+                                Files.walk(rutaCarp)
+                                        .sorted(Comparator.reverseOrder())
+                                        .map(Path::toFile)
+                                        .forEach(File::delete);
+
+                            } catch (Exception E) {
+                                JOptionPane.showMessageDialog(null, "Error, por alguna razon no se pudo borrar");
+                            }
+
                         }
                     }
-                }
-                sentencia = i;
-                File archivo = archivoSelec.getArchivo();
-                try {
-                    archivo.delete();
-
-                } catch (Exception e) {
 
                 }
+                listaCarpetas.remove(listaCarpetas.get(sentencia));
+                JOptionPane.showMessageDialog(null, "Carpeta exitosamente eliminada.");
+                tablaArchivosTxt.clearSelection();
+            } catch (Exception E) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una carpeta");
+                return;
             }
         }
-        JOptionPane.showMessageDialog(null, "Archivo exitosamente eliminado");
+        if (archivoElegidoN2.equals(".txt")) {
+            for (int i = 0; i < listaArchivos.size(); i++) {
+                archivosTxt archivoSelec = listaArchivos.get(i);
+                if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
+                    for (int t = 0; t < listaCarpetas.size(); t++) {
+                        carpetasArchivos carpetaEleg = listaCarpetas.get(t);
+                        ArrayList<archivosTxt> archivos = carpetaEleg.regresarArchivos();
+                        for (int j = 0; j < archivos.size(); j++) {
+                            if (archivos.get(j).getNombreA().equals(archivoSelec.getNombreA())) {
+                                carpetaEleg.eliminarArchivo(j);
+                            }
+                        }
+                    }
+                    sentencia = i;
+                    File archivo = archivoSelec.getArchivo();
+                    try {
+                        archivo.delete();
 
-        listaArchivos.remove(listaArchivos.get(sentencia));
-        tablaArchivosTxt.clearSelection();
-        filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Archivo exitosamente eliminado");
+
+            listaArchivos.remove(listaArchivos.get(sentencia));
+            tablaArchivosTxt.clearSelection();
+            filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
+        }
+
     }
     private void EliminarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarArchivosActionPerformed
         eliminarArchivos();
@@ -3094,9 +3294,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void AñadirBoton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBoton1MouseClicked
-        CrearCarpeta2.setLocationRelativeTo(null);
-        CrearCarpeta2.setVisible(true);
-        CrearCarpeta2.pack();
+        mostrarCarpeta.setLocationRelativeTo(null);
+        mostrarCarpeta.setVisible(true);
+        mostrarCarpeta.pack();
     }//GEN-LAST:event_AñadirBoton1MouseClicked
 
     private void AñadirBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBoton1ActionPerformed
@@ -3108,9 +3308,6 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe asignarle un nombre a la carpeta.");
             return;
         }
-
-        seleccionarRuta.setVisible(false);
-        ubicacionRutan.setVisible(false);
 
         String nombreC = "";
         try {
@@ -3130,6 +3327,7 @@ public class Principal extends javax.swing.JFrame {
         }
         File carpeta = new File(rutaC, nombreCarpeta1.getText());
         carpeta.mkdirs();
+
         String ruta = carpeta.getAbsolutePath();
         String nombreCa = carpeta.getName();
         long tamañoBytesCa = carpeta.length();
@@ -3141,13 +3339,15 @@ public class Principal extends javax.swing.JFrame {
         String diaCa = formatoDiaC.format(fechaCa);
         carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
         carpetaTemp.añadirCarpeta(carpetaNueva);
-
+        System.out.println("Subcarpeta creada: " + carpetaNueva.getNombre());
+        System.out.println("Dentro de: " + carpetaTemp.getNombre());
+        System.out.println("Cantidad de subcarpetas: " + carpetaTemp.regresarCarpeta().size());
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
-        nombreCarpeta.setText(null);
-        tablaExplorador.clearSelection();
-        CrearCarpeta.dispose();
-        seleccionarRuta.setVisible(true);
-        ubicacionRutan.setVisible(true);
+        nombreCarpeta1.setText(null);
+        tablaArchivosTxt.clearSelection();
+
+        mostrarCarpeta.dispose();
+
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -3261,7 +3461,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel ColorSolido1;
     private javax.swing.JPanel ColorSolido2;
     private javax.swing.JDialog CrearCarpeta;
-    private javax.swing.JDialog CrearCarpeta2;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem EliminarArchivos;
     private javax.swing.JMenu FechaHora;
@@ -3353,6 +3552,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton limpiar;
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
+    private javax.swing.JDialog mostrarCarpeta;
     private javax.swing.JButton multiplicar1;
     private javax.swing.JButton nevada;
     private javax.swing.JTextField nombreCarpeta;
