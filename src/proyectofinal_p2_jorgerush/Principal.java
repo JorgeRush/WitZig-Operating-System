@@ -2140,10 +2140,10 @@ public class Principal extends javax.swing.JFrame {
         boolean parar = true;
 
         if (Carpeta != null && Carpeta.listFiles() != null) {
-            File[] archivos = Carpeta.listFiles();
+            File[] archivos1 = Carpeta.listFiles();
 
-            for (int i = 0; i < archivos.length; i++) {
-                File archivoExistente = archivos[i];
+            for (int i = 0; i < archivos1.length; i++) {
+                File archivoExistente = archivos1[i];
 
                 if (archivoExistente.isDirectory()) {
                     parar = false;
@@ -2162,12 +2162,12 @@ public class Principal extends javax.swing.JFrame {
 
             if (Carpeta != null && Carpeta.listFiles() != null) {
 
-                File[] archivos = Carpeta.listFiles();
+                File[] archivos1 = Carpeta.listFiles();
                 SimpleDateFormat formatoDia2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-                for (int i = 0; i < archivos.length; i++) {
+                for (int i = 0; i < archivos1.length; i++) {
 
-                    File archivoExistente = archivos[i];
+                    File archivoExistente = archivos1[i];
 
                     if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
 
@@ -2238,9 +2238,12 @@ public class Principal extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
+                    System.out.println(archivosExis.get(i).nombreA);
+
                 }
 
                 for (int i = 0; i < carpetaExis.size(); i++) {
+                    System.out.println(carpetaExis.get(i).getNombre());
                     carpetaLocalizar2.añadirCarpeta(carpetaExis.get(i));
                 }
             }
@@ -2253,13 +2256,13 @@ public class Principal extends javax.swing.JFrame {
 
             if (Carpeta != null && Carpeta.listFiles() != null) {
 
-                File[] archivos = Carpeta.listFiles();
+                File[] archivos1 = Carpeta.listFiles();
                 SimpleDateFormat formatoDia2
                         = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-                for (int i = 0; i < archivos.length; i++) {
+                for (int i = 0; i < archivos1.length; i++) {
 
-                    File archivoExistente = archivos[i];
+                    File archivoExistente = archivos1[i];
 
                     if (archivoExistente.isFile() && archivoExistente.getName().toLowerCase().endsWith(".txt")) {
 
@@ -2295,6 +2298,7 @@ public class Principal extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
+                    System.out.println("ADAJADKAD");
                 }
             }
 
@@ -2327,21 +2331,21 @@ public class Principal extends javax.swing.JFrame {
 
             try {
 
-                File archivo = new File(exploradorPc.getSelectedFile() + ".txt");
+                File archivo1 = new File(exploradorPc.getSelectedFile() + ".txt");
 
-                if (archivo.exists() == false) {
-                    archivo.createNewFile();
+                if (archivo1.exists() == false) {
+                    archivo1.createNewFile();
                 }
 
-                FileWriter guardar = new FileWriter(archivo);
+                FileWriter guardar = new FileWriter(archivo1);
                 guardar.write(ejemploFuente1.getText());
                 guardar.close();
-                String nombre = archivo.getName();
+                String nombre = archivo1.getName();
 
-                long tamañoBytes = archivo.length();
+                long tamañoBytes = archivo1.length();
                 double tamañoKb = tamañoBytes / 1024.0;
 
-                long fechaMiliD = archivo.lastModified();
+                long fechaMiliD = archivo1.lastModified();
                 Date fecha = new Date(fechaMiliD);
 
                 SimpleDateFormat formatoDia
@@ -2349,11 +2353,11 @@ public class Principal extends javax.swing.JFrame {
 
                 String tipo = ".txt";
                 String dia = formatoDia.format(fecha);
-                String ruta = archivo.getAbsolutePath();
+                String ruta = archivo1.getAbsolutePath();
 
-                archivosTxt nuevoArchivo = new archivosTxt(nombre, archivo, dia, tipo, ruta, tamañoKb);
+                archivosTxt nuevoArchivo = new archivosTxt(nombre, archivo1, dia, tipo, ruta, tamañoKb);
 
-                File Carpeta = archivo.getParentFile();
+                File Carpeta = archivo1.getParentFile();
 
                 String nombreCa = Carpeta.getName();
 
@@ -2363,8 +2367,7 @@ public class Principal extends javax.swing.JFrame {
                 long fechaMilis = Carpeta.lastModified();
                 Date fechaCa = new Date(fechaMilis);
 
-                SimpleDateFormat formatoDiaC
-                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                SimpleDateFormat formatoDiaC = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                 String tipoCa = "Carpeta";
                 String diaCa = formatoDiaC.format(fechaCa);
@@ -2373,6 +2376,10 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 carpetaLocalizar = retornarCarpeta(Carpeta, carpetaLocalizar);
+                System.out.println(
+                        "Archivos encontrados: "
+                        + carpetaLocalizar.regresarArchivos().size()
+                );
 
                 boolean verf = false;
 
@@ -2382,10 +2389,20 @@ public class Principal extends javax.swing.JFrame {
                     }
                 }
 
-                if (verf == false) {
-                    listaCarpetas.add(carpetaLocalizar);
-                }
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
 
+                        System.out.println("ANTES: "
+                                + listaCarpetas.get(i).regresarArchivos().size());
+
+                        listaCarpetas.set(i, carpetaLocalizar);
+
+                        System.out.println("DESPUES: "
+                                + listaCarpetas.get(i).regresarArchivos().size());
+
+                        break;
+                    }
+                }
                 JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
 
                 ejemploFuente1.setText(null);
@@ -2687,6 +2704,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaArchivosTxtMouseClicked
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
+
+        filaSeleccion = tablaExplorador.getSelectedRow();
+        if (filaSeleccion == -1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
+            return;
+        }
+        String archivoElegidoN = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
+        System.out.println(archivoElegidoN);
+        String archivoElegidoN2 = (String) tablaExplorador.getValueAt(filaSeleccion, 2);
+        if (archivoElegidoN2.equals("Carpeta")) {
+            System.out.println("Lo que hay en la carpeta:");
+            for (int i = 0; i < listaCarpetas.size(); i++) {
+                System.out.println(listaCarpetas.get(i).getNombre());
+                if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
+                    subCarpetaElegida = archivoElegidoN;
+                    System.out.println("AAAAA");
+
+                }
+            }
+
+        }
         tablaCarpetas.setVisible(false);
         tablaArchivos.setVisible(true);
         BorrarBoton.setVisible(false);
@@ -2705,14 +2743,14 @@ public class Principal extends javax.swing.JFrame {
             carpetasArchivos temp = listaCarpetas.get(i);
             if (temp.getNombre().equals(carpetaNombre)) {
                 archivosC = temp.regresarArchivos();
-                archivosCa=temp.regresarCarpeta();
+                archivosCa = temp.regresarCarpeta();
             }
 
         }
-        if (archivosC.isEmpty()&&archivosCa.isEmpty()) {
+        if (archivosC.isEmpty() || archivosCa.isEmpty()) {
             verf = true;
         }
-        
+
         return verf;
     }
     String carpetaElegida = "";
@@ -2733,102 +2771,111 @@ public class Principal extends javax.swing.JFrame {
 
         }
 
-        if (verificarListado(carpetaElegida) == true) {
-
-//            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
-//            tablaCarpetas.setVisible(true);
-//            tablaArchivos.setVisible(false);
-//            regresar.setVisible(false);
-        } else {
+//        if (verificarListado(carpetaElegida) == true) {
+//
+        ////            JOptionPane.showMessageDialog(null, "Esta Carpeta no tiene archivos");
+////            tablaCarpetas.setVisible(true);
+////            tablaArchivos.setVisible(false);
+////            regresar.setVisible(false);
+//        } else {
          
             Timer timer = new Timer(1000, e -> {
-                System.out.println("filaSeleccion2 = " + filaSeleccion2);
-                filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
 
-                if (filaSeleccion2 != -1 && tablaCarpetas.isVisible() == false) {
-                    String fSN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
-                    for (int i = 0; i < listaCarpetas.size(); i++) {
-                        if (listaCarpetas.get(i).getNombre().equals(subCarpetaElegida)) {
-                            ArrayList<archivosTxt> archivosC = listaCarpetas.get(i).regresarArchivos();
-                            ArrayList<carpetasArchivos> carpetas = listaCarpetas.get(i).regresarCarpeta();
-                            for (int j = 0; j < archivosC.size(); j++) {
-                                if (archivosC.get(j).getNombreA().equals(fSN)) {
-                                    ruta.setText(archivosC.get(j).rutA);
-                                }
-                            }
-                            for (int j = 0; j < carpetas.size(); j++) {
-                                if (carpetas.get(j).getNombre().equals(fSN)) {
-                                    ruta.setText(carpetas.get(j).ruta);
-                                }
-                            }
+            filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
 
+            if (filaSeleccion2 != -1 && tablaCarpetas.isVisible() == false) {
+                String fSN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+                    if (listaCarpetas.get(i).getNombre().equals(subCarpetaElegida)) {
+                        ArrayList<archivosTxt> archivosC = listaCarpetas.get(i).regresarArchivos();
+                        ArrayList<carpetasArchivos> carpetas = listaCarpetas.get(i).regresarCarpeta();
+                        for (int j = 0; j < archivosC.size(); j++) {
+                            if (archivosC.get(j).getNombreA().equals(fSN)) {
+                                ruta.setText(archivosC.get(j).rutA);
+                            }
                         }
+                        for (int j = 0; j < carpetas.size(); j++) {
+                            if (carpetas.get(j).getNombre().equals(fSN)) {
+                                ruta.setText(carpetas.get(j).ruta);
+                            }
+                        }
+
                     }
                 }
-                if (filaSeleccion2 == -1) {
-                   
-                    DefaultTableModel modeloTablaA = new DefaultTableModel() {
-                        @Override
-                        public boolean isCellEditable(int row, int column) {
-                            return false;
-                        }
-                    };
+            }
+            if (filaSeleccion2 == -1) {
 
-                    boolean verfTipo = false;
-                    tablaArchivosTxt.setModel(modeloTablaA);
-                    modeloTablaA.addColumn("Nombre");
-                    modeloTablaA.addColumn("Fecha de Modificacion");
-                    modeloTablaA.addColumn("Tipo");
-                    modeloTablaA.addColumn("Tamaño");
-                    tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
-                        JLabel l = new JLabel(String.valueOf(v));
-                        if (r >= 0) {
-                            String columnaTipo = (String) tablaArchivosTxt.getValueAt(r, 2);
-                            if (columnaTipo.equals("Carpeta")) {
-                                l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png")));
-                            } else {
-                                l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
-                            }
+                DefaultTableModel modeloTablaA = new DefaultTableModel() {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
 
-                        }
-                        return l;
-                    });
-                    ArrayList<archivosTxt> archivos = new ArrayList<>();
-                    ArrayList<carpetasArchivos> archivosC = new ArrayList<>();
-
-                    for (int i = 0; i < listaCarpetas.size(); i++) {
-
-                        carpetasArchivos temp = listaCarpetas.get(i);
-                        if (temp.getNombre().equals(subCarpetaElegida)) {
-                            archivos = temp.regresarArchivos();
-                            archivosC = temp.regresarCarpeta();
+                tablaArchivosTxt.setModel(modeloTablaA);
+                modeloTablaA.addColumn("Nombre");
+                modeloTablaA.addColumn("Fecha de Modificacion");
+                modeloTablaA.addColumn("Tipo");
+                modeloTablaA.addColumn("Tamaño");
+                tablaArchivosTxt.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
+                    JLabel l = new JLabel(String.valueOf(v));
+                    if (r >= 0) {
+                        String columnaTipo = (String) tablaArchivosTxt.getValueAt(r, 2);
+                        if (columnaTipo.equals("Carpeta")) {
+                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png")));
+                        } else {
+                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
                         }
 
                     }
-                   
-                    if (archivosC != null) {
-                        for (int i = 0; i < archivosC.size(); i++) {
-                            carpetasArchivos temp = archivosC.get(i);
-                            String tamaño = String.format("%.2f", temp.getTamaño());
-                            String[] datos = {temp.getNombre(), temp.getFechaMod(), temp.getTipo(), tamaño + " bytes"};
-                            modeloTablaA.addRow(datos);
-                        }
-                    }
-                    for (int i = 0; i < archivos.size(); i++) {
-                        archivosTxt archivosN = archivos.get(i);
-                        String tamaño = String.format("%.2f", archivosN.getTamañoA());
-                        String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
-                        modeloTablaA.addRow(datos);
-                    }
+                    return l;
+                });
+                ArrayList<archivosTxt> archivos1 = new ArrayList<>();
+                ArrayList<carpetasArchivos> archivosC = new ArrayList<>();
 
-                } else {
+                for (int i = 0; i < listaCarpetas.size(); i++) {
+
+                    carpetasArchivos temp = listaCarpetas.get(i);
+                    if (temp.getNombre().equals(subCarpetaElegida)) {
+                        archivos1 = temp.regresarArchivos();
+                        System.out.println("archivos1: " + archivos1);
+                        for (int j = 0; j < archivos1.size(); j++) {
+                            System.out.println(archivos1.get(j).getNombreA());
+                            System.out.println("archivos 1" + archivos1);
+                        }
+                        archivosC = temp.regresarCarpeta();
+                    }
 
                 }
 
-            });
+//                if (archivosC != null) {
+                for (int i = 0; i < archivosC.size(); i++) {
 
-            timer.start();
-        }
+                    carpetasArchivos temp = archivosC.get(i);
+                    String tamaño = String.format("%.2f", temp.getTamaño());
+                    String[] datos = {temp.getNombre(), temp.getFechaMod(), temp.getTipo(), tamaño + " bytes"};
+                    modeloTablaA.addRow(datos);
+                }
+//                }
+                if (archivos1.isEmpty()) {
+
+                }
+                for (int i = 0; i < archivos1.size(); i++) {
+                    System.out.println("a");
+                    archivosTxt archivosN = archivos1.get(i);
+                    String tamaño = String.format("%.2f", archivosN.getTamañoA());
+                    String[] datos = {archivosN.getNombreA(), archivosN.getFechaModificado(), archivosN.getTipoA(), tamaño + " bytes"};
+                    modeloTablaA.addRow(datos);
+                }
+
+            } else {
+
+            }
+
+        });
+
+        timer.start();
+//        }
 
 
     }//GEN-LAST:event_tablaArchivosTxtAncestorAdded

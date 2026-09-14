@@ -43,6 +43,9 @@ public class carpetasArchivos {
     }
 
     public ArrayList<archivosTxt> regresarArchivos() {
+        for (int i = 0; i < archivosCarpeta.size(); i++) {
+            System.out.println(archivosCarpeta.get(i).getNombreA());
+        }
         return archivosCarpeta;
     }
     public void eliminarArchivo(int i){
