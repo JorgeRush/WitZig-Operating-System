@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal_p2_jorgerush;
-
+import java.util.Random;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -311,6 +311,7 @@ public class Principal extends javax.swing.JFrame {
         willyCelebra = new javax.swing.JLabel();
         BarraProgreso = new javax.swing.JDialog();
         barraProgreso = new javax.swing.JProgressBar();
+        mensaje = new javax.swing.JLabel();
         CrearCarpeta = new javax.swing.JDialog();
         crearCarpeta = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
@@ -1468,28 +1469,37 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        BarraProgreso.setBackground(new java.awt.Color(227, 227, 227));
+        BarraProgreso.setBackground(new java.awt.Color(213, 212, 212));
+        BarraProgreso.setModal(true);
 
         barraProgreso.setBackground(new java.awt.Color(255, 255, 255));
         barraProgreso.setFont(new java.awt.Font("Dubai Light", 0, 18)); // NOI18N
-        barraProgreso.setForeground(new java.awt.Color(193, 193, 193));
-        barraProgreso.setStringPainted(true);
+        barraProgreso.setForeground(new java.awt.Color(102, 102, 102));
+
+        mensaje.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mensaje.setText("  Rusia tiene la superficie de Pluton.");
+        mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout BarraProgresoLayout = new javax.swing.GroupLayout(BarraProgreso.getContentPane());
         BarraProgreso.getContentPane().setLayout(BarraProgresoLayout);
         BarraProgresoLayout.setHorizontalGroup(
             BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BarraProgresoLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraProgresoLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(barraProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         BarraProgresoLayout.setVerticalGroup(
             BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BarraProgresoLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraProgresoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         CrearCarpeta.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -3485,18 +3495,57 @@ public class Principal extends javax.swing.JFrame {
 //        seleccionarRuta.setVisible(true);
 //        ubicacionRutan.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+    Timer timerAnimacion;
+
+    public void setProgresoAnimado(int valorDestino, Runnable alFinalizar) {
+        // Si ya hay una animación en curso, la detenemos
+        if (timerAnimacion != null && timerAnimacion.isRunning()) {
+            timerAnimacion.stop();
+        }
+
+        // Crear un timer que actualiza la barra cada 15 milisegundos
+        timerAnimacion = new javax.swing.Timer(15, e -> {
+            int valorActual = barraProgreso.getValue();
+
+            if (valorActual < valorDestino) {
+                barraProgreso.setValue(valorActual + 1); // Incrementa suavemente
+            } else if (valorActual > valorDestino) {
+                barraProgreso.setValue(valorActual - 1);
+            } else {
+                timerAnimacion.stop();
+                if (valorDestino >= 100 && alFinalizar != null) {
+                    alFinalizar.run();
+                }
+
+            }
+        });
+
+        timerAnimacion.start();
+    }
+    Random R= new Random();
+    String mensajes[] = {"¿Sabias que WitZig significa Ingenioso en aleman?", "Mi nombre es Wally",
+        "Happy Studios tiene muy buenos programadores", "El agua tibia se congela mas rapido que la fria",
+        "Las ovejas pueden reconocer rostros", "Hay 2.5 millones de hormigas por cada ser humano",
+        "Las mariposas saborean la comida con las patas", "Rusia tiene mas superficie que pluton",
+        "El ojo de un avestruz es más grande que su cerebro","Las Jirafas no tienen cuerdas vocales",
+    "Un rayo es mas caliente que el sol",
+    "Tu nariz puede recordar 50,000 olores.","Los flamingos nacen de color gris",
+    "Los caracoles llegan a dormir 3 años seguidos"};
+
 
     private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
         barraProgreso.putClientProperty("JComponent.roundRect", true);
         barraProgreso.putClientProperty("JProgressBar.square", false);
-        BarraProgreso.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
         BarraProgreso.pack();
+
+        BarraProgreso.setLocationRelativeTo(this);
+         mensaje.setText(mensajes[R.nextInt(0,13)]);
+        barraProgreso.setValue(0);
 
         SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
             @Override
             protected Void doInBackground() throws Exception {
-
-                for (int i = 0; i <= 100; i += 7) {
+                for (int i = 0; i <= 100; i += 10) {
                     Thread.sleep(150);
                     publish(i);
                 }
@@ -3505,20 +3554,19 @@ public class Principal extends javax.swing.JFrame {
 
             @Override
             protected void process(java.util.List<Integer> chunks) {
-                // Actualiza la barra en la interfaz
                 int valor = chunks.get(chunks.size() - 1);
-                setProgreso(valor);
+
+                setProgresoAnimado(valor, null);
             }
 
             @Override
             protected void done() {
-
-                BarraProgreso.dispose();
-
+                setProgresoAnimado(100, () -> {
+                    BarraProgreso.dispose();
+                });
             }
         };
 
-        // 3. Ejecutar el hilo y mostrar el diálogo
         worker.execute();
         BarraProgreso.setVisible(true);
 
@@ -3681,6 +3729,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton limpiar;
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
+    private javax.swing.JLabel mensaje;
     private javax.swing.JDialog mostrarCarpeta;
     private javax.swing.JButton multiplicar1;
     private javax.swing.JButton nevada;
