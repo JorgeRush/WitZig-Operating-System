@@ -2619,11 +2619,11 @@ public class Principal extends javax.swing.JFrame {
         if (boton == 3) {
             OpcionesCarpetas.show(tablaExplorador, x, y);
         } else if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1 && evt.getClickCount() == 2) {
-            tablaCarpetas.setVisible(false);
-            tablaArchivos.setVisible(true);
-            BorrarBoton.setVisible(false);
-            BorrarBotonArchivos.setVisible(true);
-            regresar.setVisible(true);
+//            tablaCarpetas.setVisible(false);
+//            tablaArchivos.setVisible(true);
+//            BorrarBoton.setVisible(false);
+//            BorrarBotonArchivos.setVisible(true);
+//            regresar.setVisible(true);
         }
     }//GEN-LAST:event_tablaExploradorMouseClicked
 
@@ -2698,7 +2698,7 @@ public class Principal extends javax.swing.JFrame {
                 System.out.println(listaCarpetas.get(i).getNombre());
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
-                    System.out.println("AAAAA");
+                   
 
                 }
             }
@@ -2967,7 +2967,7 @@ public class Principal extends javax.swing.JFrame {
                         carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
                         File temp = carpetaSeleccionada.ubicacionCarpeta;
                         Path rutaCarp = temp.toPath();
-                          System.out.println("Existe antes: " + Files.exists(rutaCarp));
+                          
                         if (Files.exists(rutaCarp)) {
                             try {
                                 Files.walk(rutaCarp)
@@ -2980,7 +2980,7 @@ public class Principal extends javax.swing.JFrame {
                             }
 
                         }
-                         System.out.println("Existe despues: " + Files.exists(rutaCarp));
+                         
                       
                         
                     }
