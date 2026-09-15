@@ -31,6 +31,7 @@ import java.util.Scanner;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,7 +58,8 @@ public class Principal extends javax.swing.JFrame {
 
         XO();
         AñadirBoton1.setVisible(false);
-
+        BarraTareas.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
+        BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
         willyCelebra.setVisible(false);
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
@@ -308,6 +310,7 @@ public class Principal extends javax.swing.JFrame {
         puntajeX = new javax.swing.JLabel();
         willyCelebra = new javax.swing.JLabel();
         BarraProgreso = new javax.swing.JDialog();
+        barraProgreso = new javax.swing.JProgressBar();
         CrearCarpeta = new javax.swing.JDialog();
         crearCarpeta = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
@@ -1465,15 +1468,28 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        BarraProgreso.setBackground(new java.awt.Color(227, 227, 227));
+
+        barraProgreso.setBackground(new java.awt.Color(255, 255, 255));
+        barraProgreso.setFont(new java.awt.Font("Dubai Light", 0, 18)); // NOI18N
+        barraProgreso.setForeground(new java.awt.Color(193, 193, 193));
+        barraProgreso.setStringPainted(true);
+
         javax.swing.GroupLayout BarraProgresoLayout = new javax.swing.GroupLayout(BarraProgreso.getContentPane());
         BarraProgreso.getContentPane().setLayout(BarraProgresoLayout);
         BarraProgresoLayout.setHorizontalGroup(
             BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 655, Short.MAX_VALUE)
+            .addGroup(BarraProgresoLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         BarraProgresoLayout.setVerticalGroup(
             BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 187, Short.MAX_VALUE)
+            .addGroup(BarraProgresoLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         CrearCarpeta.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1629,6 +1645,7 @@ public class Principal extends javax.swing.JFrame {
         BarraTareas.setBackground(new java.awt.Color(225, 225, 225));
         BarraTareas.setMaximumSize(new java.awt.Dimension(4, 60));
         BarraTareas.setMinimumSize(new java.awt.Dimension(4, 60));
+        BarraTareas.setOpaque(false);
         BarraTareas.setPreferredSize(new java.awt.Dimension(4, 60));
         BarraTareas.setLayout(new java.awt.GridBagLayout());
 
@@ -1664,6 +1681,11 @@ public class Principal extends javax.swing.JFrame {
         WitZig.setBorderPainted(false);
         WitZig.setContentAreaFilled(false);
         WitZig.setFocusPainted(false);
+        WitZig.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                WitZigMouseClicked(evt);
+            }
+        });
         WitZig.addActionListener(this::WitZigActionPerformed);
         contenedor.add(WitZig);
 
@@ -2698,7 +2720,6 @@ public class Principal extends javax.swing.JFrame {
                 System.out.println(listaCarpetas.get(i).getNombre());
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
-                   
 
                 }
             }
@@ -2916,9 +2937,9 @@ public class Principal extends javax.swing.JFrame {
 
             ArrayList<carpetasArchivos> revisarCarpetas = carpetaEleg.regresarCarpeta();
             for (int j = 0; j < revisarCarpetas.size(); j++) {
-               
+
                 if (revisarCarpetas.get(j).getNombre().equals(nombre)) {
-                
+
                     carpetasArchivos carpetaSeleccionada = revisarCarpetas.get(j);
                     File temp = carpetaSeleccionada.ubicacionCarpeta;
                     Path rutaCarp = temp.toPath();
@@ -2943,6 +2964,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
+    public void setProgreso(int porcentaje) {
+        barraProgreso.setValue(porcentaje);
+    }
+
     public void eliminarArchivos() {
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
         if (filaSeleccion2 == -1) {
@@ -2952,22 +2977,22 @@ public class Principal extends javax.swing.JFrame {
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
         String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
         int sentencia = 0;
-        boolean verf=false;
+        boolean verf = false;
         if (archivoElegidoN2.equals("Carpeta")) {
             try {
 
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     carpetasArchivos carpetaEleg = listaCarpetas.get(i);
-                     
-                     eliminarCarpetaEscondida(listaCarpetas, archivoElegidoN);
+
+                    eliminarCarpetaEscondida(listaCarpetas, archivoElegidoN);
                     if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
-                      verf=true;
+                        verf = true;
                         sentencia = i;
 
                         carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
                         File temp = carpetaSeleccionada.ubicacionCarpeta;
                         Path rutaCarp = temp.toPath();
-                          
+
                         if (Files.exists(rutaCarp)) {
                             try {
                                 Files.walk(rutaCarp)
@@ -2980,16 +3005,14 @@ public class Principal extends javax.swing.JFrame {
                             }
 
                         }
-                         
-                      
-                        
+
                     }
 
                 }
-                if(verf==true){
-                     listaCarpetas.remove(listaCarpetas.get(sentencia));
+                if (verf == true) {
+                    listaCarpetas.remove(listaCarpetas.get(sentencia));
                 }
-               
+
                 JOptionPane.showMessageDialog(null, "Carpeta exitosamente eliminada.");
                 tablaArchivosTxt.clearSelection();
             } catch (Exception E) {
@@ -3462,6 +3485,44 @@ public class Principal extends javax.swing.JFrame {
 //        seleccionarRuta.setVisible(true);
 //        ubicacionRutan.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
+        barraProgreso.putClientProperty("JComponent.roundRect", true);
+        barraProgreso.putClientProperty("JProgressBar.square", false);
+        BarraProgreso.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
+        BarraProgreso.pack();
+
+        SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+
+                for (int i = 0; i <= 100; i += 7) {
+                    Thread.sleep(150);
+                    publish(i);
+                }
+                return null;
+            }
+
+            @Override
+            protected void process(java.util.List<Integer> chunks) {
+                // Actualiza la barra en la interfaz
+                int valor = chunks.get(chunks.size() - 1);
+                setProgreso(valor);
+            }
+
+            @Override
+            protected void done() {
+
+                BarraProgreso.dispose();
+
+            }
+        };
+
+        // 3. Ejecutar el hilo y mostrar el diálogo
+        worker.execute();
+        BarraProgreso.setVisible(true);
+
+    }//GEN-LAST:event_WitZigMouseClicked
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3554,6 +3615,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu archivo;
     private javax.swing.JButton aspectosExternos;
     private javax.swing.JRadioButton barraN1;
+    private javax.swing.JProgressBar barraProgreso;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JButton calculadora;
