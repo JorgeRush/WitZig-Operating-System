@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal_p2_jorgerush;
+
 import java.util.Random;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
@@ -310,8 +311,10 @@ public class Principal extends javax.swing.JFrame {
         puntajeX = new javax.swing.JLabel();
         willyCelebra = new javax.swing.JLabel();
         BarraProgreso = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
         barraProgreso = new javax.swing.JProgressBar();
         mensaje = new javax.swing.JLabel();
+        Wally = new javax.swing.JLabel();
         CrearCarpeta = new javax.swing.JDialog();
         crearCarpeta = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
@@ -1470,37 +1473,33 @@ public class Principal extends javax.swing.JFrame {
         );
 
         BarraProgreso.setBackground(new java.awt.Color(213, 212, 212));
+        BarraProgreso.setMaximumSize(new java.awt.Dimension(480, 200));
+        BarraProgreso.setMinimumSize(new java.awt.Dimension(480, 200));
         BarraProgreso.setModal(true);
+        BarraProgreso.setPreferredSize(new java.awt.Dimension(480, 200));
+        BarraProgreso.setResizable(false);
+        BarraProgreso.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         barraProgreso.setBackground(new java.awt.Color(255, 255, 255));
         barraProgreso.setFont(new java.awt.Font("Dubai Light", 0, 18)); // NOI18N
         barraProgreso.setForeground(new java.awt.Color(102, 102, 102));
+        jPanel5.add(barraProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 400, 30));
 
         mensaje.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensaje.setText("  Rusia tiene la superficie de Pluton.");
         mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel5.add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 340, 80));
 
-        javax.swing.GroupLayout BarraProgresoLayout = new javax.swing.GroupLayout(BarraProgreso.getContentPane());
-        BarraProgreso.getContentPane().setLayout(BarraProgresoLayout);
-        BarraProgresoLayout.setHorizontalGroup(
-            BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraProgresoLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(barraProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
-                .addGap(39, 39, 39))
-        );
-        BarraProgresoLayout.setVerticalGroup(
-            BarraProgresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraProgresoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
+        Wally.setForeground(new java.awt.Color(242, 242, 242));
+        Wally.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Wally/W9.png"))); // NOI18N
+        Wally.setText("A                  ");
+        Wally.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel5.add(Wally, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 100, 80));
+
+        BarraProgreso.getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 170));
 
         CrearCarpeta.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -3522,16 +3521,25 @@ public class Principal extends javax.swing.JFrame {
 
         timerAnimacion.start();
     }
-    Random R= new Random();
-    String mensajes[] = {"¿Sabias que WitZig significa Ingenioso en aleman?", "Mi nombre es Wally",
-        "Happy Studios tiene muy buenos programadores", "El agua tibia se congela mas rapido que la fria",
-        "Las ovejas pueden reconocer rostros", "Hay 2.5 millones de hormigas por cada ser humano",
-        "Las mariposas saborean la comida con las patas", "Rusia tiene mas superficie que pluton",
-        "El ojo de un avestruz es más grande que su cerebro","Las Jirafas no tienen cuerdas vocales",
-    "Un rayo es mas caliente que el sol",
-    "Tu nariz puede recordar 50,000 olores.","Los flamingos nacen de color gris",
-    "Los caracoles llegan a dormir 3 años seguidos"};
-
+    Random R = new Random();
+    String mensajes[] = {"WitZig proviene del Aleman.", "Mi nombre es Wally",
+        "Ve y busca Happy Studios :D", "Venus gira al reves",
+        "Las ovejas pueden reconocer rostros", "Los koalas duermen 22 horas.",
+        "La miel nunca caduca", "Rusia tiene mas superficie que pluton",
+        "Las Jirafas no tienen cuerdas vocales",
+        "Un rayo es mas caliente que el sol",
+        "Tu nariz puede recordar 50,000 olores.", "Los flamingos nacen de color gris",
+        "Los tiburones no tienen huesos."};
+    ImageIcon[] arregloIconos = new ImageIcon[]{
+        new ImageIcon(getClass().getResource("/Wally/W3.png")),
+        new ImageIcon(getClass().getResource("/Wally/W4.png")),
+        new ImageIcon(getClass().getResource("/Wally/W5.png")),
+        new ImageIcon(getClass().getResource("/Wally/W6.png")),
+        new ImageIcon(getClass().getResource("/Wally/W7.png")),
+        new ImageIcon(getClass().getResource("/Wally/W8.png")),
+        new ImageIcon(getClass().getResource("/Wally/W9.png")),
+        new ImageIcon(getClass().getResource("/Wally/W10.png")),
+        new ImageIcon(getClass().getResource("/Wally/W11.png")),};
 
     private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
         barraProgreso.putClientProperty("JComponent.roundRect", true);
@@ -3539,7 +3547,8 @@ public class Principal extends javax.swing.JFrame {
         BarraProgreso.pack();
 
         BarraProgreso.setLocationRelativeTo(this);
-         mensaje.setText(mensajes[R.nextInt(0,13)]);
+        Wally.setIcon(arregloIconos[R.nextInt(0,8)]);
+        mensaje.setText(mensajes[R.nextInt(0, 13)]);
         barraProgreso.setValue(0);
 
         SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
@@ -3657,6 +3666,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JPopupMenu PopUpMenu;
     private javax.swing.JButton TicTacToe;
+    private javax.swing.JLabel Wally;
     private javax.swing.JButton WitZig;
     private javax.swing.JDialog XO;
     private javax.swing.JMenuItem abrirArchivo;
@@ -3721,6 +3731,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
