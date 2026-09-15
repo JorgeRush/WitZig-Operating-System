@@ -2406,12 +2406,18 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 carpetaLocalizar = retornarCarpeta(Carpeta, carpetaLocalizar);
-
+                boolean verf=true;
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
                         listaCarpetas.set(i, carpetaLocalizar);
+                        verf=false;
                         break;
+                    }else{
+                      
                     }
+                }
+                if(verf==true){
+                    listaCarpetas.add(carpetaLocalizar);
                 }
                 JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
 
@@ -2714,7 +2720,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaArchivosTxtMouseClicked
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-
+         
         filaSeleccion = tablaExplorador.getSelectedRow();
         if (filaSeleccion == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
@@ -2893,7 +2899,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarMouseClicked
 
     private void AbrirArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirArchivosActionPerformed
-
+         
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
         if (filaSeleccion2 == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
@@ -2915,6 +2921,7 @@ public class Principal extends javax.swing.JFrame {
             tablaArchivosTxt.clearSelection();
         }
         if (archivoElegidoN2.equals(".txt")) {
+            cargarBarra();
             for (int i = 0; i < listaArchivos.size(); i++) {
                 archivosTxt archivoSelec = listaArchivos.get(i);
                 if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
@@ -3061,11 +3068,13 @@ public class Principal extends javax.swing.JFrame {
 
     }
     private void EliminarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarArchivosActionPerformed
+        cargarBarra();
         eliminarArchivos();
 
     }//GEN-LAST:event_EliminarArchivosActionPerformed
 
     private void BorrarBotonArchivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarBotonArchivosMouseClicked
+        cargarBarra();
         eliminarArchivos();
     }//GEN-LAST:event_BorrarBotonArchivosMouseClicked
 
@@ -3541,13 +3550,13 @@ public class Principal extends javax.swing.JFrame {
         new ImageIcon(getClass().getResource("/Wally/W10.png")),
         new ImageIcon(getClass().getResource("/Wally/W11.png")),};
 
-    private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
+    public void cargarBarra() {
         barraProgreso.putClientProperty("JComponent.roundRect", true);
         barraProgreso.putClientProperty("JProgressBar.square", false);
         BarraProgreso.pack();
 
         BarraProgreso.setLocationRelativeTo(this);
-        Wally.setIcon(arregloIconos[R.nextInt(0,8)]);
+        Wally.setIcon(arregloIconos[R.nextInt(0, 8)]);
         mensaje.setText(mensajes[R.nextInt(0, 13)]);
         barraProgreso.setValue(0);
 
@@ -3578,7 +3587,9 @@ public class Principal extends javax.swing.JFrame {
 
         worker.execute();
         BarraProgreso.setVisible(true);
-
+    }
+    private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
+       
     }//GEN-LAST:event_WitZigMouseClicked
     public String noCero(float resultado) {
         String retorno = "";
