@@ -18,6 +18,7 @@ import javax.swing.UIManager;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
@@ -47,6 +48,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    PanelSnake panelSnake;
+
     public Principal() {
 
         try {
@@ -58,6 +61,15 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
+
+        panelSnake = new PanelSnake(500, 30);
+        Snake.add(panelSnake);
+        panelSnake.setBounds(10, 10, 500, 500);
+        panelSnake.setOpaque(false);
+        PanelFondo fondo = new PanelFondo(500, 30);
+        Snake.add(fondo);
+        fondo.setBounds(10, 10, 500, 500);
+
         AñadirBoton1.setVisible(false);
         BarraTareas.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
         BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
@@ -329,14 +341,18 @@ public class Principal extends javax.swing.JFrame {
         nombreCarpeta1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        Snake = new javax.swing.JDialog();
+        RJuego = new javax.swing.JButton();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
+        calculadora1 = new javax.swing.JButton();
         calculadora = new javax.swing.JButton();
         explorarArchivos = new javax.swing.JButton();
         WitZig = new javax.swing.JButton();
         editorTexto1 = new javax.swing.JButton();
         TicTacToe = new javax.swing.JButton();
+        SnakeBoton = new javax.swing.JButton();
         FondoPantalla = new javax.swing.JPanel();
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
@@ -658,7 +674,6 @@ public class Principal extends javax.swing.JFrame {
 
         personalizarPantalla.getContentPane().add(editarColoresPantalla, java.awt.BorderLayout.CENTER);
 
-        crearTexto.setPreferredSize(new java.awt.Dimension(813, 700));
         crearTexto.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 crearTextoWindowOpened(evt);
@@ -919,7 +934,6 @@ public class Principal extends javax.swing.JFrame {
         personalizarEditor2.addActionListener(this::personalizarEditor2ActionPerformed);
         PopUp.add(personalizarEditor2);
 
-        exploradorArchivos.setPreferredSize(new java.awt.Dimension(700, 420));
         exploradorArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exploradorArchivosMouseClicked(evt);
@@ -1473,10 +1487,8 @@ public class Principal extends javax.swing.JFrame {
         );
 
         BarraProgreso.setBackground(new java.awt.Color(213, 212, 212));
-        BarraProgreso.setMaximumSize(new java.awt.Dimension(480, 200));
         BarraProgreso.setMinimumSize(new java.awt.Dimension(480, 200));
         BarraProgreso.setModal(true);
-        BarraProgreso.setPreferredSize(new java.awt.Dimension(480, 200));
         BarraProgreso.setResizable(false);
         BarraProgreso.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1630,6 +1642,36 @@ public class Principal extends javax.swing.JFrame {
 
         mostrarCarpeta.getContentPane().add(crearCarpeta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 437, -1));
 
+        Snake.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SnakeKeyPressed(evt);
+            }
+        });
+
+        RJuego.setText("Reiniciar");
+        RJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RJuegoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SnakeLayout = new javax.swing.GroupLayout(Snake.getContentPane());
+        Snake.getContentPane().setLayout(SnakeLayout);
+        SnakeLayout.setHorizontalGroup(
+            SnakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SnakeLayout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(RJuego)
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        SnakeLayout.setVerticalGroup(
+            SnakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SnakeLayout.createSequentialGroup()
+                .addContainerGap(504, Short.MAX_VALUE)
+                .addComponent(RJuego)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1660,6 +1702,18 @@ public class Principal extends javax.swing.JFrame {
 
         contenedor.setOpaque(false);
         contenedor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 16, 0));
+
+        calculadora1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/PA1.png"))); // NOI18N
+        calculadora1.setBorder(null);
+        calculadora1.setContentAreaFilled(false);
+        calculadora1.setFocusPainted(false);
+        calculadora1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculadora1MouseClicked(evt);
+            }
+        });
+        calculadora1.addActionListener(this::calculadora1ActionPerformed);
+        contenedor.add(calculadora1);
 
         calculadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CA1.png"))); // NOI18N
         calculadora.setBorder(null);
@@ -1721,6 +1775,18 @@ public class Principal extends javax.swing.JFrame {
         });
         TicTacToe.addActionListener(this::TicTacToeActionPerformed);
         contenedor.add(TicTacToe);
+
+        SnakeBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/S1.png"))); // NOI18N
+        SnakeBoton.setBorder(null);
+        SnakeBoton.setContentAreaFilled(false);
+        SnakeBoton.setFocusPainted(false);
+        SnakeBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SnakeBotonMouseClicked(evt);
+            }
+        });
+        SnakeBoton.addActionListener(this::SnakeBotonActionPerformed);
+        contenedor.add(SnakeBoton);
 
         BarraTareas.add(contenedor, new java.awt.GridBagConstraints());
 
@@ -2406,17 +2472,17 @@ public class Principal extends javax.swing.JFrame {
                 carpetasArchivos carpetaLocalizar = new carpetasArchivos(nombreCa, Carpeta, diaCa, tipoCa, tamañoBytesCa, rutaCa);
 
                 carpetaLocalizar = retornarCarpeta(Carpeta, carpetaLocalizar);
-                boolean verf=true;
+                boolean verf = true;
                 for (int i = 0; i < listaCarpetas.size(); i++) {
                     if (listaCarpetas.get(i).ruta.equals(rutaCa)) {
                         listaCarpetas.set(i, carpetaLocalizar);
-                        verf=false;
+                        verf = false;
                         break;
-                    }else{
-                      
+                    } else {
+
                     }
                 }
-                if(verf==true){
+                if (verf == true) {
                     listaCarpetas.add(carpetaLocalizar);
                 }
                 JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
@@ -2619,7 +2685,7 @@ public class Principal extends javax.swing.JFrame {
         String diaCa = formatoDiaC.format(fechaCa);
         carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
         listaCarpetas.add(carpetaNueva);
-
+        cargarBarra();
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta.setText(null);
         tablaExplorador.clearSelection();
@@ -2720,7 +2786,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaArchivosTxtMouseClicked
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-         
+
         filaSeleccion = tablaExplorador.getSelectedRow();
         if (filaSeleccion == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
@@ -2896,10 +2962,11 @@ public class Principal extends javax.swing.JFrame {
         BorrarBotonArchivos.setVisible(false);
         BorrarBoton.setVisible(true);
         regresar.setVisible(false);
+        tablaExplorador.clearSelection();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void AbrirArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirArchivosActionPerformed
-         
+
         filaSeleccion2 = tablaArchivosTxt.getSelectedRow();
         if (filaSeleccion2 == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
@@ -3402,9 +3469,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void AñadirBoton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBoton1MouseClicked
-        mostrarCarpeta.setLocationRelativeTo(null);
-        mostrarCarpeta.setVisible(true);
         mostrarCarpeta.pack();
+        mostrarCarpeta.setLocationRelativeTo(this);
+        mostrarCarpeta.setVisible(true);
+
     }//GEN-LAST:event_AñadirBoton1MouseClicked
 
     private void AñadirBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBoton1ActionPerformed
@@ -3450,6 +3518,7 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("Subcarpeta creada: " + carpetaNueva.getNombre());
         System.out.println("Dentro de: " + carpetaTemp.getNombre());
         System.out.println("Cantidad de subcarpetas: " + carpetaTemp.regresarCarpeta().size());
+        cargarBarra();
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta1.setText(null);
         tablaArchivosTxt.clearSelection();
@@ -3589,8 +3658,65 @@ public class Principal extends javax.swing.JFrame {
         BarraProgreso.setVisible(true);
     }
     private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
-       
+
     }//GEN-LAST:event_WitZigMouseClicked
+
+    private void SnakeBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SnakeBotonMouseClicked
+        Snake.pack();
+        Snake.setLocationRelativeTo(this);
+        Snake.setTitle("Snake (Controles: WASD)");
+        Snake.setVisible(true);
+        Snake.setFocusable(true);
+        Snake.requestFocusInWindow();
+
+    }//GEN-LAST:event_SnakeBotonMouseClicked
+
+    private void SnakeBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SnakeBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SnakeBotonActionPerformed
+
+    private void calculadora1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculadora1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calculadora1MouseClicked
+
+    private void calculadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculadora1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calculadora1ActionPerformed
+
+    private void SnakeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SnakeKeyPressed
+        // TODO add your handling code here:
+        
+        
+        switch (evt.getKeyCode()) {
+            
+            case KeyEvent.VK_A:
+                
+                panelSnake.cambiarDireccion("iz");
+                break;
+            case KeyEvent.VK_D:
+                
+                panelSnake.cambiarDireccion("de");
+                break;
+            case KeyEvent.VK_W:
+                
+                panelSnake.cambiarDireccion("ar");
+                break;
+            case KeyEvent.VK_S:
+                
+                panelSnake.cambiarDireccion("ab");
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_SnakeKeyPressed
+
+    private void RJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RJuegoMouseClicked
+        panelSnake.reiniciarJuego();
+        Snake.setVisible(false);
+        Snake.setVisible(true);
+        Snake.setFocusable(true);
+        Snake.requestFocusInWindow();
+    }//GEN-LAST:event_RJuegoMouseClicked
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3676,6 +3802,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton Plain1;
     private javax.swing.JPopupMenu PopUp;
     private javax.swing.JPopupMenu PopUpMenu;
+    private javax.swing.JButton RJuego;
+    private javax.swing.JDialog Snake;
+    private javax.swing.JButton SnakeBoton;
     private javax.swing.JButton TicTacToe;
     private javax.swing.JLabel Wally;
     private javax.swing.JButton WitZig;
@@ -3688,6 +3817,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JButton calculadora;
+    private javax.swing.JButton calculadora1;
     private javax.swing.JButton cero;
     private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;

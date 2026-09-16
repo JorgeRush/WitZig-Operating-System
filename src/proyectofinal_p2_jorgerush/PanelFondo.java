@@ -1,0 +1,36 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proyectofinal_p2_jorgerush;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author Jorge Rush
+ */
+public class PanelFondo extends JPanel {
+    Color colorFondo=Color.LIGHT_GRAY;
+    int tamMax,tam,can,res;
+    
+    public PanelFondo(int tammax,int can){
+        this.tamMax=tammax;
+        this.can=can;
+        this.tam=tammax/can;
+        this.res=tammax%can;
+       
+    }
+    @Override
+    public void paint(Graphics pintor){
+        super.paint(pintor);
+        pintor.setColor(colorFondo);
+        for (int i = 0; i < can; i++) {
+            for (int j = 0; j < can; j++) {
+                pintor.fillRect(res/2+i*tam, res/2+j*tam, tam-1, tam-1);
+            }
+        }
+    }
+}
