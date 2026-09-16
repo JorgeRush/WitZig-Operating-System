@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class PanelSnake extends JPanel {
 
     Color colorSnake = (new Color(72, 207, 81));
-    Color colorComida = Color.red;
+    Color colorComida = new Color(247, 73, 67);
 
     int tamMax, tam, can, res;
     ArrayList<int[]> snake = new ArrayList<>();

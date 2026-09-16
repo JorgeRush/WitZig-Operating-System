@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * @author Jorge Rush
  */
 public class PanelFondo extends JPanel {
-    Color colorFondo=Color.LIGHT_GRAY;
+    Color colorFondo=new Color(196, 196, 196);
     int tamMax,tam,can,res;
     
     public PanelFondo(int tammax,int can){
