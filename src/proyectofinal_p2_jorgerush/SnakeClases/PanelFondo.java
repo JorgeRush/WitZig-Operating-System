@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectofinal_p2_jorgerush;
+package proyectofinal_p2_jorgerush.SnakeClases;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * @author Jorge Rush
  */
 public class PanelFondo extends JPanel {
-    Color colorFondo=new Color(196, 196, 196);
+    Color colorFondo=new Color(156, 255, 151);
     int tamMax,tam,can,res;
     
     public PanelFondo(int tammax,int can){

@@ -4,6 +4,8 @@
  */
 package proyectofinal_p2_jorgerush;
 
+import proyectofinal_p2_jorgerush.SnakeClases.PanelFondo;
+import proyectofinal_p2_jorgerush.SnakeClases.PanelSnake;
 import java.util.Random;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
@@ -62,11 +64,11 @@ public class Principal extends javax.swing.JFrame {
 
         XO();
 
-        panelSnake = new PanelSnake(500, 30);
+        panelSnake = new PanelSnake(500, 20);
         Snake.add(panelSnake);
         panelSnake.setBounds(10, 10, 500, 500);
         panelSnake.setOpaque(false);
-        PanelFondo fondo = new PanelFondo(500, 30);
+        PanelFondo fondo = new PanelFondo(500, 20);
         Snake.add(fondo);
         fondo.setBounds(10, 10, 500, 500);
 
@@ -343,6 +345,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         Snake = new javax.swing.JDialog();
         RJuego = new javax.swing.JButton();
+        Paint = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -357,6 +362,7 @@ public class Principal extends javax.swing.JFrame {
         fondoImagen = new javax.swing.JLabel();
         BarraNavegacion = new javax.swing.JMenuBar();
         LogoWitZig = new javax.swing.JMenu();
+        ApagarS = new javax.swing.JMenuItem();
         ModificarPantalla = new javax.swing.JMenu();
         FechaHora = new javax.swing.JMenu();
 
@@ -467,7 +473,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jButton1.addActionListener(this::jButton1ActionPerformed);
-        panelFuentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 40, 40));
+        panelFuentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 40, 40));
 
         editarColoresPantalla.add(panelFuentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 530, 290));
 
@@ -1648,7 +1654,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        RJuego.setText("Reiniciar");
+        RJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/R3.png"))); // NOI18N
+        RJuego.setContentAreaFilled(false);
         RJuego.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RJuegoMouseClicked(evt);
@@ -1659,18 +1666,50 @@ public class Principal extends javax.swing.JFrame {
         Snake.getContentPane().setLayout(SnakeLayout);
         SnakeLayout.setHorizontalGroup(
             SnakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SnakeLayout.createSequentialGroup()
-                .addGap(213, 213, 213)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SnakeLayout.createSequentialGroup()
+                .addContainerGap(237, Short.MAX_VALUE)
                 .addComponent(RJuego)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(232, 232, 232))
         );
         SnakeLayout.setVerticalGroup(
             SnakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SnakeLayout.createSequentialGroup()
-                .addContainerGap(504, Short.MAX_VALUE)
-                .addComponent(RJuego)
+                .addContainerGap(511, Short.MAX_VALUE)
+                .addComponent(RJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        Paint.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 71, Short.MAX_VALUE)
+        );
+
+        Paint.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 716, -1));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+
+        Paint.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 640, 420));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1837,6 +1876,11 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setOpaque(true);
 
         LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
+
+        ApagarS.setText("Apagar");
+        ApagarS.addActionListener(this::ApagarSActionPerformed);
+        LogoWitZig.add(ApagarS);
+
         BarraNavegacion.add(LogoWitZig);
 
         ModificarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
@@ -3717,6 +3761,10 @@ public class Principal extends javax.swing.JFrame {
         Snake.setFocusable(true);
         Snake.requestFocusInWindow();
     }//GEN-LAST:event_RJuegoMouseClicked
+
+    private void ApagarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarSActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_ApagarSActionPerformed
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3767,6 +3815,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JMenuItem AbrirArchivos;
+    private javax.swing.JMenuItem ApagarS;
     private javax.swing.JButton AñadirBoton;
     private javax.swing.JButton AñadirBoton1;
     private javax.swing.JCheckBox BarraN2;
@@ -3796,6 +3845,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu ModificarPantalla;
     private javax.swing.JPopupMenu OpcionesArchivos;
     private javax.swing.JPopupMenu OpcionesCarpetas;
+    private javax.swing.JDialog Paint;
     private javax.swing.JButton Pantalla;
     private javax.swing.JMenuItem Personalizar;
     private javax.swing.JButton Plain;
@@ -3873,6 +3923,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
