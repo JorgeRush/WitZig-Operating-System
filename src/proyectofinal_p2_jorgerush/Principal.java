@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SpinnerListModel;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -38,6 +39,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import proyectofinal_p2_jorgerush.Modelo.puntos;
 
 /**
  *
@@ -51,6 +53,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     PanelSnake panelSnake;
+    puntos P = null;
 
     public Principal() {
 
@@ -63,6 +66,8 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
+
+        P = new puntos();
 
         panelSnake = new PanelSnake(500, 20);
         Snake.add(panelSnake);
@@ -347,7 +352,12 @@ public class Principal extends javax.swing.JFrame {
         RJuego = new javax.swing.JButton();
         Paint = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        tamañoPincel = new javax.swing.JSpinner();
+        jButton5 = new javax.swing.JButton();
+        cambiarTamaño = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        panel1 = new javax.swing.JPanel();
         FondoPantallaOg = new javax.swing.JPanel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
@@ -1679,37 +1689,69 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Paint.setBackground(new java.awt.Color(204, 204, 204));
+        Paint.setMaximumSize(new java.awt.Dimension(730, 560));
+        Paint.setMinimumSize(new java.awt.Dimension(730, 560));
+        Paint.setPreferredSize(new java.awt.Dimension(730, 560));
+        Paint.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                PaintWindowOpened(evt);
+            }
+        });
         Paint.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(234, 234, 234));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
-        );
+        tamañoPincel.setModel(new javax.swing.SpinnerNumberModel(15, 0, null, 1));
+        tamañoPincel.setValue(10);
+        jPanel6.add(tamañoPincel, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 10, 60, 30));
 
-        Paint.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 716, -1));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/L1.png"))); // NOI18N
+        jButton5.setContentAreaFilled(false);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 6, -1, 40));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        cambiarTamaño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/T1.png"))); // NOI18N
+        cambiarTamaño.setContentAreaFilled(false);
+        cambiarTamaño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cambiarTamañoMouseClicked(evt);
+            }
+        });
+        jPanel6.add(cambiarTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 49, 50));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/PX3.png"))); // NOI18N
+        jButton8.setContentAreaFilled(false);
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        jButton8.addActionListener(this::jButton8ActionPerformed);
+        jPanel6.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, 50));
 
-        Paint.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 640, 420));
+        jLabel12.setText("  Tamaño");
+        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 50));
+
+        Paint.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 450, 50));
+
+        panel1.setBackground(new java.awt.Color(255, 255, 255));
+        panel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panel1MouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                panel1MouseMoved(evt);
+            }
+        });
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Paint.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 680, 470));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3720,7 +3762,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_SnakeBotonActionPerformed
 
     private void calculadora1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculadora1MouseClicked
-        // TODO add your handling code here:
+        Paint.pack();
+        Paint.setLocationRelativeTo(this);
+        Paint.setTitle("Paint");
+        Paint.setVisible(true);
     }//GEN-LAST:event_calculadora1MouseClicked
 
     private void calculadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculadora1ActionPerformed
@@ -3729,24 +3774,23 @@ public class Principal extends javax.swing.JFrame {
 
     private void SnakeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SnakeKeyPressed
         // TODO add your handling code here:
-        
-        
+
         switch (evt.getKeyCode()) {
-            
+
             case KeyEvent.VK_A:
-                
+
                 panelSnake.cambiarDireccion("iz");
                 break;
             case KeyEvent.VK_D:
-                
+
                 panelSnake.cambiarDireccion("de");
                 break;
             case KeyEvent.VK_W:
-                
+
                 panelSnake.cambiarDireccion("ar");
                 break;
             case KeyEvent.VK_S:
-                
+
                 panelSnake.cambiarDireccion("ab");
                 break;
             default:
@@ -3763,8 +3807,57 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_RJuegoMouseClicked
 
     private void ApagarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarSActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_ApagarSActionPerformed
+
+    private void panel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseDragged
+        P.GuardarPuntos(evt.getX(), evt.getY());
+        Dibujar();
+
+    }//GEN-LAST:event_panel1MouseDragged
+
+    private void panel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseMoved
+        Dibujar();
+    }//GEN-LAST:event_panel1MouseMoved
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        P.borrarPantalla();
+        panel1.repaint();
+    }//GEN-LAST:event_jButton5MouseClicked
+    int tamX = 10;
+    int tamY = 10;
+    private void cambiarTamañoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarTamañoMouseClicked
+        int tamaño = (int) tamañoPincel.getValue();
+        tamX = tamaño;
+        tamY = tamaño;
+
+    }//GEN-LAST:event_cambiarTamañoMouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        Color colorEleccion = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
+        g.setColor(colorEleccion);
+        panel1.repaint();
+
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void PaintWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_PaintWindowOpened
+        g = panel1.getGraphics();
+    }//GEN-LAST:event_PaintWindowOpened
+    Graphics g;
+
+    public void Dibujar() {
+        for (int i = 0; i < P.listaX().size(); i++) {
+            
+            int x = P.listaX().get(i);
+            int y = P.listaY().get(i);
+            g.fillOval(x, y, tamX, tamY);
+        }
+    }
+
     public String noCero(float resultado) {
         String retorno = "";
 
@@ -3868,6 +3961,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JButton calculadora;
     private javax.swing.JButton calculadora1;
+    private javax.swing.JButton cambiarTamaño;
     private javax.swing.JButton cero;
     private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;
@@ -3903,12 +3997,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -3924,7 +4021,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3942,6 +4038,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton nueve;
     private javax.swing.JButton ocho;
     private javax.swing.JMenuBar opcionesEditor;
+    private javax.swing.JPanel panel1;
     private javax.swing.JPanel panelColoresElementos;
     private javax.swing.JPanel panelFuentes;
     private javax.swing.JPanel panelPantalla;
@@ -3978,6 +4075,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable tablaExplorador;
     private javax.swing.JSpinner tamañoFuente;
     private javax.swing.JSpinner tamañoFuente1;
+    private javax.swing.JSpinner tamañoPincel;
     private javax.swing.JButton tarde;
     private javax.swing.JLabel tituloConfiguracion;
     private javax.swing.JLabel tituloConfiguracion1;
