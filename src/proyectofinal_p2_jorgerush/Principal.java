@@ -67,6 +67,10 @@ public class Principal extends javax.swing.JFrame {
 
         XO();
 
+        BarraNavegacion.setVisible(false);
+        BarraTareas.setVisible(false);
+        FondoPantalla.setVisible(false);
+
         P = new puntos();
 
         panelSnake = new PanelSnake(500, 20);
@@ -80,6 +84,10 @@ public class Principal extends javax.swing.JFrame {
         AñadirBoton1.setVisible(false);
         BarraTareas.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
         BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
+
+//        fondoIniciar.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
+//        fondoIniciar.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
+//        
         willyCelebra.setVisible(false);
         BorrarBotonArchivos.setVisible(false);
         regresar.setVisible(false);
@@ -358,7 +366,18 @@ public class Principal extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         panel1 = new javax.swing.JPanel();
+        AdminCuentas = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel8 = new javax.swing.JPanel();
         FondoPantallaOg = new javax.swing.JPanel();
+        fondoIniciar = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        usuario = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        contraseña = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
         calculadora1 = new javax.swing.JButton();
@@ -374,6 +393,10 @@ public class Principal extends javax.swing.JFrame {
         LogoWitZig = new javax.swing.JMenu();
         ApagarS = new javax.swing.JMenuItem();
         ModificarPantalla = new javax.swing.JMenu();
+        LogIn = new javax.swing.JMenu();
+        LogOut = new javax.swing.JMenu();
+        verUsuarios = new javax.swing.JMenu();
+        crearUsuarios = new javax.swing.JMenu();
         FechaHora = new javax.swing.JMenu();
 
         Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
@@ -1690,9 +1713,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         Paint.setBackground(new java.awt.Color(204, 204, 204));
-        Paint.setMaximumSize(new java.awt.Dimension(730, 560));
         Paint.setMinimumSize(new java.awt.Dimension(730, 560));
-        Paint.setPreferredSize(new java.awt.Dimension(730, 560));
         Paint.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 PaintWindowOpened(evt);
@@ -1753,6 +1774,51 @@ public class Principal extends javax.swing.JFrame {
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Paint.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 680, 470));
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 750, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 386, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab1", jPanel8);
+
+        javax.swing.GroupLayout AdminCuentasLayout = new javax.swing.GroupLayout(AdminCuentas.getContentPane());
+        AdminCuentas.getContentPane().setLayout(AdminCuentasLayout);
+        AdminCuentasLayout.setHorizontalGroup(
+            AdminCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
+        );
+        AdminCuentasLayout.setVerticalGroup(
+            AdminCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminCuentasLayout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1773,6 +1839,96 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         FondoPantallaOg.setLayout(new java.awt.GridBagLayout());
+
+        fondoIniciar.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton10.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 15)); // NOI18N
+        jButton10.setText("Iniciar Sesion");
+        jButton10.setBorderPainted(false);
+        jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        usuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(204, 204, 204));
+        usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usuario.setText("Ingrese Usuario");
+        usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMouseClicked(evt);
+            }
+        });
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/i2_1.png"))); // NOI18N
+        jLabel13.setText("jLabel13");
+
+        contraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contraseña.setForeground(new java.awt.Color(204, 204, 204));
+        contraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        contraseña.setText("Ingrese Contraseña");
+        contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contraseñaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contraseñaMouseEntered(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Microsoft JhengHei", 1, 15)); // NOI18N
+        jLabel14.setText("Usuario");
+
+        jLabel15.setFont(new java.awt.Font("Microsoft JhengHei", 1, 15)); // NOI18N
+        jLabel15.setText("Contraseña");
+
+        javax.swing.GroupLayout fondoIniciarLayout = new javax.swing.GroupLayout(fondoIniciar);
+        fondoIniciar.setLayout(fondoIniciarLayout);
+        fondoIniciarLayout.setHorizontalGroup(
+            fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoIniciarLayout.createSequentialGroup()
+                .addGroup(fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addGroup(fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(jLabel15))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(jLabel14))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(jButton10)))
+                .addContainerGap(286, Short.MAX_VALUE))
+        );
+        fondoIniciarLayout.setVerticalGroup(
+            fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoIniciarLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jLabel13)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15)
+                .addGap(4, 4, 4)
+                .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jButton10)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        FondoPantallaOg.add(fondoIniciar, new java.awt.GridBagConstraints());
 
         BarraTareas.setBackground(new java.awt.Color(225, 225, 225));
         BarraTareas.setMaximumSize(new java.awt.Dimension(4, 60));
@@ -1917,7 +2073,7 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setBorder(null);
         BarraNavegacion.setOpaque(true);
 
-        LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W2.png"))); // NOI18N
+        LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WW3.png"))); // NOI18N
 
         ApagarS.setText("Apagar");
         ApagarS.addActionListener(this::ApagarSActionPerformed);
@@ -1925,8 +2081,7 @@ public class Principal extends javax.swing.JFrame {
 
         BarraNavegacion.add(LogoWitZig);
 
-        ModificarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
-        ModificarPantalla.setText("Personalizar");
+        ModificarPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P4.png"))); // NOI18N
         ModificarPantalla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ModificarPantallaMouseClicked(evt);
@@ -1934,6 +2089,18 @@ public class Principal extends javax.swing.JFrame {
         });
         ModificarPantalla.addActionListener(this::ModificarPantallaActionPerformed);
         BarraNavegacion.add(ModificarPantalla);
+
+        LogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Log1.png"))); // NOI18N
+        BarraNavegacion.add(LogIn);
+
+        LogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Log2.png"))); // NOI18N
+        BarraNavegacion.add(LogOut);
+
+        verUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M1.png"))); // NOI18N
+        BarraNavegacion.add(verUsuarios);
+
+        crearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M2.png"))); // NOI18N
+        BarraNavegacion.add(crearUsuarios);
 
         FechaHora.setText("  ");
         BarraNavegacion.add(FechaHora);
@@ -2872,7 +3039,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaArchivosTxtMouseClicked
 
     private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
-
+        tablaArchivosTxt.clearSelection();
         filaSeleccion = tablaExplorador.getSelectedRow();
         if (filaSeleccion == -1) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo de la lista");
@@ -3847,11 +4014,38 @@ public class Principal extends javax.swing.JFrame {
     private void PaintWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_PaintWindowOpened
         g = panel1.getGraphics();
     }//GEN-LAST:event_PaintWindowOpened
+
+    private void contraseñaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseEntered
+
+    }//GEN-LAST:event_contraseñaMouseEntered
+
+    private void contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMouseClicked
+        contraseña.setText("");
+        contraseña.setForeground(Color.BLACK);
+    }//GEN-LAST:event_contraseñaMouseClicked
+
+    private void usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMouseClicked
+        usuario.setText("");
+        usuario.setForeground(Color.BLACK);
+    }//GEN-LAST:event_usuarioMouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        if (usuario.getText().isEmpty() || contraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar nada en blanco.");
+            return;
+        }
+        if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin")) {
+            fondoIniciar.setVisible(false);
+            BarraNavegacion.setVisible(true);
+            BarraTareas.setVisible(true);
+            FondoPantalla.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton10MouseClicked
     Graphics g;
 
     public void Dibujar() {
         for (int i = 0; i < P.listaX().size(); i++) {
-            
+
             int x = P.listaX().get(i);
             int y = P.listaY().get(i);
             g.fillOval(x, y, tamX, tamY);
@@ -3908,6 +4102,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JMenuItem AbrirArchivos;
+    private javax.swing.JDialog AdminCuentas;
     private javax.swing.JMenuItem ApagarS;
     private javax.swing.JButton AñadirBoton;
     private javax.swing.JButton AñadirBoton1;
@@ -3934,6 +4129,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel Imagen;
     private javax.swing.JButton Italic;
     private javax.swing.JButton Italic1;
+    private javax.swing.JMenu LogIn;
+    private javax.swing.JMenu LogOut;
     private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
     private javax.swing.JPopupMenu OpcionesArchivos;
@@ -3966,9 +4163,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JTextField contraseña;
     private javax.swing.JPanel crearCarpeta;
     private javax.swing.JPanel crearCarpeta1;
     private javax.swing.JDialog crearTexto;
+    private javax.swing.JMenu crearUsuarios;
     private javax.swing.JButton cuatro;
     private javax.swing.JButton dividir;
     private javax.swing.JButton dos;
@@ -3989,11 +4188,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox fondoG;
     private javax.swing.JPanel fondoGen;
     private javax.swing.JLabel fondoImagen;
+    private javax.swing.JPanel fondoIniciar;
     private javax.swing.JCheckBox fondoOp;
     private javax.swing.JPanel fondoOpc;
     private javax.swing.JButton fondoPm;
     private javax.swing.JMenuItem guardarArchivo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -4006,6 +4207,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -4021,9 +4225,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
     private javax.swing.JButton limpiar;
@@ -4088,6 +4295,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel turnoMostrar;
     private javax.swing.JLabel ubicacionRutan;
     private javax.swing.JButton uno;
+    private javax.swing.JTextField usuario;
+    private javax.swing.JMenu verUsuarios;
     private javax.swing.JButton wDefecto;
     private javax.swing.JLabel willyCelebra;
     // End of variables declaration//GEN-END:variables
