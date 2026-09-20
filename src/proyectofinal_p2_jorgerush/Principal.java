@@ -101,6 +101,7 @@ public class Principal extends javax.swing.JFrame {
         fondo.setBounds(10, 10, 500, 500);
 
         AñadirBoton1.setVisible(false);
+
         BarraTareas.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
         BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
 
@@ -136,7 +137,7 @@ public class Principal extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         FondoPantalla.setMaximumSize(FondoPantalla.getSize());
-        exploradorArchivos.setTitle("Explorador de Archivos");
+        exploradorArchivos.setTitle("Explorador de Archivos | Para actualizar la tabla, dele click a los espacios vacios de ambos lados.");
         XO.setTitle("Tic Tac Toe");
         personalizarPantalla.setTitle("Personalizar Pantala");
         Calculadora.setTitle("Calculadora");
@@ -176,10 +177,10 @@ public class Principal extends javax.swing.JFrame {
 
     public void cambiarFontPantallaInicio(Font fuente) {
         ModificarPantalla.setFont(fuente);
-        fecha.setFont(fuente);
-        user.setFont(fuente);
-        bienvenida.setFont(fuente);
-        mostrarU.setFont(fuente);
+//        fecha.setFont(fuente);
+//        user.setFont(fuente);
+//        bienvenida.setFont(fuente);
+//        mostrarU.setFont(fuente);
         Personalizar.setFont(fuente);
     }
 
@@ -391,6 +392,8 @@ public class Principal extends javax.swing.JFrame {
         AdminCuentas = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         bienvenida = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        bienvenida1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         arbolUsuarios = new javax.swing.JTree();
@@ -401,11 +404,13 @@ public class Principal extends javax.swing.JFrame {
         contraUs = new javax.swing.JTextField();
         nombreUs = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
         Informacion = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         user = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         mostrarU = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
@@ -1021,6 +1026,9 @@ public class Principal extends javax.swing.JFrame {
         personalizarEditor2.addActionListener(this::personalizarEditor2ActionPerformed);
         PopUp.add(personalizarEditor2);
 
+        exploradorArchivos.setMaximumSize(new java.awt.Dimension(700, 415));
+        exploradorArchivos.setMinimumSize(new java.awt.Dimension(700, 415));
+        exploradorArchivos.setPreferredSize(new java.awt.Dimension(700, 415));
         exploradorArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exploradorArchivosMouseClicked(evt);
@@ -1826,24 +1834,40 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        bienvenida.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bienvenida.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         bienvenida.setText("Crear Usuario");
+        bienvenida.setOpaque(true);
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W12.png"))); // NOI18N
+
+        bienvenida1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        bienvenida1.setText("Crear Usuario");
+        bienvenida1.setOpaque(true);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel22)
+                .addGap(32, 32, 32)
+                .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(bienvenida1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bienvenida)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bienvenida)
+                    .addComponent(bienvenida1))
+                .addGap(19, 19, 19))
         );
 
         AdminCuentas.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
@@ -1854,6 +1878,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel9.setPreferredSize(new java.awt.Dimension(750, 409));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jScrollPane4.setViewportView(arbolUsuarios);
 
         jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 345, 330));
@@ -1887,6 +1912,19 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel9.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+
+        jPanel9.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 2, 380));
+
         AdminCuentas.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 750, 409));
 
         Informacion.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1899,17 +1937,22 @@ public class Principal extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        user.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         user.setText("user");
-        jPanel10.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 110, -1));
+        user.setOpaque(true);
+        jPanel10.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 110, -1));
 
-        fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fecha.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         fecha.setText("horario");
-        jPanel10.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 270, 20));
+        fecha.setOpaque(true);
+        jPanel10.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 270, 20));
 
-        mostrarU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mostrarU.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         mostrarU.setText("Usuario:");
-        jPanel10.add(mostrarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jPanel10.add(mostrarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W13.png"))); // NOI18N
+        jPanel10.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 70, 60));
 
         Informacion.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
@@ -1918,6 +1961,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel11.setMinimumSize(new java.awt.Dimension(750, 410));
         jPanel11.setPreferredSize(new java.awt.Dimension(750, 410));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1945,7 +1990,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tablaUsuarios);
 
-        jPanel11.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 710, 280));
+        jPanel11.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 720, 280));
 
         Informacion.getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 750, 410));
 
@@ -2277,6 +2322,7 @@ public class Principal extends javax.swing.JFrame {
 
         LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WW3.png"))); // NOI18N
 
+        ApagarS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/AP1.png"))); // NOI18N
         ApagarS.setText("Apagar");
         ApagarS.addActionListener(this::ApagarSActionPerformed);
         LogoWitZig.add(ApagarS);
@@ -2619,7 +2665,7 @@ public class Principal extends javax.swing.JFrame {
         Object elegido = seleccionFondo.getSelectedItem();
 
         String eleccion = (String) elegido;
-        System.out.println(eleccion);
+       
         if (eleccion.equals("Color Solido")) {
             Color seleccionado = JColorChooser.showDialog(this, "Seleccione un color:", Color.LIGHT_GRAY);
             if (seleccionado != null) {
@@ -2858,8 +2904,7 @@ public class Principal extends javax.swing.JFrame {
                         long fechaMilis2 = Carpeta2.lastModified();
                         Date fechaCa2 = new Date(fechaMilis2);
 
-                        SimpleDateFormat formatoDiaC2
-                                = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        SimpleDateFormat formatoDiaC2= new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                         String tipoCa2 = "Carpeta";
                         String diaCa2 = formatoDiaC2.format(fechaCa2);
@@ -2887,12 +2932,11 @@ public class Principal extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
-                    System.out.println(archivosExis.get(i).nombreA);
-
+                    
                 }
 
                 for (int i = 0; i < carpetaExis.size(); i++) {
-                    System.out.println(carpetaExis.get(i).getNombre());
+                    
                     carpetaLocalizar2.añadirCarpeta(carpetaExis.get(i));
                 }
             }
@@ -2996,8 +3040,7 @@ public class Principal extends javax.swing.JFrame {
                 long fechaMiliD = archivo1.lastModified();
                 Date fecha = new Date(fechaMiliD);
 
-                SimpleDateFormat formatoDia
-                        = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                SimpleDateFormat formatoDia= new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                 String tipo = ".txt";
                 String dia = formatoDia.format(fecha);
@@ -3131,17 +3174,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BorrarBotonActionPerformed
 
     private void AñadirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirBotonActionPerformed
-        System.out.println("CLICK");
-        CrearCarpeta.setLocationRelativeTo(null);
+
         CrearCarpeta.pack();
+        CrearCarpeta.setLocationRelativeTo(null);
+
         CrearCarpeta.setVisible(true);
     }//GEN-LAST:event_AñadirBotonActionPerformed
 
     private void AñadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirBotonMouseClicked
 //        tablaExplorador.setVisible(false);
-
-        CrearCarpeta.setLocationRelativeTo(null);
         CrearCarpeta.pack();
+        CrearCarpeta.setLocationRelativeTo(null);
+
         CrearCarpeta.setVisible(true);
 
     }//GEN-LAST:event_AñadirBotonMouseClicked
@@ -3298,6 +3342,7 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
                     File temp = carpetaSeleccionada.ubicacionCarpeta;
                     Path rutaCarp = temp.toPath();
+                    eliminarCarpetaEscondida(listaCarpetas,carpetaElegidaN);
                     if (Files.exists(rutaCarp)) {
                         try {
                             Files.walk(rutaCarp)
@@ -3345,12 +3390,12 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
-        System.out.println(archivoElegidoN);
+ 
         String archivoElegidoN2 = (String) tablaExplorador.getValueAt(filaSeleccion, 2);
         if (archivoElegidoN2.equals("Carpeta")) {
-            System.out.println("Lo que hay en la carpeta:");
+            
             for (int i = 0; i < listaCarpetas.size(); i++) {
-                System.out.println(listaCarpetas.get(i).getNombre());
+                
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
 
@@ -3454,10 +3499,13 @@ public class Principal extends javax.swing.JFrame {
                     JLabel l = new JLabel(String.valueOf(v));
                     if (r >= 0) {
                         String columnaTipo = (String) tablaArchivosTxt.getValueAt(r, 2);
+                        
+                        ImageIcon logo1=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png"));
+                        ImageIcon logo2=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"));
                         if (columnaTipo.equals("Carpeta")) {
-                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png")));
+                            l.setIcon(logo1);
                         } else {
-                            l.setIcon(new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png")));
+                            l.setIcon(logo2);
                         }
 
                     }
@@ -3525,15 +3573,15 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
-        System.out.println(archivoElegidoN);
+        
         String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
         if (archivoElegidoN2.equals("Carpeta")) {
-            System.out.println("Lo que hay en la carpeta:");
+           
             for (int i = 0; i < listaCarpetas.size(); i++) {
-                System.out.println(listaCarpetas.get(i).getNombre());
+               
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
-                    System.out.println("AAAAA");
+                   
 
                 }
             }
@@ -3578,7 +3626,7 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos carpetaSeleccionada = revisarCarpetas.get(j);
                     File temp = carpetaSeleccionada.ubicacionCarpeta;
                     Path rutaCarp = temp.toPath();
-                    System.out.println("Existe antes: " + Files.exists(rutaCarp));
+                    
                     if (Files.exists(rutaCarp)) {
                         try {
                             Files.walk(rutaCarp)
@@ -3591,7 +3639,7 @@ public class Principal extends javax.swing.JFrame {
                         }
 
                     }
-                    System.out.println("Existe despues: " + Files.exists(rutaCarp));
+                    
                     revisarCarpetas.remove(j);
 
                 }
@@ -4067,9 +4115,7 @@ public class Principal extends javax.swing.JFrame {
         String diaCa = formatoDiaC.format(fechaCa);
         carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
         carpetaTemp.añadirCarpeta(carpetaNueva);
-        System.out.println("Subcarpeta creada: " + carpetaNueva.getNombre());
-        System.out.println("Dentro de: " + carpetaTemp.getNombre());
-        System.out.println("Cantidad de subcarpetas: " + carpetaTemp.regresarCarpeta().size());
+       
         cargarBarra();
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta1.setText(null);
@@ -4341,20 +4387,32 @@ public class Principal extends javax.swing.JFrame {
             public Component getTreeCellRendererComponent(JTree tree, Object value,
                     boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
 
-                // Mantiene el color de selección por defecto
+              
                 super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 
-                // Obtiene el texto del nodo
+             
                 DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) value;
                 String categoria = nodo.getUserObject().toString();
-
-                // Cambia el icono según la categoría
+                Object clase=nodo.getUserObject();
+                
                 if (categoria.equals("Usuarios")) {
                     setIcon(iconoUsuarios);
                 } else if (categoria.equals("Administradores")) {
                     setIcon(iconoAdmin);
-                } else {
+                } else if (categoria.equals("Invitados")) {
                     setIcon(iconoInvitado);
+                }else if (clase instanceof Usuario){
+                    Usuario user= (Usuario) clase;
+                    if(user.getNombreUsuario().equals("Admin")){
+                        setIcon(iconoAdmin);
+                    }
+                    if(user.getTipoUsuario().equals("Admnistrador")){
+                        setIcon(iconoAdmin);
+                    }else if (user.getTipoUsuario().equals("Invitado")){
+                        setIcon(iconoInvitado);
+                    }
+                            
+                    
                 }
 
                 return this;
@@ -4391,7 +4449,7 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
             if (verf == false) {
-                System.out.println("A");
+              
 
                 Usuario usuarioAdmin = retornarInicio();
                 usuarioSesion = usuarioAdmin.getNombreUsuario();
@@ -4552,29 +4610,34 @@ public class Principal extends javax.swing.JFrame {
         Informacion.setVisible(true);
     }//GEN-LAST:event_verUsuariosMouseClicked
     public void mostrarInfoTabla() {
-        DefaultTableModel modeloTabla = new DefaultTableModel();
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modeloTabla.addColumn("  Usuarios");
         modeloTabla.addColumn("  Tipo");
         for (Usuario user : Usuarios) {
             String[] datos = {user.getNombreUsuario(), user.getTipoUsuario()};
             modeloTabla.addRow(datos);
         }
-        
+
         tablaUsuarios.setModel(modeloTabla);
         tablaUsuarios.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
-                    JLabel l = new JLabel(String.valueOf(v));
-                    String dato=(String)tablaUsuarios.getValueAt(r,1);
-                    ImageIcon admin=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U5.png"));
-                    ImageIcon Inv=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U4.png"));
-                    if(dato.equals("Administrador")){
-                        l.setIcon(admin);
-                    }
-                    if(dato.equals("Invitado")){
-                        l.setIcon(Inv);
-                    }
+            JLabel l = new JLabel(String.valueOf(v));
+            String dato = (String) tablaUsuarios.getValueAt(r, 1);
+            ImageIcon admin = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U5.png"));
+            ImageIcon Inv = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U4.png"));
+            if (dato.equals("Administrador")) {
+                l.setIcon(admin);
+            }
+            if (dato.equals("Invitado")) {
+                l.setIcon(Inv);
+            }
 
-                    return l;
-                });
+            return l;
+        });
     }
     private void InformacionWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_InformacionWindowActivated
         mostrarInfoTabla();
@@ -4598,16 +4661,15 @@ public class Principal extends javax.swing.JFrame {
             String Nombre = (String) tablaUsuarios.getValueAt(Row, 0);
             for (int i = 0; i < Usuarios.size(); i++) {
                 Usuario user = Usuarios.get(i);
-                
-                if (Nombre.equals(usuarioSesion)&& !Nombre.equals("Admin")) {
+
+                if (Nombre.equals(usuarioSesion) && !Nombre.equals("Admin")) {
                     guardarContenido();
                     fondoIniciar.setVisible(true);
                     BarraNavegacion.setVisible(false);
                     BarraTareas.setVisible(false);
                     FondoPantalla.setVisible(false);
                     Informacion.dispose();
-                    
-                    
+
                 }
                 if (Nombre.equals("Admin")) {
                     JOptionPane.showMessageDialog(this, "El usuario Admin esta incluido por defecto, no se puede borrar");
@@ -4626,7 +4688,6 @@ public class Principal extends javax.swing.JFrame {
                     tablaUsuarios.repaint();
                     arbolUsuarios.repaint();
                     mostrarInfoTabla();
-                    
 
                 }
             }
@@ -4642,10 +4703,9 @@ public class Principal extends javax.swing.JFrame {
             String Nombre = (String) tablaUsuarios.getValueAt(Row, 0);
             for (int i = 0; i < Usuarios.size(); i++) {
                 Usuario user = Usuarios.get(i);
-                if (Nombre.equals(usuarioSesion)&& !Nombre.equals("Admin")) {
-                    usuarioSesion=Nombre;
-                    
-                    
+                if (Nombre.equals(usuarioSesion) && !Nombre.equals("Admin")) {
+                    usuarioSesion = Nombre;
+
                 }
                 if (Nombre.equals("Admin")) {
                     JOptionPane.showMessageDialog(this, "El usuario Admin no se puede modificar.");
@@ -4969,6 +5029,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
     private javax.swing.JLabel bienvenida;
+    private javax.swing.JLabel bienvenida1;
     private javax.swing.JButton calculadora;
     private javax.swing.JButton calculadora1;
     private javax.swing.JButton cambiarTamaño;
@@ -5034,6 +5095,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -5045,6 +5108,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
