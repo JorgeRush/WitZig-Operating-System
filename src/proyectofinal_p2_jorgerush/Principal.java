@@ -45,6 +45,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import proyectofinal_p2_jorgerush.Modelo.puntos;
 
 /**
@@ -77,8 +79,13 @@ public class Principal extends javax.swing.JFrame {
         if (admin == true) {
 
         }
-        cargarUsuariosGuardados();
         
+        
+        cargarUsuariosGuardados();
+        cargarContenidoArbol();
+        
+        
+
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
@@ -383,7 +390,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        arbolUsuarios = new javax.swing.JTree();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         tipo = new javax.swing.JComboBox<>();
@@ -1824,7 +1831,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane4.setViewportView(jTree1);
+        jScrollPane4.setViewportView(arbolUsuarios);
 
         jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 345, -1));
 
@@ -1846,11 +1853,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Contraseña:");
         jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 80, -1));
-
-        contraUs.setText("jTextField1");
         jPanel9.add(contraUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 100, -1));
-
-        nombreUs.setText("jTextField1");
         jPanel9.add(nombreUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 100, -1));
 
         jButton11.setText("Crear");
@@ -4188,8 +4191,19 @@ public class Principal extends javax.swing.JFrame {
             BarraNavegacion.setVisible(true);
             BarraTareas.setVisible(true);
             FondoPantalla.setVisible(true);
+            
             Usuario usuarioAdmin = retornarInicio();
-            Usuarios.add(usuarioAdmin);
+            boolean verf=false;
+            for (Usuario User : Usuarios) {
+                if (User.getNombreUsuario().equals("Admin")){
+                    verf=true;
+                }
+            }
+            if(verf==false){
+                System.out.println("A");
+                Usuarios.add(usuarioAdmin);
+            }
+            
 //            realizarCambio(usuarioAdmin);
 //
 //            return;
@@ -4245,7 +4259,40 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("Usuario creado: " + nombre);
         cargarBarra();
         JOptionPane.showMessageDialog(this, "Usuario exitosamente creado.");
+        nombreUs.setText("");
+        contraUs.setText("");
+        int tipo1 = tipo.getSelectedIndex();
+        cargarContenidoArbol();
+        DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolUsuarios.getModel();
+        modeloArbol.reload();
+        guardarContenido();
+
     }//GEN-LAST:event_jButton11MouseClicked
+    public void cargarContenidoArbol() {
+        DefaultMutableTreeNode Usuarios2 = new DefaultMutableTreeNode("Usuarios");
+        DefaultMutableTreeNode Invitados = new DefaultMutableTreeNode("Invitados");
+        DefaultMutableTreeNode Administradores = new DefaultMutableTreeNode("Administradores");
+
+        Usuarios2.add(Invitados);
+        Usuarios2.add(Administradores);
+        DefaultTreeModel modeloArbol = new DefaultTreeModel(Usuarios2);
+        arbolUsuarios.setModel(modeloArbol);
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+        
+        for (Usuario user : Usuarios) {
+            if (user.tipoUsuario.equals("Administrador")||user.isAdministrador()==true) {
+                DefaultMutableTreeNode nodoElegido = (DefaultMutableTreeNode) raiz.getChildAt(1);
+                DefaultMutableTreeNode nodoNuevo = new DefaultMutableTreeNode(user);
+                nodoElegido.add(nodoNuevo);
+            } else if (user.tipoUsuario.equals("Invitado")||user.isAdministrador()==false) {
+                DefaultMutableTreeNode nodoElegido = (DefaultMutableTreeNode) raiz.getChildAt(0);
+                DefaultMutableTreeNode nodoNuevo = new DefaultMutableTreeNode(user);
+                nodoElegido.add(nodoNuevo);
+            }
+        }
+
+    }
+
     public void guardarContenido() {
 
         if (usuarioSesion == null) {
@@ -4282,6 +4329,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_LogInMouseClicked
 
     private void crearUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearUsuariosMouseClicked
+        cargarContenidoArbol();
         AdminCuentas.pack();
         AdminCuentas.setLocationRelativeTo(this);
         AdminCuentas.setVisible(true);
@@ -4317,8 +4365,8 @@ public class Principal extends javax.swing.JFrame {
         Color fondoC = FondoPantalla.getBackground();
         Icon fondoI = fondoImagen.getIcon();
 
-        Font fontG = fontGeneral;
-        Color colorF = colorFont;
+        Font fontG = ejemploFuente.getFont();
+        Color colorF = ejemploFuente.getForeground();
 
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
@@ -4356,6 +4404,8 @@ public class Principal extends javax.swing.JFrame {
         BarraTareas.setBackground(barraC);
         FondoPantalla.setBackground(fondoC);
         fondoImagen.setIcon(fondoI);
+        ejemploFuente.setFont(fontG);
+        ejemploFuente.setForeground(colorF);
         cambiarFontPantallaInicio(fontG);
         cambiarColorFontPI(colorF);
     }
@@ -4409,7 +4459,7 @@ public class Principal extends javax.swing.JFrame {
                     Usuarios.add(usuario);
 
                 } catch (Exception e) {
-                   
+
                 }
             }
         }
@@ -4523,6 +4573,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton WitZig;
     private javax.swing.JDialog XO;
     private javax.swing.JMenuItem abrirArchivo;
+    private javax.swing.JTree arbolUsuarios;
     private javax.swing.JMenu archivo;
     private javax.swing.JButton aspectosExternos;
     private javax.swing.JRadioButton barraN1;
@@ -4611,7 +4662,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTree jTree1;
     private javax.swing.JButton lago;
     private javax.swing.JButton limpiar;
     private javax.swing.JButton mas;

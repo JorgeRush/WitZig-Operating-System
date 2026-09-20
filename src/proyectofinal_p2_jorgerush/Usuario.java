@@ -183,6 +183,11 @@ public class Usuario  implements Serializable{
     public void setFondoImagen(Icon fondoImagen) {
         this.fondoImagen = fondoImagen;
     }
+
+    @Override
+    public String toString() {
+        return nombreUsuario;
+    }
     
     
 
