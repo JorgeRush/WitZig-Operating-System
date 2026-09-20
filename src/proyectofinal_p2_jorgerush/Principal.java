@@ -79,12 +79,9 @@ public class Principal extends javax.swing.JFrame {
         if (admin == true) {
 
         }
-        
-        
+
         cargarUsuariosGuardados();
         cargarContenidoArbol();
-        
-        
 
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
@@ -398,6 +395,7 @@ public class Principal extends javax.swing.JFrame {
         contraUs = new javax.swing.JTextField();
         nombreUs = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -1865,6 +1863,17 @@ public class Principal extends javax.swing.JFrame {
         jPanel9.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
         AdminCuentas.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 750, 409));
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -4180,7 +4189,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin") && contador4 == 0) {
-            usuarioSesion = "Admin";
+
             contador4++;
 
             if (contador4 == 1) {
@@ -4191,19 +4200,24 @@ public class Principal extends javax.swing.JFrame {
             BarraNavegacion.setVisible(true);
             BarraTareas.setVisible(true);
             FondoPantalla.setVisible(true);
-            
-            Usuario usuarioAdmin = retornarInicio();
-            boolean verf=false;
+
+            boolean verf = false;
             for (Usuario User : Usuarios) {
-                if (User.getNombreUsuario().equals("Admin")){
-                    verf=true;
+                if (User.getNombreUsuario().equals("Admin")) {
+                    verf = true;
                 }
             }
-            if(verf==false){
+            if (verf == false) {
                 System.out.println("A");
+
+                Usuario usuarioAdmin = retornarInicio();
+                usuarioSesion = usuarioAdmin.getNombreUsuario();
                 Usuarios.add(usuarioAdmin);
+
+            } else {
+                usuarioSesion = "Admin";
             }
-            
+
 //            realizarCambio(usuarioAdmin);
 //
 //            return;
@@ -4219,11 +4233,21 @@ public class Principal extends javax.swing.JFrame {
                 BarraNavegacion.setVisible(true);
                 BarraTareas.setVisible(true);
                 FondoPantalla.setVisible(true);
+                String sesionAnterior = usuarioSesion;
                 usuarioSesion = usuarioEle.getNombreUsuario();
                 String ruta = usuarioEle.getRutaArchivo();
 
                 if (ruta == null) {
                     realizarCambio(usuarioAdminDef);
+                    if (sesionAnterior.equals("Admin")) {
+                        Usuario cambioUser = usuarioAdminDef;
+                        Usuarios.set(i, cambioUser);
+                        realizarCambio(cambioUser);
+                    } else {
+                        Usuario cambioUser = guardarUsuario(usuarioEle);
+                        Usuarios.set(i, cambioUser);
+                        realizarCambio(cambioUser);
+                    }
                     Usuario cambioUser = guardarUsuario(usuarioEle);
                     Usuarios.set(i, cambioUser);
                     realizarCambio(cambioUser);
@@ -4255,8 +4279,9 @@ public class Principal extends javax.swing.JFrame {
         String contra = contraUs.getText();
         String tipoU = (String) tipo.getSelectedItem();
         Usuario nuevoU = new Usuario(nombre, contra, tipoU);
+//        nuevoU=formarInicio(usuarioAdminDef);
         Usuarios.add(nuevoU);
-        System.out.println("Usuario creado: " + nombre);
+       
         cargarBarra();
         JOptionPane.showMessageDialog(this, "Usuario exitosamente creado.");
         nombreUs.setText("");
@@ -4265,7 +4290,7 @@ public class Principal extends javax.swing.JFrame {
         cargarContenidoArbol();
         DefaultTreeModel modeloArbol = (DefaultTreeModel) arbolUsuarios.getModel();
         modeloArbol.reload();
-        guardarContenido();
+
 
     }//GEN-LAST:event_jButton11MouseClicked
     public void cargarContenidoArbol() {
@@ -4278,13 +4303,13 @@ public class Principal extends javax.swing.JFrame {
         DefaultTreeModel modeloArbol = new DefaultTreeModel(Usuarios2);
         arbolUsuarios.setModel(modeloArbol);
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
-        
+
         for (Usuario user : Usuarios) {
-            if (user.tipoUsuario.equals("Administrador")||user.isAdministrador()==true) {
+            if (user.tipoUsuario.equals("Administrador") || user.isAdministrador() == true) {
                 DefaultMutableTreeNode nodoElegido = (DefaultMutableTreeNode) raiz.getChildAt(1);
                 DefaultMutableTreeNode nodoNuevo = new DefaultMutableTreeNode(user);
                 nodoElegido.add(nodoNuevo);
-            } else if (user.tipoUsuario.equals("Invitado")||user.isAdministrador()==false) {
+            } else if (user.tipoUsuario.equals("Invitado") || user.isAdministrador() == false) {
                 DefaultMutableTreeNode nodoElegido = (DefaultMutableTreeNode) raiz.getChildAt(0);
                 DefaultMutableTreeNode nodoNuevo = new DefaultMutableTreeNode(user);
                 nodoElegido.add(nodoNuevo);
@@ -4408,6 +4433,26 @@ public class Principal extends javax.swing.JFrame {
         ejemploFuente.setForeground(colorF);
         cambiarFontPantallaInicio(fontG);
         cambiarColorFontPI(colorF);
+    }
+    public Usuario formarInicio(Usuario usuario2){
+        String nombre = usuario2.getNombreUsuario();
+        String contra = usuario2.getContraseñaUsuario();
+        String tipoU = usuario2.getTipoUsuario();
+
+        Color barraNC = usuario2.getColorNavigator();
+        Color barraC = usuario2.getColorBarra();
+        Color fondoC = usuario2.getColorFondo();
+        Icon fondoI = usuario2.getFondoImagen();
+
+        Font fontG = usuario2.getFontGeneral();
+        Color colorF = usuario2.getColorFont();
+
+        ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
+        ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
+
+        String archivo1 = usuario2.getRutaArchivo();
+        Usuario usuarioDEF = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        return usuarioDEF;
     }
 
     public void mostrarConf() {
@@ -4629,6 +4674,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
