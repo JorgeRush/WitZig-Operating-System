@@ -4559,7 +4559,22 @@ public class Principal extends javax.swing.JFrame {
             String[] datos = {user.getNombreUsuario(), user.getTipoUsuario()};
             modeloTabla.addRow(datos);
         }
+        
         tablaUsuarios.setModel(modeloTabla);
+        tablaUsuarios.getColumnModel().getColumn(0).setCellRenderer((t, v, s, f, r, c) -> {
+                    JLabel l = new JLabel(String.valueOf(v));
+                    String dato=(String)tablaUsuarios.getValueAt(r,1);
+                    ImageIcon admin=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U5.png"));
+                    ImageIcon Inv=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U4.png"));
+                    if(dato.equals("Administrador")){
+                        l.setIcon(admin);
+                    }
+                    if(dato.equals("Invitado")){
+                        l.setIcon(Inv);
+                    }
+
+                    return l;
+                });
     }
     private void InformacionWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_InformacionWindowActivated
         mostrarInfoTabla();
