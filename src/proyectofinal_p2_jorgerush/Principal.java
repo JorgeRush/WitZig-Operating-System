@@ -4332,9 +4332,9 @@ public class Principal extends javax.swing.JFrame {
         arbolUsuarios.setCellRenderer(new DefaultTreeCellRenderer() {
 
             // 1. Cargas las imágenes una sola vez aquí
-            ImageIcon iconoUsuarios = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U.png"));
-            ImageIcon iconoAdmin = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/UI.png"));
-            ImageIcon iconoInvitado = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U3.png"));
+            ImageIcon iconoUsuarios = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U1.png"));
+            ImageIcon iconoAdmin = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U3.png"));
+            ImageIcon iconoInvitado = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U2.png"));
 
             // 2. Sobrescribes el comportamiento de dibujado
             @Override
