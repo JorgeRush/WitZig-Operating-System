@@ -23,7 +23,12 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -36,6 +41,7 @@ import java.util.Scanner;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -54,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
      */
     PanelSnake panelSnake;
     puntos P = null;
+    boolean admin = false;
 
     public Principal() {
 
@@ -66,6 +73,10 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
+
+        if (admin == true) {
+
+        }
 
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
@@ -165,7 +176,6 @@ public class Principal extends javax.swing.JFrame {
 
         if (i == 1) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/F1.png"));
-            Image imagen = ((ImageIcon) icono).getImage();
 
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
@@ -185,6 +195,7 @@ public class Principal extends javax.swing.JFrame {
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
+        
         } else if (i == 5) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
             fondoImagen.setIcon(icono);
@@ -368,8 +379,17 @@ public class Principal extends javax.swing.JFrame {
         panel1 = new javax.swing.JPanel();
         AdminCuentas = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel8 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        tipo = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        contraUs = new javax.swing.JTextField();
+        nombreUs = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -1774,50 +1794,73 @@ public class Principal extends javax.swing.JFrame {
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         Paint.getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 680, 470));
 
+        AdminCuentas.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setText("Crear Usuario");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 57, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel19)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        AdminCuentas.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
-        );
+        jScrollPane4.setViewportView(jTree1);
 
-        jTabbedPane1.addTab("tab1", jPanel8);
+        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 345, -1));
 
-        javax.swing.GroupLayout AdminCuentasLayout = new javax.swing.GroupLayout(AdminCuentas.getContentPane());
-        AdminCuentas.getContentPane().setLayout(AdminCuentasLayout);
-        AdminCuentasLayout.setHorizontalGroup(
-            AdminCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
-        );
-        AdminCuentasLayout.setVerticalGroup(
-            AdminCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AdminCuentasLayout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
-        );
+        jLabel16.setBackground(new java.awt.Color(225, 225, 225));
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setText("Tipo de Usuario:");
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel9.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 100, -1));
+
+        jLabel17.setBackground(new java.awt.Color(225, 225, 225));
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setText("Nombre:");
+        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 60, -1));
+
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Invitado", "Administrador" }));
+        jPanel9.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 100, -1));
+
+        jLabel18.setBackground(new java.awt.Color(225, 225, 225));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setText("Contraseña:");
+        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 80, -1));
+
+        contraUs.setText("jTextField1");
+        jPanel9.add(contraUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 100, -1));
+
+        nombreUs.setText("jTextField1");
+        jPanel9.add(nombreUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 100, -1));
+
+        jButton11.setText("Crear");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+
+        AdminCuentas.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 750, 409));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2091,15 +2134,30 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.add(ModificarPantalla);
 
         LogIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Log1.png"))); // NOI18N
+        LogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogInMouseClicked(evt);
+            }
+        });
         BarraNavegacion.add(LogIn);
 
         LogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Log2.png"))); // NOI18N
+        LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogOutMouseClicked(evt);
+            }
+        });
         BarraNavegacion.add(LogOut);
 
         verUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M1.png"))); // NOI18N
         BarraNavegacion.add(verUsuarios);
 
         crearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M2.png"))); // NOI18N
+        crearUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crearUsuariosMouseClicked(evt);
+            }
+        });
         BarraNavegacion.add(crearUsuarios);
 
         FechaHora.setText("  ");
@@ -2252,7 +2310,82 @@ public class Principal extends javax.swing.JFrame {
         ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_ItalicMouseClicked
+    public void cambiarEstiloGlobal(Font nuevaFuente, Color nuevoColor) {
+        // 1. Cambiar los valores por defecto globales en el UIManager (para componentes futuros)
+        for (java.util.Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements();) {
+            Object key = keys.nextElement();
+            String keyString = key.toString();
 
+            Object value = UIManager.get(key);
+            if (value instanceof javax.swing.plaf.FontUIResource) {
+                UIManager.put(key, new javax.swing.plaf.FontUIResource(nuevaFuente));
+            }
+
+            if (keyString.endsWith(".foreground") || keyString.endsWith(".textForeground") || keyString.endsWith(".mainForeground")) {
+                UIManager.put(key, new javax.swing.plaf.ColorUIResource(nuevoColor));
+            }
+        }
+
+        // Forzado estricto de propiedades textuales en el UIManager
+        String[] componentesTextuales = {
+            "Label.foreground", "Button.foreground", "RadioButton.foreground", "CheckBox.foreground",
+            "MenuItem.foreground", "Menu.foreground", "CheckBoxMenuItem.foreground", "RadioButtonMenuItem.foreground",
+            "TextField.foreground", "TextArea.foreground", "List.foreground", "Table.foreground"
+        };
+        for (String comp : componentesTextuales) {
+            UIManager.put(comp, new javax.swing.plaf.ColorUIResource(nuevoColor));
+        }
+
+        // 2. ¡EL TRUCO SUPREMO!: Buscar en TODAS las ventanas vivas de la aplicación de forma global
+        // Esto ignorará si son hijos directos o si están incrustados en barras personalizadas
+        java.awt.Window[] todasLasVentanas = java.awt.Window.getWindows();
+
+        for (java.awt.Window ventana : todasLasVentanas) {
+            // Ejecutar barrido profundo en cada ventana/diálogo/frame activo
+            actualizarComponentesInternos(ventana, nuevaFuente, nuevoColor);
+
+            // Si tiene barra de menú (aplica para JFrame o JDialog)
+            if (ventana instanceof javax.swing.JFrame && ((javax.swing.JFrame) ventana).getJMenuBar() != null) {
+                actualizarComponentesInternos(((javax.swing.JFrame) ventana).getJMenuBar(), nuevaFuente, nuevoColor);
+            }
+            if (ventana instanceof javax.swing.JDialog && ((javax.swing.JDialog) ventana).getJMenuBar() != null) {
+                actualizarComponentesInternos(((javax.swing.JDialog) ventana).getJMenuBar(), nuevaFuente, nuevoColor);
+            }
+
+            // Forzar actualización y redibujado de la ventana en pantalla
+            SwingUtilities.updateComponentTreeUI(ventana);
+            ventana.invalidate();
+            ventana.validate();
+            ventana.repaint();
+        }
+
+    }
+
+    private void actualizarComponentesInternos(java.awt.Component comp, java.awt.Font fuente, java.awt.Color color) {
+        if (comp == null) {
+            return;
+        }
+
+        // Aplicar directamente el cambio
+        comp.setFont(fuente);
+        comp.setForeground(color);
+
+        // Forzado exclusivo para JLabels
+        if (comp instanceof javax.swing.JLabel) {
+            ((javax.swing.JLabel) comp).setForeground(color);
+        }
+
+        // Explorar contenedores internos (Paneles, barras, contenedores de NetBeans)
+        if (comp instanceof java.awt.Container) {
+            java.awt.Container contenedor = (java.awt.Container) comp;
+            for (java.awt.Component hijo : contenedor.getComponents()) {
+                actualizarComponentesInternos(hijo, fuente, color);
+            }
+        }
+    }
+
+    Font fontGeneral;
+    Color colorFont;
     private void confirmarFuenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmarFuenteMouseClicked
         try {
             String fuente = (String) spinnerFuente.getValue();
@@ -2260,10 +2393,15 @@ public class Principal extends javax.swing.JFrame {
             int estilo = estiloFuenteN;
             int tamaño = (int) tamañoFuente.getValue();
             Font fuenteConf = new Font(fuente, estilo, tamaño);
-
+            cargarBarra();
             cambiarFontPantallaInicio(fuenteConf);
             Color colorElegido = ejemploFuente.getForeground();
             cambiarColorFontPI(colorElegido);
+            fontGeneral = fuenteConf;
+            colorFont = colorElegido;
+            JOptionPane.showMessageDialog(this, "Cambia realizado");
+//            cambiarEstiloGlobal(fuenteConf, colorElegido);
+
         } catch (Exception E) {
             Font fuenteActual = ejemploFuente.getFont();
 
@@ -4028,19 +4166,232 @@ public class Principal extends javax.swing.JFrame {
         usuario.setText("");
         usuario.setForeground(Color.BLACK);
     }//GEN-LAST:event_usuarioMouseClicked
-
+    Usuario usuarioAdminDef;
+    String usuarioSesion;
+    int contador4 = 0;
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         if (usuario.getText().isEmpty() || contraseña.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar nada en blanco.");
             return;
         }
+
         if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin")) {
+            usuarioSesion = "Admin";
+            contador4++;
+
+            if (contador4 == 1) {
+                usuarioAdminDef = retornarInicio();
+            }
+
             fondoIniciar.setVisible(false);
             BarraNavegacion.setVisible(true);
             BarraTareas.setVisible(true);
             FondoPantalla.setVisible(true);
+
+            realizarCambio(usuarioAdminDef);
+
+            return;
         }
+        String nombreU = usuario.getText();
+        String contraU = contraseña.getText();
+        for (int i = 0; i < Usuarios.size(); i++) {
+
+            Usuario usuarioEle = Usuarios.get(i);
+
+            if (nombreU.equals(usuarioEle.getNombreUsuario()) && usuarioEle.getContraseñaUsuario().equals(contraU)) {
+                fondoIniciar.setVisible(false);
+                BarraNavegacion.setVisible(true);
+                BarraTareas.setVisible(true);
+                FondoPantalla.setVisible(true);
+                usuarioSesion = usuarioEle.getNombreUsuario();
+                String ruta = usuarioEle.getRutaArchivo();
+
+                if (ruta == null) {
+                    realizarCambio(usuarioAdminDef);
+                    Usuario cambioUser = guardarUsuario(usuarioEle);
+                    Usuarios.set(i, cambioUser);
+                    realizarCambio(cambioUser);
+
+                } else {
+                    cargarDatos(ruta);
+                    
+                }
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
     }//GEN-LAST:event_jButton10MouseClicked
+    ArrayList<Usuario> Usuarios = new ArrayList<>();
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        if (nombreUs.getText().isEmpty() || contraUs.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar nada en blanco");
+            return;
+        }
+        String nombre = nombreUs.getText();
+        for (int i = 0; i < Usuarios.size(); i++) {
+            if (nombre.equals(Usuarios.get(i).getNombreUsuario())) {
+                JOptionPane.showMessageDialog(this, "Ese nombre de usuario ya existe, utilice otro.");
+                return;
+            }
+        }
+        String contra = contraUs.getText();
+        String tipoU = (String) tipo.getSelectedItem();
+        Usuario nuevoU = new Usuario(nombre, contra, tipoU);
+        Usuarios.add(nuevoU);
+        System.out.println("Usuario creado: " + nombre);
+        cargarBarra();
+        JOptionPane.showMessageDialog(this, "Usuario exitosamente creado.");
+    }//GEN-LAST:event_jButton11MouseClicked
+    public void guardarContenido() {
+      
+        if (usuarioSesion == null) {
+            return;
+        }
+
+        for (int i = 0; i < Usuarios.size(); i++) {
+
+            if (Usuarios.get(i).getNombreUsuario().equals(usuarioSesion)) {
+         
+                Usuario actualizado = guardarUsuario(Usuarios.get(i));
+
+                Usuarios.set(i, actualizado);
+
+                return;
+            }
+        }
+    }
+    private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+ 
+
+        guardarContenido();
+        fondoIniciar.setVisible(true);
+        BarraNavegacion.setVisible(false);
+        BarraTareas.setVisible(false);
+        FondoPantalla.setVisible(false);
+    }//GEN-LAST:event_LogOutMouseClicked
+
+    private void LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInMouseClicked
+        guardarContenido();
+        fondoIniciar.setVisible(true);
+        BarraNavegacion.setVisible(false);
+        BarraTareas.setVisible(false);
+        FondoPantalla.setVisible(false);
+    }//GEN-LAST:event_LogInMouseClicked
+
+    private void crearUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearUsuariosMouseClicked
+        AdminCuentas.pack();
+        AdminCuentas.setLocationRelativeTo(this);
+        AdminCuentas.setVisible(true);
+
+    }//GEN-LAST:event_crearUsuariosMouseClicked
+    public Usuario retornarInicio() {
+        String nombre = "Admin";
+        String contra = "Admin";
+        String tipoU = "Administrador";
+
+        Color barraNC = BarraNavegacion.getBackground();
+        Color barraC = BarraTareas.getBackground();
+        Color fondoC = FondoPantalla.getBackground();
+        Icon fondoI = fondoImagen.getIcon();
+        Font fontG = ejemploFuente.getFont();
+        Color colorF = ejemploFuente.getForeground();
+
+        ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
+        ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
+        String archivo1 = "config_" + nombre + ".dat";
+        Usuario nuevoUsuario = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        realizarCambio(nuevoUsuario);
+        return nuevoUsuario;
+    }
+
+    public Usuario guardarUsuario(Usuario usuario) {
+        String nombre = usuario.getNombreUsuario();
+        String contra = usuario.getContraseñaUsuario();
+        String tipoU = usuario.getTipoUsuario();
+
+        Color barraNC = BarraNavegacion.getBackground();
+        Color barraC = BarraTareas.getBackground();
+        Color fondoC = FondoPantalla.getBackground();
+        Icon fondoI = fondoImagen.getIcon();
+   
+        Font fontG = fontGeneral;
+        Color colorF = colorFont;
+
+        ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
+        ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
+        String archivo1 = "config_" + nombre + ".dat";
+        Usuario nuevoUsuario = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+  
+        guardarDatos(nuevoUsuario, archivo1);
+        return nuevoUsuario;
+    }
+
+    public void realizarCambio(Usuario usuario) {
+        String nombre = usuario.getNombreUsuario();
+        String contra = usuario.getContraseñaUsuario();
+        String tipoU = usuario.getTipoUsuario();
+
+        Color barraNC = usuario.getColorNavigator();
+        Color barraC = usuario.getColorBarra();
+        Color fondoC = usuario.getColorFondo();
+        Icon fondoI = usuario.getFondoImagen();
+    
+        Font fontG = usuario.getFontGeneral();
+        Color colorF = usuario.getColorFont();
+
+        listaArchivos = usuario.retornarArchivos();
+        listaCarpetas = usuario.retornarCarpetas();
+
+        String archivo1 = usuario.getRutaArchivo();
+        if (tipoU.equals("Administrador")) {
+            admin = true;
+        } else {
+            admin = false;
+        }
+        mostrarConf();
+        BarraNavegacion.setBackground(barraNC);
+        BarraTareas.setBackground(barraC);
+        FondoPantalla.setBackground(fondoC);
+        fondoImagen.setIcon(fondoI);
+        cambiarFontPantallaInicio(fontG);
+        cambiarColorFontPI(colorF);
+    }
+
+    public void mostrarConf() {
+        if (admin == true) {
+            crearUsuarios.setVisible(true);
+        } else {
+            crearUsuarios.setVisible(false);
+        }
+    }
+
+    public void guardarDatos(Usuario usuario, String archivo) {
+        try (FileOutputStream fileOut = new FileOutputStream(archivo); ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            out.writeObject(usuario);
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public void cargarDatos(String archivo) {
+     
+        Usuario usuario = null;
+
+        try (FileInputStream fileIn = new FileInputStream(archivo); ObjectInputStream in = new ObjectInputStream(fileIn)) {
+
+            usuario = (Usuario) in.readObject();
+            
+            realizarCambio(usuario);
+
+        } catch (IOException | ClassNotFoundException e) {
+           
+        }
+
+        
+    }
+
     Graphics g;
 
     public void Dibujar() {
@@ -4163,6 +4514,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton cinco;
     private javax.swing.JButton confirmarFuente;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JTextField contraUs;
     private javax.swing.JTextField contraseña;
     private javax.swing.JPanel crearCarpeta;
     private javax.swing.JPanel crearCarpeta1;
@@ -4195,6 +4547,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem guardarArchivo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -4210,6 +4563,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -4226,12 +4583,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton lago;
     private javax.swing.JButton limpiar;
     private javax.swing.JButton mas;
@@ -4242,6 +4600,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton nevada;
     private javax.swing.JTextField nombreCarpeta;
     private javax.swing.JTextField nombreCarpeta1;
+    private javax.swing.JTextField nombreUs;
     private javax.swing.JButton nueve;
     private javax.swing.JButton ocho;
     private javax.swing.JMenuBar opcionesEditor;
@@ -4284,6 +4643,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSpinner tamañoFuente1;
     private javax.swing.JSpinner tamañoPincel;
     private javax.swing.JButton tarde;
+    private javax.swing.JComboBox<String> tipo;
     private javax.swing.JLabel tituloConfiguracion;
     private javax.swing.JLabel tituloConfiguracion1;
     private javax.swing.JLabel tituloConfiguracion2;

@@ -5,13 +5,14 @@
 package proyectofinal_p2_jorgerush;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jorge Rush
  */
-public class carpetasArchivos {
+public class carpetasArchivos implements Serializable{
 
     String nombre;
     File ubicacionCarpeta;

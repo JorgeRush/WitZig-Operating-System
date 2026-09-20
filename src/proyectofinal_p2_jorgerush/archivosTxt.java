@@ -6,12 +6,13 @@ package proyectofinal_p2_jorgerush;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.Serializable;
 
 /**
  *
  * @author Jorge Rush
  */
-public class archivosTxt  {
+public class archivosTxt  implements Serializable {
     String nombreA;
  
     File archivo;
