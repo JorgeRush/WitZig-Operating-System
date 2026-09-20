@@ -405,6 +405,9 @@ public class Principal extends javax.swing.JFrame {
         nombreUs = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         Informacion = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         user = new javax.swing.JLabel();
@@ -1910,7 +1913,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton11MouseClicked(evt);
             }
         });
-        jPanel9.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+        jPanel9.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1924,6 +1927,15 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel9.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 2, 380));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/UT.png"))); // NOI18N
+        jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, 40));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/NU.png"))); // NOI18N
+        jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 30, 40));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/CU.png"))); // NOI18N
+        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 30, 40));
 
         AdminCuentas.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 750, 409));
 
@@ -5097,6 +5109,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
