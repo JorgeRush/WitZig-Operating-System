@@ -4456,7 +4456,7 @@ public class Principal extends javax.swing.JFrame {
                     if (user.getNombreUsuario().equals("Admin")) {
                         setIcon(iconoAdmin);
                     }
-                    if (user.getTipoUsuario().equals("Admnistrador")) {
+                    if (user.getTipoUsuario().equals("Administrador")) {
                         setIcon(iconoAdmin);
                     } else if (user.getTipoUsuario().equals("Invitado")) {
                         setIcon(iconoInvitado);
@@ -4477,7 +4477,7 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede dejar nada en blanco.");
             return;
         }
-
+        cargarBarra();
         if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin") && contador4 == 0) {
 
             contador4++;
@@ -4518,8 +4518,10 @@ public class Principal extends javax.swing.JFrame {
             Usuario usuarioEle = Usuarios.get(i);
 
             if (nombreU.equals(usuarioEle.getNombreUsuario()) && usuarioEle.getContraseñaUsuario().equals(contraU)) {
+                
                 bienvenida.setText("Bienvenido, estimado(a) " + nombreU);
                 user.setText(nombreU);
+                
                 fondoIniciar.setVisible(false);
                 BarraNavegacion.setVisible(true);
                 BarraTareas.setVisible(true);
@@ -4542,10 +4544,10 @@ public class Principal extends javax.swing.JFrame {
                     Usuario cambioUser = guardarUsuario(usuarioEle);
                     Usuarios.set(i, cambioUser);
                     realizarCambio(cambioUser);
-                     cargarBarra();
+                     
                 } else {
                     cargarDatos(ruta);
-                    cargarBarra();
+                   
                 }
                 return;
             }
