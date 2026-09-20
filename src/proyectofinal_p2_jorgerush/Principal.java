@@ -9,6 +9,7 @@ import proyectofinal_p2_jorgerush.SnakeClases.PanelSnake;
 import java.util.Random;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -41,11 +42,13 @@ import java.util.Scanner;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import proyectofinal_p2_jorgerush.Modelo.puntos;
 
@@ -82,7 +85,7 @@ public class Principal extends javax.swing.JFrame {
 
         cargarUsuariosGuardados();
         cargarContenidoArbol();
-
+        configurarIconosJTree();
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
@@ -156,9 +159,9 @@ public class Principal extends javax.swing.JFrame {
                 AñadirBoton1.setVisible(false);
                 AñadirBoton.setVisible(true);
             }
-            String fecha = LocalDate.now().toString();
+            String fecha1 = LocalDate.now().toString();
             String hora = String.format("%tr", LocalTime.now());
-            FechaHora.setText(fecha + "   " + hora);
+            fecha.setText(fecha1 + "   " + hora);
         });
 
         timer.start();
@@ -173,7 +176,10 @@ public class Principal extends javax.swing.JFrame {
 
     public void cambiarFontPantallaInicio(Font fuente) {
         ModificarPantalla.setFont(fuente);
-        FechaHora.setFont(fuente);
+        fecha.setFont(fuente);
+        user.setFont(fuente);
+        bienvenida.setFont(fuente);
+        mostrarU.setFont(fuente);
         Personalizar.setFont(fuente);
     }
 
@@ -384,7 +390,7 @@ public class Principal extends javax.swing.JFrame {
         panel1 = new javax.swing.JPanel();
         AdminCuentas = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        bienvenida = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         arbolUsuarios = new javax.swing.JTree();
@@ -395,7 +401,24 @@ public class Principal extends javax.swing.JFrame {
         contraUs = new javax.swing.JTextField();
         nombreUs = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
-        jDialog1 = new javax.swing.JDialog();
+        Informacion = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        user = new javax.swing.JLabel();
+        fecha = new javax.swing.JLabel();
+        mostrarU = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaUsuarios = new javax.swing.JTable();
+        ModificarUsuarios = new javax.swing.JPopupMenu();
+        modU = new javax.swing.JMenuItem();
+        elimU = new javax.swing.JMenuItem();
+        ModificarUsuario = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        nuevoU = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        ncontraU = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -423,7 +446,6 @@ public class Principal extends javax.swing.JFrame {
         LogOut = new javax.swing.JMenu();
         verUsuarios = new javax.swing.JMenu();
         crearUsuarios = new javax.swing.JMenu();
-        FechaHora = new javax.swing.JMenu();
 
         Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         Personalizar.setText("Personalizar");
@@ -1804,34 +1826,37 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel19.setText("Crear Usuario");
+        bienvenida.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bienvenida.setText("Crear Usuario");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(453, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel19)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bienvenida)
+                .addGap(16, 16, 16))
         );
 
-        AdminCuentas.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
+        AdminCuentas.getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setMaximumSize(new java.awt.Dimension(750, 409));
+        jPanel9.setMinimumSize(new java.awt.Dimension(750, 409));
+        jPanel9.setPreferredSize(new java.awt.Dimension(750, 409));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane4.setViewportView(arbolUsuarios);
 
-        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 345, -1));
+        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 345, 330));
 
         jLabel16.setBackground(new java.awt.Color(225, 225, 225));
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1864,15 +1889,136 @@ public class Principal extends javax.swing.JFrame {
 
         AdminCuentas.getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 750, 409));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        Informacion.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                InformacionWindowActivated(evt);
+            }
+        });
+        Informacion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        user.setText("user");
+        jPanel10.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 110, -1));
+
+        fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fecha.setText("horario");
+        jPanel10.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 270, 20));
+
+        mostrarU.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mostrarU.setText("Usuario:");
+        jPanel10.add(mostrarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        Informacion.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setMaximumSize(new java.awt.Dimension(750, 410));
+        jPanel11.setMinimumSize(new java.awt.Dimension(750, 410));
+        jPanel11.setPreferredSize(new java.awt.Dimension(750, 410));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Usuario", "Tipo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaUsuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tablaUsuarios);
+
+        jPanel11.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 710, 280));
+
+        Informacion.getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 750, 410));
+
+        modU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
+        modU.setText("Modificar Usuario");
+        modU.addActionListener(this::modUActionPerformed);
+        ModificarUsuarios.add(modU);
+
+        elimU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/B2.png"))); // NOI18N
+        elimU.setText("Eliminar Usuario");
+        elimU.addActionListener(this::elimUActionPerformed);
+        ModificarUsuarios.add(elimU);
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("Nuevo Usuario:");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("Nueva Contraseña:");
+
+        jButton12.setText("Confirmar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nuevoU, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ncontraU, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton12)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nuevoU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(ncontraU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(35, 35, 35))
+        );
+
+        javax.swing.GroupLayout ModificarUsuarioLayout = new javax.swing.GroupLayout(ModificarUsuario.getContentPane());
+        ModificarUsuario.getContentPane().setLayout(ModificarUsuarioLayout);
+        ModificarUsuarioLayout.setHorizontalGroup(
+            ModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        ModificarUsuarioLayout.setVerticalGroup(
+            ModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2163,6 +2309,11 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.add(LogOut);
 
         verUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M1.png"))); // NOI18N
+        verUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verUsuariosMouseClicked(evt);
+            }
+        });
         BarraNavegacion.add(verUsuarios);
 
         crearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M2.png"))); // NOI18N
@@ -2172,9 +2323,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BarraNavegacion.add(crearUsuarios);
-
-        FechaHora.setText("  ");
-        BarraNavegacion.add(FechaHora);
 
         setJMenuBar(BarraNavegacion);
 
@@ -4179,6 +4327,41 @@ public class Principal extends javax.swing.JFrame {
         usuario.setText("");
         usuario.setForeground(Color.BLACK);
     }//GEN-LAST:event_usuarioMouseClicked
+    private void configurarIconosJTree() {
+        // Se asigna directamente el renderizador al jTree1 sobrescribiendo el método en línea
+        arbolUsuarios.setCellRenderer(new DefaultTreeCellRenderer() {
+
+            // 1. Cargas las imágenes una sola vez aquí
+            ImageIcon iconoUsuarios = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U.png"));
+            ImageIcon iconoAdmin = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/UI.png"));
+            ImageIcon iconoInvitado = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/U3.png"));
+
+            // 2. Sobrescribes el comportamiento de dibujado
+            @Override
+            public Component getTreeCellRendererComponent(JTree tree, Object value,
+                    boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+
+                // Mantiene el color de selección por defecto
+                super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+
+                // Obtiene el texto del nodo
+                DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) value;
+                String categoria = nodo.getUserObject().toString();
+
+                // Cambia el icono según la categoría
+                if (categoria.equals("Usuarios")) {
+                    setIcon(iconoUsuarios);
+                } else if (categoria.equals("Administradores")) {
+                    setIcon(iconoAdmin);
+                } else {
+                    setIcon(iconoInvitado);
+                }
+
+                return this;
+            }
+        });
+    }
+
     Usuario usuarioAdminDef;
     String usuarioSesion;
     int contador4 = 0;
@@ -4229,6 +4412,8 @@ public class Principal extends javax.swing.JFrame {
             Usuario usuarioEle = Usuarios.get(i);
 
             if (nombreU.equals(usuarioEle.getNombreUsuario()) && usuarioEle.getContraseñaUsuario().equals(contraU)) {
+                bienvenida.setText("Bienvenido, estimado(a) " + nombreU);
+                user.setText(nombreU);
                 fondoIniciar.setVisible(false);
                 BarraNavegacion.setVisible(true);
                 BarraTareas.setVisible(true);
@@ -4281,7 +4466,7 @@ public class Principal extends javax.swing.JFrame {
         Usuario nuevoU = new Usuario(nombre, contra, tipoU);
 //        nuevoU=formarInicio(usuarioAdminDef);
         Usuarios.add(nuevoU);
-       
+
         cargarBarra();
         JOptionPane.showMessageDialog(this, "Usuario exitosamente creado.");
         nombreUs.setText("");
@@ -4360,6 +4545,146 @@ public class Principal extends javax.swing.JFrame {
         AdminCuentas.setVisible(true);
 
     }//GEN-LAST:event_crearUsuariosMouseClicked
+
+    private void verUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verUsuariosMouseClicked
+        Informacion.pack();
+        Informacion.setLocationRelativeTo(this);
+        Informacion.setVisible(true);
+    }//GEN-LAST:event_verUsuariosMouseClicked
+    public void mostrarInfoTabla() {
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("  Usuarios");
+        modeloTabla.addColumn("  Tipo");
+        for (Usuario user : Usuarios) {
+            String[] datos = {user.getNombreUsuario(), user.getTipoUsuario()};
+            modeloTabla.addRow(datos);
+        }
+        tablaUsuarios.setModel(modeloTabla);
+    }
+    private void InformacionWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_InformacionWindowActivated
+        mostrarInfoTabla();
+
+    }//GEN-LAST:event_InformacionWindowActivated
+
+    private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaUsuariosMouseClicked
+        int boton = evt.getButton();
+        if (admin == true) {
+            if (boton == 3) {
+                int X = evt.getX();
+                int Y = evt.getY();
+                ModificarUsuarios.show(tablaUsuarios, X, Y);
+            }
+        }
+    }//GEN-LAST:event_tablaUsuariosMouseClicked
+
+    private void elimUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimUActionPerformed
+        int Row = tablaUsuarios.getSelectedRow();
+        if (Row != -1) {
+            String Nombre = (String) tablaUsuarios.getValueAt(Row, 0);
+            for (int i = 0; i < Usuarios.size(); i++) {
+                Usuario user = Usuarios.get(i);
+                
+                if (Nombre.equals(usuarioSesion)&& !Nombre.equals("Admin")) {
+                    guardarContenido();
+                    fondoIniciar.setVisible(true);
+                    BarraNavegacion.setVisible(false);
+                    BarraTareas.setVisible(false);
+                    FondoPantalla.setVisible(false);
+                    Informacion.dispose();
+                    
+                    
+                }
+                if (Nombre.equals("Admin")) {
+                    JOptionPane.showMessageDialog(this, "El usuario Admin esta incluido por defecto, no se puede borrar");
+                    return;
+                }
+                if (user.getNombreUsuario().equals(Nombre)) {
+                    String archivoBin = user.getRutaArchivo();
+                    File archivoBinario = new File(archivoBin);
+                    if (archivoBinario.exists()) {
+                        archivoBinario.delete();
+                    }
+
+                    Usuarios.remove(i);
+                    cargarBarra();
+                    JOptionPane.showMessageDialog(this, "Usuario exitosamente Eliminado");
+                    tablaUsuarios.repaint();
+                    arbolUsuarios.repaint();
+                    mostrarInfoTabla();
+                    
+
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario");
+        }
+    }//GEN-LAST:event_elimUActionPerformed
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        int Row = tablaUsuarios.getSelectedRow();
+        if (Row != -1) {
+            String Nombre = (String) tablaUsuarios.getValueAt(Row, 0);
+            for (int i = 0; i < Usuarios.size(); i++) {
+                Usuario user = Usuarios.get(i);
+                if (Nombre.equals(usuarioSesion)&& !Nombre.equals("Admin")) {
+                    usuarioSesion=Nombre;
+                    
+                    
+                }
+                if (Nombre.equals("Admin")) {
+                    JOptionPane.showMessageDialog(this, "El usuario Admin no se puede modificar.");
+                    return;
+                }
+                if (user.getNombreUsuario().equals(Nombre)) {
+                    String nuevoNombre = nuevoU.getText();
+                    String nuevaContra = ncontraU.getText();
+                    for (Usuario Usuario1 : Usuarios) {
+                        if (Usuario1.getNombreUsuario().equals(nuevoNombre)) {
+                            JOptionPane.showMessageDialog(this, "Ya existe un usuario con este nombre.");
+                            return;
+                        }
+                    }
+                    File archivoAntiguo = new File("config_" + user.getNombreUsuario() + ".dat");
+                    if (archivoAntiguo.exists()) {
+                        File archivoNuevo = new File("config_" + nuevoNombre + ".dat");
+
+                        archivoAntiguo.renameTo(archivoNuevo);
+
+                        user.setNombreUsuario(nuevoNombre);
+                        user.setContraseñaUsuario(nuevaContra);
+                        String ruta = "config_" + nuevoNombre + ".dat";
+                        user.setRutaArchivo(ruta);
+                        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta))) {
+
+                            salida.writeObject(user);
+
+                        } catch (IOException e) {
+
+                        }
+
+                    }
+
+                    cargarBarra();
+                    mostrarInfoTabla();
+                    JOptionPane.showMessageDialog(this, "Usuario exitosamente Modificado");
+                    ModificarUsuario.dispose();
+                    tablaUsuarios.repaint();
+                    arbolUsuarios.repaint();
+
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario");
+        }
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void modUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modUActionPerformed
+        ModificarUsuario.pack();
+        ModificarUsuario.setLocationRelativeTo(this);
+        ModificarUsuario.setVisible(true);
+    }//GEN-LAST:event_modUActionPerformed
     public Usuario retornarInicio() {
         String nombre = "Admin";
         String contra = "Admin";
@@ -4434,7 +4759,8 @@ public class Principal extends javax.swing.JFrame {
         cambiarFontPantallaInicio(fontG);
         cambiarColorFontPI(colorF);
     }
-    public Usuario formarInicio(Usuario usuario2){
+
+    public Usuario formarInicio(Usuario usuario2) {
         String nombre = usuario2.getNombreUsuario();
         String contra = usuario2.getContraseñaUsuario();
         String tipoU = usuario2.getTipoUsuario();
@@ -4590,17 +4916,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog CrearCarpeta;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem EliminarArchivos;
-    private javax.swing.JMenu FechaHora;
     private javax.swing.JPanel FondoPantalla;
     private javax.swing.JPanel FondoPantallaOg;
     private javax.swing.JButton Fuentes;
     private javax.swing.JPanel Imagen;
+    private javax.swing.JDialog Informacion;
     private javax.swing.JButton Italic;
     private javax.swing.JButton Italic1;
     private javax.swing.JMenu LogIn;
     private javax.swing.JMenu LogOut;
     private javax.swing.JMenu LogoWitZig;
     private javax.swing.JMenu ModificarPantalla;
+    private javax.swing.JDialog ModificarUsuario;
+    private javax.swing.JPopupMenu ModificarUsuarios;
     private javax.swing.JPopupMenu OpcionesArchivos;
     private javax.swing.JPopupMenu OpcionesCarpetas;
     private javax.swing.JDialog Paint;
@@ -4625,6 +4953,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JProgressBar barraProgreso;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JRadioButton barraT1;
+    private javax.swing.JLabel bienvenida;
     private javax.swing.JButton calculadora;
     private javax.swing.JButton calculadora1;
     private javax.swing.JButton cambiarTamaño;
@@ -4648,12 +4977,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel eleccionExternos;
     private javax.swing.JPanel eleccionPantalla;
     private javax.swing.JButton elegirFondom;
+    private javax.swing.JMenuItem elimU;
     private javax.swing.JLabel estiloFuente;
     private javax.swing.JLabel estiloFuente1;
     private javax.swing.JDialog exploradorArchivos;
     private javax.swing.JFileChooser exploradorPc;
     private javax.swing.JFileChooser exploradorPc2;
     private javax.swing.JButton explorarArchivos;
+    private javax.swing.JLabel fecha;
     private javax.swing.JPanel fondo;
     private javax.swing.JCheckBox fondoG;
     private javax.swing.JPanel fondoGen;
@@ -4666,6 +4997,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -4674,7 +5006,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -4687,6 +5018,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -4696,30 +5028,38 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
     private javax.swing.JButton limpiar;
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
     private javax.swing.JLabel mensaje;
+    private javax.swing.JMenuItem modU;
     private javax.swing.JDialog mostrarCarpeta;
+    private javax.swing.JLabel mostrarU;
     private javax.swing.JButton multiplicar1;
+    private javax.swing.JTextField ncontraU;
     private javax.swing.JButton nevada;
     private javax.swing.JTextField nombreCarpeta;
     private javax.swing.JTextField nombreCarpeta1;
     private javax.swing.JTextField nombreUs;
     private javax.swing.JButton nueve;
+    private javax.swing.JTextField nuevoU;
     private javax.swing.JButton ocho;
     private javax.swing.JMenuBar opcionesEditor;
     private javax.swing.JPanel panel1;
@@ -4757,6 +5097,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable tablaArchivosTxt;
     private javax.swing.JScrollPane tablaCarpetas;
     private javax.swing.JTable tablaExplorador;
+    private javax.swing.JTable tablaUsuarios;
     private javax.swing.JSpinner tamañoFuente;
     private javax.swing.JSpinner tamañoFuente1;
     private javax.swing.JSpinner tamañoPincel;
@@ -4773,6 +5114,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel turnoMostrar;
     private javax.swing.JLabel ubicacionRutan;
     private javax.swing.JButton uno;
+    private javax.swing.JLabel user;
     private javax.swing.JTextField usuario;
     private javax.swing.JMenu verUsuarios;
     private javax.swing.JButton wDefecto;
