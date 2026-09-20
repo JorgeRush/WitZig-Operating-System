@@ -77,7 +77,8 @@ public class Principal extends javax.swing.JFrame {
         if (admin == true) {
 
         }
-
+        cargarUsuariosGuardados();
+        
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
@@ -195,7 +196,7 @@ public class Principal extends javax.swing.JFrame {
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
-        
+
         } else if (i == 5) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
             fondoImagen.setIcon(icono);
@@ -4175,7 +4176,7 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
 
-        if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin")) {
+        if (usuario.getText().equals("Admin") && contraseña.getText().equals("Admin") && contador4 == 0) {
             usuarioSesion = "Admin";
             contador4++;
 
@@ -4187,10 +4188,11 @@ public class Principal extends javax.swing.JFrame {
             BarraNavegacion.setVisible(true);
             BarraTareas.setVisible(true);
             FondoPantalla.setVisible(true);
-
-            realizarCambio(usuarioAdminDef);
-
-            return;
+            Usuario usuarioAdmin = retornarInicio();
+            Usuarios.add(usuarioAdmin);
+//            realizarCambio(usuarioAdmin);
+//
+//            return;
         }
         String nombreU = usuario.getText();
         String contraU = contraseña.getText();
@@ -4214,7 +4216,7 @@ public class Principal extends javax.swing.JFrame {
 
                 } else {
                     cargarDatos(ruta);
-                    
+
                 }
                 return;
             }
@@ -4245,7 +4247,7 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Usuario exitosamente creado.");
     }//GEN-LAST:event_jButton11MouseClicked
     public void guardarContenido() {
-      
+
         if (usuarioSesion == null) {
             return;
         }
@@ -4253,7 +4255,7 @@ public class Principal extends javax.swing.JFrame {
         for (int i = 0; i < Usuarios.size(); i++) {
 
             if (Usuarios.get(i).getNombreUsuario().equals(usuarioSesion)) {
-         
+
                 Usuario actualizado = guardarUsuario(Usuarios.get(i));
 
                 Usuarios.set(i, actualizado);
@@ -4263,7 +4265,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
- 
 
         guardarContenido();
         fondoIniciar.setVisible(true);
@@ -4315,7 +4316,7 @@ public class Principal extends javax.swing.JFrame {
         Color barraC = BarraTareas.getBackground();
         Color fondoC = FondoPantalla.getBackground();
         Icon fondoI = fondoImagen.getIcon();
-   
+
         Font fontG = fontGeneral;
         Color colorF = colorFont;
 
@@ -4323,7 +4324,7 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
         Usuario nuevoUsuario = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
-  
+
         guardarDatos(nuevoUsuario, archivo1);
         return nuevoUsuario;
     }
@@ -4337,7 +4338,7 @@ public class Principal extends javax.swing.JFrame {
         Color barraC = usuario.getColorBarra();
         Color fondoC = usuario.getColorFondo();
         Icon fondoI = usuario.getFondoImagen();
-    
+
         Font fontG = usuario.getFontGeneral();
         Color colorF = usuario.getColorFont();
 
@@ -4376,22 +4377,43 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public void cargarDatos(String archivo) {
-     
+
         Usuario usuario = null;
 
         try (FileInputStream fileIn = new FileInputStream(archivo); ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
             usuario = (Usuario) in.readObject();
-            
+
             realizarCambio(usuario);
 
         } catch (IOException | ClassNotFoundException e) {
-           
+
         }
 
-        
     }
 
+    public void cargarUsuariosGuardados() {
+
+        File carpeta = new File(".");
+
+        File[] archivos = carpeta.listFiles();
+
+        for (File archivo : archivos) {
+
+            if (archivo.getName().startsWith("config_") && archivo.getName().endsWith(".dat")) {
+
+                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))) {
+
+                    Usuario usuario = (Usuario) in.readObject();
+
+                    Usuarios.add(usuario);
+
+                } catch (Exception e) {
+                   
+                }
+            }
+        }
+    }
     Graphics g;
 
     public void Dibujar() {
