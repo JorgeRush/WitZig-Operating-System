@@ -427,6 +427,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         ncontraU = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
+        entrada = new javax.swing.JDialog();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -2078,6 +2081,36 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        entrada.setMaximumSize(new java.awt.Dimension(231, 90));
+        entrada.setMinimumSize(new java.awt.Dimension(231, 90));
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel26.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout entradaLayout = new javax.swing.GroupLayout(entrada.getContentPane());
+        entrada.getContentPane().setLayout(entradaLayout);
+        entradaLayout.setHorizontalGroup(
+            entradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        entradaLayout.setVerticalGroup(
+            entradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2677,7 +2710,7 @@ public class Principal extends javax.swing.JFrame {
         Object elegido = seleccionFondo.getSelectedItem();
 
         String eleccion = (String) elegido;
-       
+
         if (eleccion.equals("Color Solido")) {
             Color seleccionado = JColorChooser.showDialog(this, "Seleccione un color:", Color.LIGHT_GRAY);
             if (seleccionado != null) {
@@ -2916,7 +2949,7 @@ public class Principal extends javax.swing.JFrame {
                         long fechaMilis2 = Carpeta2.lastModified();
                         Date fechaCa2 = new Date(fechaMilis2);
 
-                        SimpleDateFormat formatoDiaC2= new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        SimpleDateFormat formatoDiaC2 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                         String tipoCa2 = "Carpeta";
                         String diaCa2 = formatoDiaC2.format(fechaCa2);
@@ -2944,11 +2977,11 @@ public class Principal extends javax.swing.JFrame {
 
                 for (int i = 0; i < archivosExis.size(); i++) {
                     carpetaLocalizar2.añadirArchivo(archivosExis.get(i));
-                    
+
                 }
 
                 for (int i = 0; i < carpetaExis.size(); i++) {
-                    
+
                     carpetaLocalizar2.añadirCarpeta(carpetaExis.get(i));
                 }
             }
@@ -3052,7 +3085,7 @@ public class Principal extends javax.swing.JFrame {
                 long fechaMiliD = archivo1.lastModified();
                 Date fecha = new Date(fechaMiliD);
 
-                SimpleDateFormat formatoDia= new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                SimpleDateFormat formatoDia = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
                 String tipo = ".txt";
                 String dia = formatoDia.format(fecha);
@@ -3354,7 +3387,7 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos carpetaSeleccionada = listaCarpetas.get(i);
                     File temp = carpetaSeleccionada.ubicacionCarpeta;
                     Path rutaCarp = temp.toPath();
-                    eliminarCarpetaEscondida(listaCarpetas,carpetaElegidaN);
+                    eliminarCarpetaEscondida(listaCarpetas, carpetaElegidaN);
                     if (Files.exists(rutaCarp)) {
                         try {
                             Files.walk(rutaCarp)
@@ -3402,12 +3435,12 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaExplorador.getValueAt(filaSeleccion, 0);
- 
+
         String archivoElegidoN2 = (String) tablaExplorador.getValueAt(filaSeleccion, 2);
         if (archivoElegidoN2.equals("Carpeta")) {
-            
+
             for (int i = 0; i < listaCarpetas.size(); i++) {
-                
+
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
 
@@ -3511,9 +3544,9 @@ public class Principal extends javax.swing.JFrame {
                     JLabel l = new JLabel(String.valueOf(v));
                     if (r >= 0) {
                         String columnaTipo = (String) tablaArchivosTxt.getValueAt(r, 2);
-                        
-                        ImageIcon logo1=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png"));
-                        ImageIcon logo2=new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"));
+
+                        ImageIcon logo1 = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/C2.png"));
+                        ImageIcon logo2 = new ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Ed2.png"));
                         if (columnaTipo.equals("Carpeta")) {
                             l.setIcon(logo1);
                         } else {
@@ -3585,15 +3618,14 @@ public class Principal extends javax.swing.JFrame {
             return;
         }
         String archivoElegidoN = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 0);
-        
+
         String archivoElegidoN2 = (String) tablaArchivosTxt.getValueAt(filaSeleccion2, 2);
         if (archivoElegidoN2.equals("Carpeta")) {
-           
+
             for (int i = 0; i < listaCarpetas.size(); i++) {
-               
+
                 if (listaCarpetas.get(i).getNombre().equals(archivoElegidoN)) {
                     subCarpetaElegida = archivoElegidoN;
-                   
 
                 }
             }
@@ -3638,7 +3670,7 @@ public class Principal extends javax.swing.JFrame {
                     carpetasArchivos carpetaSeleccionada = revisarCarpetas.get(j);
                     File temp = carpetaSeleccionada.ubicacionCarpeta;
                     Path rutaCarp = temp.toPath();
-                    
+
                     if (Files.exists(rutaCarp)) {
                         try {
                             Files.walk(rutaCarp)
@@ -3651,7 +3683,7 @@ public class Principal extends javax.swing.JFrame {
                         }
 
                     }
-                    
+
                     revisarCarpetas.remove(j);
 
                 }
@@ -4127,7 +4159,7 @@ public class Principal extends javax.swing.JFrame {
         String diaCa = formatoDiaC.format(fechaCa);
         carpetasArchivos carpetaNueva = new carpetasArchivos(nombreCa, carpeta, diaCa, tipoCa, tamañoBytesCa, ruta);
         carpetaTemp.añadirCarpeta(carpetaNueva);
-       
+
         cargarBarra();
         JOptionPane.showMessageDialog(null, "Carpeta exitosamente creada!");
         nombreCarpeta1.setText(null);
@@ -4229,6 +4261,11 @@ public class Principal extends javax.swing.JFrame {
         new ImageIcon(getClass().getResource("/Wally/W10.png")),
         new ImageIcon(getClass().getResource("/Wally/W11.png")),};
 
+    public void BienvenidaEntrar() {
+//        Wally1.setIcon(arregloIconos[R.nextInt(0, 8)]);
+       
+    }
+
     public void cargarBarra() {
         barraProgreso.putClientProperty("JComponent.roundRect", true);
         barraProgreso.putClientProperty("JProgressBar.square", false);
@@ -4268,7 +4305,10 @@ public class Principal extends javax.swing.JFrame {
         BarraProgreso.setVisible(true);
     }
     private void WitZigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WitZigMouseClicked
-
+        entrada.pack();
+        entrada.setLocationRelativeTo(this);
+        entrada.setVisible(true);
+        BienvenidaEntrar();
     }//GEN-LAST:event_WitZigMouseClicked
 
     private void SnakeBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SnakeBotonMouseClicked
@@ -4399,32 +4439,29 @@ public class Principal extends javax.swing.JFrame {
             public Component getTreeCellRendererComponent(JTree tree, Object value,
                     boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
 
-              
                 super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 
-             
                 DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) value;
                 String categoria = nodo.getUserObject().toString();
-                Object clase=nodo.getUserObject();
-                
+                Object clase = nodo.getUserObject();
+
                 if (categoria.equals("Usuarios")) {
                     setIcon(iconoUsuarios);
                 } else if (categoria.equals("Administradores")) {
                     setIcon(iconoAdmin);
                 } else if (categoria.equals("Invitados")) {
                     setIcon(iconoInvitado);
-                }else if (clase instanceof Usuario){
-                    Usuario user= (Usuario) clase;
-                    if(user.getNombreUsuario().equals("Admin")){
+                } else if (clase instanceof Usuario) {
+                    Usuario user = (Usuario) clase;
+                    if (user.getNombreUsuario().equals("Admin")) {
                         setIcon(iconoAdmin);
                     }
-                    if(user.getTipoUsuario().equals("Admnistrador")){
+                    if (user.getTipoUsuario().equals("Admnistrador")) {
                         setIcon(iconoAdmin);
-                    }else if (user.getTipoUsuario().equals("Invitado")){
+                    } else if (user.getTipoUsuario().equals("Invitado")) {
                         setIcon(iconoInvitado);
                     }
-                            
-                    
+
                 }
 
                 return this;
@@ -4461,7 +4498,6 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
             if (verf == false) {
-              
 
                 Usuario usuarioAdmin = retornarInicio();
                 usuarioSesion = usuarioAdmin.getNombreUsuario();
@@ -4506,10 +4542,10 @@ public class Principal extends javax.swing.JFrame {
                     Usuario cambioUser = guardarUsuario(usuarioEle);
                     Usuarios.set(i, cambioUser);
                     realizarCambio(cambioUser);
-
+                     cargarBarra();
                 } else {
                     cargarDatos(ruta);
-
+                    cargarBarra();
                 }
                 return;
             }
@@ -4592,7 +4628,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
-
+        cargarBarra();
         guardarContenido();
         fondoIniciar.setVisible(true);
         BarraNavegacion.setVisible(false);
@@ -4601,6 +4637,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutMouseClicked
 
     private void LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInMouseClicked
+        cargarBarra();
         guardarContenido();
         fondoIniciar.setVisible(true);
         BarraNavegacion.setVisible(false);
@@ -5066,6 +5103,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel eleccionPantalla;
     private javax.swing.JButton elegirFondom;
     private javax.swing.JMenuItem elimU;
+    private javax.swing.JDialog entrada;
     private javax.swing.JLabel estiloFuente;
     private javax.swing.JLabel estiloFuente1;
     private javax.swing.JDialog exploradorArchivos;
@@ -5112,6 +5150,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -5124,6 +5163,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
