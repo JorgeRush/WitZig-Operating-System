@@ -78,10 +78,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
 
         XO();
-
-        if (admin == true) {
-
-        }
+        fondoIniciar.requestFocusInWindow();
 
         cargarUsuariosGuardados();
         cargarContenidoArbol();
@@ -101,7 +98,8 @@ public class Principal extends javax.swing.JFrame {
         fondo.setBounds(10, 10, 500, 500);
 
         AñadirBoton1.setVisible(false);
-
+        usuario.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
+        contraseña.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
         BarraTareas.putClientProperty("FlatLaf.style", "arc: 25; background: #FFFFFF");
         BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), new java.awt.Color(206, 212, 218), 1, 25));
 
@@ -432,6 +430,7 @@ public class Principal extends javax.swing.JFrame {
         entrada = new javax.swing.JDialog();
         jPanel14 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
+        mensaje1 = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -1034,9 +1033,7 @@ public class Principal extends javax.swing.JFrame {
         personalizarEditor2.addActionListener(this::personalizarEditor2ActionPerformed);
         PopUp.add(personalizarEditor2);
 
-        exploradorArchivos.setMaximumSize(new java.awt.Dimension(700, 415));
         exploradorArchivos.setMinimumSize(new java.awt.Dimension(700, 415));
-        exploradorArchivos.setPreferredSize(new java.awt.Dimension(700, 415));
         exploradorArchivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exploradorArchivosMouseClicked(evt);
@@ -2097,23 +2094,41 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        entrada.setMaximumSize(new java.awt.Dimension(231, 90));
-        entrada.setMinimumSize(new java.awt.Dimension(231, 90));
+        entrada.setMaximumSize(new java.awt.Dimension(243, 140));
+        entrada.setMinimumSize(new java.awt.Dimension(243, 140));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Logo.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Logo2.png"))); // NOI18N
+
+        mensaje1.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        mensaje1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mensaje1.setText("Bienvenido(a) a:");
+        mensaje1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(mensaje1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout entradaLayout = new javax.swing.GroupLayout(entrada.getContentPane());
@@ -2151,7 +2166,7 @@ public class Principal extends javax.swing.JFrame {
         fondoIniciar.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton10.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 15)); // NOI18N
-        jButton10.setText("Iniciar Sesion");
+        jButton10.setText("Log In");
         jButton10.setBorderPainted(false);
         jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2214,7 +2229,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(291, 291, 291)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
+                        .addGap(361, 361, 361)
                         .addComponent(jButton10)))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
@@ -4652,6 +4667,7 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
+        fondoIniciar.requestFocusInWindow();
     }//GEN-LAST:event_LogOutMouseClicked
 
     private void LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInMouseClicked
@@ -4661,6 +4677,7 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setVisible(false);
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
+        fondoIniciar.requestFocusInWindow();
     }//GEN-LAST:event_LogInMouseClicked
 
     private void crearUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearUsuariosMouseClicked
@@ -5203,6 +5220,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
     private javax.swing.JLabel mensaje;
+    private javax.swing.JLabel mensaje1;
     private javax.swing.JMenuItem modU;
     private javax.swing.JDialog mostrarCarpeta;
     private javax.swing.JLabel mostrarU;
