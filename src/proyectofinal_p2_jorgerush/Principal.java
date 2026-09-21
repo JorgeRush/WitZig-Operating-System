@@ -981,7 +981,7 @@ public class Principal extends javax.swing.JFrame {
         panelFuentes.add(spinnerFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 160, -1));
 
         ejemploFuente.setColumns(20);
-        ejemploFuente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ejemploFuente.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         ejemploFuente.setRows(5);
         ejemploFuente.setText("¿Sabias que \"WitZig\" arcaicamente significa \"Ingenioso\" en Aleman?");
         jScrollPane1.setViewportView(ejemploFuente);
@@ -5068,6 +5068,11 @@ public class Principal extends javax.swing.JFrame {
                 Usuario actualizado = guardarUsuario(Usuarios.get(i));
 
                 Usuarios.set(i, actualizado);
+                if (fondoImagen.isVisible()==false){
+                    actualizado.cambiarVisible(false);
+                }else if (fondoImagen.isVisible()==true){
+                   actualizado.cambiarVisible(true);
+                }
 
                 return;
             }
@@ -5272,7 +5277,8 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
-        Usuario nuevoUsuario = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario nuevoUsuario = new Usuario(true,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+       
         realizarCambio(nuevoUsuario);
         return nuevoUsuario;
     }
@@ -5293,8 +5299,14 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
-        Usuario nuevoUsuario = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
-
+        boolean visibilidad=false;
+        if(fondoImagen.isVisible()==true){
+            visibilidad=true;
+        }else{
+            visibilidad=false;
+        }
+        Usuario nuevoUsuario = new Usuario(visibilidad,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+       
         guardarDatos(nuevoUsuario, archivo1);
         return nuevoUsuario;
     }
@@ -5322,10 +5334,17 @@ public class Principal extends javax.swing.JFrame {
             admin = false;
         }
         mostrarConf();
+        
+        
         BarraNavegacion.setBackground(barraNC);
         BarraTareas.setBackground(barraC);
         FondoPantalla.setBackground(fondoC);
         fondoImagen.setIcon(fondoI);
+        if(usuario.verificarVisible()==false){
+            fondoImagen.setVisible(false);
+        }else if (usuario.verificarVisible()==true){
+            fondoImagen.setVisible(true);
+        }
         ejemploFuente.setFont(fontG);
         ejemploFuente.setForeground(colorF);
         cambiarFontPantallaInicio(fontG,colorF);
@@ -5349,7 +5368,7 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
 
         String archivo1 = usuario2.getRutaArchivo();
-        Usuario usuarioDEF = new Usuario(nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario usuarioDEF = new Usuario(true,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
         return usuarioDEF;
     }
 
