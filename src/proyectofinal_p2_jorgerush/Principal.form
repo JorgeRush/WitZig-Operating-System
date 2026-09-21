@@ -145,6 +145,9 @@
                     <Component class="javax.swing.JTextArea" name="ejemploFuente">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="0"/>
+                        </Property>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="text" type="java.lang.String" value="&#xbf;Sabias que &quot;WitZig&quot; arcaicamente significa &quot;Ingenioso&quot; en Aleman?"/>
                       </Properties>
@@ -2568,7 +2571,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="66" y="10" width="60" height="30"/>
+                  <AbsoluteConstraints x="90" y="10" width="60" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -2600,7 +2603,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="0" width="49" height="50"/>
+                  <AbsoluteConstraints x="150" y="0" width="49" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -3243,9 +3246,6 @@
     </Container>
     <Container class="javax.swing.JDialog" name="entrada">
       <Properties>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[243, 140]"/>
-        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[243, 140]"/>
         </Property>

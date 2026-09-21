@@ -173,13 +173,495 @@ public class Principal extends javax.swing.JFrame {
 
     }
 
-    public void cambiarFontPantallaInicio(Font fuente) {
+    public void cambiarFontPantallaInicio(Font fuente, Color color) {
         ModificarPantalla.setFont(fuente);
 //        fecha.setFont(fuente);
 //        user.setFont(fuente);
 //        bienvenida.setFont(fuente);
 //        mostrarU.setFont(fuente);
         Personalizar.setFont(fuente);
+        Fuentes.setFont(fuente);
+        Fuentes.setForeground(color);
+
+        Plain.setFont(fuente);
+        Plain.setForeground(color);
+
+        Bold.setFont(fuente);
+        Bold.setForeground(color);
+
+        BoldItalic.setFont(fuente);
+        BoldItalic.setForeground(color);
+
+        Italic.setFont(fuente);
+        Italic.setForeground(color);
+
+        confirmarFuente.setFont(fuente);
+        confirmarFuente.setForeground(color);
+
+        jButton1.setFont(fuente);
+        jButton1.setForeground(color);
+
+        aspectosExternos.setFont(fuente);
+        aspectosExternos.setForeground(color);
+
+        fondoPm.setFont(fuente);
+        fondoPm.setForeground(color);
+
+        seleccionColor3.setFont(fuente);
+        seleccionColor3.setForeground(color);
+
+        lago.setFont(fuente);
+        lago.setForeground(color);
+
+        nevada.setFont(fuente);
+        nevada.setForeground(color);
+
+        tarde.setFont(fuente);
+        tarde.setForeground(color);
+
+        rancho.setFont(fuente);
+        rancho.setForeground(color);
+
+        elegirFondom.setFont(fuente);
+        elegirFondom.setForeground(color);
+
+        wDefecto.setFont(fuente);
+        wDefecto.setForeground(color);
+
+        Pantalla.setFont(fuente);
+        Pantalla.setForeground(color);
+
+        Plain1.setFont(fuente);
+        Plain1.setForeground(color);
+
+        Bold1.setFont(fuente);
+        Bold1.setForeground(color);
+
+        Italic1.setFont(fuente);
+        Italic1.setForeground(color);
+
+        BoldItalic1.setFont(fuente);
+        BoldItalic1.setForeground(color);
+
+        jButton2.setFont(fuente);
+        jButton2.setForeground(color);
+
+        jButton3.setFont(fuente);
+        jButton3.setForeground(color);
+
+        jButton9.setFont(fuente);
+        jButton9.setForeground(color);
+
+        BorrarBoton.setFont(fuente);
+        BorrarBoton.setForeground(color);
+
+        regresar.setFont(fuente);
+        regresar.setForeground(color);
+
+        BorrarBotonArchivos.setFont(fuente);
+        BorrarBotonArchivos.setForeground(color);
+
+        AñadirBoton.setFont(fuente);
+        AñadirBoton.setForeground(color);
+
+        AñadirBoton1.setFont(fuente);
+        AñadirBoton1.setForeground(color);
+
+        resultado.setFont(fuente);
+        resultado.setForeground(color);
+
+        siete.setFont(fuente);
+        siete.setForeground(color);
+
+        ocho.setFont(fuente);
+        ocho.setForeground(color);
+
+        nueve.setFont(fuente);
+        nueve.setForeground(color);
+
+        cero.setFont(fuente);
+        cero.setForeground(color);
+
+        menos.setFont(fuente);
+        menos.setForeground(color);
+
+        cuatro.setFont(fuente);
+        cuatro.setForeground(color);
+
+        cinco.setFont(fuente);
+        cinco.setForeground(color);
+
+        seis.setFont(fuente);
+        seis.setForeground(color);
+
+        dos.setFont(fuente);
+        dos.setForeground(color);
+
+        punto.setFont(fuente);
+        punto.setForeground(color);
+
+        uno.setFont(fuente);
+        uno.setForeground(color);
+
+        tres.setFont(fuente);
+        tres.setForeground(color);
+
+        limpiar.setFont(fuente);
+        limpiar.setForeground(color);
+
+        dividir.setFont(fuente);
+        dividir.setForeground(color);
+
+        multiplicar1.setFont(fuente);
+        multiplicar1.setForeground(color);
+
+        mas.setFont(fuente);
+        mas.setForeground(color);
+
+        jButton4.setFont(fuente);
+        jButton4.setForeground(color);
+
+        jButton6.setFont(fuente);
+        jButton6.setForeground(color);
+
+        seleccionarRuta.setFont(fuente);
+        seleccionarRuta.setForeground(color);
+
+        jButton7.setFont(fuente);
+        jButton7.setForeground(color);
+
+        RJuego.setFont(fuente);
+        RJuego.setForeground(color);
+
+        jButton5.setFont(fuente);
+        jButton5.setForeground(color);
+
+        cambiarTamaño.setFont(fuente);
+        cambiarTamaño.setForeground(color);
+
+        jButton8.setFont(fuente);
+        jButton8.setForeground(color);
+
+        jButton11.setFont(fuente);
+        jButton11.setForeground(color);
+
+        jButton12.setFont(fuente);
+        jButton12.setForeground(color);
+
+//        jButton10.setFont(fuente);
+//        jButton10.setForeground(color);
+
+        calculadora1.setFont(fuente);
+        calculadora1.setForeground(color);
+
+        calculadora.setFont(fuente);
+        calculadora.setForeground(color);
+
+        explorarArchivos.setFont(fuente);
+        explorarArchivos.setForeground(color);
+
+        WitZig.setFont(fuente);
+        WitZig.setForeground(color);
+
+        editorTexto1.setFont(fuente);
+        editorTexto1.setForeground(color);
+
+        TicTacToe.setFont(fuente);
+        TicTacToe.setForeground(color);
+
+        SnakeBoton.setFont(fuente);
+        SnakeBoton.setForeground(color);
+        tituloConfiguracion2.setFont(fuente);
+        tituloConfiguracion2.setForeground(color);
+
+        estiloFuente.setFont(fuente);
+        estiloFuente.setForeground(color);
+
+        tituloConfiguracion4.setFont(fuente);
+        tituloConfiguracion4.setForeground(color);
+
+        tituloConfiguracion3.setFont(fuente);
+        tituloConfiguracion3.setForeground(color);
+
+        jLabel11.setFont(fuente);
+        jLabel11.setForeground(color);
+
+        jLabel5.setFont(fuente);
+        jLabel5.setForeground(color);
+
+        jLabel4.setFont(fuente);
+        jLabel4.setForeground(color);
+
+        jLabel10.setFont(fuente);
+        jLabel10.setForeground(color);
+
+        tituloConfiguracion1.setFont(fuente);
+        tituloConfiguracion1.setForeground(color);
+
+        tituloConfiguracion5.setFont(fuente);
+        tituloConfiguracion5.setForeground(color);
+
+        tituloConfiguracion6.setFont(fuente);
+        tituloConfiguracion6.setForeground(color);
+
+        estiloFuente1.setFont(fuente);
+        estiloFuente1.setForeground(color);
+
+        tituloConfiguracion.setFont(fuente);
+        tituloConfiguracion.setForeground(color);
+
+        jLabel1.setFont(fuente);
+        jLabel1.setForeground(color);
+
+        pos1.setFont(fuente);
+        pos1.setForeground(color);
+
+        pos2.setFont(fuente);
+        pos2.setForeground(color);
+
+        pos3.setFont(fuente);
+        pos3.setForeground(color);
+
+        pos6.setFont(fuente);
+        pos6.setForeground(color);
+
+        pos5.setFont(fuente);
+        pos5.setForeground(color);
+
+        pos4.setFont(fuente);
+        pos4.setForeground(color);
+
+        pos7.setFont(fuente);
+        pos7.setForeground(color);
+
+        pos8.setFont(fuente);
+        pos8.setForeground(color);
+
+        pos9.setFont(fuente);
+        pos9.setForeground(color);
+
+        turnoMostrar.setFont(fuente);
+        turnoMostrar.setForeground(color);
+
+        jLabel6.setFont(fuente);
+        jLabel6.setForeground(color);
+
+        puntajeO.setFont(fuente);
+        puntajeO.setForeground(color);
+
+        jLabel8.setFont(fuente);
+        jLabel8.setForeground(color);
+
+        puntajeX.setFont(fuente);
+        puntajeX.setForeground(color);
+
+        willyCelebra.setFont(fuente);
+        willyCelebra.setForeground(color);
+
+        mensaje.setFont(fuente);
+        mensaje.setForeground(color);
+
+        Wally.setFont(fuente);
+        Wally.setForeground(color);
+
+        jLabel2.setFont(fuente);
+        jLabel2.setForeground(color);
+
+        ubicacionRutan.setFont(fuente);
+        ubicacionRutan.setForeground(color);
+
+        jLabel3.setFont(fuente);
+        jLabel3.setForeground(color);
+
+        jLabel7.setFont(fuente);
+        jLabel7.setForeground(color);
+
+        jLabel9.setFont(fuente);
+        jLabel9.setForeground(color);
+
+        jLabel12.setFont(fuente);
+        jLabel12.setForeground(color);
+
+        bienvenida.setFont(fuente);
+        bienvenida.setForeground(color);
+
+        jLabel22.setFont(fuente);
+        jLabel22.setForeground(color);
+
+        bienvenida1.setFont(fuente);
+        bienvenida1.setForeground(color);
+
+        jLabel16.setFont(fuente);
+        jLabel16.setForeground(color);
+
+        jLabel17.setFont(fuente);
+        jLabel17.setForeground(color);
+
+        jLabel18.setFont(fuente);
+        jLabel18.setForeground(color);
+
+        jLabel23.setFont(fuente);
+        jLabel23.setForeground(color);
+
+        jLabel24.setFont(fuente);
+        jLabel24.setForeground(color);
+
+        jLabel25.setFont(fuente);
+        jLabel25.setForeground(color);
+
+        user.setFont(fuente);
+        user.setForeground(color);
+
+        fecha.setFont(fuente);
+        fecha.setForeground(color);
+
+        mostrarU.setFont(fuente);
+        mostrarU.setForeground(color);
+
+        jLabel21.setFont(fuente);
+        jLabel21.setForeground(color);
+
+        jLabel19.setFont(fuente);
+        jLabel19.setForeground(color);
+
+        jLabel20.setFont(fuente);
+        jLabel20.setForeground(color);
+
+        jLabel27.setFont(fuente);
+        jLabel27.setForeground(color);
+
+        jLabel28.setFont(fuente);
+        jLabel28.setForeground(color);
+
+        jLabel26.setFont(fuente);
+        jLabel26.setForeground(color);
+
+        mensaje1.setFont(fuente);
+        mensaje1.setForeground(color);
+
+        jLabel13.setFont(fuente);
+        jLabel13.setForeground(color);
+
+//        jLabel14.setFont(fuente);
+//        jLabel14.setForeground(color);
+//
+//        jLabel15.setFont(fuente);
+//        jLabel15.setForeground(color);
+
+        fondoImagen.setFont(fuente);
+        fondoImagen.setForeground(color);
+
+        ejemploFuente.setFont(fuente);
+        ejemploFuente.setForeground(color);
+
+        ejemploFuente1.setFont(fuente);
+        ejemploFuente1.setForeground(color);
+
+        ruta.setFont(fuente);
+        ruta.setForeground(color);
+
+        pantalla.setFont(fuente);
+        pantalla.setForeground(color);
+
+        nombreCarpeta.setFont(fuente);
+        nombreCarpeta.setForeground(color);
+
+        nombreCarpeta1.setFont(fuente);
+        nombreCarpeta1.setForeground(color);
+
+        contraUs.setFont(fuente);
+        contraUs.setForeground(color);
+
+        nombreUs.setFont(fuente);
+        nombreUs.setForeground(color);
+
+        nuevoU.setFont(fuente);
+        nuevoU.setForeground(color);
+
+        ncontraU.setFont(fuente);
+        ncontraU.setForeground(color);
+
+//        usuario.setFont(fuente);
+//        usuario.setForeground(color);
+//
+//        contraseña.setFont(fuente);
+//        contraseña.setForeground(color);
+        Personalizar.setFont(fuente);
+        Personalizar.setForeground(color);
+
+        opcionesEditor.setFont(fuente);
+        opcionesEditor.setForeground(color);
+
+        archivo.setFont(fuente);
+        archivo.setForeground(color);
+
+        guardarArchivo.setFont(fuente);
+        guardarArchivo.setForeground(color);
+
+        abrirArchivo.setFont(fuente);
+        abrirArchivo.setForeground(color);
+
+        personalizarEditor.setFont(fuente);
+        personalizarEditor.setForeground(color);
+
+        jMenu2.setFont(fuente);
+        jMenu2.setForeground(color);
+
+        personalizarEditor2.setFont(fuente);
+        personalizarEditor2.setForeground(color);
+
+        Eliminar.setFont(fuente);
+        Eliminar.setForeground(color);
+
+        Abrir.setFont(fuente);
+        Abrir.setForeground(color);
+
+        EliminarArchivos.setFont(fuente);
+        EliminarArchivos.setForeground(color);
+
+        AbrirArchivos.setFont(fuente);
+        AbrirArchivos.setForeground(color);
+
+        modU.setFont(fuente);
+        modU.setForeground(color);
+
+        elimU.setFont(fuente);
+        elimU.setForeground(color);
+
+        BarraNavegacion.setFont(fuente);
+        BarraNavegacion.setForeground(color);
+
+        LogoWitZig.setFont(fuente);
+        LogoWitZig.setForeground(color);
+
+        ApagarS.setFont(fuente);
+        ApagarS.setForeground(color);
+
+        ModificarPantalla.setFont(fuente);
+        ModificarPantalla.setForeground(color);
+
+        LogIn.setFont(fuente);
+        LogIn.setForeground(color);
+
+        LogOut.setFont(fuente);
+        LogOut.setForeground(color);
+
+        verUsuarios.setFont(fuente);
+        verUsuarios.setForeground(color);
+
+        crearUsuarios.setFont(fuente);
+        crearUsuarios.setForeground(color);
+        tablaExplorador.setFont(fuente);
+        tablaExplorador.setForeground(color);
+
+        tablaArchivosTxt.setFont(fuente);
+        tablaArchivosTxt.setForeground(color);
+
+        arbolUsuarios.setFont(fuente);
+        arbolUsuarios.setForeground(color);
+
+        tablaUsuarios.setFont(fuente);
+        tablaUsuarios.setForeground(color);
     }
 
     public void cambiarFondo(int i) {
@@ -499,6 +981,7 @@ public class Principal extends javax.swing.JFrame {
         panelFuentes.add(spinnerFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 160, -1));
 
         ejemploFuente.setColumns(20);
+        ejemploFuente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ejemploFuente.setRows(5);
         ejemploFuente.setText("¿Sabias que \"WitZig\" arcaicamente significa \"Ingenioso\" en Aleman?");
         jScrollPane1.setViewportView(ejemploFuente);
@@ -1787,7 +2270,7 @@ public class Principal extends javax.swing.JFrame {
 
         tamañoPincel.setModel(new javax.swing.SpinnerNumberModel(15, 0, null, 1));
         tamañoPincel.setValue(10);
-        jPanel6.add(tamañoPincel, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 10, 60, 30));
+        jPanel6.add(tamañoPincel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/L1.png"))); // NOI18N
         jButton5.setContentAreaFilled(false);
@@ -1805,7 +2288,7 @@ public class Principal extends javax.swing.JFrame {
                 cambiarTamañoMouseClicked(evt);
             }
         });
-        jPanel6.add(cambiarTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 49, 50));
+        jPanel6.add(cambiarTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 49, 50));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/PX3.png"))); // NOI18N
         jButton8.setContentAreaFilled(false);
@@ -2094,7 +2577,6 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        entrada.setMaximumSize(new java.awt.Dimension(243, 140));
         entrada.setMinimumSize(new java.awt.Dimension(243, 140));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
@@ -2593,79 +3075,7 @@ public class Principal extends javax.swing.JFrame {
         ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_ItalicMouseClicked
-    public void cambiarEstiloGlobal(Font nuevaFuente, Color nuevoColor) {
-        // 1. Cambiar los valores por defecto globales en el UIManager (para componentes futuros)
-        for (java.util.Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements();) {
-            Object key = keys.nextElement();
-            String keyString = key.toString();
-
-            Object value = UIManager.get(key);
-            if (value instanceof javax.swing.plaf.FontUIResource) {
-                UIManager.put(key, new javax.swing.plaf.FontUIResource(nuevaFuente));
-            }
-
-            if (keyString.endsWith(".foreground") || keyString.endsWith(".textForeground") || keyString.endsWith(".mainForeground")) {
-                UIManager.put(key, new javax.swing.plaf.ColorUIResource(nuevoColor));
-            }
-        }
-
-        // Forzado estricto de propiedades textuales en el UIManager
-        String[] componentesTextuales = {
-            "Label.foreground", "Button.foreground", "RadioButton.foreground", "CheckBox.foreground",
-            "MenuItem.foreground", "Menu.foreground", "CheckBoxMenuItem.foreground", "RadioButtonMenuItem.foreground",
-            "TextField.foreground", "TextArea.foreground", "List.foreground", "Table.foreground"
-        };
-        for (String comp : componentesTextuales) {
-            UIManager.put(comp, new javax.swing.plaf.ColorUIResource(nuevoColor));
-        }
-
-        // 2. ¡EL TRUCO SUPREMO!: Buscar en TODAS las ventanas vivas de la aplicación de forma global
-        // Esto ignorará si son hijos directos o si están incrustados en barras personalizadas
-        java.awt.Window[] todasLasVentanas = java.awt.Window.getWindows();
-
-        for (java.awt.Window ventana : todasLasVentanas) {
-            // Ejecutar barrido profundo en cada ventana/diálogo/frame activo
-            actualizarComponentesInternos(ventana, nuevaFuente, nuevoColor);
-
-            // Si tiene barra de menú (aplica para JFrame o JDialog)
-            if (ventana instanceof javax.swing.JFrame && ((javax.swing.JFrame) ventana).getJMenuBar() != null) {
-                actualizarComponentesInternos(((javax.swing.JFrame) ventana).getJMenuBar(), nuevaFuente, nuevoColor);
-            }
-            if (ventana instanceof javax.swing.JDialog && ((javax.swing.JDialog) ventana).getJMenuBar() != null) {
-                actualizarComponentesInternos(((javax.swing.JDialog) ventana).getJMenuBar(), nuevaFuente, nuevoColor);
-            }
-
-            // Forzar actualización y redibujado de la ventana en pantalla
-            SwingUtilities.updateComponentTreeUI(ventana);
-            ventana.invalidate();
-            ventana.validate();
-            ventana.repaint();
-        }
-
-    }
-
-    private void actualizarComponentesInternos(java.awt.Component comp, java.awt.Font fuente, java.awt.Color color) {
-        if (comp == null) {
-            return;
-        }
-
-        // Aplicar directamente el cambio
-        comp.setFont(fuente);
-        comp.setForeground(color);
-
-        // Forzado exclusivo para JLabels
-        if (comp instanceof javax.swing.JLabel) {
-            ((javax.swing.JLabel) comp).setForeground(color);
-        }
-
-        // Explorar contenedores internos (Paneles, barras, contenedores de NetBeans)
-        if (comp instanceof java.awt.Container) {
-            java.awt.Container contenedor = (java.awt.Container) comp;
-            for (java.awt.Component hijo : contenedor.getComponents()) {
-                actualizarComponentesInternos(hijo, fuente, color);
-            }
-        }
-    }
+   
 
     Font fontGeneral;
     Color colorFont;
@@ -2677,9 +3087,10 @@ public class Principal extends javax.swing.JFrame {
             int tamaño = (int) tamañoFuente.getValue();
             Font fuenteConf = new Font(fuente, estilo, tamaño);
             cargarBarra();
-            cambiarFontPantallaInicio(fuenteConf);
             Color colorElegido = ejemploFuente.getForeground();
-            cambiarColorFontPI(colorElegido);
+            cambiarFontPantallaInicio(fuenteConf, colorElegido);
+
+//            cambiarColorFontPI(colorElegido);
             fontGeneral = fuenteConf;
             colorFont = colorElegido;
             JOptionPane.showMessageDialog(this, "Cambia realizado");
@@ -2687,8 +3098,8 @@ public class Principal extends javax.swing.JFrame {
 
         } catch (Exception E) {
             Font fuenteActual = ejemploFuente.getFont();
-
-            cambiarFontPantallaInicio(fuenteActual);
+            Color colorElegido = ejemploFuente.getForeground();
+            cambiarFontPantallaInicio(fuenteActual,colorElegido);
             Color colorDef = ejemploFuente.getForeground();
             cambiarColorFontPI(colorDef);
 
@@ -3668,6 +4079,8 @@ public class Principal extends javax.swing.JFrame {
                 archivosTxt archivoSelec = listaArchivos.get(i);
                 if (archivoSelec.getNombreA().equals(archivoElegidoN)) {
                     exploradorArchivos.setVisible(false);
+                    crearTexto.pack();
+                    crearTexto.setLocationRelativeTo(this);
                     crearTexto.setVisible(true);
                     File archivo = archivoSelec.getArchivo();
 
@@ -4294,7 +4707,7 @@ public class Principal extends javax.swing.JFrame {
 
     public void BienvenidaEntrar() {
 //        Wally1.setIcon(arregloIconos[R.nextInt(0, 8)]);
-       
+
     }
 
     public void cargarBarra() {
@@ -4549,10 +4962,10 @@ public class Principal extends javax.swing.JFrame {
             Usuario usuarioEle = Usuarios.get(i);
 
             if (nombreU.equals(usuarioEle.getNombreUsuario()) && usuarioEle.getContraseñaUsuario().equals(contraU)) {
-                
+
                 bienvenida.setText("Bienvenido, estimado(a) " + nombreU);
                 user.setText(nombreU);
-                
+
                 fondoIniciar.setVisible(false);
                 BarraNavegacion.setVisible(true);
                 BarraTareas.setVisible(true);
@@ -4575,10 +4988,10 @@ public class Principal extends javax.swing.JFrame {
                     Usuario cambioUser = guardarUsuario(usuarioEle);
                     Usuarios.set(i, cambioUser);
                     realizarCambio(cambioUser);
-                     
+
                 } else {
                     cargarDatos(ruta);
-                   
+
                 }
                 return;
             }
@@ -4915,8 +5328,8 @@ public class Principal extends javax.swing.JFrame {
         fondoImagen.setIcon(fondoI);
         ejemploFuente.setFont(fontG);
         ejemploFuente.setForeground(colorF);
-        cambiarFontPantallaInicio(fontG);
-        cambiarColorFontPI(colorF);
+        cambiarFontPantallaInicio(fontG,colorF);
+//        cambiarColorFontPI(colorF);
     }
 
     public Usuario formarInicio(Usuario usuario2) {
