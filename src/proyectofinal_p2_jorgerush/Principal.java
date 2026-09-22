@@ -350,7 +350,6 @@ public class Principal extends javax.swing.JFrame {
 
 //        jButton10.setFont(fuente);
 //        jButton10.setForeground(color);
-
         calculadora1.setFont(fuente);
         calculadora1.setForeground(color);
 
@@ -547,7 +546,6 @@ public class Principal extends javax.swing.JFrame {
 //
 //        jLabel15.setFont(fuente);
 //        jLabel15.setForeground(color);
-
         fondoImagen.setFont(fuente);
         fondoImagen.setForeground(color);
 
@@ -662,6 +660,18 @@ public class Principal extends javax.swing.JFrame {
 
         tablaUsuarios.setFont(fuente);
         tablaUsuarios.setForeground(color);
+
+        jTabbedPane2.setFont(fuente);
+        jTabbedPane2.setForeground(color);
+
+        exploradorPc.setFont(fuente);
+        exploradorPc.setForeground(color);
+
+        exploradorPc2.setFont(fuente);
+        exploradorPc2.setForeground(color);
+
+        barraProgreso.setFont(fuente);
+//        barraProgreso.setForeground(color);
     }
 
     public void cambiarFondo(int i) {
@@ -981,14 +991,14 @@ public class Principal extends javax.swing.JFrame {
         panelFuentes.add(spinnerFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 160, -1));
 
         ejemploFuente.setColumns(20);
-        ejemploFuente.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        ejemploFuente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ejemploFuente.setRows(5);
         ejemploFuente.setText("¿Sabias que \"WitZig\" arcaicamente significa \"Ingenioso\" en Aleman?");
         jScrollPane1.setViewportView(ejemploFuente);
 
         panelFuentes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 480, 110));
 
-        tamañoFuente.setModel(new javax.swing.SpinnerNumberModel(10, null, null, 1));
+        tamañoFuente.setModel(new javax.swing.SpinnerNumberModel(15, 1, 22, 1));
         tamañoFuente.addChangeListener(this::tamañoFuenteStateChanged);
         panelFuentes.add(tamañoFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 50, -1));
 
@@ -1063,7 +1073,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         aspectosExternos.addActionListener(this::aspectosExternosActionPerformed);
-        panelPantalla.add(aspectosExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 30));
+        panelPantalla.add(aspectosExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 10, 160, 30));
 
         fondoPm.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fondoPm.setText("Fondo de Pantalla");
@@ -1073,7 +1083,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         fondoPm.addActionListener(this::fondoPmActionPerformed);
-        panelPantalla.add(fondoPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 140, 30));
+        panelPantalla.add(fondoPm, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 180, 30));
 
         eleccionExternos.setBackground(new java.awt.Color(204, 255, 153));
 
@@ -1176,10 +1186,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         elegirFondom.addActionListener(this::elegirFondomActionPerformed);
-        ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel10.setText("Seleccione un Fondo de Pantalla Predeterminado:");
-        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         wDefecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT.png"))); // NOI18N
         wDefecto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1278,7 +1288,7 @@ public class Principal extends javax.swing.JFrame {
 
         spinnerFuente1.addChangeListener(this::spinnerFuente1StateChanged);
 
-        tamañoFuente1.setModel(new javax.swing.SpinnerNumberModel(10, null, null, 1));
+        tamañoFuente1.setModel(new javax.swing.SpinnerNumberModel(10, 1, null, 1));
         tamañoFuente1.addChangeListener(this::tamañoFuente1StateChanged);
 
         tituloConfiguracion6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1335,10 +1345,10 @@ public class Principal extends javax.swing.JFrame {
         panelColoresElementos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BarraN2.setText("Barra de Navegacion");
-        panelColoresElementos.add(BarraN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panelColoresElementos.add(BarraN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         fondoG.setText("Fondo General");
-        panelColoresElementos.add(fondoG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        panelColoresElementos.add(fondoG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1355,7 +1365,7 @@ public class Principal extends javax.swing.JFrame {
         panelColoresElementos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 6, -1, -1));
 
         fondoOp.setText("Fondo de Opciones");
-        panelColoresElementos.add(fondoOp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        panelColoresElementos.add(fondoOp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jButton9.setBackground(new java.awt.Color(255, 153, 153));
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -3075,7 +3085,6 @@ public class Principal extends javax.swing.JFrame {
         ejemploFuente.setFont(fuenteEjemplo);
         ejemploFuente.setForeground(colorEleccion);
     }//GEN-LAST:event_ItalicMouseClicked
-   
 
     Font fontGeneral;
     Color colorFont;
@@ -3099,7 +3108,7 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception E) {
             Font fuenteActual = ejemploFuente.getFont();
             Color colorElegido = ejemploFuente.getForeground();
-            cambiarFontPantallaInicio(fuenteActual,colorElegido);
+            cambiarFontPantallaInicio(fuenteActual, colorElegido);
             Color colorDef = ejemploFuente.getForeground();
             cambiarColorFontPI(colorDef);
 
@@ -5068,10 +5077,10 @@ public class Principal extends javax.swing.JFrame {
                 Usuario actualizado = guardarUsuario(Usuarios.get(i));
 
                 Usuarios.set(i, actualizado);
-                if (fondoImagen.isVisible()==false){
+                if (fondoImagen.isVisible() == false) {
                     actualizado.cambiarVisible(false);
-                }else if (fondoImagen.isVisible()==true){
-                   actualizado.cambiarVisible(true);
+                } else if (fondoImagen.isVisible() == true) {
+                    actualizado.cambiarVisible(true);
                 }
 
                 return;
@@ -5277,8 +5286,8 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
-        Usuario nuevoUsuario = new Usuario(true,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
-       
+        Usuario nuevoUsuario = new Usuario(true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+
         realizarCambio(nuevoUsuario);
         return nuevoUsuario;
     }
@@ -5299,14 +5308,14 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
-        boolean visibilidad=false;
-        if(fondoImagen.isVisible()==true){
-            visibilidad=true;
-        }else{
-            visibilidad=false;
+        boolean visibilidad = false;
+        if (fondoImagen.isVisible() == true) {
+            visibilidad = true;
+        } else {
+            visibilidad = false;
         }
-        Usuario nuevoUsuario = new Usuario(visibilidad,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
-       
+        Usuario nuevoUsuario = new Usuario(visibilidad, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+
         guardarDatos(nuevoUsuario, archivo1);
         return nuevoUsuario;
     }
@@ -5334,20 +5343,19 @@ public class Principal extends javax.swing.JFrame {
             admin = false;
         }
         mostrarConf();
-        
-        
+
         BarraNavegacion.setBackground(barraNC);
         BarraTareas.setBackground(barraC);
         FondoPantalla.setBackground(fondoC);
         fondoImagen.setIcon(fondoI);
-        if(usuario.verificarVisible()==false){
+        if (usuario.verificarVisible() == false) {
             fondoImagen.setVisible(false);
-        }else if (usuario.verificarVisible()==true){
+        } else if (usuario.verificarVisible() == true) {
             fondoImagen.setVisible(true);
         }
         ejemploFuente.setFont(fontG);
         ejemploFuente.setForeground(colorF);
-        cambiarFontPantallaInicio(fontG,colorF);
+        cambiarFontPantallaInicio(fontG, colorF);
 //        cambiarColorFontPI(colorF);
     }
 
@@ -5368,7 +5376,7 @@ public class Principal extends javax.swing.JFrame {
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
 
         String archivo1 = usuario2.getRutaArchivo();
-        Usuario usuarioDEF = new Usuario(true,nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario usuarioDEF = new Usuario(true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
         return usuarioDEF;
     }
 
