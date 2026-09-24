@@ -232,18 +232,18 @@ public class Principal extends javax.swing.JFrame {
 
         Pantalla.setFont(fuente);
         Pantalla.setForeground(color);
-
-        Plain1.setFont(fuente);
-        Plain1.setForeground(color);
-
-        Bold1.setFont(fuente);
-        Bold1.setForeground(color);
-
-        Italic1.setFont(fuente);
-        Italic1.setForeground(color);
-
-        BoldItalic1.setFont(fuente);
-        BoldItalic1.setForeground(color);
+//
+//        Plain1.setFont(fuente);
+//        Plain1.setForeground(color);
+//
+//        Bold1.setFont(fuente);
+//        Bold1.setForeground(color);
+//
+//        Italic1.setFont(fuente);
+//        Italic1.setForeground(color);
+//
+//        BoldItalic1.setFont(fuente);
+//        BoldItalic1.setForeground(color);
 
         jButton2.setFont(fuente);
         jButton2.setForeground(color);
@@ -510,8 +510,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel25.setFont(fuente);
         jLabel25.setForeground(color);
 
-        user.setFont(fuente);
-        user.setForeground(color);
+        rolTipo.setFont(fuente);
+        rolTipo.setForeground(color);
 
         fecha.setFont(fuente);
         fecha.setForeground(color);
@@ -920,10 +920,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         Informacion = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
-        user = new javax.swing.JLabel();
+        rolTipo = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         mostrarU = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
@@ -1188,7 +1189,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton13MouseClicked(evt);
             }
         });
-        ColorSolido1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        ColorSolido1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
 
         jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -2528,15 +2529,15 @@ public class Principal extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        user.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        user.setText("user");
-        user.setOpaque(true);
-        jPanel10.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 110, -1));
+        rolTipo.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        rolTipo.setText("Designacion: Admin");
+        rolTipo.setOpaque(true);
+        jPanel10.add(rolTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 140, -1));
 
         fecha.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         fecha.setText("horario");
         fecha.setOpaque(true);
-        jPanel10.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 270, 20));
+        jPanel10.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 190, 20));
 
         mostrarU.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         mostrarU.setText("Usuario:");
@@ -2544,6 +2545,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W13.png"))); // NOI18N
         jPanel10.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 70, 60));
+
+        user.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        user.setText("user");
+        user.setOpaque(true);
+        jPanel10.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 110, -1));
 
         Informacion.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
@@ -2983,6 +2989,7 @@ public class Principal extends javax.swing.JFrame {
 
         BarraNavegacion.setBackground(new java.awt.Color(242, 242, 242));
         BarraNavegacion.setBorder(null);
+        BarraNavegacion.setBorderPainted(false);
         BarraNavegacion.setOpaque(true);
 
         LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WW3.png"))); // NOI18N
@@ -3239,11 +3246,14 @@ public class Principal extends javax.swing.JFrame {
     }
     private void seleccionColor3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor3MouseClicked
         Color seleccionado1 = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
+        
         if (seleccionado1 != null) {
             boolean verf = false;
 
             if (barraT1.isSelected()) {
                 BarraTareas.setBackground(seleccionado1);
+                 BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1),seleccionado1, 1, 25));
+        
                 verf = true;
             }
             if (barraN1.isSelected()) {
@@ -3636,7 +3646,7 @@ public class Principal extends javax.swing.JFrame {
     ArrayList<archivosTxt> listaArchivos = new ArrayList<>();
     ArrayList<carpetasArchivos> listaCarpetas = new ArrayList<>();
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
-
+      
         exploradorPc.setVisible(true);
 
         int elegir = exploradorPc.showSaveDialog(this);
@@ -3702,9 +3712,11 @@ public class Principal extends javax.swing.JFrame {
                 if (verf == true) {
                     listaCarpetas.add(carpetaLocalizar);
                 }
+                cargarBarra();
                 JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
 
                 ejemploFuente1.setText(null);
+                
 
             } catch (Exception e) {
 
@@ -3773,13 +3785,14 @@ public class Principal extends javax.swing.JFrame {
 
         if (exploradorPc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File archivo = exploradorPc.getSelectedFile();
-
+            cargarBarra();
             try (Scanner lector = new Scanner(archivo)) {
                 ejemploFuente1.setText("");
 
                 while (lector.hasNextLine()) {
                     ejemploFuente1.append(lector.nextLine() + "\n");
                 }
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
@@ -4830,7 +4843,32 @@ public class Principal extends javax.swing.JFrame {
         "Las Jirafas no tienen cuerdas vocales",
         "Un rayo es mas caliente que el sol",
         "Tu nariz puede recordar 50,000 olores.", "Los flamingos nacen de color gris",
-        "Los tiburones no tienen huesos."};
+        "Los tiburones no tienen huesos.","Las mariposas saborean con patas",
+        "El pulpo tiene tres corazones", 
+        "Las bananas son bayas", "Los caballos no pueden vomitar",
+        "Saturno flotaría en agua", "Las nutrias se dan la mano",
+        "Las vacas tienen mejores amigas", 
+        "Urano huele a huevo podrido", "Los gatos no sienten dulce",
+        "Los cerdos no miran arriba", 
+        "El sol es una estrella", 
+        "El agua hirviendo congela rápido",
+        "La Luna se está alejando", 
+        "Un día en Mercurio dura años",
+        "Las hormigas nunca duermen", 
+        "Los perros huelen el miedo", 
+        "Las huellas de koala parecen humanas",
+        "El caracol duerme tres años", "La sangijuela tiene 32 cerebros",
+        "El sudor de hipopótamo es rojo", "Los delfines duermen con un ojo",
+        "Los patos tienen eco nulo", "El elefante no puede saltar", 
+        "Las estrellas fugaces son polvo", "El mar cubre casi todo", 
+        "La Tierra pesa casi nada", "El hielo es transparente", 
+        "Los búhos no mueven ojos", "Las cebras son negras con blanco", 
+        "El camello guarda grasa, no agua", "El bambú crece súper rápido", 
+        "Los mosquitos prefieren sangre O", "El aguacate es una baya", 
+        "Las ranas beben por la piel", "Los osos polares son negros", 
+        "El perezoso tarda en digerir", "Las medusas no tienen cerebro", 
+        "El magma bajo tierra es lava", "El diamante es puro carbono", 
+        "Los cocodrilos no envejecen bien"};
     ImageIcon[] arregloIconos = new ImageIcon[]{
         new ImageIcon(getClass().getResource("/Wally/W3.png")),
         new ImageIcon(getClass().getResource("/Wally/W4.png")),
@@ -4854,7 +4892,7 @@ public class Principal extends javax.swing.JFrame {
 
         BarraProgreso.setLocationRelativeTo(this);
         Wally.setIcon(arregloIconos[R.nextInt(0, 8)]);
-        mensaje.setText(mensajes[R.nextInt(0, 13)]);
+        mensaje.setText(mensajes[R.nextInt(0, 52)]);
         barraProgreso.setValue(0);
 
         SwingWorker<Void, Integer> worker = new SwingWorker<Void, Integer>() {
@@ -5102,7 +5140,11 @@ public class Principal extends javax.swing.JFrame {
 
                 bienvenida.setText("Bienvenido, estimado(a) " + nombreU);
                 user.setText(nombreU);
-
+                if(usuarioEle.isAdministrador()==true){
+                    rolTipo.setText("Designacion: Admin");
+                }else{
+                    rolTipo.setText("Designacion: Invitado");
+                }
                 fondoIniciar.setVisible(false);
                 BarraNavegacion.setVisible(true);
                 BarraTareas.setVisible(true);
@@ -5533,6 +5575,7 @@ public class Principal extends javax.swing.JFrame {
 
         Color barraNC = usuario.getColorNavigator();
         Color barraC = usuario.getColorBarra();
+        BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1),barraC, 1, 25));
         Color fondoC = usuario.getColorFondo();
         Icon fondoI = usuario.getFondoImagen();
 
@@ -5916,6 +5959,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton rancho;
     private javax.swing.JButton regresar;
     private javax.swing.JButton resultado;
+    private javax.swing.JLabel rolTipo;
     private javax.swing.JTextField ruta;
     private javax.swing.JButton seis;
     private javax.swing.JButton seleccionColor3;
