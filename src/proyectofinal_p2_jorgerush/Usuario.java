@@ -33,6 +33,9 @@ public class Usuario implements Serializable {
     String rutaArchivo;
     int contador = 0;
     boolean visible;
+    Color barraNE;
+    Color fondoNE;
+    Color fondoOP;
 
     ArrayList<archivosTxt> listaArchivos;
     ArrayList<carpetasArchivos> listaCarpetas;
@@ -51,8 +54,8 @@ public class Usuario implements Serializable {
         visible = cambio;
 
     }
-    
-    public boolean verificarVisible(){
+
+    public boolean verificarVisible() {
         return visible;
     }
 
@@ -76,11 +79,14 @@ public class Usuario implements Serializable {
         this.listaCarpetas = listaCarpetas;
     }
 
-    public Usuario(boolean visible,String nombreUsuario, String contraseñaUsuario, String tipoUsuario, Color colorFondo, Color colorBarra, Color colorNavigator, Font fontGeneral, Icon fondoImagen, ArrayList<archivosTxt> listaArchivos, ArrayList<carpetasArchivos> listaCarpetas, String rutaArchivo, Color colorF) {
+    public Usuario(Color barraNE,Color fondoNE, Color fondoOP, boolean visible, String nombreUsuario, String contraseñaUsuario, String tipoUsuario, Color colorFondo, Color colorBarra, Color colorNavigator, Font fontGeneral, Icon fondoImagen, ArrayList<archivosTxt> listaArchivos, ArrayList<carpetasArchivos> listaCarpetas, String rutaArchivo, Color colorF) {
         this.nombreUsuario = nombreUsuario;
         this.contraseñaUsuario = contraseñaUsuario;
         this.tipoUsuario = tipoUsuario;
-        this.visible=visible;
+        this.visible = visible;
+        this.barraNE = barraNE;
+        this.fondoNE=fondoNE;
+        this.fondoOP=fondoOP;
 
         if (tipoUsuario.equals("Administrador")) {
             Administrador = true;
@@ -96,6 +102,30 @@ public class Usuario implements Serializable {
         this.listaCarpetas = listaCarpetas;
         this.rutaArchivo = rutaArchivo;
         this.colorFont = colorF;
+    }
+
+    public Color getBarraNE() {
+        return barraNE;
+    }
+
+    public void setBarraNE(Color barraNE) {
+        this.barraNE = barraNE;
+    }
+
+    public Color getFondoNE() {
+        return fondoNE;
+    }
+
+    public void setFondoNE(Color fondoNE) {
+        this.fondoNE = fondoNE;
+    }
+
+    public Color getFondoOP() {
+        return fondoOP;
+    }
+
+    public void setFondoOP(Color fondoOP) {
+        this.fondoOP = fondoOP;
     }
 
     public Color getColorFont() {

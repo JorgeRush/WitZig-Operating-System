@@ -39,6 +39,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -68,7 +69,7 @@ public class Principal extends javax.swing.JFrame {
     boolean admin = false;
 
     public Principal() {
-
+        this.setUndecorated(true);
         try {
             com.formdev.flatlaf.FlatLightLaf.setup();
         } catch (Exception e) {
@@ -134,6 +135,7 @@ public class Principal extends javax.swing.JFrame {
 
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+
         FondoPantalla.setMaximumSize(FondoPantalla.getSize());
         exploradorArchivos.setTitle("Explorador de Archivos | Para actualizar la tabla, dele click a los espacios vacios de ambos lados.");
         XO.setTitle("Tic Tac Toe");
@@ -700,12 +702,23 @@ public class Principal extends javax.swing.JFrame {
 
         } else if (i == 5) {
             Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
+//            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD6.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
 //            Color fondoTransparente = new Color(30, 30, 30, 180);
 //            BarraTareas.setBackground(fondoTransparente);
 
+        } else if (i == 6) {
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD8.png"));
+            fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
+        } else if (i == 7) {
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD9.png"));
+            fondoImagen.setIcon(icono);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -749,13 +762,20 @@ public class Principal extends javax.swing.JFrame {
         seleccionFondo = new javax.swing.JComboBox<>();
         Imagen = new javax.swing.JPanel();
         ColorSolido1 = new javax.swing.JPanel();
-        lago = new javax.swing.JButton();
-        nevada = new javax.swing.JButton();
-        tarde = new javax.swing.JButton();
-        rancho = new javax.swing.JButton();
         elegirFondom = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane6.getHorizontalScrollBar().setUnitIncrement(25);
+        jPanel13 = new javax.swing.JPanel();
+        tarde = new javax.swing.JButton();
+        rancho = new javax.swing.JButton();
+        nevada = new javax.swing.JButton();
+        lago = new javax.swing.JButton();
         wDefecto = new javax.swing.JButton();
+        wDefecto1 = new javax.swing.JButton();
+        wDefecto2 = new javax.swing.JButton();
         Pantalla = new javax.swing.JButton();
         fondo = new javax.swing.JPanel();
         tituloConfiguracion1 = new javax.swing.JLabel();
@@ -931,6 +951,7 @@ public class Principal extends javax.swing.JFrame {
         contraseña = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
         BarraTareas = new javax.swing.JPanel();
         contenedor = new javax.swing.JPanel();
         calculadora1 = new javax.swing.JButton();
@@ -1146,39 +1167,6 @@ public class Principal extends javax.swing.JFrame {
 
         ColorSolido1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT4.png"))); // NOI18N
-        lago.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lagoMouseClicked(evt);
-            }
-        });
-        lago.addActionListener(this::lagoActionPerformed);
-        ColorSolido1.add(lago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 87, 83));
-
-        nevada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT1.png"))); // NOI18N
-        nevada.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nevadaMouseClicked(evt);
-            }
-        });
-        ColorSolido1.add(nevada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 87, 83));
-
-        tarde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT2.png"))); // NOI18N
-        tarde.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tardeMouseClicked(evt);
-            }
-        });
-        ColorSolido1.add(tarde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 87, 83));
-
-        rancho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT3.png"))); // NOI18N
-        rancho.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ranchoMouseClicked(evt);
-            }
-        });
-        ColorSolido1.add(rancho, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 87, 83));
-
         elegirFondom.setText("Confirmar");
         elegirFondom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1188,8 +1176,51 @@ public class Principal extends javax.swing.JFrame {
         elegirFondom.addActionListener(this::elegirFondomActionPerformed);
         ColorSolido1.add(elegirFondom, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
-        jLabel10.setText("Seleccione un Fondo de Pantalla Predeterminado:");
-        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jLabel10.setText("Seleccionar una Imagen del Equipo:");
+        ColorSolido1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        jLabel29.setText("Seleccione un Fondo de Pantalla Predeterminado:");
+        ColorSolido1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jButton13.setText("Seleccionar...");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
+        ColorSolido1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tarde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT2.png"))); // NOI18N
+        tarde.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tardeMouseClicked(evt);
+            }
+        });
+
+        rancho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT3.png"))); // NOI18N
+        rancho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ranchoMouseClicked(evt);
+            }
+        });
+
+        nevada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT1.png"))); // NOI18N
+        nevada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nevadaMouseClicked(evt);
+            }
+        });
+
+        lago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FT4.png"))); // NOI18N
+        lago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lagoMouseClicked(evt);
+            }
+        });
+        lago.addActionListener(this::lagoActionPerformed);
 
         wDefecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT.png"))); // NOI18N
         wDefecto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1197,7 +1228,60 @@ public class Principal extends javax.swing.JFrame {
                 wDefectoMouseClicked(evt);
             }
         });
-        ColorSolido1.add(wDefecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 87, 83));
+
+        wDefecto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT6.png"))); // NOI18N
+        wDefecto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                wDefecto1MouseClicked(evt);
+            }
+        });
+
+        wDefecto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT7.png"))); // NOI18N
+        wDefecto2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                wDefecto2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nevada, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(rancho, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(lago, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(wDefecto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(wDefecto2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(wDefecto1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(wDefecto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wDefecto2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nevada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tarde, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rancho, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lago, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wDefecto1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jScrollPane6.setViewportView(jPanel13);
+
+        ColorSolido1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 490, 110));
 
         Imagen.add(ColorSolido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 540, 200));
 
@@ -1486,7 +1570,7 @@ public class Principal extends javax.swing.JFrame {
         });
         opcionesEditor.add(personalizarEditor);
 
-        jMenu2.setText("Atencion: Este editor de texto solo es compatible con archivos .txt :D                                                                         ");
+        jMenu2.setText("                                                                                                                                                                                                ");
         opcionesEditor.add(jMenu2);
 
         crearTexto.setJMenuBar(opcionesEditor);
@@ -2700,6 +2784,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Microsoft JhengHei", 1, 15)); // NOI18N
         jLabel15.setText("Contraseña");
 
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/AP1.png"))); // NOI18N
+        jButton14.setContentAreaFilled(false);
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoIniciarLayout = new javax.swing.GroupLayout(fondoIniciar);
         fondoIniciar.setLayout(fondoIniciarLayout);
         fondoIniciarLayout.setHorizontalGroup(
@@ -2722,7 +2814,10 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
                         .addGap(361, 361, 361)
-                        .addComponent(jButton10)))
+                        .addComponent(jButton10))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(382, 382, 382)
+                        .addComponent(jButton14)))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
         fondoIniciarLayout.setVerticalGroup(
@@ -2740,7 +2835,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton10)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton14)
+                .addContainerGap())
         );
 
         FondoPantallaOg.add(fondoIniciar, new java.awt.GridBagConstraints());
@@ -3008,6 +3105,10 @@ public class Principal extends javax.swing.JFrame {
         exploradorArchivos.pack();
         exploradorArchivos.setLocationRelativeTo(this);
         exploradorArchivos.setVisible(true);
+        tablaExplorador.clearSelection();
+        tablaArchivosTxt.clearSelection();
+        tablaArchivos.setVisible(false);
+        tablaCarpetas.setVisible(true);
     }//GEN-LAST:event_explorarArchivosMouseClicked
 
     private void FuentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuentesMouseClicked
@@ -3183,12 +3284,15 @@ public class Principal extends javax.swing.JFrame {
     boolean rachoElegido = false;
     boolean lagoElegido = false;
     boolean porDefecto = false;
+
     private void lagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lagoMouseClicked
         nevadaElegido = false;
         tardeElegido = false;
         rachoElegido = false;
         lagoElegido = true;
         porDefecto = false;
+        porDefecto2 = false;
+        porDefecto3 = false;
     }//GEN-LAST:event_lagoMouseClicked
 
     private void nevadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nevadaMouseClicked
@@ -3197,6 +3301,8 @@ public class Principal extends javax.swing.JFrame {
         rachoElegido = false;
         lagoElegido = false;
         porDefecto = false;
+        porDefecto2 = false;
+        porDefecto3 = false;
     }//GEN-LAST:event_nevadaMouseClicked
 
     private void tardeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tardeMouseClicked
@@ -3205,6 +3311,8 @@ public class Principal extends javax.swing.JFrame {
         rachoElegido = false;
         lagoElegido = false;
         porDefecto = false;
+        porDefecto2 = false;
+        porDefecto3 = false;
     }//GEN-LAST:event_tardeMouseClicked
 
     private void ranchoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ranchoMouseClicked
@@ -3213,29 +3321,47 @@ public class Principal extends javax.swing.JFrame {
         rachoElegido = true;
         lagoElegido = false;
         porDefecto = false;
+        porDefecto2 = false;
+        porDefecto3 = false;
     }//GEN-LAST:event_ranchoMouseClicked
 
     private void elegirFondomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elegirFondomMouseClicked
-
-        ocultarFondo(true);
-        if (nevadaElegido == true) {
-
-            cambiarFondo(1);
-        } else if (tardeElegido == true) {
-
-            cambiarFondo(2);
-        } else if (rachoElegido == true) {
-
-            cambiarFondo(3);
-        } else if (lagoElegido == true) {
-
-            cambiarFondo(4);
-        } else if (porDefecto == true) {
-            cambiarFondo(5);
+        if (imagenPers == true && nevadaElegido == false && tardeElegido == false && rachoElegido == false && lagoElegido == false
+                && porDefecto == false && porDefecto2 == false && porDefecto3 == false) {
+            ocultarFondo(true);
+            fondoImagen.setIcon(imagenFondoPersonaliz);
+            FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
+            FondoPantallaOg.repaint();
         } else {
-            JOptionPane.showMessageDialog(this, "Debe darle click a un fondo, posterior a eso confirmar su seleccion.");
+            ocultarFondo(true);
+            if (nevadaElegido == true) {
+                imagenPers = false;
+                cambiarFondo(1);
+            } else if (tardeElegido == true) {
+                imagenPers = false;
+                cambiarFondo(2);
+            } else if (rachoElegido == true) {
+                imagenPers = false;
+                cambiarFondo(3);
+            } else if (lagoElegido == true) {
+                imagenPers = false;
+                cambiarFondo(4);
+            } else if (porDefecto == true) {
+                imagenPers = false;
+                cambiarFondo(5);
+            } else if (porDefecto2 == true) {
+                imagenPers = false;
+                cambiarFondo(6);
+            } else if (porDefecto3 == true) {
+                imagenPers = false;
+                cambiarFondo(7);
+            } else {
+                imagenPers = false;
+                JOptionPane.showMessageDialog(this, "Debe darle click a un fondo, posterior a eso confirmar su seleccion.");
 
+            }
         }
+
     }//GEN-LAST:event_elegirFondomMouseClicked
 
     private void PantallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PantallaMouseClicked
@@ -4543,6 +4669,8 @@ public class Principal extends javax.swing.JFrame {
         rachoElegido = false;
         lagoElegido = false;
         porDefecto = true;
+        porDefecto2 = false;
+        porDefecto3 = false;
     }//GEN-LAST:event_wDefectoMouseClicked
 
     private void lagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lagoActionPerformed
@@ -5188,10 +5316,16 @@ public class Principal extends javax.swing.JFrame {
                 }
                 if (user.getNombreUsuario().equals(Nombre)) {
                     String archivoBin = user.getRutaArchivo();
-                    File archivoBinario = new File(archivoBin);
-                    if (archivoBinario.exists()) {
-                        archivoBinario.delete();
+                    if (archivoBin != null) {
+                        File archivoBinario = new File(archivoBin);
+                        if (archivoBinario.exists()) {
+                            archivoBinario.delete();
+                        }
                     }
+//                    File archivoBinario = new File(archivoBin);
+//                    if (archivoBinario.exists()) {
+//                        archivoBinario.delete();
+//                    }
 
                     Usuarios.remove(i);
                     cargarBarra();
@@ -5249,6 +5383,9 @@ public class Principal extends javax.swing.JFrame {
 
                         }
 
+                    } else {
+                        user.setNombreUsuario(nuevoNombre);
+                        user.setContraseñaUsuario(nuevaContra);
                     }
 
                     cargarBarra();
@@ -5271,6 +5408,70 @@ public class Principal extends javax.swing.JFrame {
         ModificarUsuario.setLocationRelativeTo(this);
         ModificarUsuario.setVisible(true);
     }//GEN-LAST:event_modUActionPerformed
+    boolean imagenPers = false;
+    Icon imagenFondoPersonaliz;
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        exploradorPc.setVisible(true);
+
+        if (exploradorPc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File archivo = exploradorPc.getSelectedFile();
+            try {
+                Image imagen = ImageIO.read(archivo);
+                if (imagen == null) {
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar una imagen.");
+                    return;
+                }
+            } catch (IOException ex) {
+
+            }
+
+            Icon nuevoFondo = new ImageIcon(archivo.getAbsolutePath());
+            Image imagenOriginal = ((ImageIcon) nuevoFondo).getImage();
+
+            Image imagenEscalada = imagenOriginal.getScaledInstance(1386, 779, Image.SCALE_SMOOTH);
+
+            Icon iconoF = new ImageIcon(imagenEscalada);
+            imagenFondoPersonaliz = iconoF;
+            imagenPers = true;
+            nevadaElegido = false;
+            tardeElegido = false;
+            rachoElegido = false;
+            lagoElegido = false;
+            porDefecto = false;
+            porDefecto2 = false;
+            porDefecto3 = false;
+            cargarBarra();
+            JOptionPane.showMessageDialog(this, "Imagen exitosamente cargada.");
+
+        } else {
+            imagenPers = false;
+        }
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void wDefecto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wDefecto1MouseClicked
+        nevadaElegido = false;
+        tardeElegido = false;
+        rachoElegido = false;
+        lagoElegido = false;
+        porDefecto = false;
+        porDefecto2 = false;
+        porDefecto3 = true;
+    }//GEN-LAST:event_wDefecto1MouseClicked
+    boolean porDefecto2 = false;
+    boolean porDefecto3 = false;
+    private void wDefecto2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wDefecto2MouseClicked
+        nevadaElegido = false;
+        tardeElegido = false;
+        rachoElegido = false;
+        lagoElegido = false;
+        porDefecto = false;
+        porDefecto2 = true;
+        porDefecto3 = false;
+    }//GEN-LAST:event_wDefecto2MouseClicked
     public Usuario retornarInicio() {
         String nombre = "Admin";
         String contra = "Admin";
@@ -5282,11 +5483,13 @@ public class Principal extends javax.swing.JFrame {
         Icon fondoI = fondoImagen.getIcon();
         Font fontG = ejemploFuente.getFont();
         Color colorF = ejemploFuente.getForeground();
-
+        Color FondoOP = fondoOpc.getBackground();
+        Color fondoGe = fondoGen.getBackground();
+        Color opcionesEd = opcionesEditor.getBackground();
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
         String archivo1 = "config_" + nombre + ".dat";
-        Usuario nuevoUsuario = new Usuario(true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario nuevoUsuario = new Usuario(FondoOP, fondoGe, opcionesEd, true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
 
         realizarCambio(nuevoUsuario);
         return nuevoUsuario;
@@ -5304,6 +5507,9 @@ public class Principal extends javax.swing.JFrame {
 
         Font fontG = ejemploFuente.getFont();
         Color colorF = ejemploFuente.getForeground();
+        Color FondoOP = fondoOpc.getBackground();
+        Color fondoGe = fondoGen.getBackground();
+        Color opcionesEd = opcionesEditor.getBackground();
 
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
@@ -5314,7 +5520,7 @@ public class Principal extends javax.swing.JFrame {
         } else {
             visibilidad = false;
         }
-        Usuario nuevoUsuario = new Usuario(visibilidad, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario nuevoUsuario = new Usuario(FondoOP, fondoGe, opcionesEd, visibilidad, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
 
         guardarDatos(nuevoUsuario, archivo1);
         return nuevoUsuario;
@@ -5333,6 +5539,10 @@ public class Principal extends javax.swing.JFrame {
         Font fontG = usuario.getFontGeneral();
         Color colorF = usuario.getColorFont();
 
+        Color FondoOP = usuario.getBarraNE();
+        Color fondoGe = usuario.getFondoNE();
+        Color opcionesEd = usuario.getFondoOP();
+
         listaArchivos = usuario.retornarArchivos();
         listaCarpetas = usuario.retornarCarpetas();
 
@@ -5343,7 +5553,9 @@ public class Principal extends javax.swing.JFrame {
             admin = false;
         }
         mostrarConf();
-
+        fondoOpc.setBackground(FondoOP);
+        fondoGen.setBackground(fondoGe);
+        opcionesEditor.setBackground(opcionesEd);
         BarraNavegacion.setBackground(barraNC);
         BarraTareas.setBackground(barraC);
         FondoPantalla.setBackground(fondoC);
@@ -5371,12 +5583,14 @@ public class Principal extends javax.swing.JFrame {
 
         Font fontG = usuario2.getFontGeneral();
         Color colorF = usuario2.getColorFont();
-
+        Color FondoOP = usuario2.barraNE;
+        Color fondoGe = usuario2.getFondoNE();
+        Color opcionesEd = usuario2.getFondoOP();
         ArrayList<archivosTxt> listaA = new ArrayList<>(listaArchivos);
         ArrayList<carpetasArchivos> listaC = new ArrayList<>(listaCarpetas);
 
         String archivo1 = usuario2.getRutaArchivo();
-        Usuario usuarioDEF = new Usuario(true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
+        Usuario usuarioDEF = new Usuario(FondoOP, fondoGe, opcionesEd, true, nombre, contra, tipoU, fondoC, barraC, barraNC, fontG, fondoI, listaA, listaC, archivo1, colorF);
         return usuarioDEF;
     }
 
@@ -5599,6 +5813,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -5628,6 +5844,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -5640,6 +5857,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -5654,6 +5872,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton lago;
     private javax.swing.JButton limpiar;
@@ -5730,6 +5949,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField usuario;
     private javax.swing.JMenu verUsuarios;
     private javax.swing.JButton wDefecto;
+    private javax.swing.JButton wDefecto1;
+    private javax.swing.JButton wDefecto2;
     private javax.swing.JLabel willyCelebra;
     // End of variables declaration//GEN-END:variables
 }
