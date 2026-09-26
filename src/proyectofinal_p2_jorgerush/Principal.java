@@ -971,6 +971,7 @@ public class Principal extends javax.swing.JFrame {
         LogOut = new javax.swing.JMenu();
         verUsuarios = new javax.swing.JMenu();
         crearUsuarios = new javax.swing.JMenu();
+        vacio4 = new javax.swing.JMenu();
 
         Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         Personalizar.setText("Personalizar");
@@ -2677,9 +2678,12 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        entrada.setMinimumSize(new java.awt.Dimension(243, 140));
+        entrada.setMaximumSize(new java.awt.Dimension(243, 73));
+        entrada.setMinimumSize(new java.awt.Dimension(243, 73));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setMaximumSize(new java.awt.Dimension(243, 73));
+        jPanel14.setMinimumSize(new java.awt.Dimension(243, 73));
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/LogoDef.png"))); // NOI18N
@@ -3031,6 +3035,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BarraNavegacion.add(crearUsuarios);
+
+        vacio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M2.png"))); // NOI18N
+        vacio4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vacio4MouseClicked(evt);
+            }
+        });
+        BarraNavegacion.add(vacio4);
 
         setJMenuBar(BarraNavegacion);
 
@@ -5503,6 +5515,10 @@ public class Principal extends javax.swing.JFrame {
         porDefecto2 = true;
         porDefecto3 = false;
     }//GEN-LAST:event_wDefecto2MouseClicked
+
+    private void vacio4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vacio4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vacio4MouseClicked
     public Usuario retornarInicio() {
         String nombre = "Admin";
         String contra = "Admin";
@@ -5979,6 +5995,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton uno;
     private javax.swing.JLabel user;
     private javax.swing.JTextField usuario;
+    private javax.swing.JMenu vacio4;
     private javax.swing.JMenu verUsuarios;
     private javax.swing.JButton wDefecto;
     private javax.swing.JButton wDefecto1;
