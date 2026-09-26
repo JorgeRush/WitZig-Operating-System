@@ -701,7 +701,7 @@ public class Principal extends javax.swing.JFrame {
             FondoPantallaOg.repaint();
 
         } else if (i == 5) {
-            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD3.png"));
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/FW1.png"));
 //            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD6.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
@@ -710,12 +710,12 @@ public class Principal extends javax.swing.JFrame {
 //            BarraTareas.setBackground(fondoTransparente);
 
         } else if (i == 6) {
-            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD8.png"));
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/FW2.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
         } else if (i == 7) {
-            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/WD9.png"));
+            Icon icono = new ImageIcon(getClass().getResource("/fondosPantalla/FW3.png"));
             fondoImagen.setIcon(icono);
             FondoPantallaOg.setComponentZOrder(BarraTareas, 0);
             FondoPantallaOg.repaint();
@@ -1223,21 +1223,21 @@ public class Principal extends javax.swing.JFrame {
         });
         lago.addActionListener(this::lagoActionPerformed);
 
-        wDefecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT.png"))); // NOI18N
+        wDefecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FWI1.png"))); // NOI18N
         wDefecto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 wDefectoMouseClicked(evt);
             }
         });
 
-        wDefecto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT6.png"))); // NOI18N
+        wDefecto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FWI3.png"))); // NOI18N
         wDefecto1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 wDefecto1MouseClicked(evt);
             }
         });
 
-        wDefecto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/WDT7.png"))); // NOI18N
+        wDefecto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondosPantalla/FWI2.png"))); // NOI18N
         wDefecto2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 wDefecto2MouseClicked(evt);
@@ -1580,14 +1580,14 @@ public class Principal extends javax.swing.JFrame {
         crearTexto.getContentPane().setLayout(crearTextoLayout);
         crearTextoLayout.setHorizontalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 830, Short.MAX_VALUE)
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(fondoGen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 93, Short.MAX_VALUE)
+                    .addGap(0, 98, Short.MAX_VALUE)
                     .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 93, Short.MAX_VALUE)))
+                    .addGap(0, 98, Short.MAX_VALUE)))
         );
         crearTextoLayout.setVerticalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2768,7 +2768,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/i2_1.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/US2.png"))); // NOI18N
         jLabel13.setText("jLabel13");
 
         contraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -2805,33 +2805,31 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(fondoIniciarLayout.createSequentialGroup()
                 .addGroup(fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addGroup(fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(fondoIniciarLayout.createSequentialGroup()
                         .addGap(351, 351, 351)
                         .addComponent(jLabel15))
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel14))
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fondoIniciarLayout.createSequentialGroup()
                         .addGap(361, 361, 361)
                         .addComponent(jButton10))
                     .addGroup(fondoIniciarLayout.createSequentialGroup()
                         .addGap(382, 382, 382)
-                        .addComponent(jButton14)))
-                .addContainerGap(286, Short.MAX_VALUE))
+                        .addComponent(jButton14))
+                    .addGroup(fondoIniciarLayout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addGroup(fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         fondoIniciarLayout.setVerticalGroup(
             fondoIniciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoIniciarLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel13)
-                .addGap(33, 33, 33)
+                .addGap(96, 96, 96)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2841,9 +2839,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton14)
-                .addContainerGap())
+                .addGap(80, 80, 80))
         );
 
         FondoPantallaOg.add(fondoIniciar, new java.awt.GridBagConstraints());
