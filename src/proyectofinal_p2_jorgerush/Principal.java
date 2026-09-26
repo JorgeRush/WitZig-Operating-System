@@ -185,18 +185,17 @@ public class Principal extends javax.swing.JFrame {
         Fuentes.setFont(fuente);
         Fuentes.setForeground(color);
 
-        Plain.setFont(fuente);
-        Plain.setForeground(color);
-
-        Bold.setFont(fuente);
-        Bold.setForeground(color);
-
-        BoldItalic.setFont(fuente);
-        BoldItalic.setForeground(color);
-
-        Italic.setFont(fuente);
-        Italic.setForeground(color);
-
+//        Plain.setFont(fuente);
+//        Plain.setForeground(color);
+//
+//        Bold.setFont(fuente);
+//        Bold.setForeground(color);
+//
+//        BoldItalic.setFont(fuente);
+//        BoldItalic.setForeground(color);
+//
+//        Italic.setFont(fuente);
+//        Italic.setForeground(color);
         confirmarFuente.setFont(fuente);
         confirmarFuente.setForeground(color);
 
@@ -537,9 +536,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel26.setFont(fuente);
         jLabel26.setForeground(color);
 
-        mensaje1.setFont(fuente);
-        mensaje1.setForeground(color);
-
+//        Logo.setFont(fuente);
+//        Logo.setForeground(color);
+        
+        
         jLabel13.setFont(fuente);
         jLabel13.setForeground(color);
 
@@ -943,7 +943,6 @@ public class Principal extends javax.swing.JFrame {
         entrada = new javax.swing.JDialog();
         jPanel14 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        mensaje1 = new javax.swing.JLabel();
         FondoPantallaOg = new javax.swing.JPanel();
         fondoIniciar = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
@@ -1351,6 +1350,7 @@ public class Principal extends javax.swing.JFrame {
 
         personalizarPantalla.getContentPane().add(editarColoresPantalla, java.awt.BorderLayout.CENTER);
 
+        crearTexto.setPreferredSize(new java.awt.Dimension(820, 700));
         crearTexto.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 crearTextoWindowOpened(evt);
@@ -1580,14 +1580,14 @@ public class Principal extends javax.swing.JFrame {
         crearTexto.getContentPane().setLayout(crearTextoLayout);
         crearTextoLayout.setHorizontalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(fondoGen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(crearTextoLayout.createSequentialGroup()
-                    .addGap(0, 98, Short.MAX_VALUE)
+                    .addGap(0, 93, Short.MAX_VALUE)
                     .addComponent(exploradorPc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 98, Short.MAX_VALUE)))
+                    .addGap(0, 93, Short.MAX_VALUE)))
         );
         crearTextoLayout.setVerticalGroup(
             crearTextoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2682,42 +2682,30 @@ public class Principal extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/Logo2.png"))); // NOI18N
-
-        mensaje1.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
-        mensaje1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mensaje1.setText("Bienvenido(a) a:");
-        mensaje1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/LogoDef.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(mensaje1)))
+                .addContainerGap()
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+            .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout entradaLayout = new javax.swing.GroupLayout(entrada.getContentPane());
         entrada.getContentPane().setLayout(entradaLayout);
         entradaLayout.setHorizontalGroup(
             entradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         entradaLayout.setVerticalGroup(
             entradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2892,7 +2880,7 @@ public class Principal extends javax.swing.JFrame {
         explorarArchivos.addActionListener(this::explorarArchivosActionPerformed);
         contenedor.add(explorarArchivos);
 
-        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/W4.png"))); // NOI18N
+        WitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WDF2.png"))); // NOI18N
         WitZig.setBorder(null);
         WitZig.setBorderPainted(false);
         WitZig.setContentAreaFilled(false);
@@ -2990,7 +2978,11 @@ public class Principal extends javax.swing.JFrame {
         BarraNavegacion.setBorderPainted(false);
         BarraNavegacion.setOpaque(true);
 
-        LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WW3.png"))); // NOI18N
+        LogoWitZig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/WDF.png"))); // NOI18N
+        LogoWitZig.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        LogoWitZig.setMaximumSize(new java.awt.Dimension(51, 32));
+        LogoWitZig.setMinimumSize(new java.awt.Dimension(51, 32));
+        LogoWitZig.setPreferredSize(new java.awt.Dimension(51, 32));
 
         ApagarS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/AP1.png"))); // NOI18N
         ApagarS.setText("Apagar");
@@ -3244,14 +3236,14 @@ public class Principal extends javax.swing.JFrame {
     }
     private void seleccionColor3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seleccionColor3MouseClicked
         Color seleccionado1 = JColorChooser.showDialog(this, "Seleccione un color", Color.LIGHT_GRAY);
-        
+
         if (seleccionado1 != null) {
             boolean verf = false;
 
             if (barraT1.isSelected()) {
                 BarraTareas.setBackground(seleccionado1);
-                 BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1),seleccionado1, 1, 25));
-        
+                BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), seleccionado1, 1, 25));
+
                 verf = true;
             }
             if (barraN1.isSelected()) {
@@ -3644,7 +3636,7 @@ public class Principal extends javax.swing.JFrame {
     ArrayList<archivosTxt> listaArchivos = new ArrayList<>();
     ArrayList<carpetasArchivos> listaCarpetas = new ArrayList<>();
     private void guardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArchivoActionPerformed
-      
+
         exploradorPc.setVisible(true);
 
         int elegir = exploradorPc.showSaveDialog(this);
@@ -3714,7 +3706,6 @@ public class Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Archivo guardado con éxito");
 
                 ejemploFuente1.setText(null);
-                
 
             } catch (Exception e) {
 
@@ -3790,7 +3781,7 @@ public class Principal extends javax.swing.JFrame {
                 while (lector.hasNextLine()) {
                     ejemploFuente1.append(lector.nextLine() + "\n");
                 }
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Ha ocurrido un error, asegurese de seleccionar el archivo correcto.");
 
@@ -4841,31 +4832,31 @@ public class Principal extends javax.swing.JFrame {
         "Las Jirafas no tienen cuerdas vocales",
         "Un rayo es mas caliente que el sol",
         "Tu nariz puede recordar 50,000 olores.", "Los flamingos nacen de color gris",
-        "Los tiburones no tienen huesos.","Las mariposas saborean con patas",
-        "El pulpo tiene tres corazones", 
+        "Los tiburones no tienen huesos.", "Las mariposas saborean con patas",
+        "El pulpo tiene tres corazones",
         "Las bananas son bayas", "Los caballos no pueden vomitar",
         "Saturno flotaría en agua", "Las nutrias se dan la mano",
-        "Las vacas tienen mejores amigas", 
+        "Las vacas tienen mejores amigas",
         "Urano huele a huevo podrido", "Los gatos no sienten dulce",
-        "Los cerdos no miran arriba", 
-        "El sol es una estrella", 
+        "Los cerdos no miran arriba",
+        "El sol es una estrella",
         "El agua hirviendo congela rápido",
-        "La Luna se está alejando", 
+        "La Luna se está alejando",
         "Un día en Mercurio dura años",
-        "Las hormigas nunca duermen", 
-        "Los perros huelen el miedo", 
+        "Las hormigas nunca duermen",
+        "Los perros huelen el miedo",
         "Las huellas de koala parecen humanas",
         "El caracol duerme tres años", "La sangijuela tiene 32 cerebros",
         "El sudor de hipopótamo es rojo", "Los delfines duermen con un ojo",
-        "Los patos tienen eco nulo", "El elefante no puede saltar", 
-        "Las estrellas fugaces son polvo", "El mar cubre casi todo", 
-        "La Tierra pesa casi nada", "El hielo es transparente", 
-        "Los búhos no mueven ojos", "Las cebras son negras con blanco", 
-        "El camello guarda grasa, no agua", "El bambú crece súper rápido", 
-        "Los mosquitos prefieren sangre O", "El aguacate es una baya", 
-        "Las ranas beben por la piel", "Los osos polares son negros", 
-        "El perezoso tarda en digerir", "Las medusas no tienen cerebro", 
-        "El magma bajo tierra es lava", "El diamante es puro carbono", 
+        "Los patos tienen eco nulo", "El elefante no puede saltar",
+        "Las estrellas fugaces son polvo", "El mar cubre casi todo",
+        "La Tierra pesa casi nada", "El hielo es transparente",
+        "Los búhos no mueven ojos", "Las cebras son negras con blanco",
+        "El camello guarda grasa, no agua", "El bambú crece súper rápido",
+        "Los mosquitos prefieren sangre O", "El aguacate es una baya",
+        "Las ranas beben por la piel", "Los osos polares son negros",
+        "El perezoso tarda en digerir", "Las medusas no tienen cerebro",
+        "El magma bajo tierra es lava", "El diamante es puro carbono",
         "Los cocodrilos no envejecen bien"};
     ImageIcon[] arregloIconos = new ImageIcon[]{
         new ImageIcon(getClass().getResource("/Wally/W3.png")),
@@ -5138,9 +5129,9 @@ public class Principal extends javax.swing.JFrame {
 
                 bienvenida.setText("Bienvenido, estimado(a) " + nombreU);
                 user.setText(nombreU);
-                if(usuarioEle.isAdministrador()==true){
+                if (usuarioEle.isAdministrador() == true) {
                     rolTipo.setText("Designacion: Admin");
-                }else{
+                } else {
                     rolTipo.setText("Designacion: Invitado");
                 }
                 fondoIniciar.setVisible(false);
@@ -5573,7 +5564,7 @@ public class Principal extends javax.swing.JFrame {
 
         Color barraNC = usuario.getColorNavigator();
         Color barraC = usuario.getColorBarra();
-        BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1),barraC, 1, 25));
+        BarraTareas.setBorder(new com.formdev.flatlaf.ui.FlatLineBorder(new java.awt.Insets(1, 1, 1, 1), barraC, 1, 25));
         Color fondoC = usuario.getColorFondo();
         Icon fondoI = usuario.getFondoImagen();
 
@@ -5920,7 +5911,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
     private javax.swing.JLabel mensaje;
-    private javax.swing.JLabel mensaje1;
     private javax.swing.JMenuItem modU;
     private javax.swing.JDialog mostrarCarpeta;
     private javax.swing.JLabel mostrarU;
