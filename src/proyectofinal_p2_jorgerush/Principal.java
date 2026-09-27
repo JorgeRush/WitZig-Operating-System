@@ -11,6 +11,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
@@ -65,7 +66,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     PanelSnake panelSnake;
-    puntos P = null;
+    puntos Pintado = null;
     boolean admin = false;
 
     public Principal() {
@@ -75,6 +76,7 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+       
 
         initComponents();
 
@@ -88,7 +90,7 @@ public class Principal extends javax.swing.JFrame {
         BarraTareas.setVisible(false);
         FondoPantalla.setVisible(false);
 
-        P = new puntos();
+        Pintado = new puntos();
 
         panelSnake = new PanelSnake(500, 20);
         Snake.add(panelSnake);
@@ -167,6 +169,18 @@ public class Principal extends javax.swing.JFrame {
 
         timer.start();
 
+    }
+    public void cerrarVentanas(){
+        personalizarPantalla.dispose();
+        crearTexto.dispose();
+        exploradorArchivos.dispose();
+        Calculadora.dispose();
+        XO.dispose();
+        Snake.dispose();
+        Paint.dispose();
+        AdminCuentas.dispose();
+        Informacion.dispose();
+        entrada.dispose();
     }
 
     public void cambiarColorFontPI(Color color) {
@@ -971,7 +985,6 @@ public class Principal extends javax.swing.JFrame {
         LogOut = new javax.swing.JMenu();
         verUsuarios = new javax.swing.JMenu();
         crearUsuarios = new javax.swing.JMenu();
-        vacio4 = new javax.swing.JMenu();
 
         Personalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/P1.png"))); // NOI18N
         Personalizar.setText("Personalizar");
@@ -2678,7 +2691,6 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        entrada.setMaximumSize(new java.awt.Dimension(243, 73));
         entrada.setMinimumSize(new java.awt.Dimension(243, 73));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
@@ -3035,14 +3047,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         BarraNavegacion.add(crearUsuarios);
-
-        vacio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoTipos/M2.png"))); // NOI18N
-        vacio4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                vacio4MouseClicked(evt);
-            }
-        });
-        BarraNavegacion.add(vacio4);
 
         setJMenuBar(BarraNavegacion);
 
@@ -4946,6 +4950,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_SnakeBotonActionPerformed
 
     private void calculadora1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculadora1MouseClicked
+        
         Paint.pack();
         Paint.setLocationRelativeTo(this);
         Paint.setTitle("Paint");
@@ -4995,7 +5000,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ApagarSActionPerformed
 
     private void panel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseDragged
-        P.GuardarPuntos(evt.getX(), evt.getY());
+        Pintado.GuardarPuntos(evt.getX(), evt.getY());
         Dibujar();
 
     }//GEN-LAST:event_panel1MouseDragged
@@ -5005,7 +5010,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_panel1MouseMoved
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        P.borrarPantalla();
+        Pintado.borrarPantalla();
         panel1.repaint();
     }//GEN-LAST:event_jButton5MouseClicked
     int tamX = 10;
@@ -5014,6 +5019,7 @@ public class Principal extends javax.swing.JFrame {
         int tamaño = (int) tamañoPincel.getValue();
         tamX = tamaño;
         tamY = tamaño;
+        panel1.repaint();
 
     }//GEN-LAST:event_cambiarTamañoMouseClicked
 
@@ -5515,10 +5521,6 @@ public class Principal extends javax.swing.JFrame {
         porDefecto2 = true;
         porDefecto3 = false;
     }//GEN-LAST:event_wDefecto2MouseClicked
-
-    private void vacio4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vacio4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vacio4MouseClicked
     public Usuario retornarInicio() {
         String nombre = "Admin";
         String contra = "Admin";
@@ -5699,10 +5701,10 @@ public class Principal extends javax.swing.JFrame {
     Graphics g;
 
     public void Dibujar() {
-        for (int i = 0; i < P.listaX().size(); i++) {
+        for (int i = 0; i < Pintado.listaX().size(); i++) {
 
-            int x = P.listaX().get(i);
-            int y = P.listaY().get(i);
+            int x = Pintado.listaX().get(i);
+            int y = Pintado.listaY().get(i);
             g.fillOval(x, y, tamX, tamY);
         }
     }
@@ -5995,7 +5997,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton uno;
     private javax.swing.JLabel user;
     private javax.swing.JTextField usuario;
-    private javax.swing.JMenu vacio4;
     private javax.swing.JMenu verUsuarios;
     private javax.swing.JButton wDefecto;
     private javax.swing.JButton wDefecto1;

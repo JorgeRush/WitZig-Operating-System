@@ -39,8 +39,7 @@ public class PanelSnake extends JPanel {
         snake.add(b);
         generarComida();
 
-//        comida[0] = 25;
-//        comida[1] = 14;
+
         camino = new Caminante(this);
         hilo = new Thread(camino);
         hilo.start();
